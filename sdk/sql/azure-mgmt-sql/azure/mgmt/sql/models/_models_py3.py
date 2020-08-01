@@ -9443,6 +9443,9 @@ class SyncGroup(ProxyResource):
     :param use_private_link_connection: If use private link connection is
      enabled.
     :type use_private_link_connection: bool
+    :ivar private_endpoint_name: Private endpoint name of the sync group if
+     use private link connection is enabled.
+    :vartype private_endpoint_name: str
     """
 
     _validation = {
@@ -9451,6 +9454,7 @@ class SyncGroup(ProxyResource):
         'type': {'readonly': True},
         'last_sync_time': {'readonly': True},
         'sync_state': {'readonly': True},
+        'private_endpoint_name': {'readonly': True},
     }
 
     _attribute_map = {
@@ -9466,6 +9470,7 @@ class SyncGroup(ProxyResource):
         'sync_state': {'key': 'properties.syncState', 'type': 'str'},
         'schema': {'key': 'properties.schema', 'type': 'SyncGroupSchema'},
         'use_private_link_connection': {'key': 'properties.usePrivateLinkConnection', 'type': 'bool'},
+        'private_endpoint_name': {'key': 'properties.privateEndpointName', 'type': 'str'},
     }
 
     def __init__(self, *, interval: int=None, conflict_resolution_policy=None, sync_database_id: str=None, hub_database_user_name: str=None, hub_database_password: str=None, schema=None, use_private_link_connection: bool=None, **kwargs) -> None:
@@ -9479,6 +9484,7 @@ class SyncGroup(ProxyResource):
         self.sync_state = None
         self.schema = schema
         self.use_private_link_connection = use_private_link_connection
+        self.private_endpoint_name = None
 
 
 class SyncGroupLogProperties(Model):
@@ -9621,6 +9627,9 @@ class SyncMember(ProxyResource):
     :param use_private_link_connection: Whether to use private link
      connection.
     :type use_private_link_connection: bool
+    :ivar private_endpoint_name: Private endpoint name of the sync member if
+     use private link connection is enabled, for sync members in Azure.
+    :vartype private_endpoint_name: str
     :param server_name: Server name of the member database in the sync member
     :type server_name: str
     :param database_name: Database name of the member database in the sync
@@ -9647,6 +9656,7 @@ class SyncMember(ProxyResource):
         'id': {'readonly': True},
         'name': {'readonly': True},
         'type': {'readonly': True},
+        'private_endpoint_name': {'readonly': True},
         'sync_state': {'readonly': True},
     }
 
@@ -9659,6 +9669,7 @@ class SyncMember(ProxyResource):
         'sql_server_database_id': {'key': 'properties.sqlServerDatabaseId', 'type': 'str'},
         'sync_member_azure_database_resource_id': {'key': 'properties.syncMemberAzureDatabaseResourceId', 'type': 'str'},
         'use_private_link_connection': {'key': 'properties.usePrivateLinkConnection', 'type': 'bool'},
+        'private_endpoint_name': {'key': 'properties.privateEndpointName', 'type': 'str'},
         'server_name': {'key': 'properties.serverName', 'type': 'str'},
         'database_name': {'key': 'properties.databaseName', 'type': 'str'},
         'user_name': {'key': 'properties.userName', 'type': 'str'},
@@ -9674,6 +9685,7 @@ class SyncMember(ProxyResource):
         self.sql_server_database_id = sql_server_database_id
         self.sync_member_azure_database_resource_id = sync_member_azure_database_resource_id
         self.use_private_link_connection = use_private_link_connection
+        self.private_endpoint_name = None
         self.server_name = server_name
         self.database_name = database_name
         self.user_name = user_name
