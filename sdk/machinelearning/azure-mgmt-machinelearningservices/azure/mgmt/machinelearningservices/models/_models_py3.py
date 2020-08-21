@@ -806,6 +806,35 @@ class ComputeInstanceCreatedBy(Model):
         self.user_id = None
 
 
+class ComputeInstanceLastOperation(Model):
+    """The last operation on ComputeInstance.
+
+    :param operation_name: Name of the last operation. Possible values
+     include: 'Create', 'Start', 'Stop', 'Restart', 'Reimage', 'Delete'
+    :type operation_name: str or
+     ~azure.mgmt.machinelearningservices.models.OperationName
+    :param operation_time: Time of the last operation.
+    :type operation_time: datetime
+    :param operation_status: Operation status. Possible values include:
+     'InProgress', 'Succeeded', 'CreateFailed', 'StartFailed', 'StopFailed',
+     'RestartFailed', 'ReimageFailed', 'DeleteFailed'
+    :type operation_status: str or
+     ~azure.mgmt.machinelearningservices.models.OperationStatus
+    """
+
+    _attribute_map = {
+        'operation_name': {'key': 'operationName', 'type': 'str'},
+        'operation_time': {'key': 'operationTime', 'type': 'iso-8601'},
+        'operation_status': {'key': 'operationStatus', 'type': 'str'},
+    }
+
+    def __init__(self, *, operation_name=None, operation_time=None, operation_status=None, **kwargs) -> None:
+        super(ComputeInstanceLastOperation, self).__init__(**kwargs)
+        self.operation_name = operation_name
+        self.operation_time = operation_time
+        self.operation_status = operation_status
+
+
 class ComputeInstanceProperties(Model):
     """Compute Instance properties.
 
@@ -846,11 +875,13 @@ class ComputeInstanceProperties(Model):
      list[~azure.mgmt.machinelearningservices.models.MachineLearningServiceError]
     :ivar state: The current state of this ComputeInstance. Possible values
      include: 'Creating', 'CreateFailed', 'Deleting', 'Running', 'Restarting',
-     'RestartFailed', 'JobRunning', 'SettingUp', 'Starting', 'StartFailed',
-     'StopFailed', 'Stopped', 'Stopping', 'UserSettingUp', 'Unknown',
-     'Unusable'
+     'JobRunning', 'SettingUp', 'SetupFailed', 'Starting', 'Stopped',
+     'Stopping', 'UserSettingUp', 'UserSetupFailed', 'Unknown', 'Unusable'
     :vartype state: str or
      ~azure.mgmt.machinelearningservices.models.ComputeInstanceState
+    :ivar last_operation: The last operation on ComputeInstance.
+    :vartype last_operation:
+     ~azure.mgmt.machinelearningservices.models.ComputeInstanceLastOperation
     """
 
     _validation = {
@@ -859,6 +890,7 @@ class ComputeInstanceProperties(Model):
         'created_by': {'readonly': True},
         'errors': {'readonly': True},
         'state': {'readonly': True},
+        'last_operation': {'readonly': True},
     }
 
     _attribute_map = {
@@ -871,6 +903,7 @@ class ComputeInstanceProperties(Model):
         'created_by': {'key': 'createdBy', 'type': 'ComputeInstanceCreatedBy'},
         'errors': {'key': 'errors', 'type': '[MachineLearningServiceError]'},
         'state': {'key': 'state', 'type': 'str'},
+        'last_operation': {'key': 'lastOperation', 'type': 'ComputeInstanceLastOperation'},
     }
 
     def __init__(self, *, vm_size: str=None, subnet=None, application_sharing_policy="Shared", ssh_settings=None, **kwargs) -> None:
@@ -884,6 +917,7 @@ class ComputeInstanceProperties(Model):
         self.created_by = None
         self.errors = None
         self.state = None
+        self.last_operation = None
 
 
 class ComputeInstanceSshSettings(Model):
@@ -1376,6 +1410,85 @@ class ErrorResponseException(HttpOperationError):
     def __init__(self, deserialize, response, *args):
 
         super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+
+
+class EstimatedVMPrice(Model):
+    """The estimated price info for using a VM of a particular OS type, tier, etc.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :param retail_price: Required. Retail price. The price charged for using
+     the VM.
+    :type retail_price: float
+    :param os_type: Required. OS type. Operating system type used by the VM.
+     Possible values include: 'Linux', 'Windows'
+    :type os_type: str or
+     ~azure.mgmt.machinelearningservices.models.VMPriceOSType
+    :param vm_tier: Required. VM tier. The type of the VM. Possible values
+     include: 'Standard', 'LowPriority', 'Spot'
+    :type vm_tier: str or ~azure.mgmt.machinelearningservices.models.VMTier
+    """
+
+    _validation = {
+        'retail_price': {'required': True},
+        'os_type': {'required': True},
+        'vm_tier': {'required': True},
+    }
+
+    _attribute_map = {
+        'retail_price': {'key': 'retailPrice', 'type': 'float'},
+        'os_type': {'key': 'osType', 'type': 'str'},
+        'vm_tier': {'key': 'vmTier', 'type': 'str'},
+    }
+
+    def __init__(self, *, retail_price: float, os_type, vm_tier, **kwargs) -> None:
+        super(EstimatedVMPrice, self).__init__(**kwargs)
+        self.retail_price = retail_price
+        self.os_type = os_type
+        self.vm_tier = vm_tier
+
+
+class EstimatedVMPrices(Model):
+    """The estimated price info for using a VM.
+
+    Variables are only populated by the server, and will be ignored when
+    sending a request.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :ivar billing_currency: Required. Billing currency. Three lettered code
+     specifying the currency of the VM price. Example: USD. Default value:
+     "USD" .
+    :vartype billing_currency: str
+    :ivar unit_of_measure: Required. Unit of time measure. The unit of time
+     measurement for the specified VM price. Example: OneHour. Default value:
+     "OneHour" .
+    :vartype unit_of_measure: str
+    :param values: Required. List of estimated VM prices. The list of
+     estimated prices for using a VM of a particular OS type, tier, etc.
+    :type values:
+     list[~azure.mgmt.machinelearningservices.models.EstimatedVMPrice]
+    """
+
+    _validation = {
+        'billing_currency': {'required': True, 'constant': True},
+        'unit_of_measure': {'required': True, 'constant': True},
+        'values': {'required': True},
+    }
+
+    _attribute_map = {
+        'billing_currency': {'key': 'billingCurrency', 'type': 'str'},
+        'unit_of_measure': {'key': 'unitOfMeasure', 'type': 'str'},
+        'values': {'key': 'values', 'type': '[EstimatedVMPrice]'},
+    }
+
+    billing_currency = "USD"
+
+    unit_of_measure = "OneHour"
+
+    def __init__(self, *, values, **kwargs) -> None:
+        super(EstimatedVMPrices, self).__init__(**kwargs)
+        self.values = values
 
 
 class HDInsight(Compute):
@@ -2860,6 +2973,13 @@ class VirtualMachineSize(Model):
     :ivar premium_io: Premium IO supported. Specifies if the virtual machine
      size supports premium IO.
     :vartype premium_io: bool
+    :param estimated_vm_prices: Estimated VM prices. The estimated price
+     information for using a VM.
+    :type estimated_vm_prices:
+     ~azure.mgmt.machinelearningservices.models.EstimatedVMPrices
+    :param supported_compute_types: Supported Compute Types. Specifies the
+     compute types supported by the virtual machine size.
+    :type supported_compute_types: list[str]
     """
 
     _validation = {
@@ -2884,9 +3004,11 @@ class VirtualMachineSize(Model):
         'memory_gb': {'key': 'memoryGB', 'type': 'float'},
         'low_priority_capable': {'key': 'lowPriorityCapable', 'type': 'bool'},
         'premium_io': {'key': 'premiumIO', 'type': 'bool'},
+        'estimated_vm_prices': {'key': 'estimatedVMPrices', 'type': 'EstimatedVMPrices'},
+        'supported_compute_types': {'key': 'supportedComputeTypes', 'type': '[str]'},
     }
 
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, *, estimated_vm_prices=None, supported_compute_types=None, **kwargs) -> None:
         super(VirtualMachineSize, self).__init__(**kwargs)
         self.name = None
         self.family = None
@@ -2897,6 +3019,8 @@ class VirtualMachineSize(Model):
         self.memory_gb = None
         self.low_priority_capable = None
         self.premium_io = None
+        self.estimated_vm_prices = estimated_vm_prices
+        self.supported_compute_types = supported_compute_types
 
 
 class VirtualMachineSizeListResult(Model):

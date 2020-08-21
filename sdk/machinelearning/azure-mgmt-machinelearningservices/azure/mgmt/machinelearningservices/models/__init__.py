@@ -25,6 +25,7 @@ try:
     from ._models_py3 import ComputeInstanceApplication
     from ._models_py3 import ComputeInstanceConnectivityEndpoints
     from ._models_py3 import ComputeInstanceCreatedBy
+    from ._models_py3 import ComputeInstanceLastOperation
     from ._models_py3 import ComputeInstanceProperties
     from ._models_py3 import ComputeInstanceSshSettings
     from ._models_py3 import ComputeNodesInformation
@@ -39,6 +40,8 @@ try:
     from ._models_py3 import EncryptionProperty
     from ._models_py3 import ErrorDetail
     from ._models_py3 import ErrorResponse, ErrorResponseException
+    from ._models_py3 import EstimatedVMPrice
+    from ._models_py3 import EstimatedVMPrices
     from ._models_py3 import HDInsight
     from ._models_py3 import HDInsightProperties
     from ._models_py3 import Identity
@@ -107,6 +110,7 @@ except (SyntaxError, ImportError):
     from ._models import ComputeInstanceApplication
     from ._models import ComputeInstanceConnectivityEndpoints
     from ._models import ComputeInstanceCreatedBy
+    from ._models import ComputeInstanceLastOperation
     from ._models import ComputeInstanceProperties
     from ._models import ComputeInstanceSshSettings
     from ._models import ComputeNodesInformation
@@ -121,6 +125,8 @@ except (SyntaxError, ImportError):
     from ._models import EncryptionProperty
     from ._models import ErrorDetail
     from ._models import ErrorResponse, ErrorResponseException
+    from ._models import EstimatedVMPrice
+    from ._models import EstimatedVMPrices
     from ._models import HDInsight
     from ._models import HDInsightProperties
     from ._models import Identity
@@ -187,6 +193,8 @@ from ._azure_machine_learning_workspaces_enums import (
     PrivateEndpointServiceConnectionStatus,
     PrivateEndpointConnectionProvisioningState,
     UsageUnit,
+    VMPriceOSType,
+    VMTier,
     QuotaUnit,
     Status,
     ResourceIdentityType,
@@ -196,6 +204,8 @@ from ._azure_machine_learning_workspaces_enums import (
     ApplicationSharingPolicy,
     SshPublicAccess,
     ComputeInstanceState,
+    OperationName,
+    OperationStatus,
     NodeState,
     ComputeType,
     ReasonCode,
@@ -218,6 +228,7 @@ __all__ = [
     'ComputeInstanceApplication',
     'ComputeInstanceConnectivityEndpoints',
     'ComputeInstanceCreatedBy',
+    'ComputeInstanceLastOperation',
     'ComputeInstanceProperties',
     'ComputeInstanceSshSettings',
     'ComputeNodesInformation',
@@ -232,6 +243,8 @@ __all__ = [
     'EncryptionProperty',
     'ErrorDetail',
     'ErrorResponse', 'ErrorResponseException',
+    'EstimatedVMPrice',
+    'EstimatedVMPrices',
     'HDInsight',
     'HDInsightProperties',
     'Identity',
@@ -297,6 +310,8 @@ __all__ = [
     'PrivateEndpointServiceConnectionStatus',
     'PrivateEndpointConnectionProvisioningState',
     'UsageUnit',
+    'VMPriceOSType',
+    'VMTier',
     'QuotaUnit',
     'Status',
     'ResourceIdentityType',
@@ -306,6 +321,8 @@ __all__ = [
     'ApplicationSharingPolicy',
     'SshPublicAccess',
     'ComputeInstanceState',
+    'OperationName',
+    'OperationStatus',
     'NodeState',
     'ComputeType',
     'ReasonCode',

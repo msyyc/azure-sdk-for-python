@@ -51,6 +51,19 @@ class UsageUnit(str, Enum):
     count = "Count"
 
 
+class VMPriceOSType(str, Enum):
+
+    linux = "Linux"
+    windows = "Windows"
+
+
+class VMTier(str, Enum):
+
+    standard = "Standard"
+    low_priority = "LowPriority"
+    spot = "Spot"
+
+
 class QuotaUnit(str, Enum):
 
     count = "Count"
@@ -114,17 +127,38 @@ class ComputeInstanceState(str, Enum):
     deleting = "Deleting"
     running = "Running"
     restarting = "Restarting"
-    restart_failed = "RestartFailed"
     job_running = "JobRunning"
     setting_up = "SettingUp"
+    setup_failed = "SetupFailed"
     starting = "Starting"
-    start_failed = "StartFailed"
-    stop_failed = "StopFailed"
     stopped = "Stopped"
     stopping = "Stopping"
     user_setting_up = "UserSettingUp"
+    user_setup_failed = "UserSetupFailed"
     unknown = "Unknown"
     unusable = "Unusable"
+
+
+class OperationName(str, Enum):
+
+    create = "Create"
+    start = "Start"
+    stop = "Stop"
+    restart = "Restart"
+    reimage = "Reimage"
+    delete = "Delete"
+
+
+class OperationStatus(str, Enum):
+
+    in_progress = "InProgress"
+    succeeded = "Succeeded"
+    create_failed = "CreateFailed"
+    start_failed = "StartFailed"
+    stop_failed = "StopFailed"
+    restart_failed = "RestartFailed"
+    reimage_failed = "ReimageFailed"
+    delete_failed = "DeleteFailed"
 
 
 class NodeState(str, Enum):

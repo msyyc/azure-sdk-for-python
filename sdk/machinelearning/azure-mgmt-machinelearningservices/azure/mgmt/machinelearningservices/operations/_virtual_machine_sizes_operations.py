@@ -25,7 +25,7 @@ class VirtualMachineSizesOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: Version of Azure Machine Learning resource provider API. Constant value: "2020-06-01".
+    :ivar api_version: Version of Azure Machine Learning resource provider API. Constant value: "2020-08-01".
     """
 
     models = models
@@ -35,17 +35,22 @@ class VirtualMachineSizesOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2020-06-01"
+        self.api_version = "2020-08-01"
 
         self.config = config
 
     def list(
-            self, location, custom_headers=None, raw=False, **operation_config):
+            self, location, compute_type=None, recommended=None, custom_headers=None, raw=False, **operation_config):
         """Returns supported VM Sizes in a location.
 
         :param location: The location upon which virtual-machine-sizes is
          queried.
         :type location: str
+        :param compute_type: Type of compute to filter by.
+        :type compute_type: str
+        :param recommended: Specifies whether to return recommended vm sizes
+         or all vm sizes
+        :type recommended: bool
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
          deserialized response
@@ -68,6 +73,10 @@ class VirtualMachineSizesOperations(object):
         # Construct parameters
         query_parameters = {}
         query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
+        if compute_type is not None:
+            query_parameters['compute-type'] = self._serialize.query("compute_type", compute_type, 'str')
+        if recommended is not None:
+            query_parameters['recommended'] = self._serialize.query("recommended", recommended, 'bool')
 
         # Construct headers
         header_parameters = {}
