@@ -48,13 +48,13 @@ class ActivityLogAlertsOperations:
         activity_log_alert: "models.ActivityLogAlertResource",
         **kwargs
     ) -> "models.ActivityLogAlertResource":
-        """Create a new activity log alert or update an existing one.
+        """Create a new Activity Log Alert rule or update an existing one.
 
         :param resource_group_name: The name of the resource group.
         :type resource_group_name: str
-        :param activity_log_alert_name: The name of the activity log alert.
+        :param activity_log_alert_name: The name of the Activity Log Alert rule.
         :type activity_log_alert_name: str
-        :param activity_log_alert: The activity log alert to create or use for the update.
+        :param activity_log_alert: The Activity Log Alert rule to create or use for the update.
         :type activity_log_alert: ~$(python-base-namespace).v2017_04_01.models.ActivityLogAlertResource
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ActivityLogAlertResource, or the result of cls(response)
@@ -116,11 +116,11 @@ class ActivityLogAlertsOperations:
         activity_log_alert_name: str,
         **kwargs
     ) -> "models.ActivityLogAlertResource":
-        """Get an activity log alert.
+        """Get an Activity Log Alert rule.
 
         :param resource_group_name: The name of the resource group.
         :type resource_group_name: str
-        :param activity_log_alert_name: The name of the activity log alert.
+        :param activity_log_alert_name: The name of the Activity Log Alert rule.
         :type activity_log_alert_name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ActivityLogAlertResource, or the result of cls(response)
@@ -172,11 +172,11 @@ class ActivityLogAlertsOperations:
         activity_log_alert_name: str,
         **kwargs
     ) -> None:
-        """Delete an activity log alert.
+        """Delete an Activity Log Alert rule.
 
         :param resource_group_name: The name of the resource group.
         :type resource_group_name: str
-        :param activity_log_alert_name: The name of the activity log alert.
+        :param activity_log_alert_name: The name of the Activity Log Alert rule.
         :type activity_log_alert_name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: None, or the result of cls(response)
@@ -230,7 +230,7 @@ class ActivityLogAlertsOperations:
 
         :param resource_group_name: The name of the resource group.
         :type resource_group_name: str
-        :param activity_log_alert_name: The name of the activity log alert.
+        :param activity_log_alert_name: The name of the Activity Log Alert rule.
         :type activity_log_alert_name: str
         :param activity_log_alert_patch: Parameters supplied to the operation.
         :type activity_log_alert_patch: ~$(python-base-namespace).v2017_04_01.models.ActivityLogAlertPatchBody
@@ -288,7 +288,7 @@ class ActivityLogAlertsOperations:
         self,
         **kwargs
     ) -> AsyncIterable["models.ActivityLogAlertList"]:
-        """Get a list of all activity log alerts in a subscription.
+        """Get a list of all Activity Log Alert rules in a subscription.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either ActivityLogAlertList or the result of cls(response)
@@ -353,7 +353,7 @@ class ActivityLogAlertsOperations:
         resource_group_name: str,
         **kwargs
     ) -> AsyncIterable["models.ActivityLogAlertList"]:
-        """Get a list of all activity log alerts in a resource group.
+        """Get a list of all Activity Log Alert rules in a resource group.
 
         :param resource_group_name: The name of the resource group.
         :type resource_group_name: str

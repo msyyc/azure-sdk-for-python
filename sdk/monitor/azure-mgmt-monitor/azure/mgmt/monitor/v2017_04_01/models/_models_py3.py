@@ -239,9 +239,9 @@ class ActivityLogAlertActionGroup(msrest.serialization.Model):
 
 
 class ActivityLogAlertActionList(msrest.serialization.Model):
-    """A list of activity log alert actions.
+    """A list of Activity Log Alert rule actions.
 
-    :param action_groups: The list of activity log alerts.
+    :param action_groups: The list of the Action Groups.
     :type action_groups: list[~$(python-base-
      namespace).v2017_04_01.models.ActivityLogAlertActionGroup]
     """
@@ -261,12 +261,12 @@ class ActivityLogAlertActionList(msrest.serialization.Model):
 
 
 class ActivityLogAlertAllOfCondition(msrest.serialization.Model):
-    """An Activity Log alert condition that is met when all its member conditions are met.
+    """An Activity Log Alert rule condition that is met when all its member conditions are met.
 
     All required parameters must be populated in order to send to Azure.
 
-    :param all_of: Required. The list of activity log alert conditions.
-    :type all_of: list[~$(python-base-namespace).v2017_04_01.models.ActivityLogAlertLeafCondition]
+    :param all_of: Required. The list of Activity Log Alert rule conditions.
+    :type all_of: list[object]
     """
 
     _validation = {
@@ -274,21 +274,48 @@ class ActivityLogAlertAllOfCondition(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        'all_of': {'key': 'allOf', 'type': '[ActivityLogAlertLeafCondition]'},
+        'all_of': {'key': 'allOf', 'type': '[object]'},
     }
 
     def __init__(
         self,
         *,
-        all_of: List["ActivityLogAlertLeafCondition"],
+        all_of: List[object],
         **kwargs
     ):
         super(ActivityLogAlertAllOfCondition, self).__init__(**kwargs)
         self.all_of = all_of
 
 
+class ActivityLogAlertAnyOfCondition(msrest.serialization.Model):
+    """An Activity Log Alert rule condition that is met when at least one of its member conditions are met.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :param any_of: Required. The list of Activity Log Alert rule conditions.
+    :type any_of: list[object]
+    """
+
+    _validation = {
+        'any_of': {'required': True},
+    }
+
+    _attribute_map = {
+        'any_of': {'key': 'anyOf', 'type': '[object]'},
+    }
+
+    def __init__(
+        self,
+        *,
+        any_of: List[object],
+        **kwargs
+    ):
+        super(ActivityLogAlertAnyOfCondition, self).__init__(**kwargs)
+        self.any_of = any_of
+
+
 class ActivityLogAlertLeafCondition(msrest.serialization.Model):
-    """An Activity Log alert condition that is met by comparing an activity log field and value.
+    """An Activity Log Alert rule condition that is met by comparing an activity log field and value.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -297,37 +324,42 @@ class ActivityLogAlertLeafCondition(msrest.serialization.Model):
      'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or
      anything beginning with 'properties.'.
     :type field: str
-    :param equals: Required. The field value will be compared to this value (case-insensitive) to
-     determine if the condition is met.
+    :param equals: The field value will be compared to this value (case-insensitive) to determine
+     if the condition is met.
     :type equals: str
+    :param contains_any: The field value will be compared to the values in this array (case-
+     insensitive) to determine if the condition is met.
+    :type contains_any: list[str]
     """
 
     _validation = {
         'field': {'required': True},
-        'equals': {'required': True},
     }
 
     _attribute_map = {
         'field': {'key': 'field', 'type': 'str'},
         'equals': {'key': 'equals', 'type': 'str'},
+        'contains_any': {'key': 'containsAny', 'type': '[str]'},
     }
 
     def __init__(
         self,
         *,
         field: str,
-        equals: str,
+        equals: Optional[str] = None,
+        contains_any: Optional[List[str]] = None,
         **kwargs
     ):
         super(ActivityLogAlertLeafCondition, self).__init__(**kwargs)
         self.field = field
         self.equals = equals
+        self.contains_any = contains_any
 
 
 class ActivityLogAlertList(msrest.serialization.Model):
-    """A list of activity log alerts.
+    """A list of Activity Log Alert rules.
 
-    :param value: The list of activity log alerts.
+    :param value: The list of Activity Log Alert rules.
     :type value: list[~$(python-base-namespace).v2017_04_01.models.ActivityLogAlertResource]
     :param next_link: Provides the link to retrieve the next set of elements.
     :type next_link: str
@@ -355,8 +387,8 @@ class ActivityLogAlertPatchBody(msrest.serialization.Model):
 
     :param tags: A set of tags. Resource tags.
     :type tags: dict[str, str]
-    :param enabled: Indicates whether this activity log alert is enabled. If an activity log alert
-     is not enabled, then none of its actions will be activated.
+    :param enabled: Indicates whether this Activity Log Alert rule is enabled. If an Activity Log
+     Alert rule is not enabled, then none of its actions will be activated.
     :type enabled: bool
     """
 
@@ -378,7 +410,7 @@ class ActivityLogAlertPatchBody(msrest.serialization.Model):
 
 
 class ActivityLogAlertResource(Resource):
-    """An activity log alert resource.
+    """An Activity Log Alert rule resource.
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
@@ -398,14 +430,14 @@ class ActivityLogAlertResource(Resource):
      to activityLogs with resourceIds that fall under one of these prefixes. This list must include
      at least one item.
     :type scopes: list[str]
-    :param enabled: Indicates whether this activity log alert is enabled. If an activity log alert
-     is not enabled, then none of its actions will be activated.
+    :param enabled: Indicates whether this Activity Log Alert rule is enabled. If an Activity Log
+     Alert rule is not enabled, then none of its actions will be activated.
     :type enabled: bool
     :param condition: The condition that will cause this alert to activate.
     :type condition: ~$(python-base-namespace).v2017_04_01.models.ActivityLogAlertAllOfCondition
     :param actions: The actions that will activate when the condition is met.
     :type actions: ~$(python-base-namespace).v2017_04_01.models.ActivityLogAlertActionList
-    :param description: A description of this activity log alert.
+    :param description: A description of this Activity Log Alert rule.
     :type description: str
     """
 

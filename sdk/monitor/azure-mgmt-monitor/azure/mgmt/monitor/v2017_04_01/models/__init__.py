@@ -13,6 +13,7 @@ try:
     from ._models_py3 import ActivityLogAlertActionGroup
     from ._models_py3 import ActivityLogAlertActionList
     from ._models_py3 import ActivityLogAlertAllOfCondition
+    from ._models_py3 import ActivityLogAlertAnyOfCondition
     from ._models_py3 import ActivityLogAlertLeafCondition
     from ._models_py3 import ActivityLogAlertList
     from ._models_py3 import ActivityLogAlertPatchBody
@@ -33,6 +34,7 @@ except (SyntaxError, ImportError):
     from ._models import ActivityLogAlertActionGroup  # type: ignore
     from ._models import ActivityLogAlertActionList  # type: ignore
     from ._models import ActivityLogAlertAllOfCondition  # type: ignore
+    from ._models import ActivityLogAlertAnyOfCondition  # type: ignore
     from ._models import ActivityLogAlertLeafCondition  # type: ignore
     from ._models import ActivityLogAlertList  # type: ignore
     from ._models import ActivityLogAlertPatchBody  # type: ignore
@@ -58,6 +60,7 @@ __all__ = [
     'ActivityLogAlertActionGroup',
     'ActivityLogAlertActionList',
     'ActivityLogAlertAllOfCondition',
+    'ActivityLogAlertAnyOfCondition',
     'ActivityLogAlertLeafCondition',
     'ActivityLogAlertList',
     'ActivityLogAlertPatchBody',

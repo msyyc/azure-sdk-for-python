@@ -32,7 +32,7 @@ class MonitorClient(object):
     :vartype activity_log_alerts: $(python-base-namespace).v2017_04_01.operations.ActivityLogAlertsOperations
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param subscription_id: The Azure subscription Id.
+    :param subscription_id: The subscription Id.
     :type subscription_id: str
     :param str base_url: Service URL
     :keyword int polling_interval: Default waiting time between two polls for LRO operations if no Retry-After header is present.

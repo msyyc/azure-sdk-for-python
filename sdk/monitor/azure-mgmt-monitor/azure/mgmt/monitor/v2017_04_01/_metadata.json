@@ -16,7 +16,7 @@
             },
             "subscription_id": {
                 "method_signature": "subscription_id,  # type: str",
-                "description": "The Azure subscription Id.",
+                "description": "The subscription Id.",
                 "docstring_type": "str",
                 "required": true
             }
@@ -30,7 +30,7 @@
             },
             "subscription_id": {
                 "method_signature": "subscription_id,  # type: str",
-                "description": "The Azure subscription Id.",
+                "description": "The subscription Id.",
                 "docstring_type": "str",
                 "required": true
             }
