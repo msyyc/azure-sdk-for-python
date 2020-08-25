@@ -1,6 +1,6 @@
 {
-    "chosen_version": "2020-06-01",
-    "total_api_version_list": ["2020-06-01"],
+    "chosen_version": "2020-07-01-preview",
+    "total_api_version_list": ["2020-07-01-preview"],
     "client": {
         "name": "AppConfigurationManagementClient",
         "filename": "_app_configuration_management_client",

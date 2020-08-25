@@ -68,7 +68,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ConfigurationStoreListResult"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
 
         def prepare_request(next_link=None):
             # Construct headers
@@ -109,7 +109,7 @@ class ConfigurationStoresOperations(object):
             response = pipeline_response.http_response
 
             if response.status_code not in [200]:
-                error = self._deserialize(models.Error, response)
+                error = self._deserialize(models.ErrorResponse, response)
                 map_error(status_code=response.status_code, response=response, error_map=error_map)
                 raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
@@ -145,7 +145,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ConfigurationStoreListResult"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
 
         def prepare_request(next_link=None):
             # Construct headers
@@ -187,7 +187,7 @@ class ConfigurationStoresOperations(object):
             response = pipeline_response.http_response
 
             if response.status_code not in [200]:
-                error = self._deserialize(models.Error, response)
+                error = self._deserialize(models.ErrorResponse, response)
                 map_error(status_code=response.status_code, response=response, error_map=error_map)
                 raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
@@ -220,7 +220,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ConfigurationStore"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
 
         # Construct URL
         url = self.get.metadata['url']  # type: ignore
@@ -245,7 +245,7 @@ class ConfigurationStoresOperations(object):
 
         if response.status_code not in [200]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize(models.Error, response)
+            error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         deserialized = self._deserialize('ConfigurationStore', pipeline_response)
@@ -267,7 +267,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ConfigurationStore"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
         content_type = kwargs.pop("content_type", "application/json")
 
         # Construct URL
@@ -298,7 +298,7 @@ class ConfigurationStoresOperations(object):
 
         if response.status_code not in [200, 201]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize(models.Error, response)
+            error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         if response.status_code == 200:
@@ -390,7 +390,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType[None]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
 
         # Construct URL
         url = self._delete_initial.metadata['url']  # type: ignore
@@ -414,7 +414,7 @@ class ConfigurationStoresOperations(object):
 
         if response.status_code not in [200, 202, 204]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize(models.Error, response)
+            error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         if cls:
@@ -493,7 +493,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ConfigurationStore"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
         content_type = kwargs.pop("content_type", "application/json")
 
         # Construct URL
@@ -524,7 +524,7 @@ class ConfigurationStoresOperations(object):
 
         if response.status_code not in [200, 201]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize(models.Error, response)
+            error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         if response.status_code == 200:
@@ -634,7 +634,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ApiKeyListResult"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
 
         def prepare_request(next_link=None):
             # Construct headers
@@ -677,7 +677,7 @@ class ConfigurationStoresOperations(object):
             response = pipeline_response.http_response
 
             if response.status_code not in [200]:
-                error = self._deserialize(models.Error, response)
+                error = self._deserialize(models.ErrorResponse, response)
                 map_error(status_code=response.status_code, response=response, error_map=error_map)
                 raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
@@ -713,7 +713,7 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.ApiKey"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
+        api_version = "2020-07-01-preview"
         content_type = kwargs.pop("content_type", "application/json")
 
         # Construct URL
@@ -744,7 +744,7 @@ class ConfigurationStoresOperations(object):
 
         if response.status_code not in [200]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize(models.Error, response)
+            error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         deserialized = self._deserialize('ApiKey', pipeline_response)
@@ -755,23 +755,24 @@ class ConfigurationStoresOperations(object):
         return deserialized
     regenerate_key.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/RegenerateKey'}  # type: ignore
 
-    def list_key_value(
+    def get_key_value(
         self,
         resource_group_name,  # type: str
         config_store_name,  # type: str
-        list_key_value_parameters,  # type: "models.ListKeyValueParameters"
+        key_value_name,  # type: str
         **kwargs  # type: Any
     ):
         # type: (...) -> "models.KeyValue"
-        """Lists a configuration store key-value.
+        """Gets the properties of the specified key-value.
 
         :param resource_group_name: The name of the resource group to which the container registry
          belongs.
         :type resource_group_name: str
         :param config_store_name: The name of the configuration store.
         :type config_store_name: str
-        :param list_key_value_parameters: The parameters for retrieving a key-value.
-        :type list_key_value_parameters: ~app_configuration_management_client.models.ListKeyValueParameters
+        :param key_value_name: Identifier of key and label combination. Key and label are joined by $
+         character. Label is optional.
+        :type key_value_name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: KeyValue, or the result of cls(response)
         :rtype: ~app_configuration_management_client.models.KeyValue
@@ -780,15 +781,82 @@ class ConfigurationStoresOperations(object):
         cls = kwargs.pop('cls', None)  # type: ClsType["models.KeyValue"]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
-        api_version = "2020-06-01"
-        content_type = kwargs.pop("content_type", "application/json")
+        api_version = "2020-07-01-preview"
 
         # Construct URL
-        url = self.list_key_value.metadata['url']  # type: ignore
+        url = self.get_key_value.metadata['url']  # type: ignore
         path_format_arguments = {
             'subscriptionId': self._serialize.url("self._config.subscription_id", self._config.subscription_id, 'str'),
             'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str'),
             'configStoreName': self._serialize.url("config_store_name", config_store_name, 'str', max_length=50, min_length=5, pattern=r'^[a-zA-Z0-9_-]*$'),
+            'keyValueName': self._serialize.url("key_value_name", key_value_name, 'str'),
+        }
+        url = self._client.format_url(url, **path_format_arguments)
+
+        # Construct parameters
+        query_parameters = {}  # type: Dict[str, Any]
+        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+
+        # Construct headers
+        header_parameters = {}  # type: Dict[str, Any]
+        header_parameters['Accept'] = 'application/json'
+
+        request = self._client.get(url, query_parameters, header_parameters)
+        pipeline_response = self._client._pipeline.run(request, stream=False, **kwargs)
+        response = pipeline_response.http_response
+
+        if response.status_code not in [200]:
+            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            error = self._deserialize(models.ErrorResponse, response)
+            raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
+
+        deserialized = self._deserialize('KeyValue', pipeline_response)
+
+        if cls:
+            return cls(pipeline_response, deserialized, {})
+
+        return deserialized
+    get_key_value.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}'}  # type: ignore
+
+    def create_key_value(
+        self,
+        resource_group_name,  # type: str
+        config_store_name,  # type: str
+        key_value_name,  # type: str
+        key_value_parameters=None,  # type: Optional["models.KeyValue"]
+        **kwargs  # type: Any
+    ):
+        # type: (...) -> "models.KeyValue"
+        """Creates a key-value.
+
+        :param resource_group_name: The name of the resource group to which the container registry
+         belongs.
+        :type resource_group_name: str
+        :param config_store_name: The name of the configuration store.
+        :type config_store_name: str
+        :param key_value_name: Identifier of key and label combination. Key and label are joined by $
+         character. Label is optional.
+        :type key_value_name: str
+        :param key_value_parameters: The parameters for creating a key-value.
+        :type key_value_parameters: ~app_configuration_management_client.models.KeyValue
+        :keyword callable cls: A custom type or function that will be passed the direct response
+        :return: KeyValue, or the result of cls(response)
+        :rtype: ~app_configuration_management_client.models.KeyValue
+        :raises: ~azure.core.exceptions.HttpResponseError
+        """
+        cls = kwargs.pop('cls', None)  # type: ClsType["models.KeyValue"]
+        error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop('error_map', {}))
+        api_version = "2020-07-01-preview"
+        content_type = kwargs.pop("content_type", "application/json")
+
+        # Construct URL
+        url = self.create_key_value.metadata['url']  # type: ignore
+        path_format_arguments = {
+            'subscriptionId': self._serialize.url("self._config.subscription_id", self._config.subscription_id, 'str'),
+            'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str'),
+            'configStoreName': self._serialize.url("config_store_name", config_store_name, 'str', max_length=50, min_length=5, pattern=r'^[a-zA-Z0-9_-]*$'),
+            'keyValueName': self._serialize.url("key_value_name", key_value_name, 'str'),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -802,16 +870,19 @@ class ConfigurationStoresOperations(object):
         header_parameters['Accept'] = 'application/json'
 
         body_content_kwargs = {}  # type: Dict[str, Any]
-        body_content = self._serialize.body(list_key_value_parameters, 'ListKeyValueParameters')
+        if key_value_parameters is not None:
+            body_content = self._serialize.body(key_value_parameters, 'KeyValue')
+        else:
+            body_content = None
         body_content_kwargs['content'] = body_content
-        request = self._client.post(url, query_parameters, header_parameters, **body_content_kwargs)
+        request = self._client.put(url, query_parameters, header_parameters, **body_content_kwargs)
 
         pipeline_response = self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
 
         if response.status_code not in [200]:
             map_error(status_code=response.status_code, response=response, error_map=error_map)
-            error = self._deserialize(models.Error, response)
+            error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         deserialized = self._deserialize('KeyValue', pipeline_response)
@@ -820,4 +891,4 @@ class ConfigurationStoresOperations(object):
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    list_key_value.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/listKeyValue'}  # type: ignore
+    create_key_value.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}'}  # type: ignore
