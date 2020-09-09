@@ -6804,6 +6804,106 @@ class VirtualMachineScaleSetVM(Resource):
         self.zones = None
 
 
+class VirtualMachineScaleSetVMExtension(SubResourceReadOnly):
+    """Describes a VMSS VM Extension.
+
+    Variables are only populated by the server, and will be ignored when
+    sending a request.
+
+    :ivar id: Resource Id
+    :vartype id: str
+    :param name: The name of the extension.
+    :type name: str
+    :ivar type: Resource type
+    :vartype type: str
+    :param force_update_tag: How the extension handler should be forced to
+     update even if the extension configuration has not changed.
+    :type force_update_tag: str
+    :param publisher: The name of the extension handler publisher.
+    :type publisher: str
+    :param type1: Specifies the type of the extension; an example is
+     "CustomScriptExtension".
+    :type type1: str
+    :param type_handler_version: Specifies the version of the script handler.
+    :type type_handler_version: str
+    :param auto_upgrade_minor_version: Indicates whether the extension should
+     use a newer minor version if one is available at deployment time. Once
+     deployed, however, the extension will not upgrade minor versions unless
+     redeployed, even with this property set to true.
+    :type auto_upgrade_minor_version: bool
+    :param enable_automatic_upgrade: Indicates whether the extension should be
+     automatically upgraded by the platform if there is a newer version of the
+     extension available.
+    :type enable_automatic_upgrade: bool
+    :param settings: Json formatted public settings for the extension.
+    :type settings: object
+    :param protected_settings: The extension can contain either
+     protectedSettings or protectedSettingsFromKeyVault or no protected
+     settings at all.
+    :type protected_settings: object
+    :ivar provisioning_state: The provisioning state, which only appears in
+     the response.
+    :vartype provisioning_state: str
+    :param instance_view: The virtual machine extension instance view.
+    :type instance_view:
+     ~azure.mgmt.compute.v2020_06_01.models.VirtualMachineExtensionInstanceView
+    """
+
+    _validation = {
+        'id': {'readonly': True},
+        'type': {'readonly': True},
+        'provisioning_state': {'readonly': True},
+    }
+
+    _attribute_map = {
+        'id': {'key': 'id', 'type': 'str'},
+        'name': {'key': 'name', 'type': 'str'},
+        'type': {'key': 'type', 'type': 'str'},
+        'force_update_tag': {'key': 'properties.forceUpdateTag', 'type': 'str'},
+        'publisher': {'key': 'properties.publisher', 'type': 'str'},
+        'type1': {'key': 'properties.type', 'type': 'str'},
+        'type_handler_version': {'key': 'properties.typeHandlerVersion', 'type': 'str'},
+        'auto_upgrade_minor_version': {'key': 'properties.autoUpgradeMinorVersion', 'type': 'bool'},
+        'enable_automatic_upgrade': {'key': 'properties.enableAutomaticUpgrade', 'type': 'bool'},
+        'settings': {'key': 'properties.settings', 'type': 'object'},
+        'protected_settings': {'key': 'properties.protectedSettings', 'type': 'object'},
+        'provisioning_state': {'key': 'properties.provisioningState', 'type': 'str'},
+        'instance_view': {'key': 'properties.instanceView', 'type': 'VirtualMachineExtensionInstanceView'},
+    }
+
+    def __init__(self, *, name: str=None, force_update_tag: str=None, publisher: str=None, type1: str=None, type_handler_version: str=None, auto_upgrade_minor_version: bool=None, enable_automatic_upgrade: bool=None, settings=None, protected_settings=None, instance_view=None, **kwargs) -> None:
+        super(VirtualMachineScaleSetVMExtension, self).__init__(**kwargs)
+        self.name = name
+        self.type = None
+        self.force_update_tag = force_update_tag
+        self.publisher = publisher
+        self.type1 = type1
+        self.type_handler_version = type_handler_version
+        self.auto_upgrade_minor_version = auto_upgrade_minor_version
+        self.enable_automatic_upgrade = enable_automatic_upgrade
+        self.settings = settings
+        self.protected_settings = protected_settings
+        self.provisioning_state = None
+        self.instance_view = instance_view
+
+
+class VirtualMachineScaleSetVMExtensionsListResult(Model):
+    """The List VMSS VM Extension operation response.
+
+    :param value: The list of VMSS VM extensions
+    :type value:
+     list[~azure.mgmt.compute.v2020_06_01.models.VirtualMachineScaleSetVMExtension]
+    """
+
+    _attribute_map = {
+        'value': {'key': 'value', 'type': '[VirtualMachineScaleSetVMExtension]'},
+    }
+
+    def __init__(self, *, value=None, **kwargs) -> None:
+        super(VirtualMachineScaleSetVMExtensionsListResult, self).__init__(**kwargs)
+        self.value = value
+
+
 class VirtualMachineScaleSetVMExtensionsSummary(Model):
     """Extensions summary for virtual machines of a virtual machine scale set.
 
@@ -6831,6 +6931,79 @@ class VirtualMachineScaleSetVMExtensionsSummary(Model):
         super(VirtualMachineScaleSetVMExtensionsSummary, self).__init__(**kwargs)
         self.name = None
         self.statuses_summary = None
+
+
+class VirtualMachineScaleSetVMExtensionUpdate(SubResourceReadOnly):
+    """Describes a VMSS VM Extension.
+
+    Variables are only populated by the server, and will be ignored when
+    sending a request.
+
+    :ivar id: Resource Id
+    :vartype id: str
+    :ivar name: The name of the extension.
+    :vartype name: str
+    :ivar type: Resource type
+    :vartype type: str
+    :param force_update_tag: How the extension handler should be forced to
+     update even if the extension configuration has not changed.
+    :type force_update_tag: str
+    :param publisher: The name of the extension handler publisher.
+    :type publisher: str
+    :param type1: Specifies the type of the extension; an example is
+     "CustomScriptExtension".
+    :type type1: str
+    :param type_handler_version: Specifies the version of the script handler.
+    :type type_handler_version: str
+    :param auto_upgrade_minor_version: Indicates whether the extension should
+     use a newer minor version if one is available at deployment time. Once
+     deployed, however, the extension will not upgrade minor versions unless
+     redeployed, even with this property set to true.
+    :type auto_upgrade_minor_version: bool
+    :param enable_automatic_upgrade: Indicates whether the extension should be
+     automatically upgraded by the platform if there is a newer version of the
+     extension available.
+    :type enable_automatic_upgrade: bool
+    :param settings: Json formatted public settings for the extension.
+    :type settings: object
+    :param protected_settings: The extension can contain either
+     protectedSettings or protectedSettingsFromKeyVault or no protected
+     settings at all.
+    :type protected_settings: object
+    """
+
+    _validation = {
+        'id': {'readonly': True},
+        'name': {'readonly': True},
+        'type': {'readonly': True},
+    }
+
+    _attribute_map = {
+        'id': {'key': 'id', 'type': 'str'},
+        'name': {'key': 'name', 'type': 'str'},
+        'type': {'key': 'type', 'type': 'str'},
+        'force_update_tag': {'key': 'properties.forceUpdateTag', 'type': 'str'},
+        'publisher': {'key': 'properties.publisher', 'type': 'str'},
+        'type1': {'key': 'properties.type', 'type': 'str'},
+        'type_handler_version': {'key': 'properties.typeHandlerVersion', 'type': 'str'},
+        'auto_upgrade_minor_version': {'key': 'properties.autoUpgradeMinorVersion', 'type': 'bool'},
+        'enable_automatic_upgrade': {'key': 'properties.enableAutomaticUpgrade', 'type': 'bool'},
+        'settings': {'key': 'properties.settings', 'type': 'object'},
+        'protected_settings': {'key': 'properties.protectedSettings', 'type': 'object'},
+    }
+
+    def __init__(self, *, force_update_tag: str=None, publisher: str=None, type1: str=None, type_handler_version: str=None, auto_upgrade_minor_version: bool=None, enable_automatic_upgrade: bool=None, settings=None, protected_settings=None, **kwargs) -> None:
+        super(VirtualMachineScaleSetVMExtensionUpdate, self).__init__(**kwargs)
+        self.name = None
+        self.type = None
+        self.force_update_tag = force_update_tag
+        self.publisher = publisher
+        self.type1 = type1
+        self.type_handler_version = type_handler_version
+        self.auto_upgrade_minor_version = auto_upgrade_minor_version
+        self.enable_automatic_upgrade = enable_automatic_upgrade
+        self.settings = settings
+        self.protected_settings = protected_settings
 
 
 class VirtualMachineScaleSetVMInstanceIDs(Model):

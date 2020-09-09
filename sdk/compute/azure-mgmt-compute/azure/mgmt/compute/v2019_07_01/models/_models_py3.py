@@ -5664,7 +5664,7 @@ class VirtualMachine(Resource):
      added to virtual machine scale set at creation time. An existing VM cannot
      be added to a virtual machine scale set. <br><br>This property cannot
      exist along with a non-null properties.availabilitySet reference.
-     <br><br>Minimum api‐version: 2019‐03‐01
+     <br><br>Minimum api‐version: 2019‐03��01
     :type virtual_machine_scale_set:
      ~azure.mgmt.compute.v2019_07_01.models.SubResource
     :param proximity_placement_group: Specifies information about the
@@ -8582,7 +8582,7 @@ class VirtualMachineUpdate(UpdateResource):
      added to virtual machine scale set at creation time. An existing VM cannot
      be added to a virtual machine scale set. <br><br>This property cannot
      exist along with a non-null properties.availabilitySet reference.
-     <br><br>Minimum api‐version: 2019‐03‐01
+     <br><br>Minimum api‐version: 2019‐03��01
     :type virtual_machine_scale_set:
      ~azure.mgmt.compute.v2019_07_01.models.SubResource
     :param proximity_placement_group: Specifies information about the
