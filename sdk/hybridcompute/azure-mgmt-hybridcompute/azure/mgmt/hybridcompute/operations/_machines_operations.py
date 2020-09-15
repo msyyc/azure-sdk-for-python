@@ -24,7 +24,7 @@ class MachinesOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: The API version to use for this operation. Constant value: "2019-12-12".
+    :ivar api_version: Client Api Version. Constant value: "2020-08-02".
     """
 
     models = models
@@ -34,7 +34,7 @@ class MachinesOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2019-12-12"
+        self.api_version = "2020-08-02"
 
         self.config = config
 
@@ -59,7 +59,7 @@ class MachinesOperations(object):
         # Construct URL
         url = self.delete.metadata['url']
         path_format_arguments = {
-            'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str', min_length=1),
+            'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
             'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str'),
             'name': self._serialize.url("name", name, 'str')
         }
@@ -67,7 +67,7 @@ class MachinesOperations(object):
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str', min_length=1)
+        query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
 
         # Construct headers
         header_parameters = {}
@@ -117,7 +117,7 @@ class MachinesOperations(object):
         # Construct URL
         url = self.get.metadata['url']
         path_format_arguments = {
-            'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str', min_length=1),
+            'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
             'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str'),
             'name': self._serialize.url("name", name, 'str')
         }
@@ -125,7 +125,7 @@ class MachinesOperations(object):
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str', min_length=1)
+        query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
         if expand is not None:
             query_parameters['$expand'] = self._serialize.query("expand", expand, 'str')
 
@@ -159,9 +159,7 @@ class MachinesOperations(object):
 
     def list_by_resource_group(
             self, resource_group_name, custom_headers=None, raw=False, **operation_config):
-        """Lists all the hybrid machines in the specified resource group. Use the
-        nextLink property in the response to get the next page of hybrid
-        machines.
+        """Lists all the hybrid machines in the specified resource group.
 
         :param resource_group_name: The name of the resource group.
         :type resource_group_name: str
@@ -181,14 +179,14 @@ class MachinesOperations(object):
                 # Construct URL
                 url = self.list_by_resource_group.metadata['url']
                 path_format_arguments = {
-                    'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str', min_length=1),
+                    'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
                     'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str')
                 }
                 url = self._client.format_url(url, **path_format_arguments)
 
                 # Construct parameters
                 query_parameters = {}
-                query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str', min_length=1)
+                query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
 
             else:
                 url = next_link
@@ -229,9 +227,7 @@ class MachinesOperations(object):
 
     def list_by_subscription(
             self, custom_headers=None, raw=False, **operation_config):
-        """Lists all the hybrid machines in the specified subscription. Use the
-        nextLink property in the response to get the next page of hybrid
-        machines.
+        """Lists all the hybrid machines in the specified subscription.
 
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
@@ -249,13 +245,13 @@ class MachinesOperations(object):
                 # Construct URL
                 url = self.list_by_subscription.metadata['url']
                 path_format_arguments = {
-                    'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str', min_length=1)
+                    'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str')
                 }
                 url = self._client.format_url(url, **path_format_arguments)
 
                 # Construct parameters
                 query_parameters = {}
-                query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str', min_length=1)
+                query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
 
             else:
                 url = next_link
