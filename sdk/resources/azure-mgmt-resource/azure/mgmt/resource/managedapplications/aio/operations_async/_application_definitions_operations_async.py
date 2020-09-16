@@ -48,7 +48,7 @@ class ApplicationDefinitionsOperations:
         resource_group_name: str,
         application_definition_name: str,
         **kwargs
-    ) -> "models.ApplicationDefinition":
+    ) -> Optional["models.ApplicationDefinition"]:
         """Gets the managed application definition.
 
         :param resource_group_name: The name of the resource group. The name is case insensitive.
@@ -60,7 +60,7 @@ class ApplicationDefinitionsOperations:
         :rtype: ~azure.mgmt.resource.managedapplications.models.ApplicationDefinition or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["models.ApplicationDefinition"]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Optional["models.ApplicationDefinition"]]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
         api_version = "2018-06-01"
@@ -82,7 +82,6 @@ class ApplicationDefinitionsOperations:
         header_parameters = {}  # type: Dict[str, Any]
         header_parameters['Accept'] = 'application/json'
 
-        # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -129,7 +128,6 @@ class ApplicationDefinitionsOperations:
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
 
-        # Construct and send request
         request = self._client.delete(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -149,7 +147,7 @@ class ApplicationDefinitionsOperations:
         resource_group_name: str,
         application_definition_name: str,
         **kwargs
-    ) -> None:
+    ) -> AsyncLROPoller[None]:
         """Deletes the managed application definition.
 
         :param resource_group_name: The name of the resource group. The name is case insensitive.
@@ -162,8 +160,8 @@ class ApplicationDefinitionsOperations:
          polling object for personal polling strategy
         :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no Retry-After header is present.
-        :return: None, or the result of cls(response)
-        :rtype: None
+        :return: An instance of AsyncLROPoller that returns either None or the result of cls(response)
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         polling = kwargs.pop('polling', True)  # type: Union[bool, AsyncPollingMethod]
@@ -233,7 +231,6 @@ class ApplicationDefinitionsOperations:
         header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
         header_parameters['Accept'] = 'application/json'
 
-        # Construct and send request
         body_content_kwargs = {}  # type: Dict[str, Any]
         body_content = self._serialize.body(parameters, 'ApplicationDefinition')
         body_content_kwargs['content'] = body_content
@@ -247,7 +244,6 @@ class ApplicationDefinitionsOperations:
             error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = None
         if response.status_code == 200:
             deserialized = self._deserialize('ApplicationDefinition', pipeline_response)
 
@@ -266,7 +262,7 @@ class ApplicationDefinitionsOperations:
         application_definition_name: str,
         parameters: "models.ApplicationDefinition",
         **kwargs
-    ) -> "models.ApplicationDefinition":
+    ) -> AsyncLROPoller["models.ApplicationDefinition"]:
         """Creates a new managed application definition.
 
         :param resource_group_name: The name of the resource group. The name is case insensitive.
@@ -282,8 +278,8 @@ class ApplicationDefinitionsOperations:
          polling object for personal polling strategy
         :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no Retry-After header is present.
-        :return: ApplicationDefinition, or the result of cls(response)
-        :rtype: ~azure.mgmt.resource.managedapplications.models.ApplicationDefinition
+        :return: An instance of AsyncLROPoller that returns either ApplicationDefinition or the result of cls(response)
+        :rtype: ~azure.core.polling.AsyncLROPoller[~azure.mgmt.resource.managedapplications.models.ApplicationDefinition]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         polling = kwargs.pop('polling', True)  # type: Union[bool, AsyncPollingMethod]
@@ -346,6 +342,10 @@ class ApplicationDefinitionsOperations:
         api_version = "2018-06-01"
 
         def prepare_request(next_link=None):
+            # Construct headers
+            header_parameters = {}  # type: Dict[str, Any]
+            header_parameters['Accept'] = 'application/json'
+
             if not next_link:
                 # Construct URL
                 url = self.list_by_resource_group.metadata['url']  # type: ignore
@@ -358,15 +358,11 @@ class ApplicationDefinitionsOperations:
                 query_parameters = {}  # type: Dict[str, Any]
                 query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
 
+                request = self._client.get(url, query_parameters, header_parameters)
             else:
                 url = next_link
                 query_parameters = {}  # type: Dict[str, Any]
-            # Construct headers
-            header_parameters = {}  # type: Dict[str, Any]
-            header_parameters['Accept'] = 'application/json'
-
-            # Construct and send request
-            request = self._client.get(url, query_parameters, header_parameters)
+                request = self._client.get(url, query_parameters, header_parameters)
             return request
 
         async def extract_data(pipeline_response):
@@ -396,22 +392,22 @@ class ApplicationDefinitionsOperations:
 
     async def get_by_id(
         self,
-        application_definition_id: str,
+        resource_group_name: str,
+        application_definition_name: str,
         **kwargs
-    ) -> "models.ApplicationDefinition":
+    ) -> Optional["models.ApplicationDefinition"]:
         """Gets the managed application definition.
 
-        :param application_definition_id: The fully qualified ID of the managed application definition,
-         including the managed application name and the managed application definition resource type.
-         Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-
-         name}/Microsoft.Solutions/applicationDefinitions/{applicationDefinition-name}.
-        :type application_definition_id: str
+        :param resource_group_name: The name of the resource group. The name is case insensitive.
+        :type resource_group_name: str
+        :param application_definition_name: The name of the managed application definition.
+        :type application_definition_name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ApplicationDefinition, or the result of cls(response)
         :rtype: ~azure.mgmt.resource.managedapplications.models.ApplicationDefinition or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["models.ApplicationDefinition"]
+        cls = kwargs.pop('cls', None)  # type: ClsType[Optional["models.ApplicationDefinition"]]
         error_map = {404: ResourceNotFoundError, 409: ResourceExistsError}
         error_map.update(kwargs.pop('error_map', {}))
         api_version = "2018-06-01"
@@ -419,7 +415,9 @@ class ApplicationDefinitionsOperations:
         # Construct URL
         url = self.get_by_id.metadata['url']  # type: ignore
         path_format_arguments = {
-            'applicationDefinitionId': self._serialize.url("application_definition_id", application_definition_id, 'str', skip_quote=True),
+            'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str', max_length=90, min_length=1, pattern=r'^[-\w\._\(\)]+$'),
+            'applicationDefinitionName': self._serialize.url("application_definition_name", application_definition_name, 'str', max_length=64, min_length=3),
+            'subscriptionId': self._serialize.url("self._config.subscription_id", self._config.subscription_id, 'str'),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -431,7 +429,6 @@ class ApplicationDefinitionsOperations:
         header_parameters = {}  # type: Dict[str, Any]
         header_parameters['Accept'] = 'application/json'
 
-        # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -449,11 +446,12 @@ class ApplicationDefinitionsOperations:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    get_by_id.metadata = {'url': '/{applicationDefinitionId}'}  # type: ignore
+    get_by_id.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}'}  # type: ignore
 
     async def _delete_by_id_initial(
         self,
-        application_definition_id: str,
+        resource_group_name: str,
+        application_definition_name: str,
         **kwargs
     ) -> None:
         cls = kwargs.pop('cls', None)  # type: ClsType[None]
@@ -464,7 +462,9 @@ class ApplicationDefinitionsOperations:
         # Construct URL
         url = self._delete_by_id_initial.metadata['url']  # type: ignore
         path_format_arguments = {
-            'applicationDefinitionId': self._serialize.url("application_definition_id", application_definition_id, 'str', skip_quote=True),
+            'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str', max_length=90, min_length=1, pattern=r'^[-\w\._\(\)]+$'),
+            'applicationDefinitionName': self._serialize.url("application_definition_name", application_definition_name, 'str', max_length=64, min_length=3),
+            'subscriptionId': self._serialize.url("self._config.subscription_id", self._config.subscription_id, 'str'),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -475,7 +475,6 @@ class ApplicationDefinitionsOperations:
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
 
-        # Construct and send request
         request = self._client.delete(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -488,28 +487,28 @@ class ApplicationDefinitionsOperations:
         if cls:
             return cls(pipeline_response, None, {})
 
-    _delete_by_id_initial.metadata = {'url': '/{applicationDefinitionId}'}  # type: ignore
+    _delete_by_id_initial.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}'}  # type: ignore
 
     async def begin_delete_by_id(
         self,
-        application_definition_id: str,
+        resource_group_name: str,
+        application_definition_name: str,
         **kwargs
-    ) -> None:
+    ) -> AsyncLROPoller[None]:
         """Deletes the managed application definition.
 
-        :param application_definition_id: The fully qualified ID of the managed application definition,
-     including the managed application name and the managed application definition resource type.
-     Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-
-     name}/Microsoft.Solutions/applicationDefinitions/{applicationDefinition-name}.
-        :type application_definition_id: str
+        :param resource_group_name: The name of the resource group. The name is case insensitive.
+        :type resource_group_name: str
+        :param application_definition_name: The name of the managed application definition.
+        :type application_definition_name: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
         :keyword polling: True for ARMPolling, False for no polling, or a
          polling object for personal polling strategy
         :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no Retry-After header is present.
-        :return: None, or the result of cls(response)
-        :rtype: None
+        :return: An instance of AsyncLROPoller that returns either None or the result of cls(response)
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         polling = kwargs.pop('polling', True)  # type: Union[bool, AsyncPollingMethod]
@@ -521,7 +520,8 @@ class ApplicationDefinitionsOperations:
         cont_token = kwargs.pop('continuation_token', None)  # type: Optional[str]
         if cont_token is None:
             raw_result = await self._delete_by_id_initial(
-                application_definition_id=application_definition_id,
+                resource_group_name=resource_group_name,
+                application_definition_name=application_definition_name,
                 cls=lambda x,y,z: x,
                 **kwargs
             )
@@ -545,11 +545,12 @@ class ApplicationDefinitionsOperations:
             )
         else:
             return AsyncLROPoller(self._client, raw_result, get_long_running_output, polling_method)
-    begin_delete_by_id.metadata = {'url': '/{applicationDefinitionId}'}  # type: ignore
+    begin_delete_by_id.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}'}  # type: ignore
 
     async def _create_or_update_by_id_initial(
         self,
-        application_definition_id: str,
+        resource_group_name: str,
+        application_definition_name: str,
         parameters: "models.ApplicationDefinition",
         **kwargs
     ) -> "models.ApplicationDefinition":
@@ -562,7 +563,9 @@ class ApplicationDefinitionsOperations:
         # Construct URL
         url = self._create_or_update_by_id_initial.metadata['url']  # type: ignore
         path_format_arguments = {
-            'applicationDefinitionId': self._serialize.url("application_definition_id", application_definition_id, 'str', skip_quote=True),
+            'resourceGroupName': self._serialize.url("resource_group_name", resource_group_name, 'str', max_length=90, min_length=1, pattern=r'^[-\w\._\(\)]+$'),
+            'applicationDefinitionName': self._serialize.url("application_definition_name", application_definition_name, 'str', max_length=64, min_length=3),
+            'subscriptionId': self._serialize.url("self._config.subscription_id", self._config.subscription_id, 'str'),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -575,7 +578,6 @@ class ApplicationDefinitionsOperations:
         header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
         header_parameters['Accept'] = 'application/json'
 
-        # Construct and send request
         body_content_kwargs = {}  # type: Dict[str, Any]
         body_content = self._serialize.body(parameters, 'ApplicationDefinition')
         body_content_kwargs['content'] = body_content
@@ -589,7 +591,6 @@ class ApplicationDefinitionsOperations:
             error = self._deserialize(models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = None
         if response.status_code == 200:
             deserialized = self._deserialize('ApplicationDefinition', pipeline_response)
 
@@ -600,21 +601,21 @@ class ApplicationDefinitionsOperations:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    _create_or_update_by_id_initial.metadata = {'url': '/{applicationDefinitionId}'}  # type: ignore
+    _create_or_update_by_id_initial.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}'}  # type: ignore
 
     async def begin_create_or_update_by_id(
         self,
-        application_definition_id: str,
+        resource_group_name: str,
+        application_definition_name: str,
         parameters: "models.ApplicationDefinition",
         **kwargs
-    ) -> "models.ApplicationDefinition":
+    ) -> AsyncLROPoller["models.ApplicationDefinition"]:
         """Creates a new managed application definition.
 
-        :param application_definition_id: The fully qualified ID of the managed application definition,
-     including the managed application name and the managed application definition resource type.
-     Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-
-     name}/Microsoft.Solutions/applicationDefinitions/{applicationDefinition-name}.
-        :type application_definition_id: str
+        :param resource_group_name: The name of the resource group. The name is case insensitive.
+        :type resource_group_name: str
+        :param application_definition_name: The name of the managed application definition.
+        :type application_definition_name: str
         :param parameters: Parameters supplied to the create or update a managed application
      definition.
         :type parameters: ~azure.mgmt.resource.managedapplications.models.ApplicationDefinition
@@ -624,8 +625,8 @@ class ApplicationDefinitionsOperations:
          polling object for personal polling strategy
         :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no Retry-After header is present.
-        :return: ApplicationDefinition, or the result of cls(response)
-        :rtype: ~azure.mgmt.resource.managedapplications.models.ApplicationDefinition
+        :return: An instance of AsyncLROPoller that returns either ApplicationDefinition or the result of cls(response)
+        :rtype: ~azure.core.polling.AsyncLROPoller[~azure.mgmt.resource.managedapplications.models.ApplicationDefinition]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         polling = kwargs.pop('polling', True)  # type: Union[bool, AsyncPollingMethod]
@@ -637,7 +638,8 @@ class ApplicationDefinitionsOperations:
         cont_token = kwargs.pop('continuation_token', None)  # type: Optional[str]
         if cont_token is None:
             raw_result = await self._create_or_update_by_id_initial(
-                application_definition_id=application_definition_id,
+                resource_group_name=resource_group_name,
+                application_definition_name=application_definition_name,
                 parameters=parameters,
                 cls=lambda x,y,z: x,
                 **kwargs
@@ -665,4 +667,4 @@ class ApplicationDefinitionsOperations:
             )
         else:
             return AsyncLROPoller(self._client, raw_result, get_long_running_output, polling_method)
-    begin_create_or_update_by_id.metadata = {'url': '/{applicationDefinitionId}'}  # type: ignore
+    begin_create_or_update_by_id.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}'}  # type: ignore

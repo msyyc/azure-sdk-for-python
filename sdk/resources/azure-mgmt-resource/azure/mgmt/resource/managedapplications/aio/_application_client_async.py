@@ -16,12 +16,13 @@ if TYPE_CHECKING:
     from azure.core.credentials_async import AsyncTokenCredential
 
 from ._configuration_async import ApplicationClientConfiguration
+from .operations_async import ApplicationClientOperationsMixin
 from .operations_async import ApplicationsOperations
 from .operations_async import ApplicationDefinitionsOperations
 from .. import models
 
 
-class ApplicationClient(object):
+class ApplicationClient(ApplicationClientOperationsMixin):
     """ARM applications.
 
     :ivar applications: ApplicationsOperations operations

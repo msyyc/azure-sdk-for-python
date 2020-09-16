@@ -6,10 +6,12 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
+from ._application_client_operations_async import ApplicationClientOperationsMixin
 from ._applications_operations_async import ApplicationsOperations
 from ._application_definitions_operations_async import ApplicationDefinitionsOperations
 
 __all__ = [
+    'ApplicationClientOperationsMixin',
     'ApplicationsOperations',
     'ApplicationDefinitionsOperations',
 ]

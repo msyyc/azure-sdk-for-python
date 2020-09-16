@@ -18,12 +18,13 @@ if TYPE_CHECKING:
     from azure.core.credentials import TokenCredential
 
 from ._configuration import ApplicationClientConfiguration
+from .operations import ApplicationClientOperationsMixin
 from .operations import ApplicationsOperations
 from .operations import ApplicationDefinitionsOperations
 from . import models
 
 
-class ApplicationClient(object):
+class ApplicationClient(ApplicationClientOperationsMixin):
     """ARM applications.
 
     :ivar applications: ApplicationsOperations operations
