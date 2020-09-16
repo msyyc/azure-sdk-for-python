@@ -297,15 +297,16 @@ class ApplicationsOperations(object):
         :param parameters: Parameters supplied to update an existing managed
          application.
         :type parameters:
-         ~azure.mgmt.resource.managedapplications.models.Application
+         ~azure.mgmt.resource.managedapplications.models.ApplicationPatchable
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: Application or ClientRawResponse if raw=true
-        :rtype: ~azure.mgmt.resource.managedapplications.models.Application or
-         ~msrest.pipeline.ClientRawResponse
+        :return: ApplicationPatchable or ClientRawResponse if raw=true
+        :rtype:
+         ~azure.mgmt.resource.managedapplications.models.ApplicationPatchable
+         or ~msrest.pipeline.ClientRawResponse
         :raises:
          :class:`ErrorResponseException<azure.mgmt.resource.managedapplications.models.ErrorResponseException>`
         """
@@ -335,7 +336,7 @@ class ApplicationsOperations(object):
 
         # Construct body
         if parameters is not None:
-            body_content = self._serialize.body(parameters, 'Application')
+            body_content = self._serialize.body(parameters, 'ApplicationPatchable')
         else:
             body_content = None
 
@@ -348,7 +349,7 @@ class ApplicationsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Application', response)
+            deserialized = self._deserialize('ApplicationPatchable', response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
