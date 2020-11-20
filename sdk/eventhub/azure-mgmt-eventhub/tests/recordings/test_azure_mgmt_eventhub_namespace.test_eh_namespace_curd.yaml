@@ -23,25 +23,25 @@ interactions:
   response:
     body:
       string: '{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace","name":"pythontestcasenamespace","type":"Microsoft.EventHub/Namespaces","location":"West
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Created","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-09-16T01:49:32.03Z","updatedAt":"2020-09-16T01:49:32.03Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Activating"}}'
+        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Created","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-11-20T02:25:30.647Z","updatedAt":"2020-11-20T02:25:30.647Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Activating"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '772'
+      - '774'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:49:33 GMT
+      - Fri, 20 Nov 2020 02:25:31 GMT
       expires:
       - '-1'
       pragma:
       - no-cache
       server:
-      - Service-Bus-Resource-Provider/CH3
+      - Service-Bus-Resource-Provider/SN1
       - Microsoft-HTTPAPI/2.0
       server-sb:
-      - Service-Bus-Resource-Provider/CH3
+      - Service-Bus-Resource-Provider/SN1
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       transfer-encoding:
@@ -51,7 +51,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-resource-requests:
-      - '48'
+      - '49'
     status:
       code: 200
       message: OK
@@ -72,16 +72,16 @@ interactions:
   response:
     body:
       string: '{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace","name":"pythontestcasenamespace","type":"Microsoft.EventHub/Namespaces","location":"West
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Created","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-09-16T01:49:32.03Z","updatedAt":"2020-09-16T01:49:32.03Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Activating"}}'
+        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Created","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-11-20T02:25:30.647Z","updatedAt":"2020-11-20T02:25:30.647Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Activating"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '772'
+      - '774'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:04 GMT
+      - Fri, 20 Nov 2020 02:26:07 GMT
       expires:
       - '-1'
       pragma:
@@ -119,25 +119,25 @@ interactions:
   response:
     body:
       string: '{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace","name":"pythontestcasenamespace","type":"Microsoft.EventHub/Namespaces","location":"West
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-09-16T01:49:32.03Z","updatedAt":"2020-09-16T01:50:16.623Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}}'
+        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-11-20T02:25:30.647Z","updatedAt":"2020-11-20T02:26:18.897Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '771'
+      - '772'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:34 GMT
+      - Fri, 20 Nov 2020 02:26:38 GMT
       expires:
       - '-1'
       pragma:
       - no-cache
       server:
-      - Service-Bus-Resource-Provider/SN1
+      - Service-Bus-Resource-Provider/CH3
       - Microsoft-HTTPAPI/2.0
       server-sb:
-      - Service-Bus-Resource-Provider/SN1
+      - Service-Bus-Resource-Provider/CH3
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       transfer-encoding:
@@ -168,16 +168,16 @@ interactions:
   response:
     body:
       string: '{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace","name":"pythontestcasenamespace","type":"Microsoft.EventHub/Namespaces","location":"West
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-09-16T01:49:32.03Z","updatedAt":"2020-09-16T01:50:16.623Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}}'
+        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-11-20T02:25:30.647Z","updatedAt":"2020-11-20T02:26:18.897Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '771'
+      - '772'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:34 GMT
+      - Fri, 20 Nov 2020 02:26:38 GMT
       expires:
       - '-1'
       pragma:
@@ -217,16 +217,16 @@ interactions:
   response:
     body:
       string: '{"value":[{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace","name":"pythontestcasenamespace","type":"Microsoft.EventHub/Namespaces","location":"West
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-09-16T01:49:32.03Z","updatedAt":"2020-09-16T01:50:16.623Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}}]}'
+        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-11-20T02:25:30.647Z","updatedAt":"2020-11-20T02:26:18.897Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}}]}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '783'
+      - '784'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:34 GMT
+      - Fri, 20 Nov 2020 02:26:38 GMT
       expires:
       - '-1'
       pragma:
@@ -266,18 +266,18 @@ interactions:
   response:
     body:
       string: '{"value":[{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace","name":"pythontestcasenamespace","type":"Microsoft.EventHub/Namespaces","location":"West
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-09-16T01:49:32.03Z","updatedAt":"2020-09-16T01:50:16.623Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}},{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/7vx5onejribdkm3bpke5mddlz57worfeu7edc4sdd5xec2dng2m4hhit6yy7d5u6asotq6vmh6a/providers/Microsoft.EventHub/namespaces/myNamespacexxyyzzykk","name":"myNamespacexxyyzzykk","type":"Microsoft.EventHub/Namespaces","location":"East
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:mynamespacexxyyzzykk","createdAt":"2020-08-18T05:04:57.527Z","updatedAt":"2020-08-18T05:11:09.503Z","serviceBusEndpoint":"https://myNamespacexxyyzzykk.servicebus.windows.net:443/","status":"Active","alternateName":"postmigrationxxxy"}},{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_cli_mgmt_servicebus_namespace_test_migration_configsa9a51771/providers/Microsoft.EventHub/namespaces/myNamespacexxyyzzy","name":"myNamespacexxyyzzy","type":"Microsoft.EventHub/Namespaces","location":"East
-        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:mynamespacexxyyzzy","createdAt":"2020-08-17T08:07:13.307Z","updatedAt":"2020-08-17T08:27:01.143Z","serviceBusEndpoint":"https://myNamespacexxyyzzy.servicebus.windows.net:443/","status":"Active","alternateName":"postmigrationxxy"}}]}'
+        US","tags":{"tag1":"value1","tag2":"value2"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:pythontestcasenamespace","createdAt":"2020-11-20T02:25:30.647Z","updatedAt":"2020-11-20T02:26:18.897Z","serviceBusEndpoint":"https://pythontestcasenamespace.servicebus.windows.net:443/","status":"Active"}},{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgehcluster-cli-test/providers/Microsoft.EventHub/namespaces/eventhubs-nsclizhlm6","name":"eventhubs-nsclizhlm6","type":"Microsoft.EventHub/Namespaces","location":"South
+        Central US","tags":{"{tag1":"value1}"},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"clusterArmId":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgehcluster-cli-test/providers/Microsoft.EventHub/clusters/eventhubs-clus1-ym5g","kafkaEnabled":true,"provisioningState":"Succeeded","metricId":"00000000-0000-0000-0000-000000000000:eventhubs-nsclizhlm6","createdAt":"2020-11-19T22:03:13.01Z","updatedAt":"2020-11-19T22:04:04.41Z","serviceBusEndpoint":"https://eventhubs-nsclizhlm6.servicebus.windows.net:443/","status":"Active"}},{"sku":{"name":"Standard","tier":"Standard","capacity":1},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/javacsmrg46947/providers/Microsoft.EventHub/namespaces/ns1305011933","name":"ns1305011933","type":"Microsoft.EventHub/Namespaces","location":"South
+        Central US","tags":{},"properties":{"isAutoInflateEnabled":false,"maximumThroughputUnits":0,"kafkaEnabled":true,"provisioningState":"Updating","metricId":"00000000-0000-0000-0000-000000000000:ns1305011933","createdAt":"2018-02-14T05:28:59.623Z","updatedAt":"2019-06-25T17:00:29.31Z","serviceBusEndpoint":"https://ns1305011933.servicebus.windows.net:443/","status":"Activating"}}]}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '2378'
+      - '2315'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:35 GMT
+      - Fri, 20 Nov 2020 02:26:39 GMT
       expires:
       - '-1'
       pragma:
@@ -326,7 +326,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:36 GMT
+      - Fri, 20 Nov 2020 02:26:40 GMT
       expires:
       - '-1'
       pragma:
@@ -379,7 +379,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:44 GMT
+      - Fri, 20 Nov 2020 02:26:46 GMT
       expires:
       - '-1'
       pragma:
@@ -398,7 +398,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1194'
+      - '1199'
     status:
       code: 200
       message: OK
@@ -430,7 +430,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:44 GMT
+      - Fri, 20 Nov 2020 02:26:47 GMT
       expires:
       - '-1'
       pragma:
@@ -483,7 +483,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:51 GMT
+      - Fri, 20 Nov 2020 02:26:53 GMT
       expires:
       - '-1'
       pragma:
@@ -502,7 +502,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1193'
+      - '1198'
     status:
       code: 200
       message: OK
@@ -535,7 +535,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:52 GMT
+      - Fri, 20 Nov 2020 02:26:54 GMT
       expires:
       - '-1'
       pragma:
@@ -576,7 +576,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace/authorizationRules/testingauthrulepy/listKeys?api-version=2017-04-01
   response:
     body:
-      string: '{"primaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=sCjp0e65LKRKp86JTLfFqEnAQ/n6Y1Bi8HGsSwQIzsQ=","secondaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=i0tdyzURcqb9ntHUU0vlesS1sl0Iw1dTjtzNnTidK7Y=","primaryKey":"sCjp0e65LKRKp86JTLfFqEnAQ/n6Y1Bi8HGsSwQIzsQ=","secondaryKey":"i0tdyzURcqb9ntHUU0vlesS1sl0Iw1dTjtzNnTidK7Y=","keyName":"testingauthrulepy"}'
+      string: '{"primaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=l9s9ZNY5uJTF7d7FKgluSit8VoBQdIkkm7SqwJRkqvU=","secondaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=6TaFV8ykGewtbUWpFPG7sqcC1YhT3zrpOy6XWhVAVoU=","primaryKey":"l9s9ZNY5uJTF7d7FKgluSit8VoBQdIkkm7SqwJRkqvU=","secondaryKey":"6TaFV8ykGewtbUWpFPG7sqcC1YhT3zrpOy6XWhVAVoU=","keyName":"testingauthrulepy"}'
     headers:
       cache-control:
       - no-cache
@@ -585,7 +585,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:53 GMT
+      - Fri, 20 Nov 2020 02:26:55 GMT
       expires:
       - '-1'
       pragma:
@@ -630,7 +630,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace/authorizationRules/testingauthrulepy/regenerateKeys?api-version=2017-04-01
   response:
     body:
-      string: '{"primaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=RyZaD4oo4H1Nel5WuzTxC7X4kS9x0upJdNEhzQrHDy8=","secondaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=i0tdyzURcqb9ntHUU0vlesS1sl0Iw1dTjtzNnTidK7Y=","primaryKey":"RyZaD4oo4H1Nel5WuzTxC7X4kS9x0upJdNEhzQrHDy8=","secondaryKey":"i0tdyzURcqb9ntHUU0vlesS1sl0Iw1dTjtzNnTidK7Y=","keyName":"testingauthrulepy"}'
+      string: '{"primaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=HjZk4GTMLp099Cf0ofI+meergwEZrwlIqQTwR7oc74A=","secondaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=6TaFV8ykGewtbUWpFPG7sqcC1YhT3zrpOy6XWhVAVoU=","primaryKey":"HjZk4GTMLp099Cf0ofI+meergwEZrwlIqQTwR7oc74A=","secondaryKey":"6TaFV8ykGewtbUWpFPG7sqcC1YhT3zrpOy6XWhVAVoU=","keyName":"testingauthrulepy"}'
     headers:
       cache-control:
       - no-cache
@@ -639,7 +639,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:50:59 GMT
+      - Fri, 20 Nov 2020 02:27:01 GMT
       expires:
       - '-1'
       pragma:
@@ -684,7 +684,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_azure_mgmt_eventhub_namespace_test_eh_namespace_curdac24175a/providers/Microsoft.EventHub/namespaces/pythontestcasenamespace/authorizationRules/testingauthrulepy/regenerateKeys?api-version=2017-04-01
   response:
     body:
-      string: '{"primaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=RyZaD4oo4H1Nel5WuzTxC7X4kS9x0upJdNEhzQrHDy8=","secondaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=UqkyOC1xLRNimnPTl8xVFOsrFTQnsV9VatlVci3JZvE=","primaryKey":"RyZaD4oo4H1Nel5WuzTxC7X4kS9x0upJdNEhzQrHDy8=","secondaryKey":"UqkyOC1xLRNimnPTl8xVFOsrFTQnsV9VatlVci3JZvE=","keyName":"testingauthrulepy"}'
+      string: '{"primaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=HjZk4GTMLp099Cf0ofI+meergwEZrwlIqQTwR7oc74A=","secondaryConnectionString":"Endpoint=sb://pythontestcasenamespace.servicebus.windows.net/;SharedAccessKeyName=testingauthrulepy;SharedAccessKey=9SLhuoFaQb52Sdxh4KC+IypiQvq+lkR+RzPItMUmjK4=","primaryKey":"HjZk4GTMLp099Cf0ofI+meergwEZrwlIqQTwR7oc74A=","secondaryKey":"9SLhuoFaQb52Sdxh4KC+IypiQvq+lkR+RzPItMUmjK4=","keyName":"testingauthrulepy"}'
     headers:
       cache-control:
       - no-cache
@@ -693,7 +693,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:51:06 GMT
+      - Fri, 20 Nov 2020 02:27:07 GMT
       expires:
       - '-1'
       pragma:
@@ -743,7 +743,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Wed, 16 Sep 2020 01:51:12 GMT
+      - Fri, 20 Nov 2020 02:27:14 GMT
       expires:
       - '-1'
       pragma:
@@ -758,7 +758,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14995'
+      - '14999'
     status:
       code: 200
       message: OK
@@ -790,7 +790,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Sep 2020 01:51:13 GMT
+      - Fri, 20 Nov 2020 02:27:15 GMT
       expires:
       - '-1'
       pragma:
@@ -838,7 +838,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Wed, 16 Sep 2020 01:51:15 GMT
+      - Fri, 20 Nov 2020 02:27:16 GMT
       expires:
       - '-1'
       location:
@@ -855,7 +855,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14994'
+      - '14998'
     status:
       code: 202
       message: Accepted
@@ -882,7 +882,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Wed, 16 Sep 2020 01:51:45 GMT
+      - Fri, 20 Nov 2020 02:27:48 GMT
       expires:
       - '-1'
       pragma:

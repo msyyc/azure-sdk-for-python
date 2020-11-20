@@ -1,5 +1,89 @@
 # Release History
 
+## 5.0.0 (2020-11-20)
+
+**Features**
+
+  - Added operation NamespacesOperations.create_or_update
+  - Added operation NamespacesOperations.delete
+  - Added operation PrivateEndpointConnectionsOperations.delete
+  - Added operation ClustersOperations.update
+  - Added operation ClustersOperations.delete
+  - Added operation ClustersOperations.create_or_update
+
+**Breaking changes**
+
+  - Operation NamespacesOperations.regenerate_keys has a new signature
+  - Operation NamespacesOperations.regenerate_keys has a new signature
+  - Operation EventHubsOperations.regenerate_keys has a new signature
+  - Operation EventHubsOperations.regenerate_keys has a new signature
+  - Operation EventHubsOperations.create_or_update_authorization_rule has a new signature
+  - Operation ConsumerGroupsOperations.create_or_update has a new signature
+  - Parameter rights of model AuthorizationRule is now required
+  - Parameter rights of model SharedAccessAuthorizationRuleCreateOrUpdateParameters is now required
+  - Parameter rights of model SharedAccessAuthorizationRuleResource is now required
+  - Operation RegionsOperations.list_by_sku has a new signature
+  - Operation PrivateLinkResourcesOperations.get has a new signature
+  - Operation PrivateEndpointConnectionsOperations.list has a new signature
+  - Operation PrivateEndpointConnectionsOperations.get has a new signature
+  - Operation PrivateEndpointConnectionsOperations.create_or_update has a new signature
+  - Operation NamespacesOperations.update has a new signature
+  - Operation NamespacesOperations.list_virtual_network_rules has a new signature
+  - Operation NamespacesOperations.list_keys has a new signature
+  - Operation NamespacesOperations.list_ip_filter_rules has a new signature
+  - Operation NamespacesOperations.list_by_resource_group has a new signature
+  - Operation NamespacesOperations.list_authorization_rules has a new signature
+  - Operation NamespacesOperations.get_virtual_network_rule has a new signature
+  - Operation NamespacesOperations.get_network_rule_set has a new signature
+  - Operation NamespacesOperations.get_ip_filter_rule has a new signature
+  - Operation NamespacesOperations.get_authorization_rule has a new signature
+  - Operation NamespacesOperations.get has a new signature
+  - Operation NamespacesOperations.delete_virtual_network_rule has a new signature
+  - Operation NamespacesOperations.delete_ip_filter_rule has a new signature
+  - Operation NamespacesOperations.delete_authorization_rule has a new signature
+  - Operation NamespacesOperations.create_or_update_network_rule_set has a new signature
+  - Operation NamespacesOperations.create_or_update_ip_filter_rule has a new signature
+  - Operation EventHubsOperations.list_keys has a new signature
+  - Operation EventHubsOperations.list_by_namespace has a new signature
+  - Operation EventHubsOperations.list_authorization_rules has a new signature
+  - Operation EventHubsOperations.get_authorization_rule has a new signature
+  - Operation EventHubsOperations.get has a new signature
+  - Operation EventHubsOperations.delete_authorization_rule has a new signature
+  - Operation EventHubsOperations.delete has a new signature
+  - Operation EventHubsOperations.create_or_update_authorization_rule has a new signature
+  - Operation EventHubsOperations.create_or_update has a new signature
+  - Operation DisasterRecoveryConfigsOperations.list_keys has a new signature
+  - Operation DisasterRecoveryConfigsOperations.list_authorization_rules has a new signature
+  - Operation DisasterRecoveryConfigsOperations.list has a new signature
+  - Operation DisasterRecoveryConfigsOperations.get_authorization_rule has a new signature
+  - Operation DisasterRecoveryConfigsOperations.get has a new signature
+  - Operation DisasterRecoveryConfigsOperations.fail_over has a new signature
+  - Operation DisasterRecoveryConfigsOperations.delete has a new signature
+  - Operation DisasterRecoveryConfigsOperations.break_pairing has a new signature
+  - Operation ConsumerGroupsOperations.list_by_event_hub has a new signature
+  - Operation ConsumerGroupsOperations.get has a new signature
+  - Operation ConsumerGroupsOperations.delete has a new signature
+  - Operation ConsumerGroupsOperations.create_or_update has a new signature
+  - Operation ConfigurationOperations.get has a new signature
+  - Operation ClustersOperations.list_namespaces has a new signature
+  - Operation ClustersOperations.list_by_resource_group has a new signature
+  - Operation ClustersOperations.get has a new signature
+  - Operation ConfigurationOperations.patch has a new signature
+  - Operation NamespacesOperations.check_name_availability has a new signature
+  - Operation NamespacesOperations.list has a new signature
+  - Operation NamespacesOperations.create_or_update_virtual_network_rule has a new signature
+  - Operation NamespacesOperations.create_or_update_authorization_rule has a new signature
+  - Operation DisasterRecoveryConfigsOperations.check_name_availability has a new signature
+  - Operation DisasterRecoveryConfigsOperations.create_or_update has a new signature
+  - Operation Operations.list has a new signature
+  - Operation ClustersOperations.list_available_cluster_region has a new signature
+  - Removed operation NamespacesOperations.begin_delete
+  - Removed operation NamespacesOperations.begin_create_or_update
+  - Removed operation PrivateEndpointConnectionsOperations.begin_delete
+  - Removed operation ClustersOperations.begin_update
+  - Removed operation ClustersOperations.begin_delete
+  - Removed operation ClustersOperations.begin_create_or_update
+
 ## 4.2.0 (2020-09-15)
 
 **Features**
