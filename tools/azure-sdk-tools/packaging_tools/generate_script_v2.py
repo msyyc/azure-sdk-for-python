@@ -15,6 +15,7 @@ from .swaggertosdk.SwaggerToSdkCore import (
 from azure_devtools.ci_tools.git_tools import get_diff_file_list
 from .generate_sdk import generate
 from .change_log import main as change_log_main
+from .edit_check import main as edit_check_main
 
 _LOGGER = logging.getLogger(__name__)
 _SDK_FOLDER_RE = re.compile(r"^(sdk/[\w-]+)/(azure[\w-]+)/", re.ASCII)
@@ -87,6 +88,10 @@ def main(generate_input, generate_output):
         package_entry["result"]: "success"
 
         result['packages'].append(package_entry)
+
+        # edit version, changelog file and do some check
+        if len(md_output) and package_name.find('mgmt') > -1:
+            edit_check_main(sdk_folder, folder_name, package_name, md_output)
 
     with open(generate_output, "w") as writer:
         json.dump(result, writer)
