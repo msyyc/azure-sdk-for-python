@@ -1,0 +1,17 @@
+language,issue,author,package,created date,delay from created date,latest update time,delay from latest update,status,bot advice
+Python,https://github.com/Azure/sdk-release-request/issues/1566,shenmuxiaosen,azure-mgmt-appconfiguration,2021-05-13,32,2021-06-02,13,confirm,new comment for author.
+Python,https://github.com/Azure/sdk-release-request/issues/1657,mbialecka,azure-mgmt-azurestackhci,2021-06-08,6,2021-06-09,6,confirm, 
+Python,https://github.com/Azure/sdk-release-request/issues/1564,hailiu2586,azure-mgmt-botservice,2021-05-13,32,2021-06-02,13,confirm,delay for a long time and better to handle now.
+Python,https://github.com/Azure/sdk-release-request/issues/1652,levimm,azure-mgmt-containerservice,2021-06-07,8,2021-06-15,0,confirm, 
+Python,https://github.com/Azure/sdk-release-request/issues/1626,MehaKaushik,azure-mgmt-cosmosdb,2021-05-27,18,2021-06-08,7,confirm,delay for a long time and better to handle now.
+Python,https://github.com/Azure/sdk-release-request/issues/1674,msaranga,azure-mgmt-databricks,2021-06-11,3,2021-06-15,0,confirm,new issue and better to confirm quickly.
+Python,https://github.com/Azure/sdk-release-request/issues/1596,shawnxzq,azure-mgmt-datafactory,2021-05-21,25,2021-06-02,13,confirm,delay for a long time and better to handle now.
+Python,https://github.com/Azure/sdk-release-request/issues/1618,tamilmani1989,azure-mgmt-dnc,2021-05-26,20,2021-06-02,13,confirm,delay for a long time and better to handle now.
+Python,https://github.com/Azure/sdk-release-request/issues/1551,feiyushi,azure-mgmt-imagebuilder,2021-05-13,33,2021-06-02,13,confirm,new comment for author.
+Python,https://github.com/Azure/sdk-release-request/issues/1579,rakeshrana44,azure-mgmt-monitor,2021-05-18,28,2021-06-02,13,confirm,delay for a long time and better to handle now.
+Python,https://github.com/Azure/sdk-release-request/issues/1661,audunn,azure-mgmt-netapp,2021-06-09,6,2021-06-11,4,confirm, 
+Python,https://github.com/Azure/sdk-release-request/issues/1664,chandrikagonuguntla,azure-mgmt-recoveryservicesbackup,2021-06-09,6,2021-06-15,0,confirm, 
+Python,https://github.com/Azure/sdk-release-request/issues/1644,bar810,azure-mgmt-security,2021-06-03,11,2021-06-09,6,confirm, 
+Python,https://github.com/Azure/sdk-release-request/issues/1640,zfchen95,azure-mgmt-storage,2021-06-02,12,2021-06-04,11,confirm,delay for a long time and better to handle now.
+Python,https://github.com/Azure/sdk-release-request/issues/1676,v-zhifufeng,azure-mgmt-testbase,2021-06-15,0,2021-06-15,0,confirm, 
+Python,https://github.com/Azure/sdk-release-request/issues/1670,allencal,azure-mgmt-trafficmanager,2021-06-10,4,2021-06-15,0,confirm,new issue and better to confirm quickly.
