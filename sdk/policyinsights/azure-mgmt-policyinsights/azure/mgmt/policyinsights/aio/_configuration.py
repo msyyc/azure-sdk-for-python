@@ -29,22 +29,28 @@ class PolicyInsightsClientConfiguration(Configuration):
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
     :param subscription_id: Microsoft Azure subscription ID.
     :type subscription_id: str
+    :param host: server parameter.
+    :type host: str
     """
 
     def __init__(
         self,
         credential: "AsyncTokenCredential",
         subscription_id: str,
+        host: str = "https://management.azure.com/",
         **kwargs: Any
     ) -> None:
         if credential is None:
             raise ValueError("Parameter 'credential' must not be None.")
         if subscription_id is None:
             raise ValueError("Parameter 'subscription_id' must not be None.")
+        if host is None:
+            raise ValueError("Parameter 'host' must not be None.")
         super(PolicyInsightsClientConfiguration, self).__init__(**kwargs)
 
         self.credential = credential
         self.subscription_id = subscription_id
+        self.host = host
         self.credential_scopes = kwargs.pop('credential_scopes', ['https://management.azure.com/.default'])
         kwargs.setdefault('sdk_moniker', 'mgmt-policyinsights/{}'.format(VERSION))
         self._configure(**kwargs)
