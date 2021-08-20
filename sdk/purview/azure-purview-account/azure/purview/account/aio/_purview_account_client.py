@@ -7,7 +7,7 @@
 # --------------------------------------------------------------------------
 
 from copy import deepcopy
-from typing import Any, Awaitable, TYPE_CHECKING
+from typing import Any, Awaitable, Optional, TYPE_CHECKING
 
 from azure.core import AsyncPipelineClient
 from azure.core.rest import AsyncHttpResponse, HttpRequest
@@ -44,9 +44,8 @@ class PurviewAccountClient:
         credential: "AsyncTokenCredential",
         **kwargs: Any
     ) -> None:
-        base_url = '{endpoint}'
-        self._config = PurviewAccountClientConfiguration(endpoint, credential, **kwargs)
-        self._client = AsyncPipelineClient(base_url=base_url, config=self._config, **kwargs)
+        self._config = PurviewAccountClientConfiguration(credential, **kwargs)
+        self._client = AsyncPipelineClient(base_url=endpoint, config=self._config, **kwargs)
 
         self._serialize = Serializer()
         self._deserialize = Deserializer()

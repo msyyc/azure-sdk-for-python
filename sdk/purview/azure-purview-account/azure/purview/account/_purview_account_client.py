@@ -17,7 +17,7 @@ from .operations import AccountsOperations, CollectionsOperations, ResourceSetRu
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
-    from typing import Any, Dict
+    from typing import Any, Dict, Optional
 
     from azure.core.credentials import TokenCredential
     from azure.core.rest import HttpRequest, HttpResponse
@@ -45,9 +45,8 @@ class PurviewAccountClient(object):
         **kwargs  # type: Any
     ):
         # type: (...) -> None
-        base_url = '{endpoint}'
-        self._config = PurviewAccountClientConfiguration(endpoint, credential, **kwargs)
-        self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
+        self._config = PurviewAccountClientConfiguration(credential, **kwargs)
+        self._client = PipelineClient(base_url=endpoint, config=self._config, **kwargs)
 
         self._serialize = Serializer()
         self._deserialize = Deserializer()
