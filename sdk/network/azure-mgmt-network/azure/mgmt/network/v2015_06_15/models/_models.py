@@ -12,9 +12,9 @@ import msrest.serialization
 class AddressSpace(msrest.serialization.Model):
     """AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
 
-    :param address_prefixes: A list of address blocks reserved for this virtual network in CIDR
+    :ivar address_prefixes: A list of address blocks reserved for this virtual network in CIDR
      notation.
-    :type address_prefixes: list[str]
+    :vartype address_prefixes: list[str]
     """
 
     _attribute_map = {
@@ -25,6 +25,11 @@ class AddressSpace(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword address_prefixes: A list of address blocks reserved for this virtual network in CIDR
+         notation.
+        :paramtype address_prefixes: list[str]
+        """
         super(AddressSpace, self).__init__(**kwargs)
         self.address_prefixes = kwargs.get('address_prefixes', None)
 
@@ -34,16 +39,16 @@ class Resource(msrest.serialization.Model):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
     """
 
     _validation = {
@@ -63,6 +68,14 @@ class Resource(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        """
         super(Resource, self).__init__(**kwargs)
         self.id = kwargs.get('id', None)
         self.name = None
@@ -76,59 +89,60 @@ class ApplicationGateway(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param sku: SKU of the application gateway resource.
-    :type sku: ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySku
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar sku: SKU of the application gateway resource.
+    :vartype sku: ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySku
     :ivar operational_state: Operational state of the application gateway resource. Possible values
      are: 'Stopped', 'Started', 'Running', and 'Stopping'. Possible values include: "Stopped",
      "Starting", "Running", "Stopping".
     :vartype operational_state: str or
      ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayOperationalState
-    :param gateway_ip_configurations: Gets or sets subnets of application gateway resource.
-    :type gateway_ip_configurations:
+    :ivar gateway_ip_configurations: Gets or sets subnets of application gateway resource.
+    :vartype gateway_ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayIPConfiguration]
-    :param ssl_certificates: SSL certificates of the application gateway resource.
-    :type ssl_certificates:
+    :ivar ssl_certificates: SSL certificates of the application gateway resource.
+    :vartype ssl_certificates:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySslCertificate]
-    :param frontend_ip_configurations: Frontend IP addresses of the application gateway resource.
-    :type frontend_ip_configurations:
+    :ivar frontend_ip_configurations: Frontend IP addresses of the application gateway resource.
+    :vartype frontend_ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayFrontendIPConfiguration]
-    :param frontend_ports: Frontend ports of the application gateway resource.
-    :type frontend_ports:
+    :ivar frontend_ports: Frontend ports of the application gateway resource.
+    :vartype frontend_ports:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayFrontendPort]
-    :param probes: Probes of the application gateway resource.
-    :type probes: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProbe]
-    :param backend_address_pools: Backend address pool of the application gateway resource.
-    :type backend_address_pools:
+    :ivar probes: Probes of the application gateway resource.
+    :vartype probes: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProbe]
+    :ivar backend_address_pools: Backend address pool of the application gateway resource.
+    :vartype backend_address_pools:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayBackendAddressPool]
-    :param backend_http_settings_collection: Backend http settings of the application gateway
+    :ivar backend_http_settings_collection: Backend http settings of the application gateway
      resource.
-    :type backend_http_settings_collection:
+    :vartype backend_http_settings_collection:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayBackendHttpSettings]
-    :param http_listeners: Http listeners of the application gateway resource.
-    :type http_listeners:
+    :ivar http_listeners: Http listeners of the application gateway resource.
+    :vartype http_listeners:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayHttpListener]
-    :param url_path_maps: URL path map of the application gateway resource.
-    :type url_path_maps: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayUrlPathMap]
-    :param request_routing_rules: Request routing rules of the application gateway resource.
-    :type request_routing_rules:
+    :ivar url_path_maps: URL path map of the application gateway resource.
+    :vartype url_path_maps:
+     list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayUrlPathMap]
+    :ivar request_routing_rules: Request routing rules of the application gateway resource.
+    :vartype request_routing_rules:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayRequestRoutingRule]
-    :param resource_guid: Resource GUID property of the application gateway resource.
-    :type resource_guid: str
-    :param provisioning_state: Provisioning state of the application gateway resource. Possible
+    :ivar resource_guid: Resource GUID property of the application gateway resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: Provisioning state of the application gateway resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -164,6 +178,53 @@ class ApplicationGateway(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword sku: SKU of the application gateway resource.
+        :paramtype sku: ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySku
+        :keyword gateway_ip_configurations: Gets or sets subnets of application gateway resource.
+        :paramtype gateway_ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayIPConfiguration]
+        :keyword ssl_certificates: SSL certificates of the application gateway resource.
+        :paramtype ssl_certificates:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySslCertificate]
+        :keyword frontend_ip_configurations: Frontend IP addresses of the application gateway resource.
+        :paramtype frontend_ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayFrontendIPConfiguration]
+        :keyword frontend_ports: Frontend ports of the application gateway resource.
+        :paramtype frontend_ports:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayFrontendPort]
+        :keyword probes: Probes of the application gateway resource.
+        :paramtype probes: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProbe]
+        :keyword backend_address_pools: Backend address pool of the application gateway resource.
+        :paramtype backend_address_pools:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayBackendAddressPool]
+        :keyword backend_http_settings_collection: Backend http settings of the application gateway
+         resource.
+        :paramtype backend_http_settings_collection:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayBackendHttpSettings]
+        :keyword http_listeners: Http listeners of the application gateway resource.
+        :paramtype http_listeners:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayHttpListener]
+        :keyword url_path_maps: URL path map of the application gateway resource.
+        :paramtype url_path_maps:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayUrlPathMap]
+        :keyword request_routing_rules: Request routing rules of the application gateway resource.
+        :paramtype request_routing_rules:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayRequestRoutingRule]
+        :keyword resource_guid: Resource GUID property of the application gateway resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: Provisioning state of the application gateway resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGateway, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.sku = kwargs.get('sku', None)
@@ -185,10 +246,10 @@ class ApplicationGateway(Resource):
 class ApplicationGatewayBackendAddress(msrest.serialization.Model):
     """Backend address of an application gateway.
 
-    :param fqdn: Fully qualified domain name (FQDN).
-    :type fqdn: str
-    :param ip_address: IP address.
-    :type ip_address: str
+    :ivar fqdn: Fully qualified domain name (FQDN).
+    :vartype fqdn: str
+    :ivar ip_address: IP address.
+    :vartype ip_address: str
     """
 
     _attribute_map = {
@@ -200,6 +261,12 @@ class ApplicationGatewayBackendAddress(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword fqdn: Fully qualified domain name (FQDN).
+        :paramtype fqdn: str
+        :keyword ip_address: IP address.
+        :paramtype ip_address: str
+        """
         super(ApplicationGatewayBackendAddress, self).__init__(**kwargs)
         self.fqdn = kwargs.get('fqdn', None)
         self.ip_address = kwargs.get('ip_address', None)
@@ -208,8 +275,8 @@ class ApplicationGatewayBackendAddress(msrest.serialization.Model):
 class SubResource(msrest.serialization.Model):
     """Azure resource manager sub resource properties.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     """
 
     _attribute_map = {
@@ -220,6 +287,10 @@ class SubResource(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        """
         super(SubResource, self).__init__(**kwargs)
         self.id = kwargs.get('id', None)
 
@@ -227,23 +298,22 @@ class SubResource(msrest.serialization.Model):
 class ApplicationGatewayBackendAddressPool(SubResource):
     """Backend Address Pool of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Resource that is unique within a resource group. This name can be used to access
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Resource that is unique within a resource group. This name can be used to access
      the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param backend_ip_configurations: Collection of references to IPs defined in network
-     interfaces.
-    :type backend_ip_configurations:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar backend_ip_configurations: Collection of references to IPs defined in network interfaces.
+    :vartype backend_ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration]
-    :param backend_addresses: Backend addresses.
-    :type backend_addresses:
+    :ivar backend_addresses: Backend addresses.
+    :vartype backend_addresses:
      list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayBackendAddress]
-    :param provisioning_state: Provisioning state of the backend address pool resource. Possible
+    :ivar provisioning_state: Provisioning state of the backend address pool resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -259,6 +329,25 @@ class ApplicationGatewayBackendAddressPool(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Resource that is unique within a resource group. This name can be used to access
+         the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword backend_ip_configurations: Collection of references to IPs defined in network
+         interfaces.
+        :paramtype backend_ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration]
+        :keyword backend_addresses: Backend addresses.
+        :paramtype backend_addresses:
+         list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayBackendAddress]
+        :keyword provisioning_state: Provisioning state of the backend address pool resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayBackendAddressPool, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -270,31 +359,31 @@ class ApplicationGatewayBackendAddressPool(SubResource):
 class ApplicationGatewayBackendHttpSettings(SubResource):
     """Backend address pool settings of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param port: Port.
-    :type port: int
-    :param protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar port: Port.
+    :vartype port: int
+    :ivar protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
      "Http", "Https".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
-    :param cookie_based_affinity: Cookie based affinity. Possible values are: 'Enabled' and
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
+    :ivar cookie_based_affinity: Cookie based affinity. Possible values are: 'Enabled' and
      'Disabled'. Possible values include: "Enabled", "Disabled".
-    :type cookie_based_affinity: str or
+    :vartype cookie_based_affinity: str or
      ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayCookieBasedAffinity
-    :param request_timeout: Request timeout in seconds. Application Gateway will fail the request
-     if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400
+    :ivar request_timeout: Request timeout in seconds. Application Gateway will fail the request if
+     response is not received within RequestTimeout. Acceptable values are from 1 second to 86400
      seconds.
-    :type request_timeout: int
-    :param probe: Probe resource of an application gateway.
-    :type probe: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Gets or sets Provisioning state of the backend http settings
-     resource Updating/Deleting/Failed.
-    :type provisioning_state: str
+    :vartype request_timeout: int
+    :ivar probe: Probe resource of an application gateway.
+    :vartype probe: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Gets or sets Provisioning state of the backend http settings resource
+     Updating/Deleting/Failed.
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -313,6 +402,33 @@ class ApplicationGatewayBackendHttpSettings(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword port: Port.
+        :paramtype port: int
+        :keyword protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
+         "Http", "Https".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
+        :keyword cookie_based_affinity: Cookie based affinity. Possible values are: 'Enabled' and
+         'Disabled'. Possible values include: "Enabled", "Disabled".
+        :paramtype cookie_based_affinity: str or
+         ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayCookieBasedAffinity
+        :keyword request_timeout: Request timeout in seconds. Application Gateway will fail the request
+         if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400
+         seconds.
+        :paramtype request_timeout: int
+        :keyword probe: Probe resource of an application gateway.
+        :paramtype probe: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Gets or sets Provisioning state of the backend http settings
+         resource Updating/Deleting/Failed.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayBackendHttpSettings, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -327,26 +443,26 @@ class ApplicationGatewayBackendHttpSettings(SubResource):
 class ApplicationGatewayFrontendIPConfiguration(SubResource):
     """Frontend IP configuration of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param private_ip_address: PrivateIPAddress of the network interface IP Configuration.
-    :type private_ip_address: str
-    :param private_ip_allocation_method: PrivateIP allocation method. Possible values are: 'Static'
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar private_ip_address: PrivateIPAddress of the network interface IP Configuration.
+    :vartype private_ip_address: str
+    :ivar private_ip_allocation_method: PrivateIP allocation method. Possible values are: 'Static'
      and 'Dynamic'. Possible values include: "Static", "Dynamic".
-    :type private_ip_allocation_method: str or
+    :vartype private_ip_allocation_method: str or
      ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
-    :param subnet: Reference of the subnet resource.
-    :type subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param public_ip_address: Reference of the PublicIP resource.
-    :type public_ip_address: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Provisioning state of the public IP resource. Possible values are:
+    :ivar subnet: Reference of the subnet resource.
+    :vartype subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar public_ip_address: Reference of the PublicIP resource.
+    :vartype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Provisioning state of the public IP resource. Possible values are:
      'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -364,6 +480,28 @@ class ApplicationGatewayFrontendIPConfiguration(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword private_ip_address: PrivateIPAddress of the network interface IP Configuration.
+        :paramtype private_ip_address: str
+        :keyword private_ip_allocation_method: PrivateIP allocation method. Possible values are:
+         'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
+        :paramtype private_ip_allocation_method: str or
+         ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
+        :keyword subnet: Reference of the subnet resource.
+        :paramtype subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword public_ip_address: Reference of the PublicIP resource.
+        :paramtype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Provisioning state of the public IP resource. Possible values are:
+         'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayFrontendIPConfiguration, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -377,18 +515,18 @@ class ApplicationGatewayFrontendIPConfiguration(SubResource):
 class ApplicationGatewayFrontendPort(SubResource):
     """Frontend port of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param port: Frontend port.
-    :type port: int
-    :param provisioning_state: Provisioning state of the frontend port resource. Possible values
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar port: Frontend port.
+    :vartype port: int
+    :ivar provisioning_state: Provisioning state of the frontend port resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -403,6 +541,20 @@ class ApplicationGatewayFrontendPort(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword port: Frontend port.
+        :paramtype port: int
+        :keyword provisioning_state: Provisioning state of the frontend port resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayFrontendPort, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -413,30 +565,30 @@ class ApplicationGatewayFrontendPort(SubResource):
 class ApplicationGatewayHttpListener(SubResource):
     """Http listener of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param frontend_ip_configuration: Frontend IP configuration resource of an application gateway.
-    :type frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param frontend_port: Frontend port resource of an application gateway.
-    :type frontend_port: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar frontend_ip_configuration: Frontend IP configuration resource of an application gateway.
+    :vartype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar frontend_port: Frontend port resource of an application gateway.
+    :vartype frontend_port: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
      "Http", "Https".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
-    :param host_name: Host name of HTTP listener.
-    :type host_name: str
-    :param ssl_certificate: SSL certificate resource of an application gateway.
-    :type ssl_certificate: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param require_server_name_indication: Applicable only if protocol is https. Enables SNI for
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
+    :ivar host_name: Host name of HTTP listener.
+    :vartype host_name: str
+    :ivar ssl_certificate: SSL certificate resource of an application gateway.
+    :vartype ssl_certificate: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar require_server_name_indication: Applicable only if protocol is https. Enables SNI for
      multi-hosting.
-    :type require_server_name_indication: bool
-    :param provisioning_state: Provisioning state of the HTTP listener resource. Possible values
+    :vartype require_server_name_indication: bool
+    :ivar provisioning_state: Provisioning state of the HTTP listener resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -456,6 +608,33 @@ class ApplicationGatewayHttpListener(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword frontend_ip_configuration: Frontend IP configuration resource of an application
+         gateway.
+        :paramtype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword frontend_port: Frontend port resource of an application gateway.
+        :paramtype frontend_port: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
+         "Http", "Https".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
+        :keyword host_name: Host name of HTTP listener.
+        :paramtype host_name: str
+        :keyword ssl_certificate: SSL certificate resource of an application gateway.
+        :paramtype ssl_certificate: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword require_server_name_indication: Applicable only if protocol is https. Enables SNI for
+         multi-hosting.
+        :paramtype require_server_name_indication: bool
+        :keyword provisioning_state: Provisioning state of the HTTP listener resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayHttpListener, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -471,19 +650,19 @@ class ApplicationGatewayHttpListener(SubResource):
 class ApplicationGatewayIPConfiguration(SubResource):
     """IP configuration of an application gateway. Currently 1 public and 1 private IP configuration is allowed.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param subnet: Reference of the subnet resource. A subnet from where application gateway gets
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar subnet: Reference of the subnet resource. A subnet from where application gateway gets
      its private address.
-    :type subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Provisioning state of the application gateway subnet resource.
+    :vartype subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Provisioning state of the application gateway subnet resource.
      Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -498,6 +677,21 @@ class ApplicationGatewayIPConfiguration(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword subnet: Reference of the subnet resource. A subnet from where application gateway gets
+         its private address.
+        :paramtype subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Provisioning state of the application gateway subnet resource.
+         Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayIPConfiguration, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -508,10 +702,10 @@ class ApplicationGatewayIPConfiguration(SubResource):
 class ApplicationGatewayListResult(msrest.serialization.Model):
     """Response for ListApplicationGateways API service call.
 
-    :param value: List of an application gateways in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGateway]
-    :param next_link: URL to get the next set of results.
-    :type next_link: str
+    :ivar value: List of an application gateways in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGateway]
+    :ivar next_link: URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -523,6 +717,12 @@ class ApplicationGatewayListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: List of an application gateways in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGateway]
+        :keyword next_link: URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ApplicationGatewayListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -531,22 +731,22 @@ class ApplicationGatewayListResult(msrest.serialization.Model):
 class ApplicationGatewayPathRule(SubResource):
     """Path rule of URL path map of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param paths: Path rules of URL path map.
-    :type paths: list[str]
-    :param backend_address_pool: Backend address pool resource of URL path map.
-    :type backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param backend_http_settings: Backend http settings resource of URL path map.
-    :type backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Path rule of URL path map resource. Possible values are: 'Updating',
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar paths: Path rules of URL path map.
+    :vartype paths: list[str]
+    :ivar backend_address_pool: Backend address pool resource of URL path map.
+    :vartype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar backend_http_settings: Backend http settings resource of URL path map.
+    :vartype backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Path rule of URL path map resource. Possible values are: 'Updating',
      'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -563,6 +763,24 @@ class ApplicationGatewayPathRule(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword paths: Path rules of URL path map.
+        :paramtype paths: list[str]
+        :keyword backend_address_pool: Backend address pool resource of URL path map.
+        :paramtype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword backend_http_settings: Backend http settings resource of URL path map.
+        :paramtype backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Path rule of URL path map resource. Possible values are:
+         'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayPathRule, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -575,34 +793,34 @@ class ApplicationGatewayPathRule(SubResource):
 class ApplicationGatewayProbe(SubResource):
     """Probe of the application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
      "Http", "Https".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
-    :param host: Host name to send the probe to.
-    :type host: str
-    :param path: Relative path of probe. Valid path starts from '/'. Probe is sent to
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
+    :ivar host: Host name to send the probe to.
+    :vartype host: str
+    :ivar path: Relative path of probe. Valid path starts from '/'. Probe is sent to
      :code:`<Protocol>`://:code:`<host>`::code:`<port>`:code:`<path>`.
-    :type path: str
-    :param interval: The probing interval in seconds. This is the time interval between two
+    :vartype path: str
+    :ivar interval: The probing interval in seconds. This is the time interval between two
      consecutive probes. Acceptable values are from 1 second to 86400 seconds.
-    :type interval: int
-    :param timeout: the probe timeout in seconds. Probe marked as failed if valid response is not
+    :vartype interval: int
+    :ivar timeout: the probe timeout in seconds. Probe marked as failed if valid response is not
      received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
-    :type timeout: int
-    :param unhealthy_threshold: The probe retry count. Backend server is marked down after
+    :vartype timeout: int
+    :ivar unhealthy_threshold: The probe retry count. Backend server is marked down after
      consecutive probe failure count reaches UnhealthyThreshold. Acceptable values are from 1 second
      to 20.
-    :type unhealthy_threshold: int
-    :param provisioning_state: Provisioning state of the backend http settings resource. Possible
+    :vartype unhealthy_threshold: int
+    :ivar provisioning_state: Provisioning state of the backend http settings resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -622,6 +840,36 @@ class ApplicationGatewayProbe(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword protocol: Protocol. Possible values are: 'Http' and 'Https'. Possible values include:
+         "Http", "Https".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayProtocol
+        :keyword host: Host name to send the probe to.
+        :paramtype host: str
+        :keyword path: Relative path of probe. Valid path starts from '/'. Probe is sent to
+         :code:`<Protocol>`://:code:`<host>`::code:`<port>`:code:`<path>`.
+        :paramtype path: str
+        :keyword interval: The probing interval in seconds. This is the time interval between two
+         consecutive probes. Acceptable values are from 1 second to 86400 seconds.
+        :paramtype interval: int
+        :keyword timeout: the probe timeout in seconds. Probe marked as failed if valid response is not
+         received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
+        :paramtype timeout: int
+        :keyword unhealthy_threshold: The probe retry count. Backend server is marked down after
+         consecutive probe failure count reaches UnhealthyThreshold. Acceptable values are from 1 second
+         to 20.
+        :paramtype unhealthy_threshold: int
+        :keyword provisioning_state: Provisioning state of the backend http settings resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayProbe, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -637,28 +885,28 @@ class ApplicationGatewayProbe(SubResource):
 class ApplicationGatewayRequestRoutingRule(SubResource):
     """Request routing rule of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param rule_type: Rule type. Possible values are: 'Basic' and 'PathBasedRouting'. Possible
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar rule_type: Rule type. Possible values are: 'Basic' and 'PathBasedRouting'. Possible
      values include: "Basic", "PathBasedRouting".
-    :type rule_type: str or
+    :vartype rule_type: str or
      ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayRequestRoutingRuleType
-    :param backend_address_pool: Backend address pool resource of the application gateway.
-    :type backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param backend_http_settings: Frontend port resource of the application gateway.
-    :type backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param http_listener: Http listener resource of the application gateway.
-    :type http_listener: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param url_path_map: URL path map resource of the application gateway.
-    :type url_path_map: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Provisioning state of the request routing rule resource. Possible
+    :ivar backend_address_pool: Backend address pool resource of the application gateway.
+    :vartype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar backend_http_settings: Frontend port resource of the application gateway.
+    :vartype backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar http_listener: Http listener resource of the application gateway.
+    :vartype http_listener: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar url_path_map: URL path map resource of the application gateway.
+    :vartype url_path_map: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Provisioning state of the request routing rule resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -677,6 +925,30 @@ class ApplicationGatewayRequestRoutingRule(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword rule_type: Rule type. Possible values are: 'Basic' and 'PathBasedRouting'. Possible
+         values include: "Basic", "PathBasedRouting".
+        :paramtype rule_type: str or
+         ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayRequestRoutingRuleType
+        :keyword backend_address_pool: Backend address pool resource of the application gateway.
+        :paramtype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword backend_http_settings: Frontend port resource of the application gateway.
+        :paramtype backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword http_listener: Http listener resource of the application gateway.
+        :paramtype http_listener: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword url_path_map: URL path map resource of the application gateway.
+        :paramtype url_path_map: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Provisioning state of the request routing rule resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayRequestRoutingRule, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -691,14 +963,14 @@ class ApplicationGatewayRequestRoutingRule(SubResource):
 class ApplicationGatewaySku(msrest.serialization.Model):
     """SKU of application gateway.
 
-    :param name: Name of an application gateway SKU. Possible values are: 'Standard_Small',
+    :ivar name: Name of an application gateway SKU. Possible values are: 'Standard_Small',
      'Standard_Medium', 'Standard_Large', 'WAF_Medium', and 'WAF_Large'. Possible values include:
      "Standard_Small", "Standard_Medium", "Standard_Large".
-    :type name: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySkuName
-    :param tier: Tier of an application gateway. Possible values include: "Standard".
-    :type tier: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayTier
-    :param capacity: Capacity (instance count) of an application gateway.
-    :type capacity: int
+    :vartype name: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySkuName
+    :ivar tier: Tier of an application gateway. Possible values include: "Standard".
+    :vartype tier: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayTier
+    :ivar capacity: Capacity (instance count) of an application gateway.
+    :vartype capacity: int
     """
 
     _attribute_map = {
@@ -711,6 +983,16 @@ class ApplicationGatewaySku(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword name: Name of an application gateway SKU. Possible values are: 'Standard_Small',
+         'Standard_Medium', 'Standard_Large', 'WAF_Medium', and 'WAF_Large'. Possible values include:
+         "Standard_Small", "Standard_Medium", "Standard_Large".
+        :paramtype name: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewaySkuName
+        :keyword tier: Tier of an application gateway. Possible values include: "Standard".
+        :paramtype tier: str or ~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayTier
+        :keyword capacity: Capacity (instance count) of an application gateway.
+        :paramtype capacity: int
+        """
         super(ApplicationGatewaySku, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.tier = kwargs.get('tier', None)
@@ -720,23 +1002,23 @@ class ApplicationGatewaySku(msrest.serialization.Model):
 class ApplicationGatewaySslCertificate(SubResource):
     """SSL certificates of an application gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param data: Base-64 encoded pfx certificate. Only applicable in PUT Request.
-    :type data: str
-    :param password: Password for the pfx file specified in data. Only applicable in PUT request.
-    :type password: str
-    :param public_cert_data: Base-64 encoded Public cert data corresponding to pfx specified in
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar data: Base-64 encoded pfx certificate. Only applicable in PUT Request.
+    :vartype data: str
+    :ivar password: Password for the pfx file specified in data. Only applicable in PUT request.
+    :vartype password: str
+    :ivar public_cert_data: Base-64 encoded Public cert data corresponding to pfx specified in
      data. Only applicable in GET request.
-    :type public_cert_data: str
-    :param provisioning_state: Provisioning state of the SSL certificate resource Possible values
+    :vartype public_cert_data: str
+    :ivar provisioning_state: Provisioning state of the SSL certificate resource Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -753,6 +1035,25 @@ class ApplicationGatewaySslCertificate(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword data: Base-64 encoded pfx certificate. Only applicable in PUT Request.
+        :paramtype data: str
+        :keyword password: Password for the pfx file specified in data. Only applicable in PUT request.
+        :paramtype password: str
+        :keyword public_cert_data: Base-64 encoded Public cert data corresponding to pfx specified in
+         data. Only applicable in GET request.
+        :paramtype public_cert_data: str
+        :keyword provisioning_state: Provisioning state of the SSL certificate resource Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewaySslCertificate, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -765,22 +1066,22 @@ class ApplicationGatewaySslCertificate(SubResource):
 class ApplicationGatewayUrlPathMap(SubResource):
     """UrlPathMaps give a url path to the backend mapping information for PathBasedRouting.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Name of the resource that is unique within a resource group. This name can be used
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Name of the resource that is unique within a resource group. This name can be used
      to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param default_backend_address_pool: Default backend address pool resource of URL path map.
-    :type default_backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param default_backend_http_settings: Default backend http settings resource of URL path map.
-    :type default_backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param path_rules: Path rule of URL path map resource.
-    :type path_rules: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayPathRule]
-    :param provisioning_state: Provisioning state of the backend http settings resource. Possible
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar default_backend_address_pool: Default backend address pool resource of URL path map.
+    :vartype default_backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar default_backend_http_settings: Default backend http settings resource of URL path map.
+    :vartype default_backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar path_rules: Path rule of URL path map resource.
+    :vartype path_rules: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayPathRule]
+    :ivar provisioning_state: Provisioning state of the backend http settings resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -797,6 +1098,24 @@ class ApplicationGatewayUrlPathMap(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Name of the resource that is unique within a resource group. This name can be
+         used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword default_backend_address_pool: Default backend address pool resource of URL path map.
+        :paramtype default_backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword default_backend_http_settings: Default backend http settings resource of URL path map.
+        :paramtype default_backend_http_settings: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword path_rules: Path rule of URL path map resource.
+        :paramtype path_rules: list[~azure.mgmt.network.v2015_06_15.models.ApplicationGatewayPathRule]
+        :keyword provisioning_state: Provisioning state of the backend http settings resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ApplicationGatewayUrlPathMap, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -809,10 +1128,10 @@ class ApplicationGatewayUrlPathMap(SubResource):
 class AuthorizationListResult(msrest.serialization.Model):
     """Response for ListAuthorizations API service call retrieves all authorizations that belongs to an ExpressRouteCircuit.
 
-    :param value: The authorizations in an ExpressRoute Circuit.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitAuthorization]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: The authorizations in an ExpressRoute Circuit.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitAuthorization]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -824,6 +1143,12 @@ class AuthorizationListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The authorizations in an ExpressRoute Circuit.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitAuthorization]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(AuthorizationListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -832,11 +1157,11 @@ class AuthorizationListResult(msrest.serialization.Model):
 class AzureAsyncOperationResult(msrest.serialization.Model):
     """The response body contains the status of the specified asynchronous operation, indicating whether it has succeeded, is in progress, or has failed. Note that this status is distinct from the HTTP status code returned for the Get Operation Status operation itself. If the asynchronous operation succeeded, the response body includes the HTTP status code for the successful request. If the asynchronous operation failed, the response body includes the HTTP status code for the failed request and error information regarding the failure.
 
-    :param status: Status of the Azure async operation. Possible values are: 'InProgress',
+    :ivar status: Status of the Azure async operation. Possible values are: 'InProgress',
      'Succeeded', and 'Failed'. Possible values include: "InProgress", "Succeeded", "Failed".
-    :type status: str or ~azure.mgmt.network.v2015_06_15.models.NetworkOperationStatus
-    :param error: Error object properties.
-    :type error: ~azure.mgmt.network.v2015_06_15.models.Error
+    :vartype status: str or ~azure.mgmt.network.v2015_06_15.models.NetworkOperationStatus
+    :ivar error: Error object properties.
+    :vartype error: ~azure.mgmt.network.v2015_06_15.models.Error
     """
 
     _attribute_map = {
@@ -848,6 +1173,13 @@ class AzureAsyncOperationResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword status: Status of the Azure async operation. Possible values are: 'InProgress',
+         'Succeeded', and 'Failed'. Possible values include: "InProgress", "Succeeded", "Failed".
+        :paramtype status: str or ~azure.mgmt.network.v2015_06_15.models.NetworkOperationStatus
+        :keyword error: Error object properties.
+        :paramtype error: ~azure.mgmt.network.v2015_06_15.models.Error
+        """
         super(AzureAsyncOperationResult, self).__init__(**kwargs)
         self.status = kwargs.get('status', None)
         self.error = kwargs.get('error', None)
@@ -858,24 +1190,24 @@ class BackendAddressPool(SubResource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Gets name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Gets name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param backend_ip_configurations: Gets collection of references to IP addresses defined in
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar backend_ip_configurations: Gets collection of references to IP addresses defined in
      network interfaces.
-    :type backend_ip_configurations:
+    :vartype backend_ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration]
     :ivar load_balancing_rules: Gets load balancing rules that use this backend address pool.
     :vartype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param outbound_nat_rule: Gets outbound rules that use this backend address pool.
-    :type outbound_nat_rule: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Get provisioning state of the public IP resource. Possible values
+    :ivar outbound_nat_rule: Gets outbound rules that use this backend address pool.
+    :vartype outbound_nat_rule: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Get provisioning state of the public IP resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -896,6 +1228,24 @@ class BackendAddressPool(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Gets name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword backend_ip_configurations: Gets collection of references to IP addresses defined in
+         network interfaces.
+        :paramtype backend_ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration]
+        :keyword outbound_nat_rule: Gets outbound rules that use this backend address pool.
+        :paramtype outbound_nat_rule: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Get provisioning state of the public IP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(BackendAddressPool, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -908,13 +1258,13 @@ class BackendAddressPool(SubResource):
 class BgpSettings(msrest.serialization.Model):
     """BgpSettings.
 
-    :param asn: Gets or sets this BGP speaker's ASN.
-    :type asn: long
-    :param bgp_peering_address: Gets or sets the BGP peering address and BGP identifier of this BGP
+    :ivar asn: Gets or sets this BGP speaker's ASN.
+    :vartype asn: long
+    :ivar bgp_peering_address: Gets or sets the BGP peering address and BGP identifier of this BGP
      speaker.
-    :type bgp_peering_address: str
-    :param peer_weight: Gets or sets the weight added to routes learned from this BGP speaker.
-    :type peer_weight: int
+    :vartype bgp_peering_address: str
+    :ivar peer_weight: Gets or sets the weight added to routes learned from this BGP speaker.
+    :vartype peer_weight: int
     """
 
     _attribute_map = {
@@ -927,6 +1277,15 @@ class BgpSettings(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword asn: Gets or sets this BGP speaker's ASN.
+        :paramtype asn: long
+        :keyword bgp_peering_address: Gets or sets the BGP peering address and BGP identifier of this
+         BGP speaker.
+        :paramtype bgp_peering_address: str
+        :keyword peer_weight: Gets or sets the weight added to routes learned from this BGP speaker.
+        :paramtype peer_weight: int
+        """
         super(BgpSettings, self).__init__(**kwargs)
         self.asn = kwargs.get('asn', None)
         self.bgp_peering_address = kwargs.get('bgp_peering_address', None)
@@ -936,8 +1295,8 @@ class BgpSettings(msrest.serialization.Model):
 class ConnectionResetSharedKey(msrest.serialization.Model):
     """ConnectionResetSharedKey.
 
-    :param key_length: The virtual network connection reset shared key length.
-    :type key_length: long
+    :ivar key_length: The virtual network connection reset shared key length.
+    :vartype key_length: long
     """
 
     _attribute_map = {
@@ -948,6 +1307,10 @@ class ConnectionResetSharedKey(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword key_length: The virtual network connection reset shared key length.
+        :paramtype key_length: long
+        """
         super(ConnectionResetSharedKey, self).__init__(**kwargs)
         self.key_length = kwargs.get('key_length', None)
 
@@ -955,8 +1318,8 @@ class ConnectionResetSharedKey(msrest.serialization.Model):
 class ConnectionSharedKey(msrest.serialization.Model):
     """Response for GetConnectionSharedKey API service call.
 
-    :param value: The virtual network connection shared key value.
-    :type value: str
+    :ivar value: The virtual network connection shared key value.
+    :vartype value: str
     """
 
     _attribute_map = {
@@ -967,6 +1330,10 @@ class ConnectionSharedKey(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The virtual network connection shared key value.
+        :paramtype value: str
+        """
         super(ConnectionSharedKey, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
 
@@ -974,8 +1341,8 @@ class ConnectionSharedKey(msrest.serialization.Model):
 class ConnectionSharedKeyResult(msrest.serialization.Model):
     """Response for CheckConnectionSharedKey API service call.
 
-    :param value: The virtual network connection shared key value.
-    :type value: str
+    :ivar value: The virtual network connection shared key value.
+    :vartype value: str
     """
 
     _attribute_map = {
@@ -986,6 +1353,10 @@ class ConnectionSharedKeyResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The virtual network connection shared key value.
+        :paramtype value: str
+        """
         super(ConnectionSharedKeyResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
 
@@ -993,8 +1364,8 @@ class ConnectionSharedKeyResult(msrest.serialization.Model):
 class DhcpOptions(msrest.serialization.Model):
     """DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 
-    :param dns_servers: The list of DNS servers IP addresses.
-    :type dns_servers: list[str]
+    :ivar dns_servers: The list of DNS servers IP addresses.
+    :vartype dns_servers: list[str]
     """
 
     _attribute_map = {
@@ -1005,6 +1376,10 @@ class DhcpOptions(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword dns_servers: The list of DNS servers IP addresses.
+        :paramtype dns_servers: list[str]
+        """
         super(DhcpOptions, self).__init__(**kwargs)
         self.dns_servers = kwargs.get('dns_servers', None)
 
@@ -1012,8 +1387,8 @@ class DhcpOptions(msrest.serialization.Model):
 class DnsNameAvailabilityResult(msrest.serialization.Model):
     """Response for the CheckDnsNameAvailability API service call.
 
-    :param available: Domain availability (True/False).
-    :type available: bool
+    :ivar available: Domain availability (True/False).
+    :vartype available: bool
     """
 
     _attribute_map = {
@@ -1024,6 +1399,10 @@ class DnsNameAvailabilityResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword available: Domain availability (True/False).
+        :paramtype available: bool
+        """
         super(DnsNameAvailabilityResult, self).__init__(**kwargs)
         self.available = kwargs.get('available', None)
 
@@ -1031,16 +1410,16 @@ class DnsNameAvailabilityResult(msrest.serialization.Model):
 class Error(msrest.serialization.Model):
     """Error object properties.
 
-    :param code:
-    :type code: str
-    :param message:
-    :type message: str
-    :param target:
-    :type target: str
-    :param details:
-    :type details: list[~azure.mgmt.network.v2015_06_15.models.ErrorDetails]
-    :param inner_error:
-    :type inner_error: str
+    :ivar code:
+    :vartype code: str
+    :ivar message:
+    :vartype message: str
+    :ivar target:
+    :vartype target: str
+    :ivar details:
+    :vartype details: list[~azure.mgmt.network.v2015_06_15.models.ErrorDetails]
+    :ivar inner_error:
+    :vartype inner_error: str
     """
 
     _attribute_map = {
@@ -1055,6 +1434,18 @@ class Error(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword code:
+        :paramtype code: str
+        :keyword message:
+        :paramtype message: str
+        :keyword target:
+        :paramtype target: str
+        :keyword details:
+        :paramtype details: list[~azure.mgmt.network.v2015_06_15.models.ErrorDetails]
+        :keyword inner_error:
+        :paramtype inner_error: str
+        """
         super(Error, self).__init__(**kwargs)
         self.code = kwargs.get('code', None)
         self.message = kwargs.get('message', None)
@@ -1066,12 +1457,12 @@ class Error(msrest.serialization.Model):
 class ErrorDetails(msrest.serialization.Model):
     """Error details properties.
 
-    :param code:
-    :type code: str
-    :param target:
-    :type target: str
-    :param message:
-    :type message: str
+    :ivar code:
+    :vartype code: str
+    :ivar target:
+    :vartype target: str
+    :ivar message:
+    :vartype message: str
     """
 
     _attribute_map = {
@@ -1084,6 +1475,14 @@ class ErrorDetails(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword code:
+        :paramtype code: str
+        :keyword target:
+        :paramtype target: str
+        :keyword message:
+        :paramtype message: str
+        """
         super(ErrorDetails, self).__init__(**kwargs)
         self.code = kwargs.get('code', None)
         self.target = kwargs.get('target', None)
@@ -1095,43 +1494,43 @@ class ExpressRouteCircuit(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param sku: The SKU.
-    :type sku: ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSku
-    :param etag: Gets a unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param circuit_provisioning_state: The CircuitProvisioningState state of the resource.
-    :type circuit_provisioning_state: str
-    :param service_provider_provisioning_state: The ServiceProviderProvisioningState state of the
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar sku: The SKU.
+    :vartype sku: ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSku
+    :ivar etag: Gets a unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar circuit_provisioning_state: The CircuitProvisioningState state of the resource.
+    :vartype circuit_provisioning_state: str
+    :ivar service_provider_provisioning_state: The ServiceProviderProvisioningState state of the
      resource. Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned', and
      'Deprovisioning'. Possible values include: "NotProvisioned", "Provisioning", "Provisioned",
      "Deprovisioning".
-    :type service_provider_provisioning_state: str or
+    :vartype service_provider_provisioning_state: str or
      ~azure.mgmt.network.v2015_06_15.models.ServiceProviderProvisioningState
-    :param authorizations: The list of authorizations.
-    :type authorizations:
+    :ivar authorizations: The list of authorizations.
+    :vartype authorizations:
      list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitAuthorization]
-    :param peerings: The list of peerings.
-    :type peerings: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeering]
-    :param service_key: The ServiceKey.
-    :type service_key: str
-    :param service_provider_notes: The ServiceProviderNotes.
-    :type service_provider_notes: str
-    :param service_provider_properties: The ServiceProviderProperties.
-    :type service_provider_properties:
+    :ivar peerings: The list of peerings.
+    :vartype peerings: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeering]
+    :ivar service_key: The ServiceKey.
+    :vartype service_key: str
+    :ivar service_provider_notes: The ServiceProviderNotes.
+    :vartype service_provider_notes: str
+    :ivar service_provider_properties: The ServiceProviderProperties.
+    :vartype service_provider_properties:
      ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitServiceProviderProperties
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -1161,6 +1560,41 @@ class ExpressRouteCircuit(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword sku: The SKU.
+        :paramtype sku: ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSku
+        :keyword etag: Gets a unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword circuit_provisioning_state: The CircuitProvisioningState state of the resource.
+        :paramtype circuit_provisioning_state: str
+        :keyword service_provider_provisioning_state: The ServiceProviderProvisioningState state of the
+         resource. Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned', and
+         'Deprovisioning'. Possible values include: "NotProvisioned", "Provisioning", "Provisioned",
+         "Deprovisioning".
+        :paramtype service_provider_provisioning_state: str or
+         ~azure.mgmt.network.v2015_06_15.models.ServiceProviderProvisioningState
+        :keyword authorizations: The list of authorizations.
+        :paramtype authorizations:
+         list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitAuthorization]
+        :keyword peerings: The list of peerings.
+        :paramtype peerings: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeering]
+        :keyword service_key: The ServiceKey.
+        :paramtype service_key: str
+        :keyword service_provider_notes: The ServiceProviderNotes.
+        :paramtype service_provider_notes: str
+        :keyword service_provider_properties: The ServiceProviderProperties.
+        :paramtype service_provider_properties:
+         ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitServiceProviderProperties
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ExpressRouteCircuit, self).__init__(**kwargs)
         self.sku = kwargs.get('sku', None)
         self.etag = kwargs.get('etag', None)
@@ -1177,10 +1611,10 @@ class ExpressRouteCircuit(Resource):
 class ExpressRouteCircuitArpTable(msrest.serialization.Model):
     """The ARP table associated with the ExpressRouteCircuit.
 
-    :param ip_address: The IP address.
-    :type ip_address: str
-    :param mac_address: The MAC address.
-    :type mac_address: str
+    :ivar ip_address: The IP address.
+    :vartype ip_address: str
+    :ivar mac_address: The MAC address.
+    :vartype mac_address: str
     """
 
     _attribute_map = {
@@ -1192,6 +1626,12 @@ class ExpressRouteCircuitArpTable(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword ip_address: The IP address.
+        :paramtype ip_address: str
+        :keyword mac_address: The MAC address.
+        :paramtype mac_address: str
+        """
         super(ExpressRouteCircuitArpTable, self).__init__(**kwargs)
         self.ip_address = kwargs.get('ip_address', None)
         self.mac_address = kwargs.get('mac_address', None)
@@ -1200,22 +1640,22 @@ class ExpressRouteCircuitArpTable(msrest.serialization.Model):
 class ExpressRouteCircuitAuthorization(SubResource):
     """Authorization in an ExpressRouteCircuit resource.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Gets name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Gets name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param authorization_key: The authorization key.
-    :type authorization_key: str
-    :param authorization_use_status: AuthorizationUseStatus. Possible values are: 'Available' and
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar authorization_key: The authorization key.
+    :vartype authorization_key: str
+    :ivar authorization_use_status: AuthorizationUseStatus. Possible values are: 'Available' and
      'InUse'. Possible values include: "Available", "InUse".
-    :type authorization_use_status: str or
+    :vartype authorization_use_status: str or
      ~azure.mgmt.network.v2015_06_15.models.AuthorizationUseStatus
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -1231,6 +1671,24 @@ class ExpressRouteCircuitAuthorization(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Gets name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword authorization_key: The authorization key.
+        :paramtype authorization_key: str
+        :keyword authorization_use_status: AuthorizationUseStatus. Possible values are: 'Available' and
+         'InUse'. Possible values include: "Available", "InUse".
+        :paramtype authorization_use_status: str or
+         ~azure.mgmt.network.v2015_06_15.models.AuthorizationUseStatus
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ExpressRouteCircuitAuthorization, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -1242,10 +1700,10 @@ class ExpressRouteCircuitAuthorization(SubResource):
 class ExpressRouteCircuitListResult(msrest.serialization.Model):
     """Response for ListExpressRouteCircuit API service call.
 
-    :param value: A list of ExpressRouteCircuits in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuit]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of ExpressRouteCircuits in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuit]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -1257,6 +1715,12 @@ class ExpressRouteCircuitListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of ExpressRouteCircuits in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuit]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ExpressRouteCircuitListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -1265,45 +1729,45 @@ class ExpressRouteCircuitListResult(msrest.serialization.Model):
 class ExpressRouteCircuitPeering(SubResource):
     """Peering in an ExpressRouteCircuit resource.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Gets name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Gets name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param peering_type: The PeeringType. Possible values are: 'AzurePublicPeering',
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar peering_type: The PeeringType. Possible values are: 'AzurePublicPeering',
      'AzurePrivatePeering', and 'MicrosoftPeering'. Possible values include: "AzurePublicPeering",
      "AzurePrivatePeering", "MicrosoftPeering".
-    :type peering_type: str or
+    :vartype peering_type: str or
      ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringType
-    :param state: The state of peering. Possible values are: 'Disabled' and 'Enabled'. Possible
+    :ivar state: The state of peering. Possible values are: 'Disabled' and 'Enabled'. Possible
      values include: "Disabled", "Enabled".
-    :type state: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringState
-    :param azure_asn: The Azure ASN.
-    :type azure_asn: int
-    :param peer_asn: The peer ASN.
-    :type peer_asn: int
-    :param primary_peer_address_prefix: The primary address prefix.
-    :type primary_peer_address_prefix: str
-    :param secondary_peer_address_prefix: The secondary address prefix.
-    :type secondary_peer_address_prefix: str
-    :param primary_azure_port: The primary port.
-    :type primary_azure_port: str
-    :param secondary_azure_port: The secondary port.
-    :type secondary_azure_port: str
-    :param shared_key: The shared key.
-    :type shared_key: str
-    :param vlan_id: The VLAN ID.
-    :type vlan_id: int
-    :param microsoft_peering_config: The Microsoft peering configuration.
-    :type microsoft_peering_config:
+    :vartype state: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringState
+    :ivar azure_asn: The Azure ASN.
+    :vartype azure_asn: int
+    :ivar peer_asn: The peer ASN.
+    :vartype peer_asn: int
+    :ivar primary_peer_address_prefix: The primary address prefix.
+    :vartype primary_peer_address_prefix: str
+    :ivar secondary_peer_address_prefix: The secondary address prefix.
+    :vartype secondary_peer_address_prefix: str
+    :ivar primary_azure_port: The primary port.
+    :vartype primary_azure_port: str
+    :ivar secondary_azure_port: The secondary port.
+    :vartype secondary_azure_port: str
+    :ivar shared_key: The shared key.
+    :vartype shared_key: str
+    :ivar vlan_id: The VLAN ID.
+    :vartype vlan_id: int
+    :ivar microsoft_peering_config: The Microsoft peering configuration.
+    :vartype microsoft_peering_config:
      ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringConfig
-    :param stats: Gets peering stats.
-    :type stats: ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitStats
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :ivar stats: Gets peering stats.
+    :vartype stats: ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitStats
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -1329,6 +1793,47 @@ class ExpressRouteCircuitPeering(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Gets name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword peering_type: The PeeringType. Possible values are: 'AzurePublicPeering',
+         'AzurePrivatePeering', and 'MicrosoftPeering'. Possible values include: "AzurePublicPeering",
+         "AzurePrivatePeering", "MicrosoftPeering".
+        :paramtype peering_type: str or
+         ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringType
+        :keyword state: The state of peering. Possible values are: 'Disabled' and 'Enabled'. Possible
+         values include: "Disabled", "Enabled".
+        :paramtype state: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringState
+        :keyword azure_asn: The Azure ASN.
+        :paramtype azure_asn: int
+        :keyword peer_asn: The peer ASN.
+        :paramtype peer_asn: int
+        :keyword primary_peer_address_prefix: The primary address prefix.
+        :paramtype primary_peer_address_prefix: str
+        :keyword secondary_peer_address_prefix: The secondary address prefix.
+        :paramtype secondary_peer_address_prefix: str
+        :keyword primary_azure_port: The primary port.
+        :paramtype primary_azure_port: str
+        :keyword secondary_azure_port: The secondary port.
+        :paramtype secondary_azure_port: str
+        :keyword shared_key: The shared key.
+        :paramtype shared_key: str
+        :keyword vlan_id: The VLAN ID.
+        :paramtype vlan_id: int
+        :keyword microsoft_peering_config: The Microsoft peering configuration.
+        :paramtype microsoft_peering_config:
+         ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringConfig
+        :keyword stats: Gets peering stats.
+        :paramtype stats: ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitStats
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(ExpressRouteCircuitPeering, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -1350,17 +1855,17 @@ class ExpressRouteCircuitPeering(SubResource):
 class ExpressRouteCircuitPeeringConfig(msrest.serialization.Model):
     """Specifies the peering configuration.
 
-    :param advertised_public_prefixes: The reference of AdvertisedPublicPrefixes.
-    :type advertised_public_prefixes: list[str]
-    :param advertised_public_prefixes_state: AdvertisedPublicPrefixState of the Peering resource.
+    :ivar advertised_public_prefixes: The reference of AdvertisedPublicPrefixes.
+    :vartype advertised_public_prefixes: list[str]
+    :ivar advertised_public_prefixes_state: AdvertisedPublicPrefixState of the Peering resource.
      Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
      Possible values include: "NotConfigured", "Configuring", "Configured", "ValidationNeeded".
-    :type advertised_public_prefixes_state: str or
+    :vartype advertised_public_prefixes_state: str or
      ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
-    :param customer_asn: The CustomerASN of the peering.
-    :type customer_asn: int
-    :param routing_registry_name: The RoutingRegistryName of the configuration.
-    :type routing_registry_name: str
+    :ivar customer_asn: The CustomerASN of the peering.
+    :vartype customer_asn: int
+    :ivar routing_registry_name: The RoutingRegistryName of the configuration.
+    :vartype routing_registry_name: str
     """
 
     _attribute_map = {
@@ -1374,6 +1879,19 @@ class ExpressRouteCircuitPeeringConfig(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword advertised_public_prefixes: The reference of AdvertisedPublicPrefixes.
+        :paramtype advertised_public_prefixes: list[str]
+        :keyword advertised_public_prefixes_state: AdvertisedPublicPrefixState of the Peering resource.
+         Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+         Possible values include: "NotConfigured", "Configuring", "Configured", "ValidationNeeded".
+        :paramtype advertised_public_prefixes_state: str or
+         ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
+        :keyword customer_asn: The CustomerASN of the peering.
+        :paramtype customer_asn: int
+        :keyword routing_registry_name: The RoutingRegistryName of the configuration.
+        :paramtype routing_registry_name: str
+        """
         super(ExpressRouteCircuitPeeringConfig, self).__init__(**kwargs)
         self.advertised_public_prefixes = kwargs.get('advertised_public_prefixes', None)
         self.advertised_public_prefixes_state = kwargs.get('advertised_public_prefixes_state', None)
@@ -1384,10 +1902,10 @@ class ExpressRouteCircuitPeeringConfig(msrest.serialization.Model):
 class ExpressRouteCircuitPeeringListResult(msrest.serialization.Model):
     """Response for ListPeering API service call retrieves all peerings that belong to an ExpressRouteCircuit.
 
-    :param value: The peerings in an express route circuit.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeering]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: The peerings in an express route circuit.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeering]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -1399,6 +1917,12 @@ class ExpressRouteCircuitPeeringListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The peerings in an express route circuit.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitPeering]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ExpressRouteCircuitPeeringListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -1409,15 +1933,15 @@ class ExpressRouteCircuitRoutesTable(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :param address_prefix: Gets AddressPrefix.
-    :type address_prefix: str
-    :param next_hop_type: Required. Gets NextHopType. Possible values include:
+    :ivar address_prefix: Gets AddressPrefix.
+    :vartype address_prefix: str
+    :ivar next_hop_type: Required. Gets NextHopType. Possible values include:
      "VirtualNetworkGateway", "VnetLocal", "Internet", "VirtualAppliance", "None".
-    :type next_hop_type: str or ~azure.mgmt.network.v2015_06_15.models.RouteNextHopType
-    :param next_hop_ip: Gets NextHopIP.
-    :type next_hop_ip: str
-    :param as_path: Gets AsPath.
-    :type as_path: str
+    :vartype next_hop_type: str or ~azure.mgmt.network.v2015_06_15.models.RouteNextHopType
+    :ivar next_hop_ip: Gets NextHopIP.
+    :vartype next_hop_ip: str
+    :ivar as_path: Gets AsPath.
+    :vartype as_path: str
     """
 
     _validation = {
@@ -1435,6 +1959,17 @@ class ExpressRouteCircuitRoutesTable(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword address_prefix: Gets AddressPrefix.
+        :paramtype address_prefix: str
+        :keyword next_hop_type: Required. Gets NextHopType. Possible values include:
+         "VirtualNetworkGateway", "VnetLocal", "Internet", "VirtualAppliance", "None".
+        :paramtype next_hop_type: str or ~azure.mgmt.network.v2015_06_15.models.RouteNextHopType
+        :keyword next_hop_ip: Gets NextHopIP.
+        :paramtype next_hop_ip: str
+        :keyword as_path: Gets AsPath.
+        :paramtype as_path: str
+        """
         super(ExpressRouteCircuitRoutesTable, self).__init__(**kwargs)
         self.address_prefix = kwargs.get('address_prefix', None)
         self.next_hop_type = kwargs['next_hop_type']
@@ -1445,10 +1980,10 @@ class ExpressRouteCircuitRoutesTable(msrest.serialization.Model):
 class ExpressRouteCircuitsArpTableListResult(msrest.serialization.Model):
     """Response for ListArpTable associated with the Express Route Circuits API.
 
-    :param value: Gets list of the ARP table.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitArpTable]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets list of the ARP table.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitArpTable]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -1460,6 +1995,12 @@ class ExpressRouteCircuitsArpTableListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets list of the ARP table.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitArpTable]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ExpressRouteCircuitsArpTableListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -1468,12 +2009,12 @@ class ExpressRouteCircuitsArpTableListResult(msrest.serialization.Model):
 class ExpressRouteCircuitServiceProviderProperties(msrest.serialization.Model):
     """Contains ServiceProviderProperties in an ExpressRouteCircuit.
 
-    :param service_provider_name: The serviceProviderName.
-    :type service_provider_name: str
-    :param peering_location: The peering location.
-    :type peering_location: str
-    :param bandwidth_in_mbps: The BandwidthInMbps.
-    :type bandwidth_in_mbps: int
+    :ivar service_provider_name: The serviceProviderName.
+    :vartype service_provider_name: str
+    :ivar peering_location: The peering location.
+    :vartype peering_location: str
+    :ivar bandwidth_in_mbps: The BandwidthInMbps.
+    :vartype bandwidth_in_mbps: int
     """
 
     _attribute_map = {
@@ -1486,6 +2027,14 @@ class ExpressRouteCircuitServiceProviderProperties(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword service_provider_name: The serviceProviderName.
+        :paramtype service_provider_name: str
+        :keyword peering_location: The peering location.
+        :paramtype peering_location: str
+        :keyword bandwidth_in_mbps: The BandwidthInMbps.
+        :paramtype bandwidth_in_mbps: int
+        """
         super(ExpressRouteCircuitServiceProviderProperties, self).__init__(**kwargs)
         self.service_provider_name = kwargs.get('service_provider_name', None)
         self.peering_location = kwargs.get('peering_location', None)
@@ -1495,14 +2044,14 @@ class ExpressRouteCircuitServiceProviderProperties(msrest.serialization.Model):
 class ExpressRouteCircuitSku(msrest.serialization.Model):
     """Contains SKU in an ExpressRouteCircuit.
 
-    :param name: The name of the SKU.
-    :type name: str
-    :param tier: The tier of the SKU. Possible values are 'Standard' and 'Premium'. Possible values
+    :ivar name: The name of the SKU.
+    :vartype name: str
+    :ivar tier: The tier of the SKU. Possible values are 'Standard' and 'Premium'. Possible values
      include: "Standard", "Premium".
-    :type tier: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSkuTier
-    :param family: The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
+    :vartype tier: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSkuTier
+    :ivar family: The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
      Possible values include: "UnlimitedData", "MeteredData".
-    :type family: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSkuFamily
+    :vartype family: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSkuFamily
     """
 
     _attribute_map = {
@@ -1515,6 +2064,16 @@ class ExpressRouteCircuitSku(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword name: The name of the SKU.
+        :paramtype name: str
+        :keyword tier: The tier of the SKU. Possible values are 'Standard' and 'Premium'. Possible
+         values include: "Standard", "Premium".
+        :paramtype tier: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSkuTier
+        :keyword family: The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
+         Possible values include: "UnlimitedData", "MeteredData".
+        :paramtype family: str or ~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitSkuFamily
+        """
         super(ExpressRouteCircuitSku, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.tier = kwargs.get('tier', None)
@@ -1524,10 +2083,10 @@ class ExpressRouteCircuitSku(msrest.serialization.Model):
 class ExpressRouteCircuitsRoutesTableListResult(msrest.serialization.Model):
     """Response for ListRoutesTable associated with the Express Route Circuits API.
 
-    :param value: The list of routes table.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitRoutesTable]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: The list of routes table.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitRoutesTable]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -1539,6 +2098,12 @@ class ExpressRouteCircuitsRoutesTableListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The list of routes table.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitRoutesTable]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ExpressRouteCircuitsRoutesTableListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -1547,10 +2112,10 @@ class ExpressRouteCircuitsRoutesTableListResult(msrest.serialization.Model):
 class ExpressRouteCircuitsStatsListResult(msrest.serialization.Model):
     """Response for ListStats from Express Route Circuits Api service call.
 
-    :param value: Gets List of Stats.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitStats]
-    :param next_link: Gets the URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets List of Stats.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitStats]
+    :ivar next_link: Gets the URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -1562,6 +2127,12 @@ class ExpressRouteCircuitsStatsListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets List of Stats.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteCircuitStats]
+        :keyword next_link: Gets the URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ExpressRouteCircuitsStatsListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -1570,10 +2141,10 @@ class ExpressRouteCircuitsStatsListResult(msrest.serialization.Model):
 class ExpressRouteCircuitStats(msrest.serialization.Model):
     """Contains stats associated with the peering.
 
-    :param bytes_in: Gets BytesIn of the peering.
-    :type bytes_in: int
-    :param bytes_out: Gets BytesOut of the peering.
-    :type bytes_out: int
+    :ivar bytes_in: Gets BytesIn of the peering.
+    :vartype bytes_in: int
+    :ivar bytes_out: Gets BytesOut of the peering.
+    :vartype bytes_out: int
     """
 
     _attribute_map = {
@@ -1585,6 +2156,12 @@ class ExpressRouteCircuitStats(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword bytes_in: Gets BytesIn of the peering.
+        :paramtype bytes_in: int
+        :keyword bytes_out: Gets BytesOut of the peering.
+        :paramtype bytes_out: int
+        """
         super(ExpressRouteCircuitStats, self).__init__(**kwargs)
         self.bytes_in = kwargs.get('bytes_in', None)
         self.bytes_out = kwargs.get('bytes_out', None)
@@ -1595,23 +2172,23 @@ class ExpressRouteServiceProvider(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param peering_locations: Get a list of peering locations.
-    :type peering_locations: list[str]
-    :param bandwidths_offered: Gets bandwidths offered.
-    :type bandwidths_offered:
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar peering_locations: Get a list of peering locations.
+    :vartype peering_locations: list[str]
+    :ivar bandwidths_offered: Gets bandwidths offered.
+    :vartype bandwidths_offered:
      list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteServiceProviderBandwidthsOffered]
-    :param provisioning_state: Gets the provisioning state of the resource.
-    :type provisioning_state: str
+    :ivar provisioning_state: Gets the provisioning state of the resource.
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -1634,6 +2211,21 @@ class ExpressRouteServiceProvider(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword peering_locations: Get a list of peering locations.
+        :paramtype peering_locations: list[str]
+        :keyword bandwidths_offered: Gets bandwidths offered.
+        :paramtype bandwidths_offered:
+         list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteServiceProviderBandwidthsOffered]
+        :keyword provisioning_state: Gets the provisioning state of the resource.
+        :paramtype provisioning_state: str
+        """
         super(ExpressRouteServiceProvider, self).__init__(**kwargs)
         self.peering_locations = kwargs.get('peering_locations', None)
         self.bandwidths_offered = kwargs.get('bandwidths_offered', None)
@@ -1643,10 +2235,10 @@ class ExpressRouteServiceProvider(Resource):
 class ExpressRouteServiceProviderBandwidthsOffered(msrest.serialization.Model):
     """Contains bandwidths offered in ExpressRouteServiceProvider resources.
 
-    :param offer_name: The OfferName.
-    :type offer_name: str
-    :param value_in_mbps: The ValueInMbps.
-    :type value_in_mbps: int
+    :ivar offer_name: The OfferName.
+    :vartype offer_name: str
+    :ivar value_in_mbps: The ValueInMbps.
+    :vartype value_in_mbps: int
     """
 
     _attribute_map = {
@@ -1658,6 +2250,12 @@ class ExpressRouteServiceProviderBandwidthsOffered(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword offer_name: The OfferName.
+        :paramtype offer_name: str
+        :keyword value_in_mbps: The ValueInMbps.
+        :paramtype value_in_mbps: int
+        """
         super(ExpressRouteServiceProviderBandwidthsOffered, self).__init__(**kwargs)
         self.offer_name = kwargs.get('offer_name', None)
         self.value_in_mbps = kwargs.get('value_in_mbps', None)
@@ -1666,10 +2264,10 @@ class ExpressRouteServiceProviderBandwidthsOffered(msrest.serialization.Model):
 class ExpressRouteServiceProviderListResult(msrest.serialization.Model):
     """Response for the ListExpressRouteServiceProvider API service call.
 
-    :param value: A list of ExpressRouteResourceProvider resources.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteServiceProvider]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of ExpressRouteResourceProvider resources.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteServiceProvider]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -1681,6 +2279,12 @@ class ExpressRouteServiceProviderListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of ExpressRouteResourceProvider resources.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.ExpressRouteServiceProvider]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(ExpressRouteServiceProviderListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -1689,34 +2293,34 @@ class ExpressRouteServiceProviderListResult(msrest.serialization.Model):
 class FrontendIPConfiguration(SubResource):
     """Frontend IP address of the load balancer.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param inbound_nat_rules: Read only. Inbound rules URIs that use this frontend IP.
-    :type inbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param inbound_nat_pools: Read only. Inbound pools URIs that use this frontend IP.
-    :type inbound_nat_pools: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param outbound_nat_rules: Read only. Outbound rules URIs that use this frontend IP.
-    :type outbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param load_balancing_rules: Gets load balancing rules URIs that use this frontend IP.
-    :type load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param private_ip_address: The private IP address of the IP configuration.
-    :type private_ip_address: str
-    :param private_ip_allocation_method: The Private IP allocation method. Possible values are:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar inbound_nat_rules: Read only. Inbound rules URIs that use this frontend IP.
+    :vartype inbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+    :ivar inbound_nat_pools: Read only. Inbound pools URIs that use this frontend IP.
+    :vartype inbound_nat_pools: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+    :ivar outbound_nat_rules: Read only. Outbound rules URIs that use this frontend IP.
+    :vartype outbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+    :ivar load_balancing_rules: Gets load balancing rules URIs that use this frontend IP.
+    :vartype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+    :ivar private_ip_address: The private IP address of the IP configuration.
+    :vartype private_ip_address: str
+    :ivar private_ip_allocation_method: The Private IP allocation method. Possible values are:
      'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
-    :type private_ip_allocation_method: str or
+    :vartype private_ip_allocation_method: str or
      ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
-    :param subnet: The reference of the subnet resource.
-    :type subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
-    :param public_ip_address: The reference of the Public IP resource.
-    :type public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :ivar subnet: The reference of the subnet resource.
+    :vartype subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
+    :ivar public_ip_address: The reference of the Public IP resource.
+    :vartype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -1738,6 +2342,36 @@ class FrontendIPConfiguration(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword inbound_nat_rules: Read only. Inbound rules URIs that use this frontend IP.
+        :paramtype inbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+        :keyword inbound_nat_pools: Read only. Inbound pools URIs that use this frontend IP.
+        :paramtype inbound_nat_pools: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+        :keyword outbound_nat_rules: Read only. Outbound rules URIs that use this frontend IP.
+        :paramtype outbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+        :keyword load_balancing_rules: Gets load balancing rules URIs that use this frontend IP.
+        :paramtype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+        :keyword private_ip_address: The private IP address of the IP configuration.
+        :paramtype private_ip_address: str
+        :keyword private_ip_allocation_method: The Private IP allocation method. Possible values are:
+         'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
+        :paramtype private_ip_allocation_method: str or
+         ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
+        :keyword subnet: The reference of the subnet resource.
+        :paramtype subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
+        :keyword public_ip_address: The reference of the Public IP resource.
+        :paramtype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(FrontendIPConfiguration, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -1755,32 +2389,32 @@ class FrontendIPConfiguration(SubResource):
 class InboundNatPool(SubResource):
     """Inbound NAT pool of the load balancer.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param frontend_ip_configuration: A reference to frontend IP addresses.
-    :type frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param protocol: The transport protocol for the endpoint. Possible values are: 'Udp' or 'Tcp'.
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar frontend_ip_configuration: A reference to frontend IP addresses.
+    :vartype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar protocol: The transport protocol for the endpoint. Possible values are: 'Udp' or 'Tcp'.
      Possible values include: "Udp", "Tcp".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
-    :param frontend_port_range_start: The first port number in the range of external ports that
-     will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values
-     range between 1 and 65534.
-    :type frontend_port_range_start: int
-    :param frontend_port_range_end: The last port number in the range of external ports that will
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
+    :ivar frontend_port_range_start: The first port number in the range of external ports that will
      be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range
+     between 1 and 65534.
+    :vartype frontend_port_range_start: int
+    :ivar frontend_port_range_end: The last port number in the range of external ports that will be
+     used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range
      between 1 and 65535.
-    :type frontend_port_range_end: int
-    :param backend_port: The port used for internal connections on the endpoint. Acceptable values
+    :vartype frontend_port_range_end: int
+    :ivar backend_port: The port used for internal connections on the endpoint. Acceptable values
      are between 1 and 65535.
-    :type backend_port: int
-    :param provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
-     values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype backend_port: int
+    :ivar provisioning_state: Gets the provisioning state of the PublicIP resource. Possible values
+     are: 'Updating', 'Deleting', and 'Failed'.
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -1799,6 +2433,34 @@ class InboundNatPool(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword frontend_ip_configuration: A reference to frontend IP addresses.
+        :paramtype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword protocol: The transport protocol for the endpoint. Possible values are: 'Udp' or
+         'Tcp'. Possible values include: "Udp", "Tcp".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
+        :keyword frontend_port_range_start: The first port number in the range of external ports that
+         will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values
+         range between 1 and 65534.
+        :paramtype frontend_port_range_start: int
+        :keyword frontend_port_range_end: The last port number in the range of external ports that will
+         be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range
+         between 1 and 65535.
+        :paramtype frontend_port_range_end: int
+        :keyword backend_port: The port used for internal connections on the endpoint. Acceptable
+         values are between 1 and 65535.
+        :paramtype backend_port: int
+        :keyword provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(InboundNatPool, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -1813,41 +2475,41 @@ class InboundNatPool(SubResource):
 class InboundNatRule(SubResource):
     """Inbound NAT rule of the load balancer.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Gets name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Gets name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param frontend_ip_configuration: A reference to frontend IP addresses.
-    :type frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param backend_ip_configuration: A reference to a private IP address defined on a network
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar frontend_ip_configuration: A reference to frontend IP addresses.
+    :vartype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar backend_ip_configuration: A reference to a private IP address defined on a network
      interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations
      is forwarded to the backed IP.
-    :type backend_ip_configuration:
+    :vartype backend_ip_configuration:
      ~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration
-    :param protocol: The transport protocol for the endpoint. Possible values are: 'Udp' or 'Tcp'.
+    :ivar protocol: The transport protocol for the endpoint. Possible values are: 'Udp' or 'Tcp'.
      Possible values include: "Udp", "Tcp".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
-    :param frontend_port: The port for the external endpoint. Port numbers for each rule must be
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
+    :ivar frontend_port: The port for the external endpoint. Port numbers for each rule must be
      unique within the Load Balancer. Acceptable values range from 1 to 65534.
-    :type frontend_port: int
-    :param backend_port: The port used for the internal endpoint. Acceptable values range from 1 to
+    :vartype frontend_port: int
+    :ivar backend_port: The port used for the internal endpoint. Acceptable values range from 1 to
      65535.
-    :type backend_port: int
-    :param idle_timeout_in_minutes: The timeout for the TCP idle connection. The value can be set
+    :vartype backend_port: int
+    :ivar idle_timeout_in_minutes: The timeout for the TCP idle connection. The value can be set
      between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the
      protocol is set to TCP.
-    :type idle_timeout_in_minutes: int
-    :param enable_floating_ip: Configures a virtual machine's endpoint for the floating IP
+    :vartype idle_timeout_in_minutes: int
+    :ivar enable_floating_ip: Configures a virtual machine's endpoint for the floating IP
      capability required to configure a SQL AlwaysOn Availability Group. This setting is required
      when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed
      after you create the endpoint.
-    :type enable_floating_ip: bool
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :vartype enable_floating_ip: bool
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -1868,6 +2530,43 @@ class InboundNatRule(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Gets name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword frontend_ip_configuration: A reference to frontend IP addresses.
+        :paramtype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword backend_ip_configuration: A reference to a private IP address defined on a network
+         interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations
+         is forwarded to the backed IP.
+        :paramtype backend_ip_configuration:
+         ~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration
+        :keyword protocol: The transport protocol for the endpoint. Possible values are: 'Udp' or
+         'Tcp'. Possible values include: "Udp", "Tcp".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
+        :keyword frontend_port: The port for the external endpoint. Port numbers for each rule must be
+         unique within the Load Balancer. Acceptable values range from 1 to 65534.
+        :paramtype frontend_port: int
+        :keyword backend_port: The port used for the internal endpoint. Acceptable values range from 1
+         to 65535.
+        :paramtype backend_port: int
+        :keyword idle_timeout_in_minutes: The timeout for the TCP idle connection. The value can be set
+         between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the
+         protocol is set to TCP.
+        :paramtype idle_timeout_in_minutes: int
+        :keyword enable_floating_ip: Configures a virtual machine's endpoint for the floating IP
+         capability required to configure a SQL AlwaysOn Availability Group. This setting is required
+         when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed
+         after you create the endpoint.
+        :paramtype enable_floating_ip: bool
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(InboundNatRule, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -1884,26 +2583,26 @@ class InboundNatRule(SubResource):
 class IPConfiguration(SubResource):
     """IPConfiguration.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param private_ip_address: The private IP address of the IP configuration.
-    :type private_ip_address: str
-    :param private_ip_allocation_method: The private IP allocation method. Possible values are
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar private_ip_address: The private IP address of the IP configuration.
+    :vartype private_ip_address: str
+    :ivar private_ip_allocation_method: The private IP allocation method. Possible values are
      'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
-    :type private_ip_allocation_method: str or
+    :vartype private_ip_allocation_method: str or
      ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
-    :param subnet: The reference of the subnet resource.
-    :type subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
-    :param public_ip_address: The reference of the public IP resource.
-    :type public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :ivar subnet: The reference of the subnet resource.
+    :vartype subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
+    :ivar public_ip_address: The reference of the public IP resource.
+    :vartype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -1921,6 +2620,28 @@ class IPConfiguration(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword private_ip_address: The private IP address of the IP configuration.
+        :paramtype private_ip_address: str
+        :keyword private_ip_allocation_method: The private IP allocation method. Possible values are
+         'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
+        :paramtype private_ip_allocation_method: str or
+         ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
+        :keyword subnet: The reference of the subnet resource.
+        :paramtype subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
+        :keyword public_ip_address: The reference of the public IP resource.
+        :paramtype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(IPConfiguration, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -1936,50 +2657,50 @@ class LoadBalancer(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param frontend_ip_configurations: Object representing the frontend IPs to be used for the load
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar frontend_ip_configurations: Object representing the frontend IPs to be used for the load
      balancer.
-    :type frontend_ip_configurations:
+    :vartype frontend_ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.FrontendIPConfiguration]
-    :param backend_address_pools: Collection of backend address pools used by a load balancer.
-    :type backend_address_pools: list[~azure.mgmt.network.v2015_06_15.models.BackendAddressPool]
-    :param load_balancing_rules: Object collection representing the load balancing rules Gets the
+    :ivar backend_address_pools: Collection of backend address pools used by a load balancer.
+    :vartype backend_address_pools: list[~azure.mgmt.network.v2015_06_15.models.BackendAddressPool]
+    :ivar load_balancing_rules: Object collection representing the load balancing rules Gets the
      provisioning.
-    :type load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.LoadBalancingRule]
-    :param probes: Collection of probe objects used in the load balancer.
-    :type probes: list[~azure.mgmt.network.v2015_06_15.models.Probe]
-    :param inbound_nat_rules: Collection of inbound NAT Rules used by a load balancer. Defining
+    :vartype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.LoadBalancingRule]
+    :ivar probes: Collection of probe objects used in the load balancer.
+    :vartype probes: list[~azure.mgmt.network.v2015_06_15.models.Probe]
+    :ivar inbound_nat_rules: Collection of inbound NAT Rules used by a load balancer. Defining
      inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT
      pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are
      associated with individual virtual machines cannot reference an Inbound NAT pool. They have to
      reference individual inbound NAT rules.
-    :type inbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.InboundNatRule]
-    :param inbound_nat_pools: Defines an external port range for inbound NAT to a single backend
+    :vartype inbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.InboundNatRule]
+    :ivar inbound_nat_pools: Defines an external port range for inbound NAT to a single backend
      port on NICs associated with a load balancer. Inbound NAT rules are created automatically for
      each NIC associated with the Load Balancer using an external port from this range. Defining an
      Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules.
      Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with
      individual virtual machines cannot reference an inbound NAT pool. They have to reference
      individual inbound NAT rules.
-    :type inbound_nat_pools: list[~azure.mgmt.network.v2015_06_15.models.InboundNatPool]
-    :param outbound_nat_rules: The outbound NAT rules.
-    :type outbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.OutboundNatRule]
-    :param resource_guid: The resource GUID property of the load balancer resource.
-    :type resource_guid: str
-    :param provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
-     values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype inbound_nat_pools: list[~azure.mgmt.network.v2015_06_15.models.InboundNatPool]
+    :ivar outbound_nat_rules: The outbound NAT rules.
+    :vartype outbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.OutboundNatRule]
+    :ivar resource_guid: The resource GUID property of the load balancer resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: Gets the provisioning state of the PublicIP resource. Possible values
+     are: 'Updating', 'Deleting', and 'Failed'.
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -2009,6 +2730,49 @@ class LoadBalancer(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword frontend_ip_configurations: Object representing the frontend IPs to be used for the
+         load balancer.
+        :paramtype frontend_ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.FrontendIPConfiguration]
+        :keyword backend_address_pools: Collection of backend address pools used by a load balancer.
+        :paramtype backend_address_pools:
+         list[~azure.mgmt.network.v2015_06_15.models.BackendAddressPool]
+        :keyword load_balancing_rules: Object collection representing the load balancing rules Gets the
+         provisioning.
+        :paramtype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.LoadBalancingRule]
+        :keyword probes: Collection of probe objects used in the load balancer.
+        :paramtype probes: list[~azure.mgmt.network.v2015_06_15.models.Probe]
+        :keyword inbound_nat_rules: Collection of inbound NAT Rules used by a load balancer. Defining
+         inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT
+         pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are
+         associated with individual virtual machines cannot reference an Inbound NAT pool. They have to
+         reference individual inbound NAT rules.
+        :paramtype inbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.InboundNatRule]
+        :keyword inbound_nat_pools: Defines an external port range for inbound NAT to a single backend
+         port on NICs associated with a load balancer. Inbound NAT rules are created automatically for
+         each NIC associated with the Load Balancer using an external port from this range. Defining an
+         Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules.
+         Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with
+         individual virtual machines cannot reference an inbound NAT pool. They have to reference
+         individual inbound NAT rules.
+        :paramtype inbound_nat_pools: list[~azure.mgmt.network.v2015_06_15.models.InboundNatPool]
+        :keyword outbound_nat_rules: The outbound NAT rules.
+        :paramtype outbound_nat_rules: list[~azure.mgmt.network.v2015_06_15.models.OutboundNatRule]
+        :keyword resource_guid: The resource GUID property of the load balancer resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(LoadBalancer, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.frontend_ip_configurations = kwargs.get('frontend_ip_configurations', None)
@@ -2025,10 +2789,10 @@ class LoadBalancer(Resource):
 class LoadBalancerListResult(msrest.serialization.Model):
     """Response for ListLoadBalancers API service call.
 
-    :param value: A list of load balancers in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.LoadBalancer]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of load balancers in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.LoadBalancer]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2040,6 +2804,12 @@ class LoadBalancerListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of load balancers in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.LoadBalancer]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(LoadBalancerListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2048,45 +2818,45 @@ class LoadBalancerListResult(msrest.serialization.Model):
 class LoadBalancingRule(SubResource):
     """A load balancing rule for a load balancer.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param frontend_ip_configuration: A reference to frontend IP addresses.
-    :type frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param backend_address_pool: A reference to a pool of DIPs. Inbound traffic is randomly load
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar frontend_ip_configuration: A reference to frontend IP addresses.
+    :vartype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar backend_address_pool: A reference to a pool of DIPs. Inbound traffic is randomly load
      balanced across IPs in the backend IPs.
-    :type backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param probe: The reference of the load balancer probe used by the load balancing rule.
-    :type probe: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param protocol: The transport protocol for the external endpoint. Possible values are 'Udp' or
+    :vartype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar probe: The reference of the load balancer probe used by the load balancing rule.
+    :vartype probe: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar protocol: The transport protocol for the external endpoint. Possible values are 'Udp' or
      'Tcp'. Possible values include: "Udp", "Tcp".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
-    :param load_distribution: The load distribution policy for this rule. Possible values are
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
+    :ivar load_distribution: The load distribution policy for this rule. Possible values are
      'Default', 'SourceIP', and 'SourceIPProtocol'. Possible values include: "Default", "SourceIP",
      "SourceIPProtocol".
-    :type load_distribution: str or ~azure.mgmt.network.v2015_06_15.models.LoadDistribution
-    :param frontend_port: The port for the external endpoint. Port numbers for each rule must be
+    :vartype load_distribution: str or ~azure.mgmt.network.v2015_06_15.models.LoadDistribution
+    :ivar frontend_port: The port for the external endpoint. Port numbers for each rule must be
      unique within the Load Balancer. Acceptable values are between 1 and 65534.
-    :type frontend_port: int
-    :param backend_port: The port used for internal connections on the endpoint. Acceptable values
+    :vartype frontend_port: int
+    :ivar backend_port: The port used for internal connections on the endpoint. Acceptable values
      are between 1 and 65535.
-    :type backend_port: int
-    :param idle_timeout_in_minutes: The timeout for the TCP idle connection. The value can be set
+    :vartype backend_port: int
+    :ivar idle_timeout_in_minutes: The timeout for the TCP idle connection. The value can be set
      between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the
      protocol is set to TCP.
-    :type idle_timeout_in_minutes: int
-    :param enable_floating_ip: Configures a virtual machine's endpoint for the floating IP
+    :vartype idle_timeout_in_minutes: int
+    :ivar enable_floating_ip: Configures a virtual machine's endpoint for the floating IP
      capability required to configure a SQL AlwaysOn Availability Group. This setting is required
      when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed
      after you create the endpoint.
-    :type enable_floating_ip: bool
-    :param provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
-     values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype enable_floating_ip: bool
+    :ivar provisioning_state: Gets the provisioning state of the PublicIP resource. Possible values
+     are: 'Updating', 'Deleting', and 'Failed'.
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -2109,6 +2879,47 @@ class LoadBalancingRule(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword frontend_ip_configuration: A reference to frontend IP addresses.
+        :paramtype frontend_ip_configuration: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword backend_address_pool: A reference to a pool of DIPs. Inbound traffic is randomly load
+         balanced across IPs in the backend IPs.
+        :paramtype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword probe: The reference of the load balancer probe used by the load balancing rule.
+        :paramtype probe: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword protocol: The transport protocol for the external endpoint. Possible values are 'Udp'
+         or 'Tcp'. Possible values include: "Udp", "Tcp".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.TransportProtocol
+        :keyword load_distribution: The load distribution policy for this rule. Possible values are
+         'Default', 'SourceIP', and 'SourceIPProtocol'. Possible values include: "Default", "SourceIP",
+         "SourceIPProtocol".
+        :paramtype load_distribution: str or ~azure.mgmt.network.v2015_06_15.models.LoadDistribution
+        :keyword frontend_port: The port for the external endpoint. Port numbers for each rule must be
+         unique within the Load Balancer. Acceptable values are between 1 and 65534.
+        :paramtype frontend_port: int
+        :keyword backend_port: The port used for internal connections on the endpoint. Acceptable
+         values are between 1 and 65535.
+        :paramtype backend_port: int
+        :keyword idle_timeout_in_minutes: The timeout for the TCP idle connection. The value can be set
+         between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the
+         protocol is set to TCP.
+        :paramtype idle_timeout_in_minutes: int
+        :keyword enable_floating_ip: Configures a virtual machine's endpoint for the floating IP
+         capability required to configure a SQL AlwaysOn Availability Group. This setting is required
+         when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed
+         after you create the endpoint.
+        :paramtype enable_floating_ip: bool
+        :keyword provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(LoadBalancingRule, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -2129,29 +2940,29 @@ class LocalNetworkGateway(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: Gets a unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param local_network_address_space: Local network site address space.
-    :type local_network_address_space: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
-    :param gateway_ip_address: IP address of local network gateway.
-    :type gateway_ip_address: str
-    :param bgp_settings: Local network gateway's BGP speaker settings.
-    :type bgp_settings: ~azure.mgmt.network.v2015_06_15.models.BgpSettings
-    :param resource_guid: The resource GUID property of the LocalNetworkGateway resource.
-    :type resource_guid: str
-    :param provisioning_state: Gets or sets Provisioning state of the LocalNetworkGateway resource
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: Gets a unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar local_network_address_space: Local network site address space.
+    :vartype local_network_address_space: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
+    :ivar gateway_ip_address: IP address of local network gateway.
+    :vartype gateway_ip_address: str
+    :ivar bgp_settings: Local network gateway's BGP speaker settings.
+    :vartype bgp_settings: ~azure.mgmt.network.v2015_06_15.models.BgpSettings
+    :ivar resource_guid: The resource GUID property of the LocalNetworkGateway resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: Gets or sets Provisioning state of the LocalNetworkGateway resource
      Updating/Deleting/Failed.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -2177,6 +2988,27 @@ class LocalNetworkGateway(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: Gets a unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword local_network_address_space: Local network site address space.
+        :paramtype local_network_address_space: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
+        :keyword gateway_ip_address: IP address of local network gateway.
+        :paramtype gateway_ip_address: str
+        :keyword bgp_settings: Local network gateway's BGP speaker settings.
+        :paramtype bgp_settings: ~azure.mgmt.network.v2015_06_15.models.BgpSettings
+        :keyword resource_guid: The resource GUID property of the LocalNetworkGateway resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: Gets or sets Provisioning state of the LocalNetworkGateway
+         resource Updating/Deleting/Failed.
+        :paramtype provisioning_state: str
+        """
         super(LocalNetworkGateway, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.local_network_address_space = kwargs.get('local_network_address_space', None)
@@ -2189,10 +3021,10 @@ class LocalNetworkGateway(Resource):
 class LocalNetworkGatewayListResult(msrest.serialization.Model):
     """Response for ListLocalNetworkGateways API service call.
 
-    :param value: A list of local network gateways that exists in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.LocalNetworkGateway]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of local network gateways that exists in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.LocalNetworkGateway]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2204,6 +3036,12 @@ class LocalNetworkGatewayListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of local network gateways that exists in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.LocalNetworkGateway]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(LocalNetworkGatewayListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2214,39 +3052,39 @@ class NetworkInterface(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param virtual_machine: The reference of a virtual machine.
-    :type virtual_machine: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param network_security_group: The reference of the NetworkSecurityGroup resource.
-    :type network_security_group: ~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup
-    :param ip_configurations: A list of IPConfigurations of the network interface.
-    :type ip_configurations:
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar virtual_machine: The reference of a virtual machine.
+    :vartype virtual_machine: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar network_security_group: The reference of the NetworkSecurityGroup resource.
+    :vartype network_security_group: ~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup
+    :ivar ip_configurations: A list of IPConfigurations of the network interface.
+    :vartype ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration]
-    :param dns_settings: The DNS settings in network interface.
-    :type dns_settings: ~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceDnsSettings
-    :param mac_address: The MAC address of the network interface.
-    :type mac_address: str
-    :param primary: Gets whether this is a primary network interface on a virtual machine.
-    :type primary: bool
-    :param enable_ip_forwarding: Indicates whether IP forwarding is enabled on this network
+    :ivar dns_settings: The DNS settings in network interface.
+    :vartype dns_settings: ~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceDnsSettings
+    :ivar mac_address: The MAC address of the network interface.
+    :vartype mac_address: str
+    :ivar primary: Gets whether this is a primary network interface on a virtual machine.
+    :vartype primary: bool
+    :ivar enable_ip_forwarding: Indicates whether IP forwarding is enabled on this network
      interface.
-    :type enable_ip_forwarding: bool
-    :param resource_guid: The resource GUID property of the network interface resource.
-    :type resource_guid: str
-    :param provisioning_state: The provisioning state of the public IP resource. Possible values
+    :vartype enable_ip_forwarding: bool
+    :ivar resource_guid: The resource GUID property of the network interface resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: The provisioning state of the public IP resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -2276,6 +3114,37 @@ class NetworkInterface(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword virtual_machine: The reference of a virtual machine.
+        :paramtype virtual_machine: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword network_security_group: The reference of the NetworkSecurityGroup resource.
+        :paramtype network_security_group: ~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup
+        :keyword ip_configurations: A list of IPConfigurations of the network interface.
+        :paramtype ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceIPConfiguration]
+        :keyword dns_settings: The DNS settings in network interface.
+        :paramtype dns_settings: ~azure.mgmt.network.v2015_06_15.models.NetworkInterfaceDnsSettings
+        :keyword mac_address: The MAC address of the network interface.
+        :paramtype mac_address: str
+        :keyword primary: Gets whether this is a primary network interface on a virtual machine.
+        :paramtype primary: bool
+        :keyword enable_ip_forwarding: Indicates whether IP forwarding is enabled on this network
+         interface.
+        :paramtype enable_ip_forwarding: bool
+        :keyword resource_guid: The resource GUID property of the network interface resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: The provisioning state of the public IP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(NetworkInterface, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.virtual_machine = kwargs.get('virtual_machine', None)
@@ -2292,20 +3161,20 @@ class NetworkInterface(Resource):
 class NetworkInterfaceDnsSettings(msrest.serialization.Model):
     """DNS settings of a network interface.
 
-    :param dns_servers: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure
+    :ivar dns_servers: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure
      provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be
      the only value in dnsServers collection.
-    :type dns_servers: list[str]
-    :param applied_dns_servers: If the VM that uses this NIC is part of an Availability Set, then
+    :vartype dns_servers: list[str]
+    :ivar applied_dns_servers: If the VM that uses this NIC is part of an Availability Set, then
      this list will have the union of all DNS servers from all NICs that are part of the
      Availability Set. This property is what is configured on each of those VMs.
-    :type applied_dns_servers: list[str]
-    :param internal_dns_name_label: Relative DNS name for this NIC used for internal communications
+    :vartype applied_dns_servers: list[str]
+    :ivar internal_dns_name_label: Relative DNS name for this NIC used for internal communications
      between VMs in the same virtual network.
-    :type internal_dns_name_label: str
-    :param internal_fqdn: Fully qualified DNS name supporting internal communications between VMs
-     in the same virtual network.
-    :type internal_fqdn: str
+    :vartype internal_dns_name_label: str
+    :ivar internal_fqdn: Fully qualified DNS name supporting internal communications between VMs in
+     the same virtual network.
+    :vartype internal_fqdn: str
     """
 
     _attribute_map = {
@@ -2319,6 +3188,22 @@ class NetworkInterfaceDnsSettings(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword dns_servers: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to
+         azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it
+         must be the only value in dnsServers collection.
+        :paramtype dns_servers: list[str]
+        :keyword applied_dns_servers: If the VM that uses this NIC is part of an Availability Set, then
+         this list will have the union of all DNS servers from all NICs that are part of the
+         Availability Set. This property is what is configured on each of those VMs.
+        :paramtype applied_dns_servers: list[str]
+        :keyword internal_dns_name_label: Relative DNS name for this NIC used for internal
+         communications between VMs in the same virtual network.
+        :paramtype internal_dns_name_label: str
+        :keyword internal_fqdn: Fully qualified DNS name supporting internal communications between VMs
+         in the same virtual network.
+        :paramtype internal_fqdn: str
+        """
         super(NetworkInterfaceDnsSettings, self).__init__(**kwargs)
         self.dns_servers = kwargs.get('dns_servers', None)
         self.applied_dns_servers = kwargs.get('applied_dns_servers', None)
@@ -2329,34 +3214,34 @@ class NetworkInterfaceDnsSettings(msrest.serialization.Model):
 class NetworkInterfaceIPConfiguration(SubResource):
     """IPConfiguration in a network interface.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param load_balancer_backend_address_pools: The reference of LoadBalancerBackendAddressPool
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar load_balancer_backend_address_pools: The reference of LoadBalancerBackendAddressPool
      resource.
-    :type load_balancer_backend_address_pools:
+    :vartype load_balancer_backend_address_pools:
      list[~azure.mgmt.network.v2015_06_15.models.BackendAddressPool]
-    :param load_balancer_inbound_nat_rules: A list of references of LoadBalancerInboundNatRules.
-    :type load_balancer_inbound_nat_rules:
+    :ivar load_balancer_inbound_nat_rules: A list of references of LoadBalancerInboundNatRules.
+    :vartype load_balancer_inbound_nat_rules:
      list[~azure.mgmt.network.v2015_06_15.models.InboundNatRule]
-    :param private_ip_address:
-    :type private_ip_address: str
-    :param private_ip_allocation_method: Defines how a private IP address is assigned. Possible
+    :ivar private_ip_address:
+    :vartype private_ip_address: str
+    :ivar private_ip_allocation_method: Defines how a private IP address is assigned. Possible
      values are: 'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
-    :type private_ip_allocation_method: str or
+    :vartype private_ip_allocation_method: str or
      ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
-    :param subnet: Subnet in a virtual network resource.
-    :type subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
-    :param primary: Gets whether this is a primary customer address on the network interface.
-    :type primary: bool
-    :param public_ip_address: Public IP address resource.
-    :type public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
-    :param provisioning_state:
-    :type provisioning_state: str
+    :ivar subnet: Subnet in a virtual network resource.
+    :vartype subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
+    :ivar primary: Gets whether this is a primary customer address on the network interface.
+    :vartype primary: bool
+    :ivar public_ip_address: Public IP address resource.
+    :vartype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
+    :ivar provisioning_state:
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -2377,6 +3262,36 @@ class NetworkInterfaceIPConfiguration(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword load_balancer_backend_address_pools: The reference of LoadBalancerBackendAddressPool
+         resource.
+        :paramtype load_balancer_backend_address_pools:
+         list[~azure.mgmt.network.v2015_06_15.models.BackendAddressPool]
+        :keyword load_balancer_inbound_nat_rules: A list of references of LoadBalancerInboundNatRules.
+        :paramtype load_balancer_inbound_nat_rules:
+         list[~azure.mgmt.network.v2015_06_15.models.InboundNatRule]
+        :keyword private_ip_address:
+        :paramtype private_ip_address: str
+        :keyword private_ip_allocation_method: Defines how a private IP address is assigned. Possible
+         values are: 'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
+        :paramtype private_ip_allocation_method: str or
+         ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
+        :keyword subnet: Subnet in a virtual network resource.
+        :paramtype subnet: ~azure.mgmt.network.v2015_06_15.models.Subnet
+        :keyword primary: Gets whether this is a primary customer address on the network interface.
+        :paramtype primary: bool
+        :keyword public_ip_address: Public IP address resource.
+        :paramtype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddress
+        :keyword provisioning_state:
+        :paramtype provisioning_state: str
+        """
         super(NetworkInterfaceIPConfiguration, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -2393,10 +3308,10 @@ class NetworkInterfaceIPConfiguration(SubResource):
 class NetworkInterfaceListResult(msrest.serialization.Model):
     """Response for the ListNetworkInterface API service call.
 
-    :param value: A list of network interfaces in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.NetworkInterface]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of network interfaces in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.NetworkInterface]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2408,6 +3323,12 @@ class NetworkInterfaceListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of network interfaces in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.NetworkInterface]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(NetworkInterfaceListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2418,31 +3339,31 @@ class NetworkSecurityGroup(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param security_rules: A collection of security rules of the network security group.
-    :type security_rules: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
-    :param default_security_rules: The default security rules of network security group.
-    :type default_security_rules: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
-    :param network_interfaces: A collection of references to network interfaces.
-    :type network_interfaces: list[~azure.mgmt.network.v2015_06_15.models.NetworkInterface]
-    :param subnets: A collection of references to subnets.
-    :type subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
-    :param resource_guid: The resource GUID property of the network security group resource.
-    :type resource_guid: str
-    :param provisioning_state: The provisioning state of the public IP resource. Possible values
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar security_rules: A collection of security rules of the network security group.
+    :vartype security_rules: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
+    :ivar default_security_rules: The default security rules of network security group.
+    :vartype default_security_rules: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
+    :ivar network_interfaces: A collection of references to network interfaces.
+    :vartype network_interfaces: list[~azure.mgmt.network.v2015_06_15.models.NetworkInterface]
+    :ivar subnets: A collection of references to subnets.
+    :vartype subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+    :ivar resource_guid: The resource GUID property of the network security group resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: The provisioning state of the public IP resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -2469,6 +3390,29 @@ class NetworkSecurityGroup(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword security_rules: A collection of security rules of the network security group.
+        :paramtype security_rules: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
+        :keyword default_security_rules: The default security rules of network security group.
+        :paramtype default_security_rules: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
+        :keyword network_interfaces: A collection of references to network interfaces.
+        :paramtype network_interfaces: list[~azure.mgmt.network.v2015_06_15.models.NetworkInterface]
+        :keyword subnets: A collection of references to subnets.
+        :paramtype subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+        :keyword resource_guid: The resource GUID property of the network security group resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: The provisioning state of the public IP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(NetworkSecurityGroup, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.security_rules = kwargs.get('security_rules', None)
@@ -2482,10 +3426,10 @@ class NetworkSecurityGroup(Resource):
 class NetworkSecurityGroupListResult(msrest.serialization.Model):
     """Response for ListNetworkSecurityGroups API service call.
 
-    :param value: A list of NetworkSecurityGroup resources.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of NetworkSecurityGroup resources.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2497,6 +3441,12 @@ class NetworkSecurityGroupListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of NetworkSecurityGroup resources.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(NetworkSecurityGroupListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2505,23 +3455,23 @@ class NetworkSecurityGroupListResult(msrest.serialization.Model):
 class OutboundNatRule(SubResource):
     """Outbound NAT pool of the load balancer.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param allocated_outbound_ports: The number of outbound ports to be used for NAT.
-    :type allocated_outbound_ports: int
-    :param frontend_ip_configurations: The Frontend IP addresses of the load balancer.
-    :type frontend_ip_configurations: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param backend_address_pool: A reference to a pool of DIPs. Outbound traffic is randomly load
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar allocated_outbound_ports: The number of outbound ports to be used for NAT.
+    :vartype allocated_outbound_ports: int
+    :ivar frontend_ip_configurations: The Frontend IP addresses of the load balancer.
+    :vartype frontend_ip_configurations: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+    :ivar backend_address_pool: A reference to a pool of DIPs. Outbound traffic is randomly load
      balanced across IPs in the backend IPs.
-    :type backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
-     values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: Gets the provisioning state of the PublicIP resource. Possible values
+     are: 'Updating', 'Deleting', and 'Failed'.
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -2538,6 +3488,25 @@ class OutboundNatRule(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword allocated_outbound_ports: The number of outbound ports to be used for NAT.
+        :paramtype allocated_outbound_ports: int
+        :keyword frontend_ip_configurations: The Frontend IP addresses of the load balancer.
+        :paramtype frontend_ip_configurations: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+        :keyword backend_address_pool: A reference to a pool of DIPs. Outbound traffic is randomly load
+         balanced across IPs in the backend IPs.
+        :paramtype backend_address_pool: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: Gets the provisioning state of the PublicIP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(OutboundNatRule, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -2550,38 +3519,38 @@ class OutboundNatRule(SubResource):
 class Probe(SubResource):
     """A load balancer probe.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: Gets name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: Gets name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param load_balancing_rules: The load balancer rules that use this probe.
-    :type load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
-    :param protocol: The protocol of the end point. Possible values are: 'Http' or 'Tcp'. If 'Tcp'
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar load_balancing_rules: The load balancer rules that use this probe.
+    :vartype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+    :ivar protocol: The protocol of the end point. Possible values are: 'Http' or 'Tcp'. If 'Tcp'
      is specified, a received ACK is required for the probe to be successful. If 'Http' is
      specified, a 200 OK response from the specifies URI is required for the probe to be successful.
      Possible values include: "Http", "Tcp".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.ProbeProtocol
-    :param port: The port for communicating the probe. Possible values range from 1 to 65535,
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ProbeProtocol
+    :ivar port: The port for communicating the probe. Possible values range from 1 to 65535,
      inclusive.
-    :type port: int
-    :param interval_in_seconds: The interval, in seconds, for how frequently to probe the endpoint
+    :vartype port: int
+    :ivar interval_in_seconds: The interval, in seconds, for how frequently to probe the endpoint
      for health status. Typically, the interval is slightly less than half the allocated timeout
      period (in seconds) which allows two full probes before taking the instance out of rotation.
      The default value is 15, the minimum value is 5.
-    :type interval_in_seconds: int
-    :param number_of_probes: The number of probes where if no response, will result in stopping
+    :vartype interval_in_seconds: int
+    :ivar number_of_probes: The number of probes where if no response, will result in stopping
      further traffic from being delivered to the endpoint. This values allows endpoints to be taken
      out of rotation faster or slower than the typical times used in Azure.
-    :type number_of_probes: int
-    :param request_path: The URI used for requesting health status from the VM. Path is required if
+    :vartype number_of_probes: int
+    :ivar request_path: The URI used for requesting health status from the VM. Path is required if
      a protocol is set to http. Otherwise, it is not allowed. There is no default value.
-    :type request_path: str
-    :param provisioning_state: Gets the provisioning state of the public IP resource. Possible
+    :vartype request_path: str
+    :ivar provisioning_state: Gets the provisioning state of the public IP resource. Possible
      values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -2601,6 +3570,40 @@ class Probe(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: Gets name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword load_balancing_rules: The load balancer rules that use this probe.
+        :paramtype load_balancing_rules: list[~azure.mgmt.network.v2015_06_15.models.SubResource]
+        :keyword protocol: The protocol of the end point. Possible values are: 'Http' or 'Tcp'. If
+         'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' is
+         specified, a 200 OK response from the specifies URI is required for the probe to be successful.
+         Possible values include: "Http", "Tcp".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.ProbeProtocol
+        :keyword port: The port for communicating the probe. Possible values range from 1 to 65535,
+         inclusive.
+        :paramtype port: int
+        :keyword interval_in_seconds: The interval, in seconds, for how frequently to probe the
+         endpoint for health status. Typically, the interval is slightly less than half the allocated
+         timeout period (in seconds) which allows two full probes before taking the instance out of
+         rotation. The default value is 15, the minimum value is 5.
+        :paramtype interval_in_seconds: int
+        :keyword number_of_probes: The number of probes where if no response, will result in stopping
+         further traffic from being delivered to the endpoint. This values allows endpoints to be taken
+         out of rotation faster or slower than the typical times used in Azure.
+        :paramtype number_of_probes: int
+        :keyword request_path: The URI used for requesting health status from the VM. Path is required
+         if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
+        :paramtype request_path: str
+        :keyword provisioning_state: Gets the provisioning state of the public IP resource. Possible
+         values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(Probe, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -2618,35 +3621,35 @@ class PublicIPAddress(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param public_ip_allocation_method: The public IP allocation method. Possible values are:
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar public_ip_allocation_method: The public IP allocation method. Possible values are:
      'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
-    :type public_ip_allocation_method: str or
+    :vartype public_ip_allocation_method: str or
      ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
-    :param ip_configuration: IPConfiguration.
-    :type ip_configuration: ~azure.mgmt.network.v2015_06_15.models.IPConfiguration
-    :param dns_settings: The FQDN of the DNS record associated with the public IP address.
-    :type dns_settings: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddressDnsSettings
-    :param ip_address:
-    :type ip_address: str
-    :param idle_timeout_in_minutes: The idle timeout of the public IP address.
-    :type idle_timeout_in_minutes: int
-    :param resource_guid: The resource GUID property of the public IP resource.
-    :type resource_guid: str
-    :param provisioning_state: The provisioning state of the PublicIP resource. Possible values
-     are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :ivar ip_configuration: IPConfiguration.
+    :vartype ip_configuration: ~azure.mgmt.network.v2015_06_15.models.IPConfiguration
+    :ivar dns_settings: The FQDN of the DNS record associated with the public IP address.
+    :vartype dns_settings: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddressDnsSettings
+    :ivar ip_address:
+    :vartype ip_address: str
+    :ivar idle_timeout_in_minutes: The idle timeout of the public IP address.
+    :vartype idle_timeout_in_minutes: int
+    :ivar resource_guid: The resource GUID property of the public IP resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: The provisioning state of the PublicIP resource. Possible values are:
+     'Updating', 'Deleting', and 'Failed'.
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -2674,6 +3677,33 @@ class PublicIPAddress(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword public_ip_allocation_method: The public IP allocation method. Possible values are:
+         'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
+        :paramtype public_ip_allocation_method: str or
+         ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
+        :keyword ip_configuration: IPConfiguration.
+        :paramtype ip_configuration: ~azure.mgmt.network.v2015_06_15.models.IPConfiguration
+        :keyword dns_settings: The FQDN of the DNS record associated with the public IP address.
+        :paramtype dns_settings: ~azure.mgmt.network.v2015_06_15.models.PublicIPAddressDnsSettings
+        :keyword ip_address:
+        :paramtype ip_address: str
+        :keyword idle_timeout_in_minutes: The idle timeout of the public IP address.
+        :paramtype idle_timeout_in_minutes: int
+        :keyword resource_guid: The resource GUID property of the public IP resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: The provisioning state of the PublicIP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(PublicIPAddress, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.public_ip_allocation_method = kwargs.get('public_ip_allocation_method', None)
@@ -2688,18 +3718,18 @@ class PublicIPAddress(Resource):
 class PublicIPAddressDnsSettings(msrest.serialization.Model):
     """Contains FQDN of the DNS record associated with the public IP address.
 
-    :param domain_name_label: Gets or sets the Domain name label.The concatenation of the domain
+    :ivar domain_name_label: Gets or sets the Domain name label.The concatenation of the domain
      name label and the regionalized DNS zone make up the fully qualified domain name associated
      with the public IP address. If a domain name label is specified, an A DNS record is created for
      the public IP in the Microsoft Azure DNS system.
-    :type domain_name_label: str
-    :param fqdn: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the
+    :vartype domain_name_label: str
+    :ivar fqdn: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the
      public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
-    :type fqdn: str
-    :param reverse_fqdn: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+    :vartype fqdn: str
+    :ivar reverse_fqdn: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
      that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record
      is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
-    :type reverse_fqdn: str
+    :vartype reverse_fqdn: str
     """
 
     _attribute_map = {
@@ -2712,6 +3742,20 @@ class PublicIPAddressDnsSettings(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword domain_name_label: Gets or sets the Domain name label.The concatenation of the domain
+         name label and the regionalized DNS zone make up the fully qualified domain name associated
+         with the public IP address. If a domain name label is specified, an A DNS record is created for
+         the public IP in the Microsoft Azure DNS system.
+        :paramtype domain_name_label: str
+        :keyword fqdn: Gets the FQDN, Fully qualified domain name of the A DNS record associated with
+         the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+        :paramtype fqdn: str
+        :keyword reverse_fqdn: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain
+         name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS
+         record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+        :paramtype reverse_fqdn: str
+        """
         super(PublicIPAddressDnsSettings, self).__init__(**kwargs)
         self.domain_name_label = kwargs.get('domain_name_label', None)
         self.fqdn = kwargs.get('fqdn', None)
@@ -2721,10 +3765,10 @@ class PublicIPAddressDnsSettings(msrest.serialization.Model):
 class PublicIPAddressListResult(msrest.serialization.Model):
     """Response for ListPublicIpAddresses API service call.
 
-    :param value: A list of public IP addresses that exists in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.PublicIPAddress]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: A list of public IP addresses that exists in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.PublicIPAddress]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2736,6 +3780,12 @@ class PublicIPAddressListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A list of public IP addresses that exists in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.PublicIPAddress]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(PublicIPAddressListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2744,25 +3794,25 @@ class PublicIPAddressListResult(msrest.serialization.Model):
 class Route(SubResource):
     """Route resource.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param address_prefix: The destination CIDR to which the route applies.
-    :type address_prefix: str
-    :param next_hop_type: The type of Azure hop the packet should be sent to. Possible values are:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar address_prefix: The destination CIDR to which the route applies.
+    :vartype address_prefix: str
+    :ivar next_hop_type: The type of Azure hop the packet should be sent to. Possible values are:
      'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible
      values include: "VirtualNetworkGateway", "VnetLocal", "Internet", "VirtualAppliance", "None".
-    :type next_hop_type: str or ~azure.mgmt.network.v2015_06_15.models.RouteNextHopType
-    :param next_hop_ip_address: The IP address packets should be forwarded to. Next hop values are
+    :vartype next_hop_type: str or ~azure.mgmt.network.v2015_06_15.models.RouteNextHopType
+    :ivar next_hop_ip_address: The IP address packets should be forwarded to. Next hop values are
      only allowed in routes where the next hop type is VirtualAppliance.
-    :type next_hop_ip_address: str
-    :param provisioning_state: The provisioning state of the resource. Possible values are:
+    :vartype next_hop_ip_address: str
+    :ivar provisioning_state: The provisioning state of the resource. Possible values are:
      'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -2779,6 +3829,27 @@ class Route(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword address_prefix: The destination CIDR to which the route applies.
+        :paramtype address_prefix: str
+        :keyword next_hop_type: The type of Azure hop the packet should be sent to. Possible values
+         are: 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible
+         values include: "VirtualNetworkGateway", "VnetLocal", "Internet", "VirtualAppliance", "None".
+        :paramtype next_hop_type: str or ~azure.mgmt.network.v2015_06_15.models.RouteNextHopType
+        :keyword next_hop_ip_address: The IP address packets should be forwarded to. Next hop values
+         are only allowed in routes where the next hop type is VirtualAppliance.
+        :paramtype next_hop_ip_address: str
+        :keyword provisioning_state: The provisioning state of the resource. Possible values are:
+         'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(Route, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -2791,10 +3862,10 @@ class Route(SubResource):
 class RouteListResult(msrest.serialization.Model):
     """Response for the ListRoute API service call.
 
-    :param value: Gets a list of routes in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.Route]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets a list of routes in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.Route]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2806,6 +3877,12 @@ class RouteListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets a list of routes in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.Route]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(RouteListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2816,25 +3893,25 @@ class RouteTable(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: Gets a unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param routes: Collection of routes contained within a route table.
-    :type routes: list[~azure.mgmt.network.v2015_06_15.models.Route]
-    :param subnets: A collection of references to subnets.
-    :type subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
-    :param provisioning_state: The provisioning state of the resource. Possible values are:
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: Gets a unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar routes: Collection of routes contained within a route table.
+    :vartype routes: list[~azure.mgmt.network.v2015_06_15.models.Route]
+    :ivar subnets: A collection of references to subnets.
+    :vartype subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+    :ivar provisioning_state: The provisioning state of the resource. Possible values are:
      'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -2858,6 +3935,23 @@ class RouteTable(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: Gets a unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword routes: Collection of routes contained within a route table.
+        :paramtype routes: list[~azure.mgmt.network.v2015_06_15.models.Route]
+        :keyword subnets: A collection of references to subnets.
+        :paramtype subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+        :keyword provisioning_state: The provisioning state of the resource. Possible values are:
+         'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(RouteTable, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.routes = kwargs.get('routes', None)
@@ -2868,10 +3962,10 @@ class RouteTable(Resource):
 class RouteTableListResult(msrest.serialization.Model):
     """Response for the ListRouteTable API service call.
 
-    :param value: Gets a list of route tables in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.RouteTable]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets a list of route tables in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.RouteTable]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2883,6 +3977,12 @@ class RouteTableListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets a list of route tables in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.RouteTable]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(RouteTableListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2891,46 +3991,46 @@ class RouteTableListResult(msrest.serialization.Model):
 class SecurityRule(SubResource):
     """Network security rule.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param description: A description for this rule. Restricted to 140 chars.
-    :type description: str
-    :param protocol: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar description: A description for this rule. Restricted to 140 chars.
+    :vartype description: str
+    :ivar protocol: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and
      '*'. Possible values include: "Tcp", "Udp", "*".
-    :type protocol: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleProtocol
-    :param source_port_range: The source port or range. Integer or range between 0 and 65535.
+    :vartype protocol: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleProtocol
+    :ivar source_port_range: The source port or range. Integer or range between 0 and 65535.
      Asterisk '*' can also be used to match all ports.
-    :type source_port_range: str
-    :param destination_port_range: The destination port or range. Integer or range between 0 and
+    :vartype source_port_range: str
+    :ivar destination_port_range: The destination port or range. Integer or range between 0 and
      65535. Asterisk '*' can also be used to match all ports.
-    :type destination_port_range: str
-    :param source_address_prefix: The CIDR or source IP range. Asterisk '*' can also be used to
+    :vartype destination_port_range: str
+    :ivar source_address_prefix: The CIDR or source IP range. Asterisk '*' can also be used to
      match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      can also be used. If this is an ingress rule, specifies where network traffic originates from.
-    :type source_address_prefix: str
-    :param destination_address_prefix: The destination address prefix. CIDR or source IP range.
+    :vartype source_address_prefix: str
+    :ivar destination_address_prefix: The destination address prefix. CIDR or source IP range.
      Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      'AzureLoadBalancer' and 'Internet' can also be used.
-    :type destination_address_prefix: str
-    :param access: The network traffic is allowed or denied. Possible values are: 'Allow' and
+    :vartype destination_address_prefix: str
+    :ivar access: The network traffic is allowed or denied. Possible values are: 'Allow' and
      'Deny'. Possible values include: "Allow", "Deny".
-    :type access: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleAccess
-    :param priority: The priority of the rule. The value can be between 100 and 4096. The priority
+    :vartype access: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleAccess
+    :ivar priority: The priority of the rule. The value can be between 100 and 4096. The priority
      number must be unique for each rule in the collection. The lower the priority number, the
      higher the priority of the rule.
-    :type priority: int
-    :param direction: The direction of the rule. The direction specifies if rule will be evaluated
+    :vartype priority: int
+    :ivar direction: The direction of the rule. The direction specifies if rule will be evaluated
      on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
      include: "Inbound", "Outbound".
-    :type direction: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleDirection
-    :param provisioning_state: The provisioning state of the public IP resource. Possible values
+    :vartype direction: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleDirection
+    :ivar provisioning_state: The provisioning state of the public IP resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -2953,6 +4053,48 @@ class SecurityRule(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword description: A description for this rule. Restricted to 140 chars.
+        :paramtype description: str
+        :keyword protocol: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and
+         '*'. Possible values include: "Tcp", "Udp", "*".
+        :paramtype protocol: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleProtocol
+        :keyword source_port_range: The source port or range. Integer or range between 0 and 65535.
+         Asterisk '*' can also be used to match all ports.
+        :paramtype source_port_range: str
+        :keyword destination_port_range: The destination port or range. Integer or range between 0 and
+         65535. Asterisk '*' can also be used to match all ports.
+        :paramtype destination_port_range: str
+        :keyword source_address_prefix: The CIDR or source IP range. Asterisk '*' can also be used to
+         match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
+         can also be used. If this is an ingress rule, specifies where network traffic originates from.
+        :paramtype source_address_prefix: str
+        :keyword destination_address_prefix: The destination address prefix. CIDR or source IP range.
+         Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork',
+         'AzureLoadBalancer' and 'Internet' can also be used.
+        :paramtype destination_address_prefix: str
+        :keyword access: The network traffic is allowed or denied. Possible values are: 'Allow' and
+         'Deny'. Possible values include: "Allow", "Deny".
+        :paramtype access: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleAccess
+        :keyword priority: The priority of the rule. The value can be between 100 and 4096. The
+         priority number must be unique for each rule in the collection. The lower the priority number,
+         the higher the priority of the rule.
+        :paramtype priority: int
+        :keyword direction: The direction of the rule. The direction specifies if rule will be
+         evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+         Possible values include: "Inbound", "Outbound".
+        :paramtype direction: str or ~azure.mgmt.network.v2015_06_15.models.SecurityRuleDirection
+        :keyword provisioning_state: The provisioning state of the public IP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(SecurityRule, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -2971,10 +4113,10 @@ class SecurityRule(SubResource):
 class SecurityRuleListResult(msrest.serialization.Model):
     """Response for ListSecurityRule API service call. Retrieves all security rules that belongs to a network security group.
 
-    :param value: The security rules in a network security group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: The security rules in a network security group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -2986,6 +4128,12 @@ class SecurityRuleListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The security rules in a network security group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.SecurityRule]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(SecurityRuleListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -2994,24 +4142,24 @@ class SecurityRuleListResult(msrest.serialization.Model):
 class Subnet(SubResource):
     """Subnet in a virtual network resource.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param address_prefix: The address prefix for the subnet.
-    :type address_prefix: str
-    :param network_security_group: The reference of the NetworkSecurityGroup resource.
-    :type network_security_group: ~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup
-    :param route_table: The reference of the RouteTable resource.
-    :type route_table: ~azure.mgmt.network.v2015_06_15.models.RouteTable
-    :param ip_configurations: Gets an array of references to the network interface IP
-     configurations using subnet.
-    :type ip_configurations: list[~azure.mgmt.network.v2015_06_15.models.IPConfiguration]
-    :param provisioning_state: The provisioning state of the resource.
-    :type provisioning_state: str
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar address_prefix: The address prefix for the subnet.
+    :vartype address_prefix: str
+    :ivar network_security_group: The reference of the NetworkSecurityGroup resource.
+    :vartype network_security_group: ~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup
+    :ivar route_table: The reference of the RouteTable resource.
+    :vartype route_table: ~azure.mgmt.network.v2015_06_15.models.RouteTable
+    :ivar ip_configurations: Gets an array of references to the network interface IP configurations
+     using subnet.
+    :vartype ip_configurations: list[~azure.mgmt.network.v2015_06_15.models.IPConfiguration]
+    :ivar provisioning_state: The provisioning state of the resource.
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -3029,6 +4177,26 @@ class Subnet(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword address_prefix: The address prefix for the subnet.
+        :paramtype address_prefix: str
+        :keyword network_security_group: The reference of the NetworkSecurityGroup resource.
+        :paramtype network_security_group: ~azure.mgmt.network.v2015_06_15.models.NetworkSecurityGroup
+        :keyword route_table: The reference of the RouteTable resource.
+        :paramtype route_table: ~azure.mgmt.network.v2015_06_15.models.RouteTable
+        :keyword ip_configurations: Gets an array of references to the network interface IP
+         configurations using subnet.
+        :paramtype ip_configurations: list[~azure.mgmt.network.v2015_06_15.models.IPConfiguration]
+        :keyword provisioning_state: The provisioning state of the resource.
+        :paramtype provisioning_state: str
+        """
         super(Subnet, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -3042,10 +4210,10 @@ class Subnet(SubResource):
 class SubnetListResult(msrest.serialization.Model):
     """Response for ListSubnets API service callRetrieves all subnet that belongs to a virtual network.
 
-    :param value: The subnets in a virtual network.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: The subnets in a virtual network.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -3057,6 +4225,12 @@ class SubnetListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The subnets in a virtual network.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(SubnetListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -3067,15 +4241,15 @@ class Usage(msrest.serialization.Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :param unit: Required. An enum describing the unit of measurement. Possible values include:
+    :ivar unit: Required. An enum describing the unit of measurement. Possible values include:
      "Count".
-    :type unit: str or ~azure.mgmt.network.v2015_06_15.models.UsageUnit
-    :param current_value: Required. The current value of the usage.
-    :type current_value: long
-    :param limit: Required. The limit of usage.
-    :type limit: long
-    :param name: Required. The name of the type of usage.
-    :type name: ~azure.mgmt.network.v2015_06_15.models.UsageName
+    :vartype unit: str or ~azure.mgmt.network.v2015_06_15.models.UsageUnit
+    :ivar current_value: Required. The current value of the usage.
+    :vartype current_value: long
+    :ivar limit: Required. The limit of usage.
+    :vartype limit: long
+    :ivar name: Required. The name of the type of usage.
+    :vartype name: ~azure.mgmt.network.v2015_06_15.models.UsageName
     """
 
     _validation = {
@@ -3096,6 +4270,17 @@ class Usage(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword unit: Required. An enum describing the unit of measurement. Possible values include:
+         "Count".
+        :paramtype unit: str or ~azure.mgmt.network.v2015_06_15.models.UsageUnit
+        :keyword current_value: Required. The current value of the usage.
+        :paramtype current_value: long
+        :keyword limit: Required. The limit of usage.
+        :paramtype limit: long
+        :keyword name: Required. The name of the type of usage.
+        :paramtype name: ~azure.mgmt.network.v2015_06_15.models.UsageName
+        """
         super(Usage, self).__init__(**kwargs)
         self.unit = kwargs['unit']
         self.current_value = kwargs['current_value']
@@ -3106,10 +4291,10 @@ class Usage(msrest.serialization.Model):
 class UsageName(msrest.serialization.Model):
     """The usage names.
 
-    :param value: A string describing the resource name.
-    :type value: str
-    :param localized_value: A localized string describing the resource name.
-    :type localized_value: str
+    :ivar value: A string describing the resource name.
+    :vartype value: str
+    :ivar localized_value: A localized string describing the resource name.
+    :vartype localized_value: str
     """
 
     _attribute_map = {
@@ -3121,6 +4306,12 @@ class UsageName(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: A string describing the resource name.
+        :paramtype value: str
+        :keyword localized_value: A localized string describing the resource name.
+        :paramtype localized_value: str
+        """
         super(UsageName, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.localized_value = kwargs.get('localized_value', None)
@@ -3129,10 +4320,10 @@ class UsageName(msrest.serialization.Model):
 class UsagesListResult(msrest.serialization.Model):
     """The list usages operation response.
 
-    :param value: The list network resource usages.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.Usage]
-    :param next_link: URL to get the next set of results.
-    :type next_link: str
+    :ivar value: The list network resource usages.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.Usage]
+    :ivar next_link: URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -3144,6 +4335,12 @@ class UsagesListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: The list network resource usages.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.Usage]
+        :keyword next_link: URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(UsagesListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -3154,31 +4351,31 @@ class VirtualNetwork(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: Gets a unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param address_space: The AddressSpace that contains an array of IP address ranges that can be
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: Gets a unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar address_space: The AddressSpace that contains an array of IP address ranges that can be
      used by subnets.
-    :type address_space: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
-    :param dhcp_options: The dhcpOptions that contains an array of DNS servers available to VMs
+    :vartype address_space: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
+    :ivar dhcp_options: The dhcpOptions that contains an array of DNS servers available to VMs
      deployed in the virtual network.
-    :type dhcp_options: ~azure.mgmt.network.v2015_06_15.models.DhcpOptions
-    :param subnets: A list of subnets in a Virtual Network.
-    :type subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
-    :param resource_guid: The resourceGuid property of the Virtual Network resource.
-    :type resource_guid: str
-    :param provisioning_state: The provisioning state of the PublicIP resource. Possible values
-     are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype dhcp_options: ~azure.mgmt.network.v2015_06_15.models.DhcpOptions
+    :ivar subnets: A list of subnets in a Virtual Network.
+    :vartype subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+    :ivar resource_guid: The resourceGuid property of the Virtual Network resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: The provisioning state of the PublicIP resource. Possible values are:
+     'Updating', 'Deleting', and 'Failed'.
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -3204,6 +4401,29 @@ class VirtualNetwork(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: Gets a unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword address_space: The AddressSpace that contains an array of IP address ranges that can
+         be used by subnets.
+        :paramtype address_space: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
+        :keyword dhcp_options: The dhcpOptions that contains an array of DNS servers available to VMs
+         deployed in the virtual network.
+        :paramtype dhcp_options: ~azure.mgmt.network.v2015_06_15.models.DhcpOptions
+        :keyword subnets: A list of subnets in a Virtual Network.
+        :paramtype subnets: list[~azure.mgmt.network.v2015_06_15.models.Subnet]
+        :keyword resource_guid: The resourceGuid property of the Virtual Network resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: The provisioning state of the PublicIP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(VirtualNetwork, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.address_space = kwargs.get('address_space', None)
@@ -3218,46 +4438,47 @@ class VirtualNetworkGateway(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: Gets a unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param ip_configurations: IP configurations for virtual network gateway.
-    :type ip_configurations:
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: Gets a unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar ip_configurations: IP configurations for virtual network gateway.
+    :vartype ip_configurations:
      list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayIPConfiguration]
-    :param gateway_type: The type of this virtual network gateway. Possible values are: 'Vpn' and
+    :ivar gateway_type: The type of this virtual network gateway. Possible values are: 'Vpn' and
      'ExpressRoute'. Possible values include: "Vpn", "ExpressRoute".
-    :type gateway_type: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayType
-    :param vpn_type: The type of this virtual network gateway. Possible values are: 'PolicyBased'
+    :vartype gateway_type: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayType
+    :ivar vpn_type: The type of this virtual network gateway. Possible values are: 'PolicyBased'
      and 'RouteBased'. Possible values include: "PolicyBased", "RouteBased".
-    :type vpn_type: str or ~azure.mgmt.network.v2015_06_15.models.VpnType
-    :param enable_bgp: Whether BGP is enabled for this virtual network gateway or not.
-    :type enable_bgp: bool
-    :param gateway_default_site: The reference of the LocalNetworkGateway resource which represents
+    :vartype vpn_type: str or ~azure.mgmt.network.v2015_06_15.models.VpnType
+    :ivar enable_bgp: Whether BGP is enabled for this virtual network gateway or not.
+    :vartype enable_bgp: bool
+    :ivar gateway_default_site: The reference of the LocalNetworkGateway resource which represents
      local network site having default routes. Assign Null value in case of removing existing
      default site setting.
-    :type gateway_default_site: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param sku: The reference of the VirtualNetworkGatewaySku resource which represents the SKU
+    :vartype gateway_default_site: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar sku: The reference of the VirtualNetworkGatewaySku resource which represents the SKU
      selected for Virtual network gateway.
-    :type sku: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySku
-    :param vpn_client_configuration: The reference of the VpnClientConfiguration resource which
+    :vartype sku: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySku
+    :ivar vpn_client_configuration: The reference of the VpnClientConfiguration resource which
      represents the P2S VpnClient configurations.
-    :type vpn_client_configuration: ~azure.mgmt.network.v2015_06_15.models.VpnClientConfiguration
-    :param bgp_settings: Virtual network gateway's BGP speaker settings.
-    :type bgp_settings: ~azure.mgmt.network.v2015_06_15.models.BgpSettings
-    :param resource_guid: The resource GUID property of the VirtualNetworkGateway resource.
-    :type resource_guid: str
-    :param provisioning_state: The provisioning state of the VirtualNetworkGateway resource.
+    :vartype vpn_client_configuration:
+     ~azure.mgmt.network.v2015_06_15.models.VpnClientConfiguration
+    :ivar bgp_settings: Virtual network gateway's BGP speaker settings.
+    :vartype bgp_settings: ~azure.mgmt.network.v2015_06_15.models.BgpSettings
+    :ivar resource_guid: The resource GUID property of the VirtualNetworkGateway resource.
+    :vartype resource_guid: str
+    :ivar provisioning_state: The provisioning state of the VirtualNetworkGateway resource.
      Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -3288,6 +4509,46 @@ class VirtualNetworkGateway(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: Gets a unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword ip_configurations: IP configurations for virtual network gateway.
+        :paramtype ip_configurations:
+         list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayIPConfiguration]
+        :keyword gateway_type: The type of this virtual network gateway. Possible values are: 'Vpn' and
+         'ExpressRoute'. Possible values include: "Vpn", "ExpressRoute".
+        :paramtype gateway_type: str or
+         ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayType
+        :keyword vpn_type: The type of this virtual network gateway. Possible values are: 'PolicyBased'
+         and 'RouteBased'. Possible values include: "PolicyBased", "RouteBased".
+        :paramtype vpn_type: str or ~azure.mgmt.network.v2015_06_15.models.VpnType
+        :keyword enable_bgp: Whether BGP is enabled for this virtual network gateway or not.
+        :paramtype enable_bgp: bool
+        :keyword gateway_default_site: The reference of the LocalNetworkGateway resource which
+         represents local network site having default routes. Assign Null value in case of removing
+         existing default site setting.
+        :paramtype gateway_default_site: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword sku: The reference of the VirtualNetworkGatewaySku resource which represents the SKU
+         selected for Virtual network gateway.
+        :paramtype sku: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySku
+        :keyword vpn_client_configuration: The reference of the VpnClientConfiguration resource which
+         represents the P2S VpnClient configurations.
+        :paramtype vpn_client_configuration:
+         ~azure.mgmt.network.v2015_06_15.models.VpnClientConfiguration
+        :keyword bgp_settings: Virtual network gateway's BGP speaker settings.
+        :paramtype bgp_settings: ~azure.mgmt.network.v2015_06_15.models.BgpSettings
+        :keyword resource_guid: The resource GUID property of the VirtualNetworkGateway resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: The provisioning state of the VirtualNetworkGateway resource.
+         Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(VirtualNetworkGateway, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.ip_configurations = kwargs.get('ip_configurations', None)
@@ -3307,54 +4568,54 @@ class VirtualNetworkGatewayConnection(Resource):
 
     Variables are only populated by the server, and will be ignored when sending a request.
 
-    :param id: Resource Identifier.
-    :type id: str
+    :ivar id: Resource Identifier.
+    :vartype id: str
     :ivar name: Resource name.
     :vartype name: str
     :ivar type: Resource type.
     :vartype type: str
-    :param location: Resource location.
-    :type location: str
-    :param tags: A set of tags. Resource tags.
-    :type tags: dict[str, str]
-    :param etag: Gets a unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param authorization_key: The authorizationKey.
-    :type authorization_key: str
-    :param virtual_network_gateway1: A common class for general resource information.
-    :type virtual_network_gateway1: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway
-    :param virtual_network_gateway2: A common class for general resource information.
-    :type virtual_network_gateway2: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway
-    :param local_network_gateway2: A common class for general resource information.
-    :type local_network_gateway2: ~azure.mgmt.network.v2015_06_15.models.LocalNetworkGateway
-    :param connection_type: Gateway connection type. Possible values are:
+    :ivar location: Resource location.
+    :vartype location: str
+    :ivar tags: A set of tags. Resource tags.
+    :vartype tags: dict[str, str]
+    :ivar etag: Gets a unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar authorization_key: The authorizationKey.
+    :vartype authorization_key: str
+    :ivar virtual_network_gateway1: A common class for general resource information.
+    :vartype virtual_network_gateway1: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway
+    :ivar virtual_network_gateway2: A common class for general resource information.
+    :vartype virtual_network_gateway2: ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway
+    :ivar local_network_gateway2: A common class for general resource information.
+    :vartype local_network_gateway2: ~azure.mgmt.network.v2015_06_15.models.LocalNetworkGateway
+    :ivar connection_type: Gateway connection type. Possible values are:
      'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values include: "IPsec",
      "Vnet2Vnet", "ExpressRoute", "VPNClient".
-    :type connection_type: str or
+    :vartype connection_type: str or
      ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnectionType
-    :param routing_weight: The routing weight.
-    :type routing_weight: int
-    :param shared_key: The IPSec shared key.
-    :type shared_key: str
-    :param connection_status: Virtual network Gateway connection status. Possible values are
+    :ivar routing_weight: The routing weight.
+    :vartype routing_weight: int
+    :ivar shared_key: The IPSec shared key.
+    :vartype shared_key: str
+    :ivar connection_status: Virtual network Gateway connection status. Possible values are
      'Unknown', 'Connecting', 'Connected' and 'NotConnected'. Possible values include: "Unknown",
      "Connecting", "Connected", "NotConnected".
-    :type connection_status: str or
+    :vartype connection_status: str or
      ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnectionStatus
-    :param egress_bytes_transferred: The egress bytes transferred in this connection.
-    :type egress_bytes_transferred: long
-    :param ingress_bytes_transferred: The ingress bytes transferred in this connection.
-    :type ingress_bytes_transferred: long
-    :param peer: The reference to peerings resource.
-    :type peer: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param enable_bgp: EnableBgp flag.
-    :type enable_bgp: bool
-    :param resource_guid: The resource GUID property of the VirtualNetworkGatewayConnection
+    :ivar egress_bytes_transferred: The egress bytes transferred in this connection.
+    :vartype egress_bytes_transferred: long
+    :ivar ingress_bytes_transferred: The ingress bytes transferred in this connection.
+    :vartype ingress_bytes_transferred: long
+    :ivar peer: The reference to peerings resource.
+    :vartype peer: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar enable_bgp: EnableBgp flag.
+    :vartype enable_bgp: bool
+    :ivar resource_guid: The resource GUID property of the VirtualNetworkGatewayConnection
      resource.
-    :type resource_guid: str
-    :param provisioning_state: The provisioning state of the VirtualNetworkGatewayConnection
+    :vartype resource_guid: str
+    :ivar provisioning_state: The provisioning state of the VirtualNetworkGatewayConnection
      resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _validation = {
@@ -3389,6 +4650,54 @@ class VirtualNetworkGatewayConnection(Resource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword location: Resource location.
+        :paramtype location: str
+        :keyword tags: A set of tags. Resource tags.
+        :paramtype tags: dict[str, str]
+        :keyword etag: Gets a unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword authorization_key: The authorizationKey.
+        :paramtype authorization_key: str
+        :keyword virtual_network_gateway1: A common class for general resource information.
+        :paramtype virtual_network_gateway1:
+         ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway
+        :keyword virtual_network_gateway2: A common class for general resource information.
+        :paramtype virtual_network_gateway2:
+         ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway
+        :keyword local_network_gateway2: A common class for general resource information.
+        :paramtype local_network_gateway2: ~azure.mgmt.network.v2015_06_15.models.LocalNetworkGateway
+        :keyword connection_type: Gateway connection type. Possible values are:
+         'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values include: "IPsec",
+         "Vnet2Vnet", "ExpressRoute", "VPNClient".
+        :paramtype connection_type: str or
+         ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnectionType
+        :keyword routing_weight: The routing weight.
+        :paramtype routing_weight: int
+        :keyword shared_key: The IPSec shared key.
+        :paramtype shared_key: str
+        :keyword connection_status: Virtual network Gateway connection status. Possible values are
+         'Unknown', 'Connecting', 'Connected' and 'NotConnected'. Possible values include: "Unknown",
+         "Connecting", "Connected", "NotConnected".
+        :paramtype connection_status: str or
+         ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnectionStatus
+        :keyword egress_bytes_transferred: The egress bytes transferred in this connection.
+        :paramtype egress_bytes_transferred: long
+        :keyword ingress_bytes_transferred: The ingress bytes transferred in this connection.
+        :paramtype ingress_bytes_transferred: long
+        :keyword peer: The reference to peerings resource.
+        :paramtype peer: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword enable_bgp: EnableBgp flag.
+        :paramtype enable_bgp: bool
+        :keyword resource_guid: The resource GUID property of the VirtualNetworkGatewayConnection
+         resource.
+        :paramtype resource_guid: str
+        :keyword provisioning_state: The provisioning state of the VirtualNetworkGatewayConnection
+         resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(VirtualNetworkGatewayConnection, self).__init__(**kwargs)
         self.etag = kwargs.get('etag', None)
         self.authorization_key = kwargs.get('authorization_key', None)
@@ -3410,11 +4719,11 @@ class VirtualNetworkGatewayConnection(Resource):
 class VirtualNetworkGatewayConnectionListResult(msrest.serialization.Model):
     """Response for the ListVirtualNetworkGatewayConnections API service call.
 
-    :param value: Gets a list of VirtualNetworkGatewayConnection resources that exists in a
-     resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnection]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets a list of VirtualNetworkGatewayConnection resources that exists in a resource
+     group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnection]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -3426,6 +4735,13 @@ class VirtualNetworkGatewayConnectionListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets a list of VirtualNetworkGatewayConnection resources that exists in a
+         resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewayConnection]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(VirtualNetworkGatewayConnectionListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -3434,26 +4750,26 @@ class VirtualNetworkGatewayConnectionListResult(msrest.serialization.Model):
 class VirtualNetworkGatewayIPConfiguration(SubResource):
     """IP configuration for virtual network gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param private_ip_address: Gets or sets the privateIPAddress of the IP Configuration.
-    :type private_ip_address: str
-    :param private_ip_allocation_method: The private IP allocation method. Possible values are:
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar private_ip_address: Gets or sets the privateIPAddress of the IP Configuration.
+    :vartype private_ip_address: str
+    :ivar private_ip_allocation_method: The private IP allocation method. Possible values are:
      'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
-    :type private_ip_allocation_method: str or
+    :vartype private_ip_allocation_method: str or
      ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
-    :param subnet: The reference of the subnet resource.
-    :type subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param public_ip_address: The reference of the public IP resource.
-    :type public_ip_address: ~azure.mgmt.network.v2015_06_15.models.SubResource
-    :param provisioning_state: The provisioning state of the public IP resource. Possible values
+    :ivar subnet: The reference of the subnet resource.
+    :vartype subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar public_ip_address: The reference of the public IP resource.
+    :vartype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.SubResource
+    :ivar provisioning_state: The provisioning state of the public IP resource. Possible values
      are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -3471,6 +4787,28 @@ class VirtualNetworkGatewayIPConfiguration(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword private_ip_address: Gets or sets the privateIPAddress of the IP Configuration.
+        :paramtype private_ip_address: str
+        :keyword private_ip_allocation_method: The private IP allocation method. Possible values are:
+         'Static' and 'Dynamic'. Possible values include: "Static", "Dynamic".
+        :paramtype private_ip_allocation_method: str or
+         ~azure.mgmt.network.v2015_06_15.models.IPAllocationMethod
+        :keyword subnet: The reference of the subnet resource.
+        :paramtype subnet: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword public_ip_address: The reference of the public IP resource.
+        :paramtype public_ip_address: ~azure.mgmt.network.v2015_06_15.models.SubResource
+        :keyword provisioning_state: The provisioning state of the public IP resource. Possible values
+         are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(VirtualNetworkGatewayIPConfiguration, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -3484,10 +4822,10 @@ class VirtualNetworkGatewayIPConfiguration(SubResource):
 class VirtualNetworkGatewayListResult(msrest.serialization.Model):
     """Response for the ListVirtualNetworkGateways API service call.
 
-    :param value: Gets a list of VirtualNetworkGateway resources that exists in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets a list of VirtualNetworkGateway resources that exists in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -3499,6 +4837,12 @@ class VirtualNetworkGatewayListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets a list of VirtualNetworkGateway resources that exists in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGateway]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(VirtualNetworkGatewayListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -3507,14 +4851,14 @@ class VirtualNetworkGatewayListResult(msrest.serialization.Model):
 class VirtualNetworkGatewaySku(msrest.serialization.Model):
     """VirtualNetworkGatewaySku details.
 
-    :param name: Gateway sku name -Basic/HighPerformance/Standard. Possible values include:
-     "Basic", "HighPerformance", "Standard".
-    :type name: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySkuName
-    :param tier: Gateway sku tier -Basic/HighPerformance/Standard. Possible values include:
-     "Basic", "HighPerformance", "Standard".
-    :type tier: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySkuTier
-    :param capacity: The capacity.
-    :type capacity: int
+    :ivar name: Gateway sku name -Basic/HighPerformance/Standard. Possible values include: "Basic",
+     "HighPerformance", "Standard".
+    :vartype name: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySkuName
+    :ivar tier: Gateway sku tier -Basic/HighPerformance/Standard. Possible values include: "Basic",
+     "HighPerformance", "Standard".
+    :vartype tier: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySkuTier
+    :ivar capacity: The capacity.
+    :vartype capacity: int
     """
 
     _attribute_map = {
@@ -3527,6 +4871,16 @@ class VirtualNetworkGatewaySku(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword name: Gateway sku name -Basic/HighPerformance/Standard. Possible values include:
+         "Basic", "HighPerformance", "Standard".
+        :paramtype name: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySkuName
+        :keyword tier: Gateway sku tier -Basic/HighPerformance/Standard. Possible values include:
+         "Basic", "HighPerformance", "Standard".
+        :paramtype tier: str or ~azure.mgmt.network.v2015_06_15.models.VirtualNetworkGatewaySkuTier
+        :keyword capacity: The capacity.
+        :paramtype capacity: int
+        """
         super(VirtualNetworkGatewaySku, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.tier = kwargs.get('tier', None)
@@ -3536,10 +4890,10 @@ class VirtualNetworkGatewaySku(msrest.serialization.Model):
 class VirtualNetworkListResult(msrest.serialization.Model):
     """Response for the ListVirtualNetworks API service call.
 
-    :param value: Gets a list of VirtualNetwork resources in a resource group.
-    :type value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetwork]
-    :param next_link: The URL to get the next set of results.
-    :type next_link: str
+    :ivar value: Gets a list of VirtualNetwork resources in a resource group.
+    :vartype value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetwork]
+    :ivar next_link: The URL to get the next set of results.
+    :vartype next_link: str
     """
 
     _attribute_map = {
@@ -3551,6 +4905,12 @@ class VirtualNetworkListResult(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword value: Gets a list of VirtualNetwork resources in a resource group.
+        :paramtype value: list[~azure.mgmt.network.v2015_06_15.models.VirtualNetwork]
+        :keyword next_link: The URL to get the next set of results.
+        :paramtype next_link: str
+        """
         super(VirtualNetworkListResult, self).__init__(**kwargs)
         self.value = kwargs.get('value', None)
         self.next_link = kwargs.get('next_link', None)
@@ -3559,15 +4919,14 @@ class VirtualNetworkListResult(msrest.serialization.Model):
 class VpnClientConfiguration(msrest.serialization.Model):
     """VpnClientConfiguration for P2S client.
 
-    :param vpn_client_address_pool: Gets or sets the reference of the Address space resource which
+    :ivar vpn_client_address_pool: Gets or sets the reference of the Address space resource which
      represents Address space for P2S VpnClient.
-    :type vpn_client_address_pool: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
-    :param vpn_client_root_certificates: VpnClientRootCertificate for Virtual network gateway.
-    :type vpn_client_root_certificates:
+    :vartype vpn_client_address_pool: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
+    :ivar vpn_client_root_certificates: VpnClientRootCertificate for Virtual network gateway.
+    :vartype vpn_client_root_certificates:
      list[~azure.mgmt.network.v2015_06_15.models.VpnClientRootCertificate]
-    :param vpn_client_revoked_certificates: VpnClientRevokedCertificate for Virtual network
-     gateway.
-    :type vpn_client_revoked_certificates:
+    :ivar vpn_client_revoked_certificates: VpnClientRevokedCertificate for Virtual network gateway.
+    :vartype vpn_client_revoked_certificates:
      list[~azure.mgmt.network.v2015_06_15.models.VpnClientRevokedCertificate]
     """
 
@@ -3581,6 +4940,18 @@ class VpnClientConfiguration(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword vpn_client_address_pool: Gets or sets the reference of the Address space resource
+         which represents Address space for P2S VpnClient.
+        :paramtype vpn_client_address_pool: ~azure.mgmt.network.v2015_06_15.models.AddressSpace
+        :keyword vpn_client_root_certificates: VpnClientRootCertificate for Virtual network gateway.
+        :paramtype vpn_client_root_certificates:
+         list[~azure.mgmt.network.v2015_06_15.models.VpnClientRootCertificate]
+        :keyword vpn_client_revoked_certificates: VpnClientRevokedCertificate for Virtual network
+         gateway.
+        :paramtype vpn_client_revoked_certificates:
+         list[~azure.mgmt.network.v2015_06_15.models.VpnClientRevokedCertificate]
+        """
         super(VpnClientConfiguration, self).__init__(**kwargs)
         self.vpn_client_address_pool = kwargs.get('vpn_client_address_pool', None)
         self.vpn_client_root_certificates = kwargs.get('vpn_client_root_certificates', None)
@@ -3590,9 +4961,9 @@ class VpnClientConfiguration(msrest.serialization.Model):
 class VpnClientParameters(msrest.serialization.Model):
     """VpnClientParameters.
 
-    :param processor_architecture: VPN client Processor Architecture. Possible values are: 'AMD64'
+    :ivar processor_architecture: VPN client Processor Architecture. Possible values are: 'AMD64'
      and 'X86'. Possible values include: "Amd64", "X86".
-    :type processor_architecture: str or
+    :vartype processor_architecture: str or
      ~azure.mgmt.network.v2015_06_15.models.ProcessorArchitecture
     """
 
@@ -3604,6 +4975,12 @@ class VpnClientParameters(msrest.serialization.Model):
         self,
         **kwargs
     ):
+        """
+        :keyword processor_architecture: VPN client Processor Architecture. Possible values are:
+         'AMD64' and 'X86'. Possible values include: "Amd64", "X86".
+        :paramtype processor_architecture: str or
+         ~azure.mgmt.network.v2015_06_15.models.ProcessorArchitecture
+        """
         super(VpnClientParameters, self).__init__(**kwargs)
         self.processor_architecture = kwargs.get('processor_architecture', None)
 
@@ -3611,18 +4988,18 @@ class VpnClientParameters(msrest.serialization.Model):
 class VpnClientRevokedCertificate(SubResource):
     """VPN client revoked certificate of virtual network gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param thumbprint: The revoked VPN client certificate thumbprint.
-    :type thumbprint: str
-    :param provisioning_state: The provisioning state of the VPN client revoked certificate
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar thumbprint: The revoked VPN client certificate thumbprint.
+    :vartype thumbprint: str
+    :ivar provisioning_state: The provisioning state of the VPN client revoked certificate
      resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -3637,6 +5014,20 @@ class VpnClientRevokedCertificate(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword thumbprint: The revoked VPN client certificate thumbprint.
+        :paramtype thumbprint: str
+        :keyword provisioning_state: The provisioning state of the VPN client revoked certificate
+         resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(VpnClientRevokedCertificate, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
@@ -3647,18 +5038,18 @@ class VpnClientRevokedCertificate(SubResource):
 class VpnClientRootCertificate(SubResource):
     """VPN client root certificate of virtual network gateway.
 
-    :param id: Resource Identifier.
-    :type id: str
-    :param name: The name of the resource that is unique within a resource group. This name can be
+    :ivar id: Resource Identifier.
+    :vartype id: str
+    :ivar name: The name of the resource that is unique within a resource group. This name can be
      used to access the resource.
-    :type name: str
-    :param etag: A unique read-only string that changes whenever the resource is updated.
-    :type etag: str
-    :param public_cert_data: Gets or sets the certificate public data.
-    :type public_cert_data: str
-    :param provisioning_state: The provisioning state of the VPN client root certificate resource.
+    :vartype name: str
+    :ivar etag: A unique read-only string that changes whenever the resource is updated.
+    :vartype etag: str
+    :ivar public_cert_data: Gets or sets the certificate public data.
+    :vartype public_cert_data: str
+    :ivar provisioning_state: The provisioning state of the VPN client root certificate resource.
      Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    :type provisioning_state: str
+    :vartype provisioning_state: str
     """
 
     _attribute_map = {
@@ -3673,6 +5064,20 @@ class VpnClientRootCertificate(SubResource):
         self,
         **kwargs
     ):
+        """
+        :keyword id: Resource Identifier.
+        :paramtype id: str
+        :keyword name: The name of the resource that is unique within a resource group. This name can
+         be used to access the resource.
+        :paramtype name: str
+        :keyword etag: A unique read-only string that changes whenever the resource is updated.
+        :paramtype etag: str
+        :keyword public_cert_data: Gets or sets the certificate public data.
+        :paramtype public_cert_data: str
+        :keyword provisioning_state: The provisioning state of the VPN client root certificate
+         resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        :paramtype provisioning_state: str
+        """
         super(VpnClientRootCertificate, self).__init__(**kwargs)
         self.name = kwargs.get('name', None)
         self.etag = kwargs.get('etag', None)
