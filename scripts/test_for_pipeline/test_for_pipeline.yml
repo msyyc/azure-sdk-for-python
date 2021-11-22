@@ -1,0 +1,31 @@
+# Release status statistics
+
+name: ReleaseIssueStatus
+
+trigger:
+  branches:
+    exclude:
+    - '*'
+
+
+jobs:
+- job: ReleaseIssueStatus
+  displayName: ReleaseIssueStatus Python 3.8
+  timeoutInMinutes: 30
+  strategy:
+    maxParallel: 3
+  pool:
+    vmImage: 'ubuntu-20.04'
+  steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.8'
+        addToPath: true
+        architecture: 'x64'
+    - bash: |
+
+        echo 000
+        docker --help
+        echo 111
+        docker run -it --rm -h dev2 --name dev2 l601306339/autorest
+        echo 222
