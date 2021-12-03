@@ -70,7 +70,7 @@ def set_env_variables():
     with open(txt_path, 'r') as f:
         for line in f.readlines():
             key, value = line.split('=')
-            os.environ[key] = value
+            os.environ[key] = value.strip('\n').strip(r'"')
     if not os.path.exists(target_path):
         with open(mgmt_settings_real_path, 'r') as f:
             content = f.read()
