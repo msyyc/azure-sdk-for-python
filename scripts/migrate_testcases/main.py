@@ -6,10 +6,6 @@ import os
 import re
 import time
 
-AZURE_SUBSCRIPTION_ID = os.getenv('AZURE_SUBSCRIPTION_ID', '')
-AZURE_TENANT_ID = os.getenv('AZURE_TENANT_ID', '')
-AZURE_TEST_RUN_LIVE = os.getenv('AZURE_TEST_RUN_LIVE', 'true')
-GIT_TOKEN = ''
 DIREC_PREFIX = 'D:'
 DIREC_NAME = 'dev'
 
@@ -68,9 +64,18 @@ def create_branch(path):
 
 
 def set_env_variables():
-    os.environ['AZURE_SUBSCRIPTION_ID'] = AZURE_SUBSCRIPTION_ID
-    os.environ['AZURE_TENANT_ID'] = AZURE_TENANT_ID
-    os.environ['AZURE_TEST_RUN_LIVE'] = AZURE_TEST_RUN_LIVE
+    txt_path = r'.\migrate_testcases\livetest_envvar.txt'
+    mgmt_settings_real_path = r'.\migrate_testcases\mgmt_settings_real.py'
+    target_path = r'.\azure-sdk-for-python\tools\azure-sdk-tools\devtools_testutils\mgmt_settings_real.py'
+    with open(txt_path, 'r') as f:
+        for line in f.readlines():
+            key, value = line.split('=')
+            os.environ[key] = value
+    if not os.path.exists(target_path):
+        with open(mgmt_settings_real_path, 'r') as f:
+            content = f.read()
+        with open(target_path, 'w+') as f:
+            f.write(content)
 
 def update_requirement(path):
     requirement_path = path.replace('tests', '')+'dev_requirements.txt'
