@@ -82,7 +82,7 @@ def update_requirement(path):
     print(requirement_path)
     with open(requirement_path, 'a+') as f1:
         f1.seek(0, 0)
-        if 'azure-identity' not in f1.readlines():
+        if 'azure-identity' not in f1.read():
             f1.write('\n../../identity/azure-identity')
 
 
