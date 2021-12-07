@@ -224,7 +224,7 @@ def commit_test(path):
 def create_pr(service, path):
     print_exec('pip install ghapi', path)
     from ghapi.all import GhApi
-    api = GhApi(owner='Azure', repo='azure-sdk-for-python', token=GIT_TOKEN)
+    api = GhApi(owner='Azure', repo='azure-sdk-for-python', token=os.environ['GIT_TOKEN'])
     origin_url = sp.check_output('git remote get-url origin', cwd=path)
     branch = sp.check_output('git symbolic-ref --short -q HEAD', cwd=path)
     user_name = re.findall('/github.com/(.*?)/azure', origin_url.decode())[0]
