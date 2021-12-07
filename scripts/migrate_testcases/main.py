@@ -55,6 +55,7 @@ def create_branch(path):
     print_exec('git checkout . && git clean -fd', path)
     print_exec('git fetch azure main', path)
     print_exec('git checkout azure/main', path)
+    time.sleep(5)
     date = time.localtime(time.time())
     branch = 'migrate-{}-toTestProxy-{:02d}{:02d}-{}'.format(service, date.tm_mon,date.tm_mday, random.randint(1000, 9999))
 
@@ -180,6 +181,7 @@ def update_test(path):
 
 def run_tests(path):
     print_exec('pytest ../tests', path)
+    env_print(path)
     suspend('Test complete')
 
 
@@ -265,9 +267,9 @@ def main():
     args = parser.parse_args()
     PATH = args.path
     ENV_NAME = args.env
+
     # prepare env
     SERVICE = create_branch(PATH)
-    create_branch(PATH)
     set_env_variables()
     update_requirement(PATH)
     prepare_env(PATH)

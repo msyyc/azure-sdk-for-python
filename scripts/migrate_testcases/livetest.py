@@ -6,11 +6,14 @@ CLIENT_ID = ''
 CLIENT_SECRET = ''
 TENANT_ID = ''
 GIT_TOKEN = ''
+AZURE_TEST_RUN_LIVE = 'yes'
 
 # add actual value (end)
 
 def replace_func(line):
-    return line.replace('{TENANT_ID}',TENANT_ID).replace('{CLIENT_ID}',CLIENT_ID).replace('{CLIENT_SECRET}',CLIENT_SECRET).replace('{SUBSCRIPTION_ID}',SUBSCRIPTION_ID).replace('{GIT_TOKEN}', GIT_TOKEN)
+    return line.replace('{TENANT_ID}', TENANT_ID).replace('{CLIENT_ID}', CLIENT_ID).replace('{CLIENT_SECRET}',
+                        CLIENT_SECRET).replace('{SUBSCRIPTION_ID}', SUBSCRIPTION_ID).replace('{GIT_TOKEN}',
+                        GIT_TOKEN).replace('{AZURE_TEST_RUN_LIVE}', AZURE_TEST_RUN_LIVE)
 
 
 # generate files needed for livetest
