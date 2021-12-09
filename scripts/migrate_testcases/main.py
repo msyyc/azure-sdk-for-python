@@ -51,6 +51,7 @@ def add_conftest(path: str):
 
 def create_branch(path):
     service = re.findall('sdk\\\\(.*?)\\\\azure-mgmt-', path)[0]
+    path = path.split(r'\{}'.format(service))[0]
     print_exec('git remote add azure https://github.com/Azure/azure-sdk-for-python.git', path)
     print_exec('git checkout . && git clean -fd', path)
     print_exec('git fetch azure main', path)
