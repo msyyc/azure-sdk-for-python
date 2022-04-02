@@ -170,8 +170,8 @@ def update_test(path):
                     line = re.sub('with self.assertRaises', r'with pytest.raises', line)
                 if 'assertListEqual' in line:
                     line = re.sub('self.assertListEqual\((.*),(.*)\)', r'assert \g<1> ==\g<2>', line)
-                if 'self.settings.SUBSCRIPTION_ID' in line:
-                    line = re.sub('self\.settings\.SUBSCRIPTION_ID', 'self.get_settings_value("SUBSCRIPTION_ID")', line)
+            if 'self.settings.SUBSCRIPTION_ID' in line:
+                line = re.sub('self\.settings\.SUBSCRIPTION_ID', 'self.get_settings_value("SUBSCRIPTION_ID")', line)
 
             new_lines += line
 
