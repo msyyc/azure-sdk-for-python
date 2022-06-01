@@ -43,9 +43,9 @@ class ManagedServiceIdentityClient(MultiApiClientMixin, _SDKClient):
     The api-version parameter sets the default API version if the operation
     group is not described in the profile.
 
-    :param credential: Credential needed for the client to connect to Azure.
+    :param credential: Credential needed for the client to connect to Azure. Required.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param subscription_id: The Id of the Subscription to which the identity belongs.
+    :param subscription_id: The Id of the Subscription to which the identity belongs. Required.
     :type subscription_id: str
     :param api_version: API version to use if no profile is provided, or if missing in profile.
     :type api_version: str

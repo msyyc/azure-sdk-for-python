@@ -1,4 +1,5 @@
 # coding=utf-8
+# pylint: disable=too-many-lines
 # --------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
@@ -6,9 +7,13 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, TYPE_CHECKING
 
 import msrest.serialization
+
+if TYPE_CHECKING:
+    # pylint: disable=unused-import,ungrouped-imports
+    from .. import models as _models
 
 
 class CloudErrorBody(msrest.serialization.Model):
@@ -27,10 +32,10 @@ class CloudErrorBody(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'target': {'key': 'target', 'type': 'str'},
-        'details': {'key': 'details', 'type': '[CloudErrorBody]'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "target": {"key": "target", "type": "str"},
+        "details": {"key": "details", "type": "[CloudErrorBody]"},
     }
 
     def __init__(
@@ -39,7 +44,7 @@ class CloudErrorBody(msrest.serialization.Model):
         code: Optional[str] = None,
         message: Optional[str] = None,
         target: Optional[str] = None,
-        details: Optional[List["CloudErrorBody"]] = None,
+        details: Optional[List["_models.CloudErrorBody"]] = None,
         **kwargs
     ):
         """
@@ -54,7 +59,7 @@ class CloudErrorBody(msrest.serialization.Model):
         :keyword details: A list of additional details about the error.
         :paramtype details: list[~azure.mgmt.msi.v2018_11_30.models.CloudErrorBody]
         """
-        super(CloudErrorBody, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.code = code
         self.message = message
         self.target = target
@@ -83,9 +88,9 @@ class Resource(msrest.serialization.Model):
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
     }
 
     def __init__(
@@ -94,7 +99,7 @@ class Resource(msrest.serialization.Model):
     ):
         """
         """
-        super(Resource, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.id = None
         self.name = None
         self.type = None
@@ -115,9 +120,9 @@ class TrackedResource(Resource):
     :ivar type: The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or
      "Microsoft.Storage/storageAccounts".
     :vartype type: str
-    :ivar tags: A set of tags. Resource tags.
+    :ivar tags: Resource tags.
     :vartype tags: dict[str, str]
-    :ivar location: Required. The geo-location where the resource lives.
+    :ivar location: The geo-location where the resource lives. Required.
     :vartype location: str
     """
 
@@ -129,11 +134,11 @@ class TrackedResource(Resource):
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'location': {'key': 'location', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "location": {"key": "location", "type": "str"},
     }
 
     def __init__(
@@ -144,12 +149,12 @@ class TrackedResource(Resource):
         **kwargs
     ):
         """
-        :keyword tags: A set of tags. Resource tags.
+        :keyword tags: Resource tags.
         :paramtype tags: dict[str, str]
-        :keyword location: Required. The geo-location where the resource lives.
+        :keyword location: The geo-location where the resource lives. Required.
         :paramtype location: str
         """
-        super(TrackedResource, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.tags = tags
         self.location = location
 
@@ -169,9 +174,9 @@ class Identity(TrackedResource):
     :ivar type: The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or
      "Microsoft.Storage/storageAccounts".
     :vartype type: str
-    :ivar tags: A set of tags. Resource tags.
+    :ivar tags: Resource tags.
     :vartype tags: dict[str, str]
-    :ivar location: Required. The geo-location where the resource lives.
+    :ivar location: The geo-location where the resource lives. Required.
     :vartype location: str
     :ivar tenant_id: The id of the tenant which the identity belongs to.
     :vartype tenant_id: str
@@ -194,14 +199,14 @@ class Identity(TrackedResource):
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'location': {'key': 'location', 'type': 'str'},
-        'tenant_id': {'key': 'properties.tenantId', 'type': 'str'},
-        'principal_id': {'key': 'properties.principalId', 'type': 'str'},
-        'client_id': {'key': 'properties.clientId', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "location": {"key": "location", "type": "str"},
+        "tenant_id": {"key": "properties.tenantId", "type": "str"},
+        "principal_id": {"key": "properties.principalId", "type": "str"},
+        "client_id": {"key": "properties.clientId", "type": "str"},
     }
 
     def __init__(
@@ -212,12 +217,12 @@ class Identity(TrackedResource):
         **kwargs
     ):
         """
-        :keyword tags: A set of tags. Resource tags.
+        :keyword tags: Resource tags.
         :paramtype tags: dict[str, str]
-        :keyword location: Required. The geo-location where the resource lives.
+        :keyword location: The geo-location where the resource lives. Required.
         :paramtype location: str
         """
-        super(Identity, self).__init__(tags=tags, location=location, **kwargs)
+        super().__init__(tags=tags, location=location, **kwargs)
         self.tenant_id = None
         self.principal_id = None
         self.client_id = None
@@ -238,7 +243,7 @@ class IdentityUpdate(Resource):
     :vartype type: str
     :ivar location: The geo-location where the resource lives.
     :vartype location: str
-    :ivar tags: A set of tags. Resource tags.
+    :ivar tags: Resource tags.
     :vartype tags: dict[str, str]
     :ivar tenant_id: The id of the tenant which the identity belongs to.
     :vartype tenant_id: str
@@ -260,14 +265,14 @@ class IdentityUpdate(Resource):
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'location': {'key': 'location', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'tenant_id': {'key': 'properties.tenantId', 'type': 'str'},
-        'principal_id': {'key': 'properties.principalId', 'type': 'str'},
-        'client_id': {'key': 'properties.clientId', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "location": {"key": "location", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "tenant_id": {"key": "properties.tenantId", "type": "str"},
+        "principal_id": {"key": "properties.principalId", "type": "str"},
+        "client_id": {"key": "properties.clientId", "type": "str"},
     }
 
     def __init__(
@@ -280,10 +285,10 @@ class IdentityUpdate(Resource):
         """
         :keyword location: The geo-location where the resource lives.
         :paramtype location: str
-        :keyword tags: A set of tags. Resource tags.
+        :keyword tags: Resource tags.
         :paramtype tags: dict[str, str]
         """
-        super(IdentityUpdate, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.location = location
         self.tags = tags
         self.tenant_id = None
@@ -302,15 +307,15 @@ class Operation(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'display': {'key': 'display', 'type': 'OperationDisplay'},
+        "name": {"key": "name", "type": "str"},
+        "display": {"key": "display", "type": "OperationDisplay"},
     }
 
     def __init__(
         self,
         *,
         name: Optional[str] = None,
-        display: Optional["OperationDisplay"] = None,
+        display: Optional["_models.OperationDisplay"] = None,
         **kwargs
     ):
         """
@@ -320,7 +325,7 @@ class Operation(msrest.serialization.Model):
         :keyword display: The object that describes the operation.
         :paramtype display: ~azure.mgmt.msi.v2018_11_30.models.OperationDisplay
         """
-        super(Operation, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.name = name
         self.display = display
 
@@ -339,10 +344,10 @@ class OperationDisplay(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'provider': {'key': 'provider', 'type': 'str'},
-        'operation': {'key': 'operation', 'type': 'str'},
-        'resource': {'key': 'resource', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
+        "provider": {"key": "provider", "type": "str"},
+        "operation": {"key": "operation", "type": "str"},
+        "resource": {"key": "resource", "type": "str"},
+        "description": {"key": "description", "type": "str"},
     }
 
     def __init__(
@@ -364,7 +369,7 @@ class OperationDisplay(msrest.serialization.Model):
         :keyword description: A description of the operation.
         :paramtype description: str
         """
-        super(OperationDisplay, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.provider = provider
         self.operation = operation
         self.resource = resource
@@ -381,14 +386,14 @@ class OperationListResult(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Operation]'},
-        'next_link': {'key': 'nextLink', 'type': 'str'},
+        "value": {"key": "value", "type": "[Operation]"},
+        "next_link": {"key": "nextLink", "type": "str"},
     }
 
     def __init__(
         self,
         *,
-        value: Optional[List["Operation"]] = None,
+        value: Optional[List["_models.Operation"]] = None,
         next_link: Optional[str] = None,
         **kwargs
     ):
@@ -398,7 +403,7 @@ class OperationListResult(msrest.serialization.Model):
         :keyword next_link: The url to get the next page of results, if any.
         :paramtype next_link: str
         """
-        super(OperationListResult, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.value = value
         self.next_link = next_link
 
@@ -425,9 +430,9 @@ class ProxyResource(Resource):
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
     }
 
     def __init__(
@@ -436,7 +441,7 @@ class ProxyResource(Resource):
     ):
         """
         """
-        super(ProxyResource, self).__init__(**kwargs)
+        super().__init__(**kwargs)
 
 
 class SystemAssignedIdentity(ProxyResource):
@@ -454,9 +459,9 @@ class SystemAssignedIdentity(ProxyResource):
     :ivar type: The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or
      "Microsoft.Storage/storageAccounts".
     :vartype type: str
-    :ivar location: Required. The geo-location where the resource lives.
+    :ivar location: The geo-location where the resource lives. Required.
     :vartype location: str
-    :ivar tags: A set of tags. Resource tags.
+    :ivar tags: Resource tags.
     :vartype tags: dict[str, str]
     :ivar tenant_id: The id of the tenant which the identity belongs to.
     :vartype tenant_id: str
@@ -483,15 +488,15 @@ class SystemAssignedIdentity(ProxyResource):
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'location': {'key': 'location', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'tenant_id': {'key': 'properties.tenantId', 'type': 'str'},
-        'principal_id': {'key': 'properties.principalId', 'type': 'str'},
-        'client_id': {'key': 'properties.clientId', 'type': 'str'},
-        'client_secret_url': {'key': 'properties.clientSecretUrl', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "location": {"key": "location", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "tenant_id": {"key": "properties.tenantId", "type": "str"},
+        "principal_id": {"key": "properties.principalId", "type": "str"},
+        "client_id": {"key": "properties.clientId", "type": "str"},
+        "client_secret_url": {"key": "properties.clientSecretUrl", "type": "str"},
     }
 
     def __init__(
@@ -502,12 +507,12 @@ class SystemAssignedIdentity(ProxyResource):
         **kwargs
     ):
         """
-        :keyword location: Required. The geo-location where the resource lives.
+        :keyword location: The geo-location where the resource lives. Required.
         :paramtype location: str
-        :keyword tags: A set of tags. Resource tags.
+        :keyword tags: Resource tags.
         :paramtype tags: dict[str, str]
         """
-        super(SystemAssignedIdentity, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.location = location
         self.tags = tags
         self.tenant_id = None
@@ -526,14 +531,14 @@ class UserAssignedIdentitiesListResult(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Identity]'},
-        'next_link': {'key': 'nextLink', 'type': 'str'},
+        "value": {"key": "value", "type": "[Identity]"},
+        "next_link": {"key": "nextLink", "type": "str"},
     }
 
     def __init__(
         self,
         *,
-        value: Optional[List["Identity"]] = None,
+        value: Optional[List["_models.Identity"]] = None,
         next_link: Optional[str] = None,
         **kwargs
     ):
@@ -543,6 +548,6 @@ class UserAssignedIdentitiesListResult(msrest.serialization.Model):
         :keyword next_link: The url to get the next page of results, if any.
         :paramtype next_link: str
         """
-        super(UserAssignedIdentitiesListResult, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.value = value
         self.next_link = next_link

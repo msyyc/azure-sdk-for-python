@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from azure.core.credentials_async import AsyncTokenCredential
 
-class ManagedServiceIdentityClient:
+class ManagedServiceIdentityClient:  # pylint: disable=client-accepts-api-version-keyword
     """The Managed Service Identity Client.
 
     :ivar system_assigned_identities: SystemAssignedIdentitiesOperations operations
@@ -33,9 +33,9 @@ class ManagedServiceIdentityClient:
     :ivar user_assigned_identities: UserAssignedIdentitiesOperations operations
     :vartype user_assigned_identities:
      azure.mgmt.msi.v2018_11_30.aio.operations.UserAssignedIdentitiesOperations
-    :param credential: Credential needed for the client to connect to Azure.
+    :param credential: Credential needed for the client to connect to Azure. Required.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
-    :param subscription_id: The Id of the Subscription to which the identity belongs.
+    :param subscription_id: The Id of the Subscription to which the identity belongs. Required.
     :type subscription_id: str
     :param base_url: Service URL. Default value is "https://management.azure.com".
     :type base_url: str
@@ -58,9 +58,15 @@ class ManagedServiceIdentityClient:
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
         self._serialize.client_side_validation = False
-        self.system_assigned_identities = SystemAssignedIdentitiesOperations(self._client, self._config, self._serialize, self._deserialize)
-        self.operations = Operations(self._client, self._config, self._serialize, self._deserialize)
-        self.user_assigned_identities = UserAssignedIdentitiesOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.system_assigned_identities = SystemAssignedIdentitiesOperations(
+            self._client, self._config, self._serialize, self._deserialize
+        )
+        self.operations = Operations(
+            self._client, self._config, self._serialize, self._deserialize
+        )
+        self.user_assigned_identities = UserAssignedIdentitiesOperations(
+            self._client, self._config, self._serialize, self._deserialize
+        )
 
 
     def _send_request(
