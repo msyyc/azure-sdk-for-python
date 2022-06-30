@@ -9,15 +9,22 @@ from typing import Any, AsyncIterable, Callable, Dict, Generic, Optional, TypeVa
 import warnings
 
 from azure.core.async_paging import AsyncItemPaged, AsyncList
-from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import AsyncHttpResponse, HttpRequest
 from azure.mgmt.core.exceptions import ARMErrorFormat
 
 from ... import models as _models
 
-T = TypeVar('T')
+T = TypeVar("T")
 ClsType = Optional[Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, Dict[str, Any]], Any]]
+
 
 class SettingsOperations:
     """SettingsOperations async operations.
@@ -41,10 +48,7 @@ class SettingsOperations:
         self._deserialize = deserializer
         self._config = config
 
-    def list(
-        self,
-        **kwargs: Any
-    ) -> AsyncIterable["_models.SettingsListResult"]:
+    def list(self, **kwargs: Any) -> AsyncIterable["_models.SettingsListResult"]:
         """Lists all of the settings that have been customized.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -52,25 +56,23 @@ class SettingsOperations:
         :rtype: ~azure.core.async_paging.AsyncItemPaged[~azure.mgmt.costmanagement.models.SettingsListResult]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.SettingsListResult"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.SettingsListResult"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         def prepare_request(next_link=None):
             # Construct headers
             header_parameters = {}  # type: Dict[str, Any]
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
             if not next_link:
                 # Construct URL
-                url = self.list.metadata['url']  # type: ignore
+                url = self.list.metadata["url"]  # type: ignore
                 # Construct parameters
                 query_parameters = {}  # type: Dict[str, Any]
-                query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+                query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
                 request = self._client.get(url, query_parameters, header_parameters)
             else:
@@ -80,7 +82,7 @@ class SettingsOperations:
             return request
 
         async def extract_data(pipeline_response):
-            deserialized = self._deserialize('SettingsListResult', pipeline_response)
+            deserialized = self._deserialize("SettingsListResult", pipeline_response)
             list_of_elem = deserialized.value
             if cls:
                 list_of_elem = cls(list_of_elem)
@@ -99,16 +101,11 @@ class SettingsOperations:
 
             return pipeline_response
 
-        return AsyncItemPaged(
-            get_next, extract_data
-        )
-    list.metadata = {'url': '/providers/Microsoft.CostManagement/settings'}  # type: ignore
+        return AsyncItemPaged(get_next, extract_data)
 
-    async def get(
-        self,
-        setting_name: str,
-        **kwargs: Any
-    ) -> "_models.Setting":
+    list.metadata = {"url": "/providers/Microsoft.CostManagement/settings"}  # type: ignore
+
+    async def get(self, setting_name: str, **kwargs: Any) -> "_models.Setting":
         """Retrieves the current value for a specific setting.
 
         :param setting_name: Name of the setting. Allowed values: myscope.
@@ -118,28 +115,26 @@ class SettingsOperations:
         :rtype: ~azure.mgmt.costmanagement.models.Setting
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.Setting"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.Setting"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         # Construct URL
-        url = self.get.metadata['url']  # type: ignore
+        url = self.get.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'settingName': self._serialize.url("setting_name", setting_name, 'str', max_length=32, min_length=0),
+            "settingName": self._serialize.url("setting_name", setting_name, "str", max_length=32, min_length=0),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         request = self._client.get(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
@@ -150,19 +145,17 @@ class SettingsOperations:
             error = self._deserialize.failsafe_deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = self._deserialize('Setting', pipeline_response)
+        deserialized = self._deserialize("Setting", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    get.metadata = {'url': '/providers/Microsoft.CostManagement/settings/{settingName}'}  # type: ignore
+
+    get.metadata = {"url": "/providers/Microsoft.CostManagement/settings/{settingName}"}  # type: ignore
 
     async def create_or_update(
-        self,
-        setting_name: str,
-        parameters: "_models.Setting",
-        **kwargs: Any
+        self, setting_name: str, parameters: "_models.Setting", **kwargs: Any
     ) -> "_models.Setting":
         """Sets a new value for a specific setting.
 
@@ -175,34 +168,32 @@ class SettingsOperations:
         :rtype: ~azure.mgmt.costmanagement.models.Setting
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.Setting"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.Setting"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         content_type = kwargs.pop("content_type", "application/json")
         accept = "application/json"
 
         # Construct URL
-        url = self.create_or_update.metadata['url']  # type: ignore
+        url = self.create_or_update.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'settingName': self._serialize.url("setting_name", setting_name, 'str', max_length=32, min_length=0),
+            "settingName": self._serialize.url("setting_name", setting_name, "str", max_length=32, min_length=0),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         body_content_kwargs = {}  # type: Dict[str, Any]
-        body_content = self._serialize.body(parameters, 'Setting')
-        body_content_kwargs['content'] = body_content
+        body_content = self._serialize.body(parameters, "Setting")
+        body_content_kwargs["content"] = body_content
         request = self._client.put(url, query_parameters, header_parameters, **body_content_kwargs)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -212,19 +203,16 @@ class SettingsOperations:
             error = self._deserialize.failsafe_deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = self._deserialize('Setting', pipeline_response)
+        deserialized = self._deserialize("Setting", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    create_or_update.metadata = {'url': '/providers/Microsoft.CostManagement/settings/{settingName}'}  # type: ignore
 
-    async def delete(
-        self,
-        setting_name: str,
-        **kwargs: Any
-    ) -> None:
+    create_or_update.metadata = {"url": "/providers/Microsoft.CostManagement/settings/{settingName}"}  # type: ignore
+
+    async def delete(self, setting_name: str, **kwargs: Any) -> None:
         """Remove the current value for a specific setting and reverts back to the default value, if
         applicable.
 
@@ -235,28 +223,26 @@ class SettingsOperations:
         :rtype: None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[None]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         # Construct URL
-        url = self.delete.metadata['url']  # type: ignore
+        url = self.delete.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'settingName': self._serialize.url("setting_name", setting_name, 'str', max_length=32, min_length=0),
+            "settingName": self._serialize.url("setting_name", setting_name, "str", max_length=32, min_length=0),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         request = self._client.delete(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
@@ -270,4 +256,4 @@ class SettingsOperations:
         if cls:
             return cls(pipeline_response, None, {})
 
-    delete.metadata = {'url': '/providers/Microsoft.CostManagement/settings/{settingName}'}  # type: ignore
+    delete.metadata = {"url": "/providers/Microsoft.CostManagement/settings/{settingName}"}  # type: ignore

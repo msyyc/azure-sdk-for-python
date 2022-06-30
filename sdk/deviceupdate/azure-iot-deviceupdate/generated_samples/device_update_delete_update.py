@@ -8,35 +8,33 @@
 
 from azure.identity import DefaultAzureCredential
 from azure.iot.deviceupdate import DeviceUpdateClient
-
 """
-The sample just shows how to use the method and may not run successfully.
 # PREREQUISITES
     pip install azure-identity
     pip install azure-iot-deviceupdate
 # USAGE
     python device_update_delete_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret 
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
 """
-# x-ms-original-file: specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/examples/DeviceUpdate_DeleteUpdate.json
 def main():
-    """
-    Please set the values of the client ID, tenant ID and client secret of the AAD application as environment variables:
-    AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET.
-    For more info about how to get the value, please see https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
-    """
     client = DeviceUpdateClient(
         endpoint="contoso.api.adu.microsoft.com",
         instance_id="blue",
         credential=DefaultAzureCredential(),
     )
 
-    response = client.device_update.begin_delete_update(
+    response = client.device_update._delete_update_initial(
         provider="microsoft",
         name="adu",
         version="1.0.0.0",
-    ).result()
+    )
     print(response)
 
-
+# x-ms-original-file: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d73e2aef15b4670fef9ba7b1cbce825205547212/specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/examples/DeviceUpdate_DeleteUpdate.json
 if __name__ == "__main__":
     main()
+ain()

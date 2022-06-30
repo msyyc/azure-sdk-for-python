@@ -9,11 +9,10 @@
 from copy import deepcopy
 from typing import Any, Awaitable, TYPE_CHECKING
 
-from msrest import Deserializer, Serializer
-
 from azure.core import AsyncPipelineClient
 from azure.core.rest import AsyncHttpResponse, HttpRequest
 
+from .._serialization import Deserializer, Serializer
 from ._configuration import DeviceUpdateClientConfiguration
 from .operations import DeviceManagementOperations, DeviceUpdateOperations
 
@@ -22,6 +21,7 @@ if TYPE_CHECKING:
     from typing import Dict
 
     from azure.core.credentials_async import AsyncTokenCredential
+
 
 class DeviceUpdateClient:  # pylint: disable=client-accepts-api-version-keyword
     """Device Update for IoT Hub is an Azure service that enables customers to publish update for
@@ -48,33 +48,22 @@ class DeviceUpdateClient:  # pylint: disable=client-accepts-api-version-keyword
      Retry-After header is present.
     """
 
-    def __init__(
-        self,
-        endpoint: str,
-        instance_id: str,
-        credential: "AsyncTokenCredential",
-        **kwargs: Any
-    ) -> None:
-        _endpoint = 'https://{endpoint}'
-        self._config = DeviceUpdateClientConfiguration(endpoint=endpoint, instance_id=instance_id, credential=credential, **kwargs)
+    def __init__(self, endpoint: str, instance_id: str, credential: "AsyncTokenCredential", **kwargs: Any) -> None:
+        _endpoint = "https://{endpoint}"
+        self._config = DeviceUpdateClientConfiguration(
+            endpoint=endpoint, instance_id=instance_id, credential=credential, **kwargs
+        )
         self._client = AsyncPipelineClient(base_url=_endpoint, config=self._config, **kwargs)
 
         self._serialize = Serializer()
         self._deserialize = Deserializer()
         self._serialize.client_side_validation = False
-        self.device_update = DeviceUpdateOperations(
-            self._client, self._config, self._serialize, self._deserialize
-        )
+        self.device_update = DeviceUpdateOperations(self._client, self._config, self._serialize, self._deserialize)
         self.device_management = DeviceManagementOperations(
             self._client, self._config, self._serialize, self._deserialize
         )
 
-
-    def send_request(
-        self,
-        request: HttpRequest,
-        **kwargs: Any
-    ) -> Awaitable[AsyncHttpResponse]:
+    def send_request(self, request: HttpRequest, **kwargs: Any) -> Awaitable[AsyncHttpResponse]:
         """Runs the network request through the client's chained policies.
 
         >>> from azure.core.rest import HttpRequest
@@ -83,7 +72,7 @@ class DeviceUpdateClient:  # pylint: disable=client-accepts-api-version-keyword
         >>> response = await client.send_request(request)
         <AsyncHttpResponse: 200 OK>
 
-        For more information on this code flow, see https://aka.ms/azsdk/python/protocol/quickstart
+        For more information on this code flow, see https://aka.ms/azsdk/dpcodegen/python/send_request
 
         :param request: The network request you want to make. Required.
         :type request: ~azure.core.rest.HttpRequest
@@ -94,7 +83,7 @@ class DeviceUpdateClient:  # pylint: disable=client-accepts-api-version-keyword
 
         request_copy = deepcopy(request)
         path_format_arguments = {
-            "endpoint": self._serialize.url("self._config.endpoint", self._config.endpoint, 'str', skip_quote=True),
+            "endpoint": self._serialize.url("self._config.endpoint", self._config.endpoint, "str", skip_quote=True),
         }
 
         request_copy.url = self._client.format_url(request_copy.url, **path_format_arguments)

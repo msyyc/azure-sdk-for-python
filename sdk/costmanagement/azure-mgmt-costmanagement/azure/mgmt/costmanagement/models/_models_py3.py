@@ -31,23 +31,20 @@ class Resource(msrest.serialization.Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'tags': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "tags": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(Resource, self).__init__(**kwargs)
         self.id = None
         self.name = None
@@ -94,28 +91,28 @@ class Alert(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'tags': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "tags": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'definition': {'key': 'properties.definition', 'type': 'AlertPropertiesDefinition'},
-        'description': {'key': 'properties.description', 'type': 'str'},
-        'source': {'key': 'properties.source', 'type': 'str'},
-        'details': {'key': 'properties.details', 'type': 'AlertPropertiesDetails'},
-        'cost_entity_id': {'key': 'properties.costEntityId', 'type': 'str'},
-        'status': {'key': 'properties.status', 'type': 'str'},
-        'creation_time': {'key': 'properties.creationTime', 'type': 'str'},
-        'close_time': {'key': 'properties.closeTime', 'type': 'str'},
-        'modification_time': {'key': 'properties.modificationTime', 'type': 'str'},
-        'status_modification_user_name': {'key': 'properties.statusModificationUserName', 'type': 'str'},
-        'status_modification_time': {'key': 'properties.statusModificationTime', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "definition": {"key": "properties.definition", "type": "AlertPropertiesDefinition"},
+        "description": {"key": "properties.description", "type": "str"},
+        "source": {"key": "properties.source", "type": "str"},
+        "details": {"key": "properties.details", "type": "AlertPropertiesDetails"},
+        "cost_entity_id": {"key": "properties.costEntityId", "type": "str"},
+        "status": {"key": "properties.status", "type": "str"},
+        "creation_time": {"key": "properties.creationTime", "type": "str"},
+        "close_time": {"key": "properties.closeTime", "type": "str"},
+        "modification_time": {"key": "properties.modificationTime", "type": "str"},
+        "status_modification_user_name": {"key": "properties.statusModificationUserName", "type": "str"},
+        "status_modification_time": {"key": "properties.statusModificationTime", "type": "str"},
     }
 
     def __init__(
@@ -166,9 +163,9 @@ class AlertPropertiesDefinition(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'category': {'key': 'category', 'type': 'str'},
-        'criteria': {'key': 'criteria', 'type': 'str'},
+        "type": {"key": "type", "type": "str"},
+        "category": {"key": "category", "type": "str"},
+        "criteria": {"key": "criteria", "type": "str"},
     }
 
     def __init__(
@@ -225,22 +222,22 @@ class AlertPropertiesDetails(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'time_grain_type': {'key': 'timeGrainType', 'type': 'str'},
-        'period_start_date': {'key': 'periodStartDate', 'type': 'str'},
-        'triggered_by': {'key': 'triggeredBy', 'type': 'str'},
-        'resource_group_filter': {'key': 'resourceGroupFilter', 'type': '[object]'},
-        'resource_filter': {'key': 'resourceFilter', 'type': '[object]'},
-        'meter_filter': {'key': 'meterFilter', 'type': '[object]'},
-        'tag_filter': {'key': 'tagFilter', 'type': 'object'},
-        'threshold': {'key': 'threshold', 'type': 'float'},
-        'operator': {'key': 'operator', 'type': 'str'},
-        'amount': {'key': 'amount', 'type': 'float'},
-        'unit': {'key': 'unit', 'type': 'str'},
-        'current_spend': {'key': 'currentSpend', 'type': 'float'},
-        'contact_emails': {'key': 'contactEmails', 'type': '[str]'},
-        'contact_groups': {'key': 'contactGroups', 'type': '[str]'},
-        'contact_roles': {'key': 'contactRoles', 'type': '[str]'},
-        'overriding_alert': {'key': 'overridingAlert', 'type': 'str'},
+        "time_grain_type": {"key": "timeGrainType", "type": "str"},
+        "period_start_date": {"key": "periodStartDate", "type": "str"},
+        "triggered_by": {"key": "triggeredBy", "type": "str"},
+        "resource_group_filter": {"key": "resourceGroupFilter", "type": "[object]"},
+        "resource_filter": {"key": "resourceFilter", "type": "[object]"},
+        "meter_filter": {"key": "meterFilter", "type": "[object]"},
+        "tag_filter": {"key": "tagFilter", "type": "object"},
+        "threshold": {"key": "threshold", "type": "float"},
+        "operator": {"key": "operator", "type": "str"},
+        "amount": {"key": "amount", "type": "float"},
+        "unit": {"key": "unit", "type": "str"},
+        "current_spend": {"key": "currentSpend", "type": "float"},
+        "contact_emails": {"key": "contactEmails", "type": "[str]"},
+        "contact_groups": {"key": "contactGroups", "type": "[str]"},
+        "contact_roles": {"key": "contactRoles", "type": "[str]"},
+        "overriding_alert": {"key": "overridingAlert", "type": "str"},
     }
 
     def __init__(
@@ -295,19 +292,16 @@ class AlertsResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
-        'next_link': {'readonly': True},
+        "value": {"readonly": True},
+        "next_link": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Alert]'},
-        'next_link': {'key': 'nextLink', 'type': 'str'},
+        "value": {"key": "value", "type": "[Alert]"},
+        "next_link": {"key": "nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(AlertsResult, self).__init__(**kwargs)
         self.value = None
         self.next_link = None
@@ -337,19 +331,19 @@ class CacheItem(msrest.serialization.Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'name': {'required': True},
-        'channel': {'required': True},
-        'subchannel': {'required': True},
+        "id": {"required": True},
+        "name": {"required": True},
+        "channel": {"required": True},
+        "subchannel": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'channel': {'key': 'channel', 'type': 'str'},
-        'subchannel': {'key': 'subchannel', 'type': 'str'},
-        'parent': {'key': 'parent', 'type': 'str'},
-        'status': {'key': 'status', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "channel": {"key": "channel", "type": "str"},
+        "subchannel": {"key": "subchannel", "type": "str"},
+        "parent": {"key": "parent", "type": "str"},
+        "status": {"key": "status", "type": "str"},
     }
 
     def __init__(
@@ -386,14 +380,14 @@ class CommonExportProperties(msrest.serialization.Model):
     """
 
     _validation = {
-        'delivery_info': {'required': True},
-        'definition': {'required': True},
+        "delivery_info": {"required": True},
+        "definition": {"required": True},
     }
 
     _attribute_map = {
-        'format': {'key': 'format', 'type': 'str'},
-        'delivery_info': {'key': 'deliveryInfo', 'type': 'ExportDeliveryInfo'},
-        'definition': {'key': 'definition', 'type': 'ExportDefinition'},
+        "format": {"key": "format", "type": "str"},
+        "delivery_info": {"key": "deliveryInfo", "type": "ExportDeliveryInfo"},
+        "definition": {"key": "definition", "type": "ExportDefinition"},
     }
 
     def __init__(
@@ -444,42 +438,37 @@ class Dimension(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'tags': {'readonly': True},
-        'description': {'readonly': True},
-        'filter_enabled': {'readonly': True},
-        'grouping_enabled': {'readonly': True},
-        'total': {'readonly': True},
-        'category': {'readonly': True},
-        'usage_start': {'readonly': True},
-        'usage_end': {'readonly': True},
-        'next_link': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "tags": {"readonly": True},
+        "description": {"readonly": True},
+        "filter_enabled": {"readonly": True},
+        "grouping_enabled": {"readonly": True},
+        "total": {"readonly": True},
+        "category": {"readonly": True},
+        "usage_start": {"readonly": True},
+        "usage_end": {"readonly": True},
+        "next_link": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'description': {'key': 'properties.description', 'type': 'str'},
-        'filter_enabled': {'key': 'properties.filterEnabled', 'type': 'bool'},
-        'grouping_enabled': {'key': 'properties.groupingEnabled', 'type': 'bool'},
-        'data': {'key': 'properties.data', 'type': '[str]'},
-        'total': {'key': 'properties.total', 'type': 'int'},
-        'category': {'key': 'properties.category', 'type': 'str'},
-        'usage_start': {'key': 'properties.usageStart', 'type': 'iso-8601'},
-        'usage_end': {'key': 'properties.usageEnd', 'type': 'iso-8601'},
-        'next_link': {'key': 'properties.nextLink', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "description": {"key": "properties.description", "type": "str"},
+        "filter_enabled": {"key": "properties.filterEnabled", "type": "bool"},
+        "grouping_enabled": {"key": "properties.groupingEnabled", "type": "bool"},
+        "data": {"key": "properties.data", "type": "[str]"},
+        "total": {"key": "properties.total", "type": "int"},
+        "category": {"key": "properties.category", "type": "str"},
+        "usage_start": {"key": "properties.usageStart", "type": "iso-8601"},
+        "usage_end": {"key": "properties.usageEnd", "type": "iso-8601"},
+        "next_link": {"key": "properties.nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        data: Optional[List[str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, data: Optional[List[str]] = None, **kwargs):
         super(Dimension, self).__init__(**kwargs)
         self.description = None
         self.filter_enabled = None
@@ -502,17 +491,14 @@ class DimensionsListResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Dimension]'},
+        "value": {"key": "value", "type": "[Dimension]"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(DimensionsListResult, self).__init__(**kwargs)
         self.value = None
 
@@ -546,17 +532,17 @@ class DismissAlertPayload(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'definition': {'key': 'properties.definition', 'type': 'AlertPropertiesDefinition'},
-        'description': {'key': 'properties.description', 'type': 'str'},
-        'source': {'key': 'properties.source', 'type': 'str'},
-        'details': {'key': 'properties.details', 'type': 'AlertPropertiesDetails'},
-        'cost_entity_id': {'key': 'properties.costEntityId', 'type': 'str'},
-        'status': {'key': 'properties.status', 'type': 'str'},
-        'creation_time': {'key': 'properties.creationTime', 'type': 'str'},
-        'close_time': {'key': 'properties.closeTime', 'type': 'str'},
-        'modification_time': {'key': 'properties.modificationTime', 'type': 'str'},
-        'status_modification_user_name': {'key': 'properties.statusModificationUserName', 'type': 'str'},
-        'status_modification_time': {'key': 'properties.statusModificationTime', 'type': 'str'},
+        "definition": {"key": "properties.definition", "type": "AlertPropertiesDefinition"},
+        "description": {"key": "properties.description", "type": "str"},
+        "source": {"key": "properties.source", "type": "str"},
+        "details": {"key": "properties.details", "type": "AlertPropertiesDetails"},
+        "cost_entity_id": {"key": "properties.costEntityId", "type": "str"},
+        "status": {"key": "properties.status", "type": "str"},
+        "creation_time": {"key": "properties.creationTime", "type": "str"},
+        "close_time": {"key": "properties.closeTime", "type": "str"},
+        "modification_time": {"key": "properties.modificationTime", "type": "str"},
+        "status_modification_user_name": {"key": "properties.statusModificationUserName", "type": "str"},
+        "status_modification_time": {"key": "properties.statusModificationTime", "type": "str"},
     }
 
     def __init__(
@@ -601,50 +587,42 @@ class ErrorDetails(msrest.serialization.Model):
     """
 
     _validation = {
-        'code': {'readonly': True},
-        'message': {'readonly': True},
+        "code": {"readonly": True},
+        "message": {"readonly": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ErrorDetails, self).__init__(**kwargs)
         self.code = None
         self.message = None
 
 
 class ErrorResponse(msrest.serialization.Model):
-    """Error response indicates that the service is not able to process the incoming request. The reason is provided in the error message. 
+    """Error response indicates that the service is not able to process the incoming request. The reason is provided in the error message.
 
-Some Error responses: 
+    Some Error responses:
 
 
-* 
-  429 TooManyRequests - Request is throttled. Retry after waiting for the time specified in the "x-ms-ratelimit-microsoft.consumption-retry-after" header. 
+    *
+      429 TooManyRequests - Request is throttled. Retry after waiting for the time specified in the "x-ms-ratelimit-microsoft.consumption-retry-after" header.
 
-* 
-  503 ServiceUnavailable - Service is temporarily unavailable. Retry after waiting for the time specified in the "Retry-After" header.
+    *
+      503 ServiceUnavailable - Service is temporarily unavailable. Retry after waiting for the time specified in the "Retry-After" header.
 
-    :param error: The details of the error.
-    :type error: ~azure.mgmt.costmanagement.models.ErrorDetails
+        :param error: The details of the error.
+        :type error: ~azure.mgmt.costmanagement.models.ErrorDetails
     """
 
     _attribute_map = {
-        'error': {'key': 'error', 'type': 'ErrorDetails'},
+        "error": {"key": "error", "type": "ErrorDetails"},
     }
 
-    def __init__(
-        self,
-        *,
-        error: Optional["ErrorDetails"] = None,
-        **kwargs
-    ):
+    def __init__(self, *, error: Optional["ErrorDetails"] = None, **kwargs):
         super(ErrorResponse, self).__init__(**kwargs)
         self.error = error
 
@@ -666,24 +644,19 @@ class ProxyResource(msrest.serialization.Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'e_tag': {'key': 'eTag', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "e_tag": {"key": "eTag", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        e_tag: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, e_tag: Optional[str] = None, **kwargs):
         super(ProxyResource, self).__init__(**kwargs)
         self.id = None
         self.name = None
@@ -716,20 +689,20 @@ class Export(ProxyResource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'e_tag': {'key': 'eTag', 'type': 'str'},
-        'format': {'key': 'properties.format', 'type': 'str'},
-        'delivery_info': {'key': 'properties.deliveryInfo', 'type': 'ExportDeliveryInfo'},
-        'definition': {'key': 'properties.definition', 'type': 'ExportDefinition'},
-        'schedule': {'key': 'properties.schedule', 'type': 'ExportSchedule'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "e_tag": {"key": "eTag", "type": "str"},
+        "format": {"key": "properties.format", "type": "str"},
+        "delivery_info": {"key": "properties.deliveryInfo", "type": "ExportDeliveryInfo"},
+        "definition": {"key": "properties.definition", "type": "ExportDefinition"},
+        "schedule": {"key": "properties.schedule", "type": "ExportSchedule"},
     }
 
     def __init__(
@@ -768,15 +741,15 @@ class ExportDefinition(msrest.serialization.Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'timeframe': {'required': True},
+        "type": {"required": True},
+        "timeframe": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'timeframe': {'key': 'timeframe', 'type': 'str'},
-        'time_period': {'key': 'timePeriod', 'type': 'QueryTimePeriod'},
-        'data_set': {'key': 'dataSet', 'type': 'QueryDatasetAutoGenerated'},
+        "type": {"key": "type", "type": "str"},
+        "timeframe": {"key": "timeframe", "type": "str"},
+        "time_period": {"key": "timePeriod", "type": "QueryTimePeriod"},
+        "data_set": {"key": "dataSet", "type": "QueryDatasetAutoGenerated"},
     }
 
     def __init__(
@@ -810,24 +783,17 @@ class ExportDeliveryDestination(msrest.serialization.Model):
     """
 
     _validation = {
-        'resource_id': {'required': True},
-        'container': {'required': True},
+        "resource_id": {"required": True},
+        "container": {"required": True},
     }
 
     _attribute_map = {
-        'resource_id': {'key': 'resourceId', 'type': 'str'},
-        'container': {'key': 'container', 'type': 'str'},
-        'root_folder_path': {'key': 'rootFolderPath', 'type': 'str'},
+        "resource_id": {"key": "resourceId", "type": "str"},
+        "container": {"key": "container", "type": "str"},
+        "root_folder_path": {"key": "rootFolderPath", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        resource_id: str,
-        container: str,
-        root_folder_path: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, resource_id: str, container: str, root_folder_path: Optional[str] = None, **kwargs):
         super(ExportDeliveryDestination, self).__init__(**kwargs)
         self.resource_id = resource_id
         self.container = container
@@ -844,19 +810,14 @@ class ExportDeliveryInfo(msrest.serialization.Model):
     """
 
     _validation = {
-        'destination': {'required': True},
+        "destination": {"required": True},
     }
 
     _attribute_map = {
-        'destination': {'key': 'destination', 'type': 'ExportDeliveryDestination'},
+        "destination": {"key": "destination", "type": "ExportDeliveryDestination"},
     }
 
-    def __init__(
-        self,
-        *,
-        destination: "ExportDeliveryDestination",
-        **kwargs
-    ):
+    def __init__(self, *, destination: "ExportDeliveryDestination", **kwargs):
         super(ExportDeliveryInfo, self).__init__(**kwargs)
         self.destination = destination
 
@@ -896,25 +857,25 @@ class ExportExecution(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'tags': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "tags": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'execution_type': {'key': 'properties.executionType', 'type': 'str'},
-        'status': {'key': 'properties.status', 'type': 'str'},
-        'submitted_by': {'key': 'properties.submittedBy', 'type': 'str'},
-        'submitted_time': {'key': 'properties.submittedTime', 'type': 'iso-8601'},
-        'processing_start_time': {'key': 'properties.processingStartTime', 'type': 'iso-8601'},
-        'processing_end_time': {'key': 'properties.processingEndTime', 'type': 'iso-8601'},
-        'file_name': {'key': 'properties.fileName', 'type': 'str'},
-        'run_settings': {'key': 'properties.runSettings', 'type': 'CommonExportProperties'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "execution_type": {"key": "properties.executionType", "type": "str"},
+        "status": {"key": "properties.status", "type": "str"},
+        "submitted_by": {"key": "properties.submittedBy", "type": "str"},
+        "submitted_time": {"key": "properties.submittedTime", "type": "iso-8601"},
+        "processing_start_time": {"key": "properties.processingStartTime", "type": "iso-8601"},
+        "processing_end_time": {"key": "properties.processingEndTime", "type": "iso-8601"},
+        "file_name": {"key": "properties.fileName", "type": "str"},
+        "run_settings": {"key": "properties.runSettings", "type": "CommonExportProperties"},
     }
 
     def __init__(
@@ -951,17 +912,14 @@ class ExportExecutionListResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[ExportExecution]'},
+        "value": {"key": "value", "type": "[ExportExecution]"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ExportExecutionListResult, self).__init__(**kwargs)
         self.value = None
 
@@ -976,17 +934,14 @@ class ExportListResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Export]'},
+        "value": {"key": "value", "type": "[Export]"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ExportListResult, self).__init__(**kwargs)
         self.value = None
 
@@ -1007,15 +962,15 @@ class ExportProperties(CommonExportProperties):
     """
 
     _validation = {
-        'delivery_info': {'required': True},
-        'definition': {'required': True},
+        "delivery_info": {"required": True},
+        "definition": {"required": True},
     }
 
     _attribute_map = {
-        'format': {'key': 'format', 'type': 'str'},
-        'delivery_info': {'key': 'deliveryInfo', 'type': 'ExportDeliveryInfo'},
-        'definition': {'key': 'definition', 'type': 'ExportDefinition'},
-        'schedule': {'key': 'schedule', 'type': 'ExportSchedule'},
+        "format": {"key": "format", "type": "str"},
+        "delivery_info": {"key": "deliveryInfo", "type": "ExportDeliveryInfo"},
+        "definition": {"key": "definition", "type": "ExportDefinition"},
+        "schedule": {"key": "schedule", "type": "ExportSchedule"},
     }
 
     def __init__(
@@ -1027,7 +982,9 @@ class ExportProperties(CommonExportProperties):
         schedule: Optional["ExportSchedule"] = None,
         **kwargs
     ):
-        super(ExportProperties, self).__init__(format=format, delivery_info=delivery_info, definition=definition, **kwargs)
+        super(ExportProperties, self).__init__(
+            format=format, delivery_info=delivery_info, definition=definition, **kwargs
+        )
         self.schedule = schedule
 
 
@@ -1043,21 +1000,15 @@ class ExportRecurrencePeriod(msrest.serialization.Model):
     """
 
     _validation = {
-        'from_property': {'required': True},
+        "from_property": {"required": True},
     }
 
     _attribute_map = {
-        'from_property': {'key': 'from', 'type': 'iso-8601'},
-        'to': {'key': 'to', 'type': 'iso-8601'},
+        "from_property": {"key": "from", "type": "iso-8601"},
+        "to": {"key": "to", "type": "iso-8601"},
     }
 
-    def __init__(
-        self,
-        *,
-        from_property: datetime.datetime,
-        to: Optional[datetime.datetime] = None,
-        **kwargs
-    ):
+    def __init__(self, *, from_property: datetime.datetime, to: Optional[datetime.datetime] = None, **kwargs):
         super(ExportRecurrencePeriod, self).__init__(**kwargs)
         self.from_property = from_property
         self.to = to
@@ -1080,13 +1031,13 @@ class ExportSchedule(msrest.serialization.Model):
     """
 
     _validation = {
-        'recurrence': {'required': True},
+        "recurrence": {"required": True},
     }
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'str'},
-        'recurrence': {'key': 'recurrence', 'type': 'str'},
-        'recurrence_period': {'key': 'recurrencePeriod', 'type': 'ExportRecurrencePeriod'},
+        "status": {"key": "status", "type": "str"},
+        "recurrence": {"key": "recurrence", "type": "str"},
+        "recurrence_period": {"key": "recurrencePeriod", "type": "ExportRecurrencePeriod"},
     }
 
     def __init__(
@@ -1126,18 +1077,18 @@ class ForecastDefinition(msrest.serialization.Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'timeframe': {'required': True},
-        'dataset': {'required': True},
+        "type": {"required": True},
+        "timeframe": {"required": True},
+        "dataset": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'timeframe': {'key': 'timeframe', 'type': 'str'},
-        'time_period': {'key': 'timePeriod', 'type': 'QueryTimePeriod'},
-        'dataset': {'key': 'dataset', 'type': 'QueryDataset'},
-        'include_actual_cost': {'key': 'includeActualCost', 'type': 'bool'},
-        'include_fresh_partial_cost': {'key': 'includeFreshPartialCost', 'type': 'bool'},
+        "type": {"key": "type", "type": "str"},
+        "timeframe": {"key": "timeframe", "type": "str"},
+        "time_period": {"key": "timePeriod", "type": "QueryTimePeriod"},
+        "dataset": {"key": "dataset", "type": "QueryDataset"},
+        "include_actual_cost": {"key": "includeActualCost", "type": "bool"},
+        "include_fresh_partial_cost": {"key": "includeFreshPartialCost", "type": "bool"},
     }
 
     def __init__(
@@ -1172,9 +1123,9 @@ class KpiProperties(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'enabled': {'key': 'enabled', 'type': 'bool'},
+        "type": {"key": "type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "enabled": {"key": "enabled", "type": "bool"},
     }
 
     def __init__(
@@ -1203,20 +1154,15 @@ class Operation(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'readonly': True},
+        "name": {"readonly": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'display': {'key': 'display', 'type': 'OperationDisplay'},
+        "name": {"key": "name", "type": "str"},
+        "display": {"key": "display", "type": "OperationDisplay"},
     }
 
-    def __init__(
-        self,
-        *,
-        display: Optional["OperationDisplay"] = None,
-        **kwargs
-    ):
+    def __init__(self, *, display: Optional["OperationDisplay"] = None, **kwargs):
         super(Operation, self).__init__(**kwargs)
         self.name = None
         self.display = display
@@ -1236,21 +1182,18 @@ class OperationDisplay(msrest.serialization.Model):
     """
 
     _validation = {
-        'provider': {'readonly': True},
-        'resource': {'readonly': True},
-        'operation': {'readonly': True},
+        "provider": {"readonly": True},
+        "resource": {"readonly": True},
+        "operation": {"readonly": True},
     }
 
     _attribute_map = {
-        'provider': {'key': 'provider', 'type': 'str'},
-        'resource': {'key': 'resource', 'type': 'str'},
-        'operation': {'key': 'operation', 'type': 'str'},
+        "provider": {"key": "provider", "type": "str"},
+        "resource": {"key": "resource", "type": "str"},
+        "operation": {"key": "operation", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(OperationDisplay, self).__init__(**kwargs)
         self.provider = None
         self.resource = None
@@ -1270,19 +1213,16 @@ class OperationListResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
-        'next_link': {'readonly': True},
+        "value": {"readonly": True},
+        "next_link": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Operation]'},
-        'next_link': {'key': 'nextLink', 'type': 'str'},
+        "value": {"key": "value", "type": "[Operation]"},
+        "next_link": {"key": "nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(OperationListResult, self).__init__(**kwargs)
         self.value = None
         self.next_link = None
@@ -1300,9 +1240,9 @@ class OperationStatus(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'Status'},
-        'report_url': {'key': 'properties.reportUrl', 'type': 'str'},
-        'valid_until': {'key': 'properties.validUntil', 'type': 'iso-8601'},
+        "status": {"key": "status", "type": "Status"},
+        "report_url": {"key": "properties.reportUrl", "type": "str"},
+        "valid_until": {"key": "properties.validUntil", "type": "iso-8601"},
     }
 
     def __init__(
@@ -1329,17 +1269,11 @@ class PivotProperties(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "type": {"key": "type", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[Union[str, "PivotType"]] = None,
-        name: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[Union[str, "PivotType"]] = None, name: Optional[str] = None, **kwargs):
         super(PivotProperties, self).__init__(**kwargs)
         self.type = type
         self.name = name
@@ -1361,23 +1295,20 @@ class ProxySettingResource(msrest.serialization.Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'kind': {'readonly': True, 'max_length': 10, 'min_length': 0},
-        'type': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "kind": {"readonly": True, "max_length": 10, "min_length": 0},
+        "type": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'kind': {'key': 'kind', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "kind": {"key": "kind", "type": "str"},
+        "type": {"key": "type", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ProxySettingResource, self).__init__(**kwargs)
         self.id = None
         self.name = None
@@ -1398,22 +1329,16 @@ class QueryAggregation(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'required': True},
-        'function': {'required': True},
+        "name": {"required": True},
+        "function": {"required": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'function': {'key': 'function', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "function": {"key": "function", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: str,
-        function: Union[str, "FunctionType"],
-        **kwargs
-    ):
+    def __init__(self, *, name: str, function: Union[str, "FunctionType"], **kwargs):
         super(QueryAggregation, self).__init__(**kwargs)
         self.name = name
         self.function = function
@@ -1429,17 +1354,11 @@ class QueryColumn(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: Optional[str] = None,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, name: Optional[str] = None, type: Optional[str] = None, **kwargs):
         super(QueryColumn, self).__init__(**kwargs)
         self.name = name
         self.type = type
@@ -1460,25 +1379,18 @@ class QueryComparisonExpression(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'required': True},
-        'operator': {'required': True},
-        'values': {'required': True, 'min_items': 1},
+        "name": {"required": True},
+        "operator": {"required": True},
+        "values": {"required": True, "min_items": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'operator': {'key': 'operator', 'type': 'str'},
-        'values': {'key': 'values', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "operator": {"key": "operator", "type": "str"},
+        "values": {"key": "values", "type": "[str]"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: str,
-        operator: Union[str, "OperatorType"],
-        values: List[str],
-        **kwargs
-    ):
+    def __init__(self, *, name: str, operator: Union[str, "OperatorType"], values: List[str], **kwargs):
         super(QueryComparisonExpression, self).__init__(**kwargs)
         self.name = name
         self.operator = operator
@@ -1506,15 +1418,15 @@ class QueryDataset(msrest.serialization.Model):
     """
 
     _validation = {
-        'grouping': {'max_items': 2, 'min_items': 0},
+        "grouping": {"max_items": 2, "min_items": 0},
     }
 
     _attribute_map = {
-        'granularity': {'key': 'granularity', 'type': 'str'},
-        'configuration': {'key': 'configuration', 'type': 'QueryDatasetConfiguration'},
-        'aggregation': {'key': 'aggregation', 'type': '{QueryAggregation}'},
-        'grouping': {'key': 'grouping', 'type': '[QueryGrouping]'},
-        'filter': {'key': 'filter', 'type': 'QueryFilter'},
+        "granularity": {"key": "granularity", "type": "str"},
+        "configuration": {"key": "configuration", "type": "QueryDatasetConfiguration"},
+        "aggregation": {"key": "aggregation", "type": "{QueryAggregation}"},
+        "grouping": {"key": "grouping", "type": "[QueryGrouping]"},
+        "filter": {"key": "filter", "type": "QueryFilter"},
     }
 
     def __init__(
@@ -1556,15 +1468,15 @@ class QueryDatasetAutoGenerated(msrest.serialization.Model):
     """
 
     _validation = {
-        'grouping': {'max_items': 2, 'min_items': 0},
+        "grouping": {"max_items": 2, "min_items": 0},
     }
 
     _attribute_map = {
-        'granularity': {'key': 'granularity', 'type': 'str'},
-        'configuration': {'key': 'configuration', 'type': 'QueryDatasetConfiguration'},
-        'aggregation': {'key': 'aggregation', 'type': '{QueryAggregation}'},
-        'grouping': {'key': 'grouping', 'type': '[QueryGrouping]'},
-        'filter': {'key': 'filter', 'type': 'QueryFilterAutoGenerated'},
+        "granularity": {"key": "granularity", "type": "str"},
+        "configuration": {"key": "configuration", "type": "QueryDatasetConfiguration"},
+        "aggregation": {"key": "aggregation", "type": "{QueryAggregation}"},
+        "grouping": {"key": "grouping", "type": "[QueryGrouping]"},
+        "filter": {"key": "filter", "type": "QueryFilterAutoGenerated"},
     }
 
     def __init__(
@@ -1594,15 +1506,10 @@ class QueryDatasetConfiguration(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'columns': {'key': 'columns', 'type': '[str]'},
+        "columns": {"key": "columns", "type": "[str]"},
     }
 
-    def __init__(
-        self,
-        *,
-        columns: Optional[List[str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, columns: Optional[List[str]] = None, **kwargs):
         super(QueryDatasetConfiguration, self).__init__(**kwargs)
         self.columns = columns
 
@@ -1626,16 +1533,16 @@ class QueryDefinition(msrest.serialization.Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'timeframe': {'required': True},
-        'dataset': {'required': True},
+        "type": {"required": True},
+        "timeframe": {"required": True},
+        "dataset": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'timeframe': {'key': 'timeframe', 'type': 'str'},
-        'time_period': {'key': 'timePeriod', 'type': 'QueryTimePeriod'},
-        'dataset': {'key': 'dataset', 'type': 'QueryDataset'},
+        "type": {"key": "type", "type": "str"},
+        "timeframe": {"key": "timeframe", "type": "str"},
+        "time_period": {"key": "timePeriod", "type": "QueryTimePeriod"},
+        "dataset": {"key": "dataset", "type": "QueryDataset"},
     }
 
     def __init__(
@@ -1668,15 +1575,15 @@ class QueryFilter(msrest.serialization.Model):
     """
 
     _validation = {
-        'and_property': {'min_items': 2},
-        'or_property': {'min_items': 2},
+        "and_property": {"min_items": 2},
+        "or_property": {"min_items": 2},
     }
 
     _attribute_map = {
-        'and_property': {'key': 'and', 'type': '[QueryFilter]'},
-        'or_property': {'key': 'or', 'type': '[QueryFilter]'},
-        'dimensions': {'key': 'dimensions', 'type': 'QueryComparisonExpression'},
-        'tags': {'key': 'tags', 'type': 'QueryComparisonExpression'},
+        "and_property": {"key": "and", "type": "[QueryFilter]"},
+        "or_property": {"key": "or", "type": "[QueryFilter]"},
+        "dimensions": {"key": "dimensions", "type": "QueryComparisonExpression"},
+        "tags": {"key": "tags", "type": "QueryComparisonExpression"},
     }
 
     def __init__(
@@ -1709,15 +1616,15 @@ class QueryFilterAutoGenerated(msrest.serialization.Model):
     """
 
     _validation = {
-        'and_property': {'min_items': 2},
-        'or_property': {'min_items': 2},
+        "and_property": {"min_items": 2},
+        "or_property": {"min_items": 2},
     }
 
     _attribute_map = {
-        'and_property': {'key': 'and', 'type': '[QueryFilterAutoGenerated]'},
-        'or_property': {'key': 'or', 'type': '[QueryFilterAutoGenerated]'},
-        'dimensions': {'key': 'dimensions', 'type': 'QueryComparisonExpression'},
-        'tags': {'key': 'tags', 'type': 'QueryComparisonExpression'},
+        "and_property": {"key": "and", "type": "[QueryFilterAutoGenerated]"},
+        "or_property": {"key": "or", "type": "[QueryFilterAutoGenerated]"},
+        "dimensions": {"key": "dimensions", "type": "QueryComparisonExpression"},
+        "tags": {"key": "tags", "type": "QueryComparisonExpression"},
     }
 
     def __init__(
@@ -1749,22 +1656,16 @@ class QueryGrouping(msrest.serialization.Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'name': {'required': True},
+        "type": {"required": True},
+        "name": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "type": {"key": "type", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Union[str, "QueryColumnType"],
-        name: str,
-        **kwargs
-    ):
+    def __init__(self, *, type: Union[str, "QueryColumnType"], name: str, **kwargs):
         super(QueryGrouping, self).__init__(**kwargs)
         self.type = type
         self.name = name
@@ -1799,25 +1700,25 @@ class QueryResult(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'tags': {'readonly': True},
-        'location': {'readonly': True},
-        'sku': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "tags": {"readonly": True},
+        "location": {"readonly": True},
+        "sku": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '{str}'},
-        'e_tag': {'key': 'eTag', 'type': 'str'},
-        'location': {'key': 'location', 'type': 'str'},
-        'sku': {'key': 'sku', 'type': 'str'},
-        'next_link': {'key': 'properties.nextLink', 'type': 'str'},
-        'columns': {'key': 'properties.columns', 'type': '[QueryColumn]'},
-        'rows': {'key': 'properties.rows', 'type': '[[object]]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "tags": {"key": "tags", "type": "{str}"},
+        "e_tag": {"key": "eTag", "type": "str"},
+        "location": {"key": "location", "type": "str"},
+        "sku": {"key": "sku", "type": "str"},
+        "next_link": {"key": "properties.nextLink", "type": "str"},
+        "columns": {"key": "properties.columns", "type": "[QueryColumn]"},
+        "rows": {"key": "properties.rows", "type": "[[object]]"},
     }
 
     def __init__(
@@ -1850,22 +1751,16 @@ class QueryTimePeriod(msrest.serialization.Model):
     """
 
     _validation = {
-        'from_property': {'required': True},
-        'to': {'required': True},
+        "from_property": {"required": True},
+        "to": {"required": True},
     }
 
     _attribute_map = {
-        'from_property': {'key': 'from', 'type': 'iso-8601'},
-        'to': {'key': 'to', 'type': 'iso-8601'},
+        "from_property": {"key": "from", "type": "iso-8601"},
+        "to": {"key": "to", "type": "iso-8601"},
     }
 
-    def __init__(
-        self,
-        *,
-        from_property: datetime.datetime,
-        to: datetime.datetime,
-        **kwargs
-    ):
+    def __init__(self, *, from_property: datetime.datetime, to: datetime.datetime, **kwargs):
         super(QueryTimePeriod, self).__init__(**kwargs)
         self.from_property = from_property
         self.to = to
@@ -1884,22 +1779,16 @@ class ReportConfigAggregation(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'required': True},
-        'function': {'required': True},
+        "name": {"required": True},
+        "function": {"required": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'function': {'key': 'function', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "function": {"key": "function", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: str,
-        function: Union[str, "FunctionType"],
-        **kwargs
-    ):
+    def __init__(self, *, name: str, function: Union[str, "FunctionType"], **kwargs):
         super(ReportConfigAggregation, self).__init__(**kwargs)
         self.name = name
         self.function = function
@@ -1920,25 +1809,18 @@ class ReportConfigComparisonExpression(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'required': True},
-        'operator': {'required': True},
-        'values': {'required': True, 'min_items': 1},
+        "name": {"required": True},
+        "operator": {"required": True},
+        "values": {"required": True, "min_items": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'operator': {'key': 'operator', 'type': 'str'},
-        'values': {'key': 'values', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "operator": {"key": "operator", "type": "str"},
+        "values": {"key": "values", "type": "[str]"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: str,
-        operator: Union[str, "OperatorType"],
-        values: List[str],
-        **kwargs
-    ):
+    def __init__(self, *, name: str, operator: Union[str, "OperatorType"], values: List[str], **kwargs):
         super(ReportConfigComparisonExpression, self).__init__(**kwargs)
         self.name = name
         self.operator = operator
@@ -1968,16 +1850,16 @@ class ReportConfigDataset(msrest.serialization.Model):
     """
 
     _validation = {
-        'grouping': {'max_items': 2, 'min_items': 0},
+        "grouping": {"max_items": 2, "min_items": 0},
     }
 
     _attribute_map = {
-        'granularity': {'key': 'granularity', 'type': 'str'},
-        'configuration': {'key': 'configuration', 'type': 'ReportConfigDatasetConfiguration'},
-        'aggregation': {'key': 'aggregation', 'type': '{ReportConfigAggregation}'},
-        'grouping': {'key': 'grouping', 'type': '[ReportConfigGrouping]'},
-        'sorting': {'key': 'sorting', 'type': '[ReportConfigSorting]'},
-        'filter': {'key': 'filter', 'type': 'ReportConfigFilter'},
+        "granularity": {"key": "granularity", "type": "str"},
+        "configuration": {"key": "configuration", "type": "ReportConfigDatasetConfiguration"},
+        "aggregation": {"key": "aggregation", "type": "{ReportConfigAggregation}"},
+        "grouping": {"key": "grouping", "type": "[ReportConfigGrouping]"},
+        "sorting": {"key": "sorting", "type": "[ReportConfigSorting]"},
+        "filter": {"key": "filter", "type": "ReportConfigFilter"},
     }
 
     def __init__(
@@ -2009,15 +1891,10 @@ class ReportConfigDatasetConfiguration(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'columns': {'key': 'columns', 'type': '[str]'},
+        "columns": {"key": "columns", "type": "[str]"},
     }
 
-    def __init__(
-        self,
-        *,
-        columns: Optional[List[str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, columns: Optional[List[str]] = None, **kwargs):
         super(ReportConfigDatasetConfiguration, self).__init__(**kwargs)
         self.columns = columns
 
@@ -2040,17 +1917,17 @@ class ReportConfigFilter(msrest.serialization.Model):
     """
 
     _validation = {
-        'and_property': {'min_items': 2},
-        'or_property': {'min_items': 2},
+        "and_property": {"min_items": 2},
+        "or_property": {"min_items": 2},
     }
 
     _attribute_map = {
-        'and_property': {'key': 'and', 'type': '[ReportConfigFilter]'},
-        'or_property': {'key': 'or', 'type': '[ReportConfigFilter]'},
-        'dimensions': {'key': 'dimensions', 'type': 'ReportConfigComparisonExpression'},
-        'tags': {'key': 'tags', 'type': 'ReportConfigComparisonExpression'},
-        'tag_key': {'key': 'tagKey', 'type': 'ReportConfigComparisonExpression'},
-        'tag_value': {'key': 'tagValue', 'type': 'ReportConfigComparisonExpression'},
+        "and_property": {"key": "and", "type": "[ReportConfigFilter]"},
+        "or_property": {"key": "or", "type": "[ReportConfigFilter]"},
+        "dimensions": {"key": "dimensions", "type": "ReportConfigComparisonExpression"},
+        "tags": {"key": "tags", "type": "ReportConfigComparisonExpression"},
+        "tag_key": {"key": "tagKey", "type": "ReportConfigComparisonExpression"},
+        "tag_value": {"key": "tagValue", "type": "ReportConfigComparisonExpression"},
     }
 
     def __init__(
@@ -2087,22 +1964,16 @@ class ReportConfigGrouping(msrest.serialization.Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'name': {'required': True},
+        "type": {"required": True},
+        "name": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "type": {"key": "type", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Union[str, "ReportConfigColumnType"],
-        name: str,
-        **kwargs
-    ):
+    def __init__(self, *, type: Union[str, "ReportConfigColumnType"], name: str, **kwargs):
         super(ReportConfigGrouping, self).__init__(**kwargs)
         self.type = type
         self.name = name
@@ -2120,21 +1991,15 @@ class ReportConfigSorting(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'required': True},
+        "name": {"required": True},
     }
 
     _attribute_map = {
-        'direction': {'key': 'direction', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "direction": {"key": "direction", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: str,
-        direction: Optional[Union[str, "ReportConfigSortingDirection"]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, name: str, direction: Optional[Union[str, "ReportConfigSortingDirection"]] = None, **kwargs):
         super(ReportConfigSorting, self).__init__(**kwargs)
         self.direction = direction
         self.name = name
@@ -2152,22 +2017,16 @@ class ReportConfigTimePeriod(msrest.serialization.Model):
     """
 
     _validation = {
-        'from_property': {'required': True},
-        'to': {'required': True},
+        "from_property": {"required": True},
+        "to": {"required": True},
     }
 
     _attribute_map = {
-        'from_property': {'key': 'from', 'type': 'iso-8601'},
-        'to': {'key': 'to', 'type': 'iso-8601'},
+        "from_property": {"key": "from", "type": "iso-8601"},
+        "to": {"key": "to", "type": "iso-8601"},
     }
 
-    def __init__(
-        self,
-        *,
-        from_property: datetime.datetime,
-        to: datetime.datetime,
-        **kwargs
-    ):
+    def __init__(self, *, from_property: datetime.datetime, to: datetime.datetime, **kwargs):
         super(ReportConfigTimePeriod, self).__init__(**kwargs)
         self.from_property = from_property
         self.to = to
@@ -2198,20 +2057,20 @@ class Setting(ProxySettingResource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'kind': {'readonly': True, 'max_length': 10, 'min_length': 0},
-        'type': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "kind": {"readonly": True, "max_length": 10, "min_length": 0},
+        "type": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'kind': {'key': 'kind', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'scope': {'key': 'properties.scope', 'type': 'str'},
-        'start_on': {'key': 'properties.startOn', 'type': 'str'},
-        'cache': {'key': 'properties.cache', 'type': '[CacheItem]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "kind": {"key": "kind", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "scope": {"key": "properties.scope", "type": "str"},
+        "start_on": {"key": "properties.startOn", "type": "str"},
+        "cache": {"key": "properties.cache", "type": "[CacheItem]"},
     }
 
     def __init__(
@@ -2240,19 +2099,16 @@ class SettingsListResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True, 'max_items': 10, 'min_items': 0},
-        'next_link': {'readonly': True},
+        "value": {"readonly": True, "max_items": 10, "min_items": 0},
+        "next_link": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Setting]'},
-        'next_link': {'key': 'nextLink', 'type': 'str'},
+        "value": {"key": "value", "type": "[Setting]"},
+        "next_link": {"key": "nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(SettingsListResult, self).__init__(**kwargs)
         self.value = None
         self.next_link = None
@@ -2267,15 +2123,10 @@ class Status(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'str'},
+        "status": {"key": "status", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        status: Optional[Union[str, "OperationStatusType"]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, status: Optional[Union[str, "OperationStatusType"]] = None, **kwargs):
         super(Status, self).__init__(**kwargs)
         self.status = status
 
@@ -2352,37 +2203,37 @@ class View(ProxyResource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'created_on': {'readonly': True},
-        'modified_on': {'readonly': True},
-        'date_range': {'readonly': True},
-        'currency': {'readonly': True},
-        'include_monetary_commitment': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "created_on": {"readonly": True},
+        "modified_on": {"readonly": True},
+        "date_range": {"readonly": True},
+        "currency": {"readonly": True},
+        "include_monetary_commitment": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'e_tag': {'key': 'eTag', 'type': 'str'},
-        'display_name': {'key': 'properties.displayName', 'type': 'str'},
-        'scope': {'key': 'properties.scope', 'type': 'str'},
-        'created_on': {'key': 'properties.createdOn', 'type': 'iso-8601'},
-        'modified_on': {'key': 'properties.modifiedOn', 'type': 'iso-8601'},
-        'date_range': {'key': 'properties.dateRange', 'type': 'str'},
-        'currency': {'key': 'properties.currency', 'type': 'str'},
-        'chart': {'key': 'properties.chart', 'type': 'str'},
-        'accumulated': {'key': 'properties.accumulated', 'type': 'str'},
-        'metric': {'key': 'properties.metric', 'type': 'str'},
-        'kpis': {'key': 'properties.kpis', 'type': '[KpiProperties]'},
-        'pivots': {'key': 'properties.pivots', 'type': '[PivotProperties]'},
-        'type_properties_query_type': {'key': 'properties.query.type', 'type': 'str'},
-        'timeframe': {'key': 'properties.query.timeframe', 'type': 'str'},
-        'time_period': {'key': 'properties.query.timePeriod', 'type': 'ReportConfigTimePeriod'},
-        'data_set': {'key': 'properties.query.dataSet', 'type': 'ReportConfigDataset'},
-        'include_monetary_commitment': {'key': 'properties.query.includeMonetaryCommitment', 'type': 'bool'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "e_tag": {"key": "eTag", "type": "str"},
+        "display_name": {"key": "properties.displayName", "type": "str"},
+        "scope": {"key": "properties.scope", "type": "str"},
+        "created_on": {"key": "properties.createdOn", "type": "iso-8601"},
+        "modified_on": {"key": "properties.modifiedOn", "type": "iso-8601"},
+        "date_range": {"key": "properties.dateRange", "type": "str"},
+        "currency": {"key": "properties.currency", "type": "str"},
+        "chart": {"key": "properties.chart", "type": "str"},
+        "accumulated": {"key": "properties.accumulated", "type": "str"},
+        "metric": {"key": "properties.metric", "type": "str"},
+        "kpis": {"key": "properties.kpis", "type": "[KpiProperties]"},
+        "pivots": {"key": "properties.pivots", "type": "[PivotProperties]"},
+        "type_properties_query_type": {"key": "properties.query.type", "type": "str"},
+        "timeframe": {"key": "properties.query.timeframe", "type": "str"},
+        "time_period": {"key": "properties.query.timePeriod", "type": "ReportConfigTimePeriod"},
+        "data_set": {"key": "properties.query.dataSet", "type": "ReportConfigDataset"},
+        "include_monetary_commitment": {"key": "properties.query.includeMonetaryCommitment", "type": "bool"},
     }
 
     def __init__(
@@ -2433,19 +2284,16 @@ class ViewListResult(msrest.serialization.Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
-        'next_link': {'readonly': True},
+        "value": {"readonly": True},
+        "next_link": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[View]'},
-        'next_link': {'key': 'nextLink', 'type': 'str'},
+        "value": {"key": "value", "type": "[View]"},
+        "next_link": {"key": "nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(ViewListResult, self).__init__(**kwargs)
         self.value = None
         self.next_link = None

@@ -8,34 +8,29 @@
 
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.costmanagement import CostManagementClient
-
 """
-The sample just shows how to use the method and may not run successfully.
 # PREREQUISITES
     pip install azure-identity
     pip install azure-mgmt-costmanagement
 # USAGE
     python customer_dimensions_list_expand_and_top_modern.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret 
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
 """
-# x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/examples/MCACustomerDimensionsListExpandAndTop.json
 def main():
-    """
-    Please set the values of the client ID, tenant ID and client secret of the AAD application as environment variables:
-    AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET.
-    For more info about how to get the value, please see https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
-    """
     client = CostManagementClient(
         credential=DefaultAzureCredential(),
     )
 
     response = client.dimensions.list(
         scope="providers/Microsoft.Billing/billingAccounts/12345:6789/customers/5678",
-        expand="properties/data",
-        top=5,
     )
     response = [item for item in response]
     print(response)
 
-
+# x-ms-original-file: file:///D:/dev/azure-rest-api-specs/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/examples/MCACustomerDimensionsListExpandAndTop.json
 if __name__ == "__main__":
     main()

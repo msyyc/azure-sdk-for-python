@@ -8,22 +8,19 @@
 
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.msi import ManagedServiceIdentityClient
-
 """
-The sample just shows how to use the method and may not run successfully.
 # PREREQUISITES
     pip install azure-identity
     pip install azure-mgmt-msi
 # USAGE
     python identity_get.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret 
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
 """
-# x-ms-original-file: specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2021-09-30-preview/examples/IdentityGet.json
 def main():
-    """
-    Please set the values of the client ID, tenant ID and client secret of the AAD application as environment variables:
-    AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET.
-    For more info about how to get the value, please see https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
-    """
     client = ManagedServiceIdentityClient(
         credential=DefaultAzureCredential(),
         subscription_id="subid",
@@ -36,6 +33,6 @@ def main():
     )
     print(response)
 
-
+# x-ms-original-file: file:///D:/dev/azure-rest-api-specs/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2021-09-30-preview/examples/IdentityGet.json
 if __name__ == "__main__":
     main()

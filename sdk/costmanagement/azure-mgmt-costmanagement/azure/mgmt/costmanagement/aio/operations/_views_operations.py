@@ -9,15 +9,22 @@ from typing import Any, AsyncIterable, Callable, Dict, Generic, Optional, TypeVa
 import warnings
 
 from azure.core.async_paging import AsyncItemPaged, AsyncList
-from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import AsyncHttpResponse, HttpRequest
 from azure.mgmt.core.exceptions import ARMErrorFormat
 
 from ... import models as _models
 
-T = TypeVar('T')
+T = TypeVar("T")
 ClsType = Optional[Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, Dict[str, Any]], Any]]
+
 
 class ViewsOperations:
     """ViewsOperations async operations.
@@ -41,10 +48,7 @@ class ViewsOperations:
         self._deserialize = deserializer
         self._config = config
 
-    def list(
-        self,
-        **kwargs: Any
-    ) -> AsyncIterable["_models.ViewListResult"]:
+    def list(self, **kwargs: Any) -> AsyncIterable["_models.ViewListResult"]:
         """Lists all views by tenant and object.
 
         :keyword callable cls: A custom type or function that will be passed the direct response
@@ -52,25 +56,23 @@ class ViewsOperations:
         :rtype: ~azure.core.async_paging.AsyncItemPaged[~azure.mgmt.costmanagement.models.ViewListResultor None]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.ViewListResult"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.ViewListResult"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         def prepare_request(next_link=None):
             # Construct headers
             header_parameters = {}  # type: Dict[str, Any]
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
             if not next_link:
                 # Construct URL
-                url = self.list.metadata['url']  # type: ignore
+                url = self.list.metadata["url"]  # type: ignore
                 # Construct parameters
                 query_parameters = {}  # type: Dict[str, Any]
-                query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+                query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
                 request = self._client.get(url, query_parameters, header_parameters)
             else:
@@ -80,7 +82,7 @@ class ViewsOperations:
             return request
 
         async def extract_data(pipeline_response):
-            deserialized = self._deserialize('ViewListResult', pipeline_response)
+            deserialized = self._deserialize("ViewListResult", pipeline_response)
             list_of_elem = deserialized.value
             if cls:
                 list_of_elem = cls(list_of_elem)
@@ -99,16 +101,11 @@ class ViewsOperations:
 
             return pipeline_response
 
-        return AsyncItemPaged(
-            get_next, extract_data
-        )
-    list.metadata = {'url': '/providers/Microsoft.CostManagement/views'}  # type: ignore
+        return AsyncItemPaged(get_next, extract_data)
 
-    def list_by_scope(
-        self,
-        scope: str,
-        **kwargs: Any
-    ) -> AsyncIterable["_models.ViewListResult"]:
+    list.metadata = {"url": "/providers/Microsoft.CostManagement/views"}  # type: ignore
+
+    def list_by_scope(self, scope: str, **kwargs: Any) -> AsyncIterable["_models.ViewListResult"]:
         """Lists all views at the given scope.
 
         :param scope: The scope associated with view operations. This includes
@@ -134,29 +131,27 @@ class ViewsOperations:
         :rtype: ~azure.core.async_paging.AsyncItemPaged[~azure.mgmt.costmanagement.models.ViewListResultor None]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.ViewListResult"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.ViewListResult"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         def prepare_request(next_link=None):
             # Construct headers
             header_parameters = {}  # type: Dict[str, Any]
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
             if not next_link:
                 # Construct URL
-                url = self.list_by_scope.metadata['url']  # type: ignore
+                url = self.list_by_scope.metadata["url"]  # type: ignore
                 path_format_arguments = {
-                    'scope': self._serialize.url("scope", scope, 'str'),
+                    "scope": self._serialize.url("scope", scope, "str"),
                 }
                 url = self._client.format_url(url, **path_format_arguments)
                 # Construct parameters
                 query_parameters = {}  # type: Dict[str, Any]
-                query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+                query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
                 request = self._client.get(url, query_parameters, header_parameters)
             else:
@@ -166,7 +161,7 @@ class ViewsOperations:
             return request
 
         async def extract_data(pipeline_response):
-            deserialized = self._deserialize('ViewListResult', pipeline_response)
+            deserialized = self._deserialize("ViewListResult", pipeline_response)
             list_of_elem = deserialized.value
             if cls:
                 list_of_elem = cls(list_of_elem)
@@ -185,16 +180,11 @@ class ViewsOperations:
 
             return pipeline_response
 
-        return AsyncItemPaged(
-            get_next, extract_data
-        )
-    list_by_scope.metadata = {'url': '/{scope}/providers/Microsoft.CostManagement/views'}  # type: ignore
+        return AsyncItemPaged(get_next, extract_data)
 
-    async def get(
-        self,
-        view_name: str,
-        **kwargs: Any
-    ) -> "_models.View":
+    list_by_scope.metadata = {"url": "/{scope}/providers/Microsoft.CostManagement/views"}  # type: ignore
+
+    async def get(self, view_name: str, **kwargs: Any) -> "_models.View":
         """Gets the view by view name.
 
         :param view_name: View name.
@@ -204,28 +194,26 @@ class ViewsOperations:
         :rtype: ~azure.mgmt.costmanagement.models.View
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.View"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.View"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         # Construct URL
-        url = self.get.metadata['url']  # type: ignore
+        url = self.get.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'viewName': self._serialize.url("view_name", view_name, 'str'),
+            "viewName": self._serialize.url("view_name", view_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         request = self._client.get(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
@@ -236,20 +224,16 @@ class ViewsOperations:
             error = self._deserialize.failsafe_deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = self._deserialize('View', pipeline_response)
+        deserialized = self._deserialize("View", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    get.metadata = {'url': '/providers/Microsoft.CostManagement/views/{viewName}'}  # type: ignore
 
-    async def create_or_update(
-        self,
-        view_name: str,
-        parameters: "_models.View",
-        **kwargs: Any
-    ) -> "_models.View":
+    get.metadata = {"url": "/providers/Microsoft.CostManagement/views/{viewName}"}  # type: ignore
+
+    async def create_or_update(self, view_name: str, parameters: "_models.View", **kwargs: Any) -> "_models.View":
         """The operation to create or update a view. Update operation requires latest eTag to be set in
         the request. You may obtain the latest eTag by performing a get operation. Create operation
         does not require eTag.
@@ -263,34 +247,32 @@ class ViewsOperations:
         :rtype: ~azure.mgmt.costmanagement.models.View
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.View"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.View"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         content_type = kwargs.pop("content_type", "application/json")
         accept = "application/json"
 
         # Construct URL
-        url = self.create_or_update.metadata['url']  # type: ignore
+        url = self.create_or_update.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'viewName': self._serialize.url("view_name", view_name, 'str'),
+            "viewName": self._serialize.url("view_name", view_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         body_content_kwargs = {}  # type: Dict[str, Any]
-        body_content = self._serialize.body(parameters, 'View')
-        body_content_kwargs['content'] = body_content
+        body_content = self._serialize.body(parameters, "View")
+        body_content_kwargs["content"] = body_content
         request = self._client.put(url, query_parameters, header_parameters, **body_content_kwargs)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -301,22 +283,19 @@ class ViewsOperations:
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('View', pipeline_response)
+            deserialized = self._deserialize("View", pipeline_response)
 
         if response.status_code == 201:
-            deserialized = self._deserialize('View', pipeline_response)
+            deserialized = self._deserialize("View", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    create_or_update.metadata = {'url': '/providers/Microsoft.CostManagement/views/{viewName}'}  # type: ignore
 
-    async def delete(
-        self,
-        view_name: str,
-        **kwargs: Any
-    ) -> None:
+    create_or_update.metadata = {"url": "/providers/Microsoft.CostManagement/views/{viewName}"}  # type: ignore
+
+    async def delete(self, view_name: str, **kwargs: Any) -> None:
         """The operation to delete a view.
 
         :param view_name: View name.
@@ -326,28 +305,26 @@ class ViewsOperations:
         :rtype: None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[None]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         # Construct URL
-        url = self.delete.metadata['url']  # type: ignore
+        url = self.delete.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'viewName': self._serialize.url("view_name", view_name, 'str'),
+            "viewName": self._serialize.url("view_name", view_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         request = self._client.delete(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
@@ -361,14 +338,9 @@ class ViewsOperations:
         if cls:
             return cls(pipeline_response, None, {})
 
-    delete.metadata = {'url': '/providers/Microsoft.CostManagement/views/{viewName}'}  # type: ignore
+    delete.metadata = {"url": "/providers/Microsoft.CostManagement/views/{viewName}"}  # type: ignore
 
-    async def get_by_scope(
-        self,
-        scope: str,
-        view_name: str,
-        **kwargs: Any
-    ) -> "_models.View":
+    async def get_by_scope(self, scope: str, view_name: str, **kwargs: Any) -> "_models.View":
         """Gets the view for the defined scope by view name.
 
         :param scope: The scope associated with view operations. This includes
@@ -396,29 +368,27 @@ class ViewsOperations:
         :rtype: ~azure.mgmt.costmanagement.models.View
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.View"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.View"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         # Construct URL
-        url = self.get_by_scope.metadata['url']  # type: ignore
+        url = self.get_by_scope.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'scope': self._serialize.url("scope", scope, 'str'),
-            'viewName': self._serialize.url("view_name", view_name, 'str'),
+            "scope": self._serialize.url("scope", scope, "str"),
+            "viewName": self._serialize.url("view_name", view_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         request = self._client.get(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
@@ -429,20 +399,17 @@ class ViewsOperations:
             error = self._deserialize.failsafe_deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = self._deserialize('View', pipeline_response)
+        deserialized = self._deserialize("View", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    get_by_scope.metadata = {'url': '/{scope}/providers/Microsoft.CostManagement/views/{viewName}'}  # type: ignore
+
+    get_by_scope.metadata = {"url": "/{scope}/providers/Microsoft.CostManagement/views/{viewName}"}  # type: ignore
 
     async def create_or_update_by_scope(
-        self,
-        scope: str,
-        view_name: str,
-        parameters: "_models.View",
-        **kwargs: Any
+        self, scope: str, view_name: str, parameters: "_models.View", **kwargs: Any
     ) -> "_models.View":
         """The operation to create or update a view. Update operation requires latest eTag to be set in
         the request. You may obtain the latest eTag by performing a get operation. Create operation
@@ -475,35 +442,33 @@ class ViewsOperations:
         :rtype: ~azure.mgmt.costmanagement.models.View
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.View"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.View"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         content_type = kwargs.pop("content_type", "application/json")
         accept = "application/json"
 
         # Construct URL
-        url = self.create_or_update_by_scope.metadata['url']  # type: ignore
+        url = self.create_or_update_by_scope.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'scope': self._serialize.url("scope", scope, 'str'),
-            'viewName': self._serialize.url("view_name", view_name, 'str'),
+            "scope": self._serialize.url("scope", scope, "str"),
+            "viewName": self._serialize.url("view_name", view_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         body_content_kwargs = {}  # type: Dict[str, Any]
-        body_content = self._serialize.body(parameters, 'View')
-        body_content_kwargs['content'] = body_content
+        body_content = self._serialize.body(parameters, "View")
+        body_content_kwargs["content"] = body_content
         request = self._client.put(url, query_parameters, header_parameters, **body_content_kwargs)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -514,23 +479,19 @@ class ViewsOperations:
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
         if response.status_code == 200:
-            deserialized = self._deserialize('View', pipeline_response)
+            deserialized = self._deserialize("View", pipeline_response)
 
         if response.status_code == 201:
-            deserialized = self._deserialize('View', pipeline_response)
+            deserialized = self._deserialize("View", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    create_or_update_by_scope.metadata = {'url': '/{scope}/providers/Microsoft.CostManagement/views/{viewName}'}  # type: ignore
 
-    async def delete_by_scope(
-        self,
-        scope: str,
-        view_name: str,
-        **kwargs: Any
-    ) -> None:
+    create_or_update_by_scope.metadata = {"url": "/{scope}/providers/Microsoft.CostManagement/views/{viewName}"}  # type: ignore
+
+    async def delete_by_scope(self, scope: str, view_name: str, **kwargs: Any) -> None:
         """The operation to delete a view.
 
         :param scope: The scope associated with view operations. This includes
@@ -558,29 +519,27 @@ class ViewsOperations:
         :rtype: None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[None]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType[None]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         # Construct URL
-        url = self.delete_by_scope.metadata['url']  # type: ignore
+        url = self.delete_by_scope.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'scope': self._serialize.url("scope", scope, 'str'),
-            'viewName': self._serialize.url("view_name", view_name, 'str'),
+            "scope": self._serialize.url("scope", scope, "str"),
+            "viewName": self._serialize.url("view_name", view_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         request = self._client.delete(url, query_parameters, header_parameters)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
@@ -594,4 +553,4 @@ class ViewsOperations:
         if cls:
             return cls(pipeline_response, None, {})
 
-    delete_by_scope.metadata = {'url': '/{scope}/providers/Microsoft.CostManagement/views/{viewName}'}  # type: ignore
+    delete_by_scope.metadata = {"url": "/{scope}/providers/Microsoft.CostManagement/views/{viewName}"}  # type: ignore

@@ -9,14 +9,14 @@
 
 from typing import Dict, List, Optional, TYPE_CHECKING
 
-import msrest.serialization
+from ... import _serialization
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from .. import models as _models
 
 
-class CloudErrorBody(msrest.serialization.Model):
+class CloudErrorBody(_serialization.Model):
     """An error response from the ManagedServiceIdentity service.
 
     :ivar code: An identifier for the error.
@@ -66,7 +66,7 @@ class CloudErrorBody(msrest.serialization.Model):
         self.details = details
 
 
-class Resource(msrest.serialization.Model):
+class Resource(_serialization.Model):
     """Common fields that are returned in the response for all Azure Resource Manager resources.
 
     Variables are only populated by the server, and will be ignored when sending a request.
@@ -82,9 +82,9 @@ class Resource(msrest.serialization.Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
     }
 
     _attribute_map = {
@@ -93,12 +93,8 @@ class Resource(msrest.serialization.Model):
         "type": {"key": "type", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        """
-        """
+    def __init__(self, **kwargs):
+        """ """
         super().__init__(**kwargs)
         self.id = None
         self.name = None
@@ -127,10 +123,10 @@ class TrackedResource(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'location': {'required': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "location": {"required": True},
     }
 
     _attribute_map = {
@@ -141,13 +137,7 @@ class TrackedResource(Resource):
         "location": {"key": "location", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, location: str, tags: Optional[Dict[str, str]] = None, **kwargs):
         """
         :keyword tags: Resource tags.
         :paramtype tags: dict[str, str]
@@ -189,13 +179,13 @@ class Identity(TrackedResource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'location': {'required': True},
-        'tenant_id': {'readonly': True},
-        'principal_id': {'readonly': True},
-        'client_id': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "location": {"required": True},
+        "tenant_id": {"readonly": True},
+        "principal_id": {"readonly": True},
+        "client_id": {"readonly": True},
     }
 
     _attribute_map = {
@@ -209,13 +199,7 @@ class Identity(TrackedResource):
         "client_id": {"key": "properties.clientId", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, location: str, tags: Optional[Dict[str, str]] = None, **kwargs):
         """
         :keyword tags: Resource tags.
         :paramtype tags: dict[str, str]
@@ -256,12 +240,12 @@ class IdentityUpdate(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'tenant_id': {'readonly': True},
-        'principal_id': {'readonly': True},
-        'client_id': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "tenant_id": {"readonly": True},
+        "principal_id": {"readonly": True},
+        "client_id": {"readonly": True},
     }
 
     _attribute_map = {
@@ -275,13 +259,7 @@ class IdentityUpdate(Resource):
         "client_id": {"key": "properties.clientId", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        location: Optional[str] = None,
-        tags: Optional[Dict[str, str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, location: Optional[str] = None, tags: Optional[Dict[str, str]] = None, **kwargs):
         """
         :keyword location: The geo-location where the resource lives.
         :paramtype location: str
@@ -296,7 +274,7 @@ class IdentityUpdate(Resource):
         self.client_id = None
 
 
-class Operation(msrest.serialization.Model):
+class Operation(_serialization.Model):
     """Operation supported by the Microsoft.ManagedIdentity REST API.
 
     :ivar name: The name of the REST Operation. This is of the format
@@ -311,13 +289,7 @@ class Operation(msrest.serialization.Model):
         "display": {"key": "display", "type": "OperationDisplay"},
     }
 
-    def __init__(
-        self,
-        *,
-        name: Optional[str] = None,
-        display: Optional["_models.OperationDisplay"] = None,
-        **kwargs
-    ):
+    def __init__(self, *, name: Optional[str] = None, display: Optional["_models.OperationDisplay"] = None, **kwargs):
         """
         :keyword name: The name of the REST Operation. This is of the format
          {provider}/{resource}/{operation}.
@@ -330,7 +302,7 @@ class Operation(msrest.serialization.Model):
         self.display = display
 
 
-class OperationDisplay(msrest.serialization.Model):
+class OperationDisplay(_serialization.Model):
     """The object that describes the operation.
 
     :ivar provider: Friendly name of the resource provider.
@@ -376,7 +348,7 @@ class OperationDisplay(msrest.serialization.Model):
         self.description = description
 
 
-class OperationListResult(msrest.serialization.Model):
+class OperationListResult(_serialization.Model):
     """A list of operations supported by Microsoft.ManagedIdentity Resource Provider.
 
     :ivar value: A list of operations supported by Microsoft.ManagedIdentity Resource Provider.
@@ -390,13 +362,7 @@ class OperationListResult(msrest.serialization.Model):
         "next_link": {"key": "nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: Optional[List["_models.Operation"]] = None,
-        next_link: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: Optional[List["_models.Operation"]] = None, next_link: Optional[str] = None, **kwargs):
         """
         :keyword value: A list of operations supported by Microsoft.ManagedIdentity Resource Provider.
         :paramtype value: list[~azure.mgmt.msi.v2018_11_30.models.Operation]
@@ -424,9 +390,9 @@ class ProxyResource(Resource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
     }
 
     _attribute_map = {
@@ -435,12 +401,8 @@ class ProxyResource(Resource):
         "type": {"key": "type", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
-        """
-        """
+    def __init__(self, **kwargs):
+        """ """
         super().__init__(**kwargs)
 
 
@@ -477,14 +439,14 @@ class SystemAssignedIdentity(ProxyResource):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'location': {'required': True},
-        'tenant_id': {'readonly': True},
-        'principal_id': {'readonly': True},
-        'client_id': {'readonly': True},
-        'client_secret_url': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "location": {"required": True},
+        "tenant_id": {"readonly": True},
+        "principal_id": {"readonly": True},
+        "client_id": {"readonly": True},
+        "client_secret_url": {"readonly": True},
     }
 
     _attribute_map = {
@@ -499,13 +461,7 @@ class SystemAssignedIdentity(ProxyResource):
         "client_secret_url": {"key": "properties.clientSecretUrl", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        **kwargs
-    ):
+    def __init__(self, *, location: str, tags: Optional[Dict[str, str]] = None, **kwargs):
         """
         :keyword location: The geo-location where the resource lives. Required.
         :paramtype location: str
@@ -521,7 +477,7 @@ class SystemAssignedIdentity(ProxyResource):
         self.client_secret_url = None
 
 
-class UserAssignedIdentitiesListResult(msrest.serialization.Model):
+class UserAssignedIdentitiesListResult(_serialization.Model):
     """Values returned by the List operation.
 
     :ivar value: The collection of userAssignedIdentities returned by the listing operation.
@@ -535,13 +491,7 @@ class UserAssignedIdentitiesListResult(msrest.serialization.Model):
         "next_link": {"key": "nextLink", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: Optional[List["_models.Identity"]] = None,
-        next_link: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: Optional[List["_models.Identity"]] = None, next_link: Optional[str] = None, **kwargs):
         """
         :keyword value: The collection of userAssignedIdentities returned by the listing operation.
         :paramtype value: list[~azure.mgmt.msi.v2018_11_30.models.Identity]

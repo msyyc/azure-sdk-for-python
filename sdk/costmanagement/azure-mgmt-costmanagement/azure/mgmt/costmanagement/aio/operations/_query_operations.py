@@ -8,15 +8,22 @@
 from typing import Any, Callable, Dict, Generic, Optional, TypeVar, Union
 import warnings
 
-from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import AsyncHttpResponse, HttpRequest
 from azure.mgmt.core.exceptions import ARMErrorFormat
 
 from ... import models as _models
 
-T = TypeVar('T')
+T = TypeVar("T")
 ClsType = Optional[Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, Dict[str, Any]], Any]]
+
 
 class QueryOperations:
     """QueryOperations async operations.
@@ -41,10 +48,7 @@ class QueryOperations:
         self._config = config
 
     async def usage(
-        self,
-        scope: str,
-        parameters: "_models.QueryDefinition",
-        **kwargs: Any
+        self, scope: str, parameters: "_models.QueryDefinition", **kwargs: Any
     ) -> Optional["_models.QueryResult"]:
         """Query the usage data for scope defined.
 
@@ -72,34 +76,32 @@ class QueryOperations:
         :rtype: ~azure.mgmt.costmanagement.models.QueryResult or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType[Optional["_models.QueryResult"]]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType[Optional["_models.QueryResult"]]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         content_type = kwargs.pop("content_type", "application/json")
         accept = "application/json"
 
         # Construct URL
-        url = self.usage.metadata['url']  # type: ignore
+        url = self.usage.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'scope': self._serialize.url("scope", scope, 'str', skip_quote=True),
+            "scope": self._serialize.url("scope", scope, "str", skip_quote=True),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         body_content_kwargs = {}  # type: Dict[str, Any]
-        body_content = self._serialize.body(parameters, 'QueryDefinition')
-        body_content_kwargs['content'] = body_content
+        body_content = self._serialize.body(parameters, "QueryDefinition")
+        body_content_kwargs["content"] = body_content
         request = self._client.post(url, query_parameters, header_parameters, **body_content_kwargs)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -111,13 +113,14 @@ class QueryOperations:
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('QueryResult', pipeline_response)
+            deserialized = self._deserialize("QueryResult", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    usage.metadata = {'url': '/{scope}/providers/Microsoft.CostManagement/query'}  # type: ignore
+
+    usage.metadata = {"url": "/{scope}/providers/Microsoft.CostManagement/query"}  # type: ignore
 
     async def usage_by_external_cloud_provider_type(
         self,
@@ -142,35 +145,37 @@ class QueryOperations:
         :rtype: ~azure.mgmt.costmanagement.models.QueryResult
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.QueryResult"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.QueryResult"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         content_type = kwargs.pop("content_type", "application/json")
         accept = "application/json"
 
         # Construct URL
-        url = self.usage_by_external_cloud_provider_type.metadata['url']  # type: ignore
+        url = self.usage_by_external_cloud_provider_type.metadata["url"]  # type: ignore
         path_format_arguments = {
-            'externalCloudProviderType': self._serialize.url("external_cloud_provider_type", external_cloud_provider_type, 'str'),
-            'externalCloudProviderId': self._serialize.url("external_cloud_provider_id", external_cloud_provider_id, 'str'),
+            "externalCloudProviderType": self._serialize.url(
+                "external_cloud_provider_type", external_cloud_provider_type, "str"
+            ),
+            "externalCloudProviderId": self._serialize.url(
+                "external_cloud_provider_id", external_cloud_provider_id, "str"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
-        query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+        query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
-        header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
+        header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
         body_content_kwargs = {}  # type: Dict[str, Any]
-        body_content = self._serialize.body(parameters, 'QueryDefinition')
-        body_content_kwargs['content'] = body_content
+        body_content = self._serialize.body(parameters, "QueryDefinition")
+        body_content_kwargs["content"] = body_content
         request = self._client.post(url, query_parameters, header_parameters, **body_content_kwargs)
         pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
         response = pipeline_response.http_response
@@ -180,10 +185,11 @@ class QueryOperations:
             error = self._deserialize.failsafe_deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error, error_format=ARMErrorFormat)
 
-        deserialized = self._deserialize('QueryResult', pipeline_response)
+        deserialized = self._deserialize("QueryResult", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    usage_by_external_cloud_provider_type.metadata = {'url': '/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/query'}  # type: ignore
+
+    usage_by_external_cloud_provider_type.metadata = {"url": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/query"}  # type: ignore

@@ -66,7 +66,7 @@ class CostManagementClient(object):
     ):
         # type: (...) -> None
         if not base_url:
-            base_url = 'https://management.azure.com'
+            base_url = "https://management.azure.com"
         self._config = CostManagementClientConfiguration(credential, **kwargs)
         self._client = ARMPipelineClient(base_url=base_url, config=self._config, **kwargs)
 
@@ -75,24 +75,17 @@ class CostManagementClient(object):
         self._serialize.client_side_validation = False
         self._deserialize = Deserializer(client_models)
 
-        self.settings = SettingsOperations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.views = ViewsOperations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.alerts = AlertsOperations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.forecast = ForecastOperations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.dimensions = DimensionsOperations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.query = QueryOperations(
-            self._client, self._config, self._serialize, self._deserialize)
+        self.settings = SettingsOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.views = ViewsOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.alerts = AlertsOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.forecast = ForecastOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.dimensions = DimensionsOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.query = QueryOperations(self._client, self._config, self._serialize, self._deserialize)
         self.generate_reservation_details_report = GenerateReservationDetailsReportOperations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.operations = Operations(
-            self._client, self._config, self._serialize, self._deserialize)
-        self.exports = ExportsOperations(
-            self._client, self._config, self._serialize, self._deserialize)
+            self._client, self._config, self._serialize, self._deserialize
+        )
+        self.operations = Operations(self._client, self._config, self._serialize, self._deserialize)
+        self.exports = ExportsOperations(self._client, self._config, self._serialize, self._deserialize)
 
     def _send_request(self, http_request, **kwargs):
         # type: (HttpRequest, Any) -> HttpResponse

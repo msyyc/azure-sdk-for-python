@@ -9,18 +9,18 @@
 from copy import deepcopy
 from typing import Any, TYPE_CHECKING
 
-from msrest import Deserializer, Serializer
-
 from azure.core.rest import HttpRequest, HttpResponse
 from azure.mgmt.core import ARMPipelineClient
 
 from . import models
+from .._serialization import Deserializer, Serializer
 from ._configuration import ManagedServiceIdentityClientConfiguration
 from .operations import Operations, SystemAssignedIdentitiesOperations, UserAssignedIdentitiesOperations
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from azure.core.credentials import TokenCredential
+
 
 class ManagedServiceIdentityClient:  # pylint: disable=client-accepts-api-version-keyword
     """The Managed Service Identity Client.
@@ -51,7 +51,9 @@ class ManagedServiceIdentityClient:  # pylint: disable=client-accepts-api-versio
         base_url: str = "https://management.azure.com",
         **kwargs: Any
     ) -> None:
-        self._config = ManagedServiceIdentityClientConfiguration(credential=credential, subscription_id=subscription_id, **kwargs)
+        self._config = ManagedServiceIdentityClientConfiguration(
+            credential=credential, subscription_id=subscription_id, **kwargs
+        )
         self._client = ARMPipelineClient(base_url=base_url, config=self._config, **kwargs)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
@@ -61,19 +63,12 @@ class ManagedServiceIdentityClient:  # pylint: disable=client-accepts-api-versio
         self.system_assigned_identities = SystemAssignedIdentitiesOperations(
             self._client, self._config, self._serialize, self._deserialize
         )
-        self.operations = Operations(
-            self._client, self._config, self._serialize, self._deserialize
-        )
+        self.operations = Operations(self._client, self._config, self._serialize, self._deserialize)
         self.user_assigned_identities = UserAssignedIdentitiesOperations(
             self._client, self._config, self._serialize, self._deserialize
         )
 
-
-    def _send_request(
-        self,
-        request: HttpRequest,
-        **kwargs: Any
-    ) -> HttpResponse:
+    def _send_request(self, request: HttpRequest, **kwargs: Any) -> HttpResponse:
         """Runs the network request through the client's chained policies.
 
         >>> from azure.core.rest import HttpRequest
@@ -82,7 +77,7 @@ class ManagedServiceIdentityClient:  # pylint: disable=client-accepts-api-versio
         >>> response = client._send_request(request)
         <HttpResponse: 200 OK>
 
-        For more information on this code flow, see https://aka.ms/azsdk/python/protocol/quickstart
+        For more information on this code flow, see https://aka.ms/azsdk/dpcodegen/python/send_request
 
         :param request: The network request you want to make. Required.
         :type request: ~azure.core.rest.HttpRequest

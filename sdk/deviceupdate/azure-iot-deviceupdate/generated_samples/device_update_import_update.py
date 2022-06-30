@@ -8,57 +8,31 @@
 
 from azure.identity import DefaultAzureCredential
 from azure.iot.deviceupdate import DeviceUpdateClient
-
 """
-The sample just shows how to use the method and may not run successfully.
 # PREREQUISITES
     pip install azure-identity
     pip install azure-iot-deviceupdate
 # USAGE
     python device_update_import_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret 
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
 """
-# x-ms-original-file: specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/examples/DeviceUpdate_ImportUpdate.json
 def main():
-    """
-    Please set the values of the client ID, tenant ID and client secret of the AAD application as environment variables:
-    AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET.
-    For more info about how to get the value, please see https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
-    """
     client = DeviceUpdateClient(
         endpoint="contoso.api.adu.microsoft.com",
         instance_id="blue",
         credential=DefaultAzureCredential(),
     )
 
-    response = client.device_update.begin_import_update(
-        update_to_import=[
-            {
-                "files": [
-                    {
-                        "filename": "file1.bin",
-                        "url": "http://test.blob.core.windows.net/test/upload1v5uww1q",
-                    },
-                    {
-                        "filename": "file2.bin",
-                        "url": "http://test.blob.core.windows.net/test/uploadkrmn5yw0",
-                    },
-                    {
-                        "filename": "file3.bin",
-                        "url": "http://test.blob.core.windows.net/test/uploaddq52ky5m",
-                    },
-                ],
-                "importManifest": {
-                    "hashes": {
-                        "sha256": "O19LyyncPe1AGstOdkcmozLV8pSbBdqrE18HdYVohRc="
-                    },
-                    "sizeInBytes": 816,
-                    "url": "http://test.blob.core.windows.net/test/uploadimportMan.json",
-                },
-            }
-        ],
-    ).result()
+    response = client.device_update._import_update_initial(
+        update_to_import=[{'files': [{'filename': 'file1.bin', 'url': 'http://test.blob.core.windows.net/test/upload1v5uww1q'}, {'filename': 'file2.bin', 'url': 'http://test.blob.core.windows.net/test/uploadkrmn5yw0'}, {'filename': 'file3.bin', 'url': 'http://test.blob.core.windows.net/test/uploaddq52ky5m'}], 'importManifest': {'hashes': {'sha256': 'O19LyyncPe1AGstOdkcmozLV8pSbBdqrE18HdYVohRc='}, 'sizeInBytes': 816, 'url': 'http://test.blob.core.windows.net/test/uploadimportMan.json'}}],
+    )
     print(response)
 
-
+# x-ms-original-file: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d73e2aef15b4670fef9ba7b1cbce825205547212/specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/examples/DeviceUpdate_ImportUpdate.json
 if __name__ == "__main__":
     main()
+ain()

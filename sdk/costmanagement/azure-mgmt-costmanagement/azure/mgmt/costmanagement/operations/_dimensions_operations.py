@@ -8,7 +8,13 @@
 from typing import TYPE_CHECKING
 import warnings
 
-from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.paging import ItemPaged
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import HttpRequest, HttpResponse
@@ -20,8 +26,9 @@ if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from typing import Any, Callable, Dict, Generic, Iterable, Optional, TypeVar, Union
 
-    T = TypeVar('T')
+    T = TypeVar("T")
     ClsType = Optional[Callable[[PipelineResponse[HttpRequest, HttpResponse], T, Dict[str, Any]], Any]]
+
 
 class DimensionsOperations(object):
     """DimensionsOperations operations.
@@ -91,37 +98,35 @@ class DimensionsOperations(object):
         :rtype: ~azure.core.paging.ItemPaged[~azure.mgmt.costmanagement.models.DimensionsListResultor None]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.DimensionsListResult"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.DimensionsListResult"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         def prepare_request(next_link=None):
             # Construct headers
             header_parameters = {}  # type: Dict[str, Any]
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
             if not next_link:
                 # Construct URL
-                url = self.list.metadata['url']  # type: ignore
+                url = self.list.metadata["url"]  # type: ignore
                 path_format_arguments = {
-                    'scope': self._serialize.url("scope", scope, 'str', skip_quote=True),
+                    "scope": self._serialize.url("scope", scope, "str", skip_quote=True),
                 }
                 url = self._client.format_url(url, **path_format_arguments)
                 # Construct parameters
                 query_parameters = {}  # type: Dict[str, Any]
-                query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+                query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
                 if filter is not None:
-                    query_parameters['$filter'] = self._serialize.query("filter", filter, 'str')
+                    query_parameters["$filter"] = self._serialize.query("filter", filter, "str")
                 if expand is not None:
-                    query_parameters['$expand'] = self._serialize.query("expand", expand, 'str')
+                    query_parameters["$expand"] = self._serialize.query("expand", expand, "str")
                 if skiptoken is not None:
-                    query_parameters['$skiptoken'] = self._serialize.query("skiptoken", skiptoken, 'str')
+                    query_parameters["$skiptoken"] = self._serialize.query("skiptoken", skiptoken, "str")
                 if top is not None:
-                    query_parameters['$top'] = self._serialize.query("top", top, 'int', maximum=1000, minimum=1)
+                    query_parameters["$top"] = self._serialize.query("top", top, "int", maximum=1000, minimum=1)
 
                 request = self._client.get(url, query_parameters, header_parameters)
             else:
@@ -131,7 +136,7 @@ class DimensionsOperations(object):
             return request
 
         def extract_data(pipeline_response):
-            deserialized = self._deserialize('DimensionsListResult', pipeline_response)
+            deserialized = self._deserialize("DimensionsListResult", pipeline_response)
             list_of_elem = deserialized.value
             if cls:
                 list_of_elem = cls(list_of_elem)
@@ -150,10 +155,9 @@ class DimensionsOperations(object):
 
             return pipeline_response
 
-        return ItemPaged(
-            get_next, extract_data
-        )
-    list.metadata = {'url': '/{scope}/providers/Microsoft.CostManagement/dimensions'}  # type: ignore
+        return ItemPaged(get_next, extract_data)
+
+    list.metadata = {"url": "/{scope}/providers/Microsoft.CostManagement/dimensions"}  # type: ignore
 
     def by_external_cloud_provider_type(
         self,
@@ -192,38 +196,40 @@ class DimensionsOperations(object):
         :rtype: ~azure.core.paging.ItemPaged[~azure.mgmt.costmanagement.models.DimensionsListResult]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.DimensionsListResult"]
-        error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
-        }
-        error_map.update(kwargs.pop('error_map', {}))
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.DimensionsListResult"]
+        error_map = {401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError}
+        error_map.update(kwargs.pop("error_map", {}))
         api_version = "2019-11-01"
         accept = "application/json"
 
         def prepare_request(next_link=None):
             # Construct headers
             header_parameters = {}  # type: Dict[str, Any]
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header("accept", accept, "str")
 
             if not next_link:
                 # Construct URL
-                url = self.by_external_cloud_provider_type.metadata['url']  # type: ignore
+                url = self.by_external_cloud_provider_type.metadata["url"]  # type: ignore
                 path_format_arguments = {
-                    'externalCloudProviderType': self._serialize.url("external_cloud_provider_type", external_cloud_provider_type, 'str'),
-                    'externalCloudProviderId': self._serialize.url("external_cloud_provider_id", external_cloud_provider_id, 'str'),
+                    "externalCloudProviderType": self._serialize.url(
+                        "external_cloud_provider_type", external_cloud_provider_type, "str"
+                    ),
+                    "externalCloudProviderId": self._serialize.url(
+                        "external_cloud_provider_id", external_cloud_provider_id, "str"
+                    ),
                 }
                 url = self._client.format_url(url, **path_format_arguments)
                 # Construct parameters
                 query_parameters = {}  # type: Dict[str, Any]
-                query_parameters['api-version'] = self._serialize.query("api_version", api_version, 'str')
+                query_parameters["api-version"] = self._serialize.query("api_version", api_version, "str")
                 if filter is not None:
-                    query_parameters['$filter'] = self._serialize.query("filter", filter, 'str')
+                    query_parameters["$filter"] = self._serialize.query("filter", filter, "str")
                 if expand is not None:
-                    query_parameters['$expand'] = self._serialize.query("expand", expand, 'str')
+                    query_parameters["$expand"] = self._serialize.query("expand", expand, "str")
                 if skiptoken is not None:
-                    query_parameters['$skiptoken'] = self._serialize.query("skiptoken", skiptoken, 'str')
+                    query_parameters["$skiptoken"] = self._serialize.query("skiptoken", skiptoken, "str")
                 if top is not None:
-                    query_parameters['$top'] = self._serialize.query("top", top, 'int', maximum=1000, minimum=1)
+                    query_parameters["$top"] = self._serialize.query("top", top, "int", maximum=1000, minimum=1)
 
                 request = self._client.get(url, query_parameters, header_parameters)
             else:
@@ -233,7 +239,7 @@ class DimensionsOperations(object):
             return request
 
         def extract_data(pipeline_response):
-            deserialized = self._deserialize('DimensionsListResult', pipeline_response)
+            deserialized = self._deserialize("DimensionsListResult", pipeline_response)
             list_of_elem = deserialized.value
             if cls:
                 list_of_elem = cls(list_of_elem)
@@ -252,7 +258,6 @@ class DimensionsOperations(object):
 
             return pipeline_response
 
-        return ItemPaged(
-            get_next, extract_data
-        )
-    by_external_cloud_provider_type.metadata = {'url': '/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions'}  # type: ignore
+        return ItemPaged(get_next, extract_data)
+
+    by_external_cloud_provider_type.metadata = {"url": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions"}  # type: ignore

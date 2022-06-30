@@ -8,22 +8,19 @@
 
 from azure.identity import DefaultAzureCredential
 from azure.iot.deviceupdate import DeviceUpdateClient
-
 """
-The sample just shows how to use the method and may not run successfully.
 # PREREQUISITES
     pip install azure-identity
     pip install azure-iot-deviceupdate
 # USAGE
     python device_management_create_or_update_group.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret 
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
 """
-# x-ms-original-file: specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/examples/DeviceManagement_CreateOrUpdateGroup.json
 def main():
-    """
-    Please set the values of the client ID, tenant ID and client secret of the AAD application as environment variables:
-    AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET.
-    For more info about how to get the value, please see https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
-    """
     client = DeviceUpdateClient(
         endpoint="contoso.api.adu.microsoft.com",
         instance_id="blue",
@@ -32,16 +29,10 @@ def main():
 
     response = client.device_management.create_or_update_group(
         group_id="MyGroup",
-        group={
-            "createdDateTime": "2020-07-01T12:13:14.0000000Z",
-            "deviceClassId": "9fd33c505d62e4c585b529ae0d643478d8da42c9",
-            "groupId": "MyGroup",
-            "groupType": "DeviceClassIdAndIoTHubTag",
-            "tags": ["MyGroup"],
-        },
+        group={'createdDateTime': '2020-07-01T12:13:14.0000000Z', 'deviceClassId': '9fd33c505d62e4c585b529ae0d643478d8da42c9', 'groupId': 'MyGroup', 'groupType': 'DeviceClassIdAndIoTHubTag', 'tags': ['MyGroup']},
     )
     print(response)
 
-
+# x-ms-original-file: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d73e2aef15b4670fef9ba7b1cbce825205547212/specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/examples/DeviceManagement_CreateOrUpdateGroup.json
 if __name__ == "__main__":
     main()
