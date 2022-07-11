@@ -16,7 +16,7 @@ from azure.mgmt.core import ARMPipelineClient
 
 from . import models
 from ._configuration import ManagedServiceIdentityClientConfiguration
-from .operations import SystemAssignedIdentitiesOperations
+from .operations import Operations
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
@@ -25,9 +25,8 @@ if TYPE_CHECKING:
 class ManagedServiceIdentityClient:
     """The Managed Service Identity Client.
 
-    :ivar system_assigned_identities: SystemAssignedIdentitiesOperations operations
-    :vartype system_assigned_identities:
-     azure.mgmt.msi.v2018_11_30.operations.SystemAssignedIdentitiesOperations
+    :ivar operations: Operations operations
+    :vartype operations: azure.mgmt.msi.v2018_11_30.operations.Operations
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
     :param base_url: Service URL. Default value is "https://management.azure.com".
@@ -50,7 +49,7 @@ class ManagedServiceIdentityClient:
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
         self._serialize.client_side_validation = False
-        self.system_assigned_identities = SystemAssignedIdentitiesOperations(
+        self.operations = Operations(
             self._client, self._config, self._serialize, self._deserialize
         )
 

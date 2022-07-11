@@ -16,7 +16,7 @@ from azure.mgmt.core import ARMPipelineClient
 
 from . import models
 from ._configuration import ManagedServiceIdentityClientConfiguration
-from .operations import SystemAssignedIdentitiesOperations, UserAssignedIdentitiesOperations
+from .operations import Operations, SystemAssignedIdentitiesOperations
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
@@ -28,13 +28,10 @@ class ManagedServiceIdentityClient:
     :ivar system_assigned_identities: SystemAssignedIdentitiesOperations operations
     :vartype system_assigned_identities:
      azure.mgmt.msi.v2021_09_30_preview.operations.SystemAssignedIdentitiesOperations
-    :ivar user_assigned_identities: UserAssignedIdentitiesOperations operations
-    :vartype user_assigned_identities:
-     azure.mgmt.msi.v2021_09_30_preview.operations.UserAssignedIdentitiesOperations
+    :ivar operations: Operations operations
+    :vartype operations: azure.mgmt.msi.v2021_09_30_preview.operations.Operations
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials.TokenCredential
-    :param subscription_id: The Id of the Subscription to which the identity belongs.
-    :type subscription_id: str
     :param base_url: Service URL. Default value is "https://management.azure.com".
     :type base_url: str
     :keyword api_version: Api Version. Default value is "2021-09-30-preview". Note that overriding
@@ -45,11 +42,10 @@ class ManagedServiceIdentityClient:
     def __init__(
         self,
         credential: "TokenCredential",
-        subscription_id: str,
         base_url: str = "https://management.azure.com",
         **kwargs: Any
     ) -> None:
-        self._config = ManagedServiceIdentityClientConfiguration(credential=credential, subscription_id=subscription_id, **kwargs)
+        self._config = ManagedServiceIdentityClientConfiguration(credential=credential, **kwargs)
         self._client = ARMPipelineClient(base_url=base_url, config=self._config, **kwargs)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
@@ -59,7 +55,7 @@ class ManagedServiceIdentityClient:
         self.system_assigned_identities = SystemAssignedIdentitiesOperations(
             self._client, self._config, self._serialize, self._deserialize
         )
-        self.user_assigned_identities = UserAssignedIdentitiesOperations(
+        self.operations = Operations(
             self._client, self._config, self._serialize, self._deserialize
         )
 

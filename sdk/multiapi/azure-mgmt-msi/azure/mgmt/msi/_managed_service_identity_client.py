@@ -104,10 +104,16 @@ class ManagedServiceIdentityClient(MultiApiClientMixin, _SDKClient):
     def operations(self):
         """Instance depends on the API version:
 
+           * 2018-11-30: :class:`Operations<azure.mgmt.msi.v2018_11_30.operations.Operations>`
+           * 2021-09-30-preview: :class:`Operations<azure.mgmt.msi.v2021_09_30_preview.operations.Operations>`
            * 2022-01-31-preview: :class:`Operations<azure.mgmt.msi.v2022_01_31_preview.operations.Operations>`
         """
         api_version = self._get_api_version('operations')
-        if api_version == '2022-01-31-preview':
+        if api_version == '2018-11-30':
+            from .v2018_11_30.operations import Operations as OperationClass
+        elif api_version == '2021-09-30-preview':
+            from .v2021_09_30_preview.operations import Operations as OperationClass
+        elif api_version == '2022-01-31-preview':
             from .v2022_01_31_preview.operations import Operations as OperationClass
         else:
             raise ValueError("API version {} does not have operation group 'operations'".format(api_version))
@@ -117,14 +123,11 @@ class ManagedServiceIdentityClient(MultiApiClientMixin, _SDKClient):
     def system_assigned_identities(self):
         """Instance depends on the API version:
 
-           * 2018-11-30: :class:`SystemAssignedIdentitiesOperations<azure.mgmt.msi.v2018_11_30.operations.SystemAssignedIdentitiesOperations>`
            * 2021-09-30-preview: :class:`SystemAssignedIdentitiesOperations<azure.mgmt.msi.v2021_09_30_preview.operations.SystemAssignedIdentitiesOperations>`
            * 2022-01-31-preview: :class:`SystemAssignedIdentitiesOperations<azure.mgmt.msi.v2022_01_31_preview.operations.SystemAssignedIdentitiesOperations>`
         """
         api_version = self._get_api_version('system_assigned_identities')
-        if api_version == '2018-11-30':
-            from .v2018_11_30.operations import SystemAssignedIdentitiesOperations as OperationClass
-        elif api_version == '2021-09-30-preview':
+        if api_version == '2021-09-30-preview':
             from .v2021_09_30_preview.operations import SystemAssignedIdentitiesOperations as OperationClass
         elif api_version == '2022-01-31-preview':
             from .v2022_01_31_preview.operations import SystemAssignedIdentitiesOperations as OperationClass
@@ -136,13 +139,10 @@ class ManagedServiceIdentityClient(MultiApiClientMixin, _SDKClient):
     def user_assigned_identities(self):
         """Instance depends on the API version:
 
-           * 2021-09-30-preview: :class:`UserAssignedIdentitiesOperations<azure.mgmt.msi.v2021_09_30_preview.operations.UserAssignedIdentitiesOperations>`
            * 2022-01-31-preview: :class:`UserAssignedIdentitiesOperations<azure.mgmt.msi.v2022_01_31_preview.operations.UserAssignedIdentitiesOperations>`
         """
         api_version = self._get_api_version('user_assigned_identities')
-        if api_version == '2021-09-30-preview':
-            from .v2021_09_30_preview.operations import UserAssignedIdentitiesOperations as OperationClass
-        elif api_version == '2022-01-31-preview':
+        if api_version == '2022-01-31-preview':
             from .v2022_01_31_preview.operations import UserAssignedIdentitiesOperations as OperationClass
         else:
             raise ValueError("API version {} does not have operation group 'user_assigned_identities'".format(api_version))
