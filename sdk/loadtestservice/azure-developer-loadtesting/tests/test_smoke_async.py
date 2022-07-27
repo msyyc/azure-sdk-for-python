@@ -17,7 +17,6 @@ DISPLAY_NAME = "TestingResource"
 
 
 class LoadtestingSmokeAsyncTest(LoadtestingAsyncTest):
-
     @LoadtestingPowerShellPreparer()
     async def test_smoke_create_or_update_test(self, loadtesting_endpoint):
         client = self.create_client(endpoint=loadtesting_endpoint)
@@ -37,7 +36,7 @@ class LoadtestingSmokeAsyncTest(LoadtestingAsyncTest):
                 "passFailCriteria": {"passFailMetrics": {}},
                 "keyvaultReferenceIdentityType": "SystemAssigned",
                 "keyvaultReferenceIdentityId": None,
-            }
+            },
         )
         assert result is not None
 
@@ -64,12 +63,8 @@ class LoadtestingSmokeAsyncTest(LoadtestingAsyncTest):
     @LoadtestingPowerShellPreparer()
     async def test_get_app_components(self, loadtesting_endpoint):
         client = self.create_client(endpoint=loadtesting_endpoint)
-        result = await client.load_test_administration.get_app_components(
-            test_id=TEST_ID
-        )
+        result = await client.load_test_administration.get_app_components(test_id=TEST_ID)
         assert result is not None
 
-        result = client.load_test_administration.get_app_components(
-            name=APP_COMPONENT
-        )
+        result = client.load_test_administration.get_app_components(name=APP_COMPONENT)
         assert result is not None
