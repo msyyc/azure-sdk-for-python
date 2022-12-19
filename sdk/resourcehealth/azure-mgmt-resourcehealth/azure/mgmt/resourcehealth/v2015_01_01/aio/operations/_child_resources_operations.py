@@ -59,7 +59,7 @@ class ChildResourcesOperations:
 
     @distributed_trace
     def list(
-        self, resource_uri: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_uri: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> AsyncIterable["_models.AvailabilityStatus"]:
         """Lists the all the children and its current health status for a parent resource. Use the
         nextLink property in the response to get the next page of children current health.
@@ -69,13 +69,13 @@ class ChildResourcesOperations:
          /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name}.
          Required.
         :type resource_uri: str
-        :param filter: The filter to apply on the operation. For more information please see
+        :keyword filter: The filter to apply on the operation. For more information please see
          https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN. Default value
          is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:

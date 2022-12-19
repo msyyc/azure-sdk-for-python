@@ -130,6 +130,7 @@ class EventsOperations:
     @distributed_trace
     def list_by_subscription_id(
         self,
+        *,
         filter: Optional[str] = None,
         query_start_time: Optional[str] = None,
         view: Optional[str] = None,
@@ -137,18 +138,18 @@ class EventsOperations:
     ) -> Iterable["_models.Event"]:
         """Lists current service health events in the subscription.
 
-        :param filter: A valid odata query to limit the events returned. The logical operators and, or,
-         equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
+        :keyword filter: A valid odata query to limit the events returned. The logical operators and,
+         or, equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
          'ServiceIssue' or Properties/EventType eq 'PlannedMaintenance' OR
          %24filter=Properties%2FEventType%20eq%20%27ServiceIssue%27%20or%20Properties%2FEventType%20eq%20%27PlannedMaintenance%27.
          Default value is None.
-        :type filter: str
-        :param query_start_time: Specifies from when to return events, based on the lastUpdateTime
+        :paramtype filter: str
+        :keyword query_start_time: Specifies from when to return events, based on the lastUpdateTime
          property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020. Default
          value is None.
-        :type query_start_time: str
-        :param view: setting view=full expands the article parameters. Default value is None.
-        :type view: str
+        :paramtype query_start_time: str
+        :keyword view: setting view=full expands the article parameters. Default value is None.
+        :paramtype view: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either Event or the result of cls(response)
         :rtype: ~azure.core.paging.ItemPaged[~azure.mgmt.resourcehealth.v2018_07_01.models.Event]
@@ -230,7 +231,7 @@ class EventsOperations:
 
     @distributed_trace
     def list_by_single_resource(
-        self, resource_uri: str, filter: Optional[str] = None, view: Optional[str] = None, **kwargs: Any
+        self, resource_uri: str, *, filter: Optional[str] = None, view: Optional[str] = None, **kwargs: Any
     ) -> Iterable["_models.Event"]:
         """Lists current service health events for given resource.
 
@@ -241,14 +242,14 @@ class EventsOperations:
          /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}.
          Required.
         :type resource_uri: str
-        :param filter: A valid odata query to limit the events returned. The logical operators and, or,
-         equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
+        :keyword filter: A valid odata query to limit the events returned. The logical operators and,
+         or, equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
          'ServiceIssue' or Properties/EventType eq 'PlannedMaintenance' OR
          %24filter=Properties%2FEventType%20eq%20%27ServiceIssue%27%20or%20Properties%2FEventType%20eq%20%27PlannedMaintenance%27.
          Default value is None.
-        :type filter: str
-        :param view: setting view=full expands the article parameters. Default value is None.
-        :type view: str
+        :paramtype filter: str
+        :keyword view: setting view=full expands the article parameters. Default value is None.
+        :paramtype view: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either Event or the result of cls(response)
         :rtype: ~azure.core.paging.ItemPaged[~azure.mgmt.resourcehealth.v2018_07_01.models.Event]

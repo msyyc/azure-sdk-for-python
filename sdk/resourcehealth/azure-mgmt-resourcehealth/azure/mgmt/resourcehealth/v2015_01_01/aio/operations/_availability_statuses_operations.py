@@ -65,18 +65,18 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def list_by_subscription_id(
-        self, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> AsyncIterable["_models.AvailabilityStatus"]:
         """Lists the current availability status for all the resources in the subscription. Use the
         nextLink property in the response to get the next page of availability statuses.
 
-        :param filter: The filter to apply on the operation. For more information please see
+        :keyword filter: The filter to apply on the operation. For more information please see
          https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN. Default value
          is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:
@@ -158,20 +158,20 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def list_by_resource_group(
-        self, resource_group_name: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_group_name: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> AsyncIterable["_models.AvailabilityStatus"]:
         """Lists the current availability status for all the resources in the resource group. Use the
         nextLink property in the response to get the next page of availability statuses.
 
         :param resource_group_name: The name of the resource group. Required.
         :type resource_group_name: str
-        :param filter: The filter to apply on the operation. For more information please see
+        :keyword filter: The filter to apply on the operation. For more information please see
          https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN. Default value
          is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:
@@ -254,7 +254,7 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace_async
     async def get_by_resource(
-        self, resource_uri: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_uri: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> _models.AvailabilityStatus:
         """Gets current availability status for a single resource.
 
@@ -265,13 +265,13 @@ class AvailabilityStatusesOperations:
          /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}.
          Required.
         :type resource_uri: str
-        :param filter: The filter to apply on the operation. For more information please see
+        :keyword filter: The filter to apply on the operation. For more information please see
          https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN. Default value
          is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: AvailabilityStatus or the result of cls(response)
         :rtype: ~azure.mgmt.resourcehealth.v2015_01_01.models.AvailabilityStatus
@@ -325,7 +325,7 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def list(
-        self, resource_uri: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_uri: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> AsyncIterable["_models.AvailabilityStatus"]:
         """Lists the historical availability statuses for a single resource. Use the nextLink property in
         the response to get the next page of availability status.
@@ -337,13 +337,13 @@ class AvailabilityStatusesOperations:
          /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}.
          Required.
         :type resource_uri: str
-        :param filter: The filter to apply on the operation. For more information please see
+        :keyword filter: The filter to apply on the operation. For more information please see
          https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN. Default value
          is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:

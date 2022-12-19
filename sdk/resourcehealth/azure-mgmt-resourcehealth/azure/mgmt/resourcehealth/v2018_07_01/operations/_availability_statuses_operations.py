@@ -193,19 +193,19 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def list_by_subscription_id(
-        self, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> Iterable["_models.AvailabilityStatus"]:
         """Lists the current availability status for all the resources in the subscription.
 
-        :param filter: A valid odata query to limit the events returned. The logical operators and, or,
-         equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
+        :keyword filter: A valid odata query to limit the events returned. The logical operators and,
+         or, equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
          'ServiceIssue' or Properties/EventType eq 'PlannedMaintenance' OR
          %24filter=Properties%2FEventType%20eq%20%27ServiceIssue%27%20or%20Properties%2FEventType%20eq%20%27PlannedMaintenance%27.
          Default value is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:
@@ -287,21 +287,21 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def list_by_resource_group(
-        self, resource_group_name: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_group_name: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> Iterable["_models.AvailabilityStatus"]:
         """Lists the current availability status for all the resources in the resource group.
 
         :param resource_group_name: The name of the resource group. Required.
         :type resource_group_name: str
-        :param filter: A valid odata query to limit the events returned. The logical operators and, or,
-         equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
+        :keyword filter: A valid odata query to limit the events returned. The logical operators and,
+         or, equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
          'ServiceIssue' or Properties/EventType eq 'PlannedMaintenance' OR
          %24filter=Properties%2FEventType%20eq%20%27ServiceIssue%27%20or%20Properties%2FEventType%20eq%20%27PlannedMaintenance%27.
          Default value is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:
@@ -384,7 +384,7 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def get_by_resource(
-        self, resource_uri: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_uri: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> _models.AvailabilityStatus:
         """Gets current availability status for a single resource.
 
@@ -395,15 +395,15 @@ class AvailabilityStatusesOperations:
          /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}.
          Required.
         :type resource_uri: str
-        :param filter: A valid odata query to limit the events returned. The logical operators and, or,
-         equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
+        :keyword filter: A valid odata query to limit the events returned. The logical operators and,
+         or, equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
          'ServiceIssue' or Properties/EventType eq 'PlannedMaintenance' OR
          %24filter=Properties%2FEventType%20eq%20%27ServiceIssue%27%20or%20Properties%2FEventType%20eq%20%27PlannedMaintenance%27.
          Default value is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: AvailabilityStatus or the result of cls(response)
         :rtype: ~azure.mgmt.resourcehealth.v2018_07_01.models.AvailabilityStatus
@@ -457,7 +457,7 @@ class AvailabilityStatusesOperations:
 
     @distributed_trace
     def list(
-        self, resource_uri: str, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
+        self, resource_uri: str, *, filter: Optional[str] = None, expand: Optional[str] = None, **kwargs: Any
     ) -> Iterable["_models.AvailabilityStatus"]:
         """Lists all historical availability transitions and impacting events for a single resource.
 
@@ -468,15 +468,15 @@ class AvailabilityStatusesOperations:
          /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}.
          Required.
         :type resource_uri: str
-        :param filter: A valid odata query to limit the events returned. The logical operators and, or,
-         equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
+        :keyword filter: A valid odata query to limit the events returned. The logical operators and,
+         or, equal, not equal, and top are supported. For example, $filter=Properties/EventType eq
          'ServiceIssue' or Properties/EventType eq 'PlannedMaintenance' OR
          %24filter=Properties%2FEventType%20eq%20%27ServiceIssue%27%20or%20Properties%2FEventType%20eq%20%27PlannedMaintenance%27.
          Default value is None.
-        :type filter: str
-        :param expand: Setting $expand=recommendedactions in url query expands the recommendedactions
+        :paramtype filter: str
+        :keyword expand: Setting $expand=recommendedactions in url query expands the recommendedactions
          in the response. Default value is None.
-        :type expand: str
+        :paramtype expand: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: An iterator like instance of either AvailabilityStatus or the result of cls(response)
         :rtype:
