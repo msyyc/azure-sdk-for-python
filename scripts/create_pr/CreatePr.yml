@@ -1,0 +1,56 @@
+# Live Test For Python SDK
+
+name: $(BASE_BRANCH)
+
+trigger:
+  branches:
+    exclude:
+    - '*'
+
+# avoid being triggered as part of CI check
+pr:
+  branches:
+    exclude:
+    - '*'
+
+
+variables:
+  - group: Release Secrets for GitHub
+  - group: Azure SDK Auto Release Pipeline Secrets
+
+jobs:
+- job: LiveTestPython38
+  displayName: Live Test Python 3.8
+  timeoutInMinutes: 60
+  strategy:
+    maxParallel: 1
+  pool:
+    vmImage: 'ubuntu-20.04'
+  steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.8'
+        addToPath: true
+        architecture: 'x64'
+    - bash: |
+        script_path=$(pwd)/scripts/create_pr
+        cd ..
+        git config --global user.email "CreatePrPipelines"
+        git config --global user.name "CreatePrPipelines"
+
+        # clone(REPO: https://github.com/Azure/azure-sdk-for-python.git, USR_NAME: Azure, USR_TOKEN: xxxxxxxxxxxxx)
+        mkdir azure-sdk-for-python
+        git clone ${REPO:0:8}$(USR_NAME):$(azuresdk-github-pat)@${REPO:8} $(pwd)/azure-sdk-for-python
+
+
+        # create virtual env
+        python -m venv venv-sdk
+        source venv-sdk/bin/activate
+        python -m pip install -r $script_path/requirement.txt
+
+        # import env variable
+        export BASE_BRANCH=$(BASE_BRANCH)
+
+        # run
+        cd azure-sdk-for-python
+        python $script_path/main.py
