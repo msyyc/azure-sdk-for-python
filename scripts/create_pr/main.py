@@ -44,6 +44,7 @@ class CreatePr:
 
     def __init__(self):
         self.base_branch = os.getenv('BASE_BRANCH')
+        self.bot_token = os.getenv('AZURESDK_BOT_TOKEN')
 
     # @staticmethod
     # def checkout_branch(env_key: str, repo: str):
