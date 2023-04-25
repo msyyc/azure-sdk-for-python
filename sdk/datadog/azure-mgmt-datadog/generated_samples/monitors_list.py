@@ -31,7 +31,7 @@ def main():
 
     response = client.monitors.list()
     for item in response:
-        print(item)
+        print(item.serialize())
 
 
 # x-ms-original-file: specification/datadog/resource-manager/Microsoft.Datadog/stable/2022-06-01/examples/Monitors_List.json

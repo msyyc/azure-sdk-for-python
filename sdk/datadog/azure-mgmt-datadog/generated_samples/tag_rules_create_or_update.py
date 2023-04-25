@@ -34,7 +34,7 @@ def main():
         monitor_name="myMonitor",
         rule_set_name="default",
     )
-    print(response)
+    print(response.serialize())
 
 
 # x-ms-original-file: specification/datadog/resource-manager/Microsoft.Datadog/stable/2022-06-01/examples/TagRules_CreateOrUpdate.json

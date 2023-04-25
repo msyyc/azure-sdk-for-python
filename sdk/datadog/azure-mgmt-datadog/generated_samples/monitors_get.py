@@ -33,7 +33,7 @@ def main():
         resource_group_name="myResourceGroup",
         monitor_name="myMonitor",
     )
-    print(response)
+    print(response.serialize())
 
 
 # x-ms-original-file: specification/datadog/resource-manager/Microsoft.Datadog/stable/2022-06-01/examples/Monitors_Get.json
