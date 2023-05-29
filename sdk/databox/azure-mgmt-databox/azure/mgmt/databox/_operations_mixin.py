@@ -9,6 +9,7 @@
 # regenerated.
 # --------------------------------------------------------------------------
 from ._serialization import Serializer, Deserializer
+from io import IOBase
 from typing import Any, IO, Optional, Union
 
 from . import models as _models
@@ -43,19 +44,7 @@ class DataBoxManagementClientOperationsMixin(object):
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         api_version = self._get_api_version('mitigate')
-        if api_version == '2021-03-01':
-            from .v2021_03_01.operations import DataBoxManagementClientOperationsMixin as OperationClass
-        elif api_version == '2021-05-01':
-            from .v2021_05_01.operations import DataBoxManagementClientOperationsMixin as OperationClass
-        elif api_version == '2021-08-01-preview':
-            from .v2021_08_01_preview.operations import DataBoxManagementClientOperationsMixin as OperationClass
-        elif api_version == '2021-12-01':
-            from .v2021_12_01.operations import DataBoxManagementClientOperationsMixin as OperationClass
-        elif api_version == '2022-02-01':
-            from .v2022_02_01.operations import DataBoxManagementClientOperationsMixin as OperationClass
-        elif api_version == '2022-09-01':
-            from .v2022_09_01.operations import DataBoxManagementClientOperationsMixin as OperationClass
-        elif api_version == '2022-10-01':
+        if api_version == '2022-10-01':
             from .v2022_10_01.operations import DataBoxManagementClientOperationsMixin as OperationClass
         elif api_version == '2022-12-01':
             from .v2022_12_01.operations import DataBoxManagementClientOperationsMixin as OperationClass

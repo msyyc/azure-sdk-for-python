@@ -87,50 +87,10 @@ class DataBoxManagementClient(DataBoxManagementClientOperationsMixin, MultiApiCl
     def models(cls, api_version=DEFAULT_API_VERSION):
         """Module depends on the API version:
 
-           * 2018-01-01: :mod:`v2018_01_01.models<azure.mgmt.databox.v2018_01_01.models>`
-           * 2019-09-01: :mod:`v2019_09_01.models<azure.mgmt.databox.v2019_09_01.models>`
-           * 2020-04-01: :mod:`v2020_04_01.models<azure.mgmt.databox.v2020_04_01.models>`
-           * 2020-11-01: :mod:`v2020_11_01.models<azure.mgmt.databox.v2020_11_01.models>`
-           * 2021-03-01: :mod:`v2021_03_01.models<azure.mgmt.databox.v2021_03_01.models>`
-           * 2021-05-01: :mod:`v2021_05_01.models<azure.mgmt.databox.v2021_05_01.models>`
-           * 2021-08-01-preview: :mod:`v2021_08_01_preview.models<azure.mgmt.databox.v2021_08_01_preview.models>`
-           * 2021-12-01: :mod:`v2021_12_01.models<azure.mgmt.databox.v2021_12_01.models>`
-           * 2022-02-01: :mod:`v2022_02_01.models<azure.mgmt.databox.v2022_02_01.models>`
-           * 2022-09-01: :mod:`v2022_09_01.models<azure.mgmt.databox.v2022_09_01.models>`
            * 2022-10-01: :mod:`v2022_10_01.models<azure.mgmt.databox.v2022_10_01.models>`
            * 2022-12-01: :mod:`v2022_12_01.models<azure.mgmt.databox.v2022_12_01.models>`
         """
-        if api_version == '2018-01-01':
-            from ..v2018_01_01 import models
-            return models
-        elif api_version == '2019-09-01':
-            from ..v2019_09_01 import models
-            return models
-        elif api_version == '2020-04-01':
-            from ..v2020_04_01 import models
-            return models
-        elif api_version == '2020-11-01':
-            from ..v2020_11_01 import models
-            return models
-        elif api_version == '2021-03-01':
-            from ..v2021_03_01 import models
-            return models
-        elif api_version == '2021-05-01':
-            from ..v2021_05_01 import models
-            return models
-        elif api_version == '2021-08-01-preview':
-            from ..v2021_08_01_preview import models
-            return models
-        elif api_version == '2021-12-01':
-            from ..v2021_12_01 import models
-            return models
-        elif api_version == '2022-02-01':
-            from ..v2022_02_01 import models
-            return models
-        elif api_version == '2022-09-01':
-            from ..v2022_09_01 import models
-            return models
-        elif api_version == '2022-10-01':
+        if api_version == '2022-10-01':
             from ..v2022_10_01 import models
             return models
         elif api_version == '2022-12-01':
@@ -142,41 +102,11 @@ class DataBoxManagementClient(DataBoxManagementClientOperationsMixin, MultiApiCl
     def jobs(self):
         """Instance depends on the API version:
 
-           * 2018-01-01: :class:`JobsOperations<azure.mgmt.databox.v2018_01_01.aio.operations.JobsOperations>`
-           * 2019-09-01: :class:`JobsOperations<azure.mgmt.databox.v2019_09_01.aio.operations.JobsOperations>`
-           * 2020-04-01: :class:`JobsOperations<azure.mgmt.databox.v2020_04_01.aio.operations.JobsOperations>`
-           * 2020-11-01: :class:`JobsOperations<azure.mgmt.databox.v2020_11_01.aio.operations.JobsOperations>`
-           * 2021-03-01: :class:`JobsOperations<azure.mgmt.databox.v2021_03_01.aio.operations.JobsOperations>`
-           * 2021-05-01: :class:`JobsOperations<azure.mgmt.databox.v2021_05_01.aio.operations.JobsOperations>`
-           * 2021-08-01-preview: :class:`JobsOperations<azure.mgmt.databox.v2021_08_01_preview.aio.operations.JobsOperations>`
-           * 2021-12-01: :class:`JobsOperations<azure.mgmt.databox.v2021_12_01.aio.operations.JobsOperations>`
-           * 2022-02-01: :class:`JobsOperations<azure.mgmt.databox.v2022_02_01.aio.operations.JobsOperations>`
-           * 2022-09-01: :class:`JobsOperations<azure.mgmt.databox.v2022_09_01.aio.operations.JobsOperations>`
            * 2022-10-01: :class:`JobsOperations<azure.mgmt.databox.v2022_10_01.aio.operations.JobsOperations>`
            * 2022-12-01: :class:`JobsOperations<azure.mgmt.databox.v2022_12_01.aio.operations.JobsOperations>`
         """
         api_version = self._get_api_version('jobs')
-        if api_version == '2018-01-01':
-            from ..v2018_01_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2019-09-01':
-            from ..v2019_09_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2020-04-01':
-            from ..v2020_04_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2020-11-01':
-            from ..v2020_11_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2021-03-01':
-            from ..v2021_03_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2021-05-01':
-            from ..v2021_05_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2021-08-01-preview':
-            from ..v2021_08_01_preview.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2021-12-01':
-            from ..v2021_12_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2022-02-01':
-            from ..v2022_02_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2022-09-01':
-            from ..v2022_09_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2022-10-01':
+        if api_version == '2022-10-01':
             from ..v2022_10_01.aio.operations import JobsOperations as OperationClass
         elif api_version == '2022-12-01':
             from ..v2022_12_01.aio.operations import JobsOperations as OperationClass
@@ -189,41 +119,11 @@ class DataBoxManagementClient(DataBoxManagementClientOperationsMixin, MultiApiCl
     def operations(self):
         """Instance depends on the API version:
 
-           * 2018-01-01: :class:`Operations<azure.mgmt.databox.v2018_01_01.aio.operations.Operations>`
-           * 2019-09-01: :class:`Operations<azure.mgmt.databox.v2019_09_01.aio.operations.Operations>`
-           * 2020-04-01: :class:`Operations<azure.mgmt.databox.v2020_04_01.aio.operations.Operations>`
-           * 2020-11-01: :class:`Operations<azure.mgmt.databox.v2020_11_01.aio.operations.Operations>`
-           * 2021-03-01: :class:`Operations<azure.mgmt.databox.v2021_03_01.aio.operations.Operations>`
-           * 2021-05-01: :class:`Operations<azure.mgmt.databox.v2021_05_01.aio.operations.Operations>`
-           * 2021-08-01-preview: :class:`Operations<azure.mgmt.databox.v2021_08_01_preview.aio.operations.Operations>`
-           * 2021-12-01: :class:`Operations<azure.mgmt.databox.v2021_12_01.aio.operations.Operations>`
-           * 2022-02-01: :class:`Operations<azure.mgmt.databox.v2022_02_01.aio.operations.Operations>`
-           * 2022-09-01: :class:`Operations<azure.mgmt.databox.v2022_09_01.aio.operations.Operations>`
            * 2022-10-01: :class:`Operations<azure.mgmt.databox.v2022_10_01.aio.operations.Operations>`
            * 2022-12-01: :class:`Operations<azure.mgmt.databox.v2022_12_01.aio.operations.Operations>`
         """
         api_version = self._get_api_version('operations')
-        if api_version == '2018-01-01':
-            from ..v2018_01_01.aio.operations import Operations as OperationClass
-        elif api_version == '2019-09-01':
-            from ..v2019_09_01.aio.operations import Operations as OperationClass
-        elif api_version == '2020-04-01':
-            from ..v2020_04_01.aio.operations import Operations as OperationClass
-        elif api_version == '2020-11-01':
-            from ..v2020_11_01.aio.operations import Operations as OperationClass
-        elif api_version == '2021-03-01':
-            from ..v2021_03_01.aio.operations import Operations as OperationClass
-        elif api_version == '2021-05-01':
-            from ..v2021_05_01.aio.operations import Operations as OperationClass
-        elif api_version == '2021-08-01-preview':
-            from ..v2021_08_01_preview.aio.operations import Operations as OperationClass
-        elif api_version == '2021-12-01':
-            from ..v2021_12_01.aio.operations import Operations as OperationClass
-        elif api_version == '2022-02-01':
-            from ..v2022_02_01.aio.operations import Operations as OperationClass
-        elif api_version == '2022-09-01':
-            from ..v2022_09_01.aio.operations import Operations as OperationClass
-        elif api_version == '2022-10-01':
+        if api_version == '2022-10-01':
             from ..v2022_10_01.aio.operations import Operations as OperationClass
         elif api_version == '2022-12-01':
             from ..v2022_12_01.aio.operations import Operations as OperationClass
@@ -236,41 +136,11 @@ class DataBoxManagementClient(DataBoxManagementClientOperationsMixin, MultiApiCl
     def service(self):
         """Instance depends on the API version:
 
-           * 2018-01-01: :class:`ServiceOperations<azure.mgmt.databox.v2018_01_01.aio.operations.ServiceOperations>`
-           * 2019-09-01: :class:`ServiceOperations<azure.mgmt.databox.v2019_09_01.aio.operations.ServiceOperations>`
-           * 2020-04-01: :class:`ServiceOperations<azure.mgmt.databox.v2020_04_01.aio.operations.ServiceOperations>`
-           * 2020-11-01: :class:`ServiceOperations<azure.mgmt.databox.v2020_11_01.aio.operations.ServiceOperations>`
-           * 2021-03-01: :class:`ServiceOperations<azure.mgmt.databox.v2021_03_01.aio.operations.ServiceOperations>`
-           * 2021-05-01: :class:`ServiceOperations<azure.mgmt.databox.v2021_05_01.aio.operations.ServiceOperations>`
-           * 2021-08-01-preview: :class:`ServiceOperations<azure.mgmt.databox.v2021_08_01_preview.aio.operations.ServiceOperations>`
-           * 2021-12-01: :class:`ServiceOperations<azure.mgmt.databox.v2021_12_01.aio.operations.ServiceOperations>`
-           * 2022-02-01: :class:`ServiceOperations<azure.mgmt.databox.v2022_02_01.aio.operations.ServiceOperations>`
-           * 2022-09-01: :class:`ServiceOperations<azure.mgmt.databox.v2022_09_01.aio.operations.ServiceOperations>`
            * 2022-10-01: :class:`ServiceOperations<azure.mgmt.databox.v2022_10_01.aio.operations.ServiceOperations>`
            * 2022-12-01: :class:`ServiceOperations<azure.mgmt.databox.v2022_12_01.aio.operations.ServiceOperations>`
         """
         api_version = self._get_api_version('service')
-        if api_version == '2018-01-01':
-            from ..v2018_01_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2019-09-01':
-            from ..v2019_09_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2020-04-01':
-            from ..v2020_04_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2020-11-01':
-            from ..v2020_11_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2021-03-01':
-            from ..v2021_03_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2021-05-01':
-            from ..v2021_05_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2021-08-01-preview':
-            from ..v2021_08_01_preview.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2021-12-01':
-            from ..v2021_12_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2022-02-01':
-            from ..v2022_02_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2022-09-01':
-            from ..v2022_09_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2022-10-01':
+        if api_version == '2022-10-01':
             from ..v2022_10_01.aio.operations import ServiceOperations as OperationClass
         elif api_version == '2022-12-01':
             from ..v2022_12_01.aio.operations import ServiceOperations as OperationClass

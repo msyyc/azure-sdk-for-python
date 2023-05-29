@@ -7,9 +7,9 @@
 # --------------------------------------------------------------------------
 
 from ._operations import Operations
-from ._jobs_operations import JobsOperations
-from ._data_box_management_client_operations import DataBoxManagementClientOperationsMixin
-from ._service_operations import ServiceOperations
+from ._operations import JobsOperations
+from ._operations import DataBoxManagementClientOperationsMixin
+from ._operations import ServiceOperations
 
 from ._patch import __all__ as _patch_all
 from ._patch import *  # pylint: disable=unused-wildcard-import
