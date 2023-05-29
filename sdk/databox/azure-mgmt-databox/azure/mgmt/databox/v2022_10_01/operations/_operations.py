@@ -2097,6 +2097,10 @@ class JobsOperations:
 
 
 class DataBoxManagementClientOperationsMixin(DataBoxManagementClientMixinABC):
+    @property
+    def _api_version(self)-> str:
+        return self._config.api_version
+
     @overload
     def mitigate(  # pylint: disable=inconsistent-return-statements
         self,
