@@ -10,6 +10,8 @@ from enum import Enum
 from azure.core import CaseInsensitiveEnumMeta
 
 
+
+
 class AccessProtocol(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """AccessProtocol."""
 
@@ -17,7 +19,6 @@ class AccessProtocol(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Server Message Block protocol(SMB)."""
     NFS = "NFS"
     """Network File System protocol(NFS)."""
-
 
 class AddressType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of address."""
@@ -29,7 +30,6 @@ class AddressType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     COMMERCIAL = "Commercial"
     """Commercial Address."""
 
-
 class AddressValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """The address validation status."""
 
@@ -39,7 +39,6 @@ class AddressValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Address provided is invalid or not supported."""
     AMBIGUOUS = "Ambiguous"
     """Address provided is ambiguous, please choose one of the alternate addresses returned."""
-
 
 class ClassDiscriminator(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Indicates the type of job details."""
@@ -52,7 +51,6 @@ class ClassDiscriminator(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Data Box Heavy orders."""
     DATA_BOX_CUSTOMER_DISK = "DataBoxCustomerDisk"
     """Data Box Customer Disk orders."""
-
 
 class CopyStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """The Status of the copy."""
@@ -94,7 +92,6 @@ class CopyStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     METADATA_FILES_MODIFIED_OR_REMOVED = "MetadataFilesModifiedOrRemoved"
     """Copy failed due to modified or removed metadata files."""
 
-
 class CustomerResolutionCode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """CustomerResolutionCode."""
 
@@ -109,7 +106,6 @@ class CustomerResolutionCode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     REACH_OUT_TO_OPERATION = "ReachOutToOperation"
     """Reach out to operation for further action."""
 
-
 class DataAccountType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of the account."""
 
@@ -117,16 +113,6 @@ class DataAccountType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Storage Accounts ."""
     MANAGED_DISK = "ManagedDisk"
     """Azure Managed disk storage."""
-
-
-class DatacenterAddressType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Data center address type."""
-
-    DATACENTER_ADDRESS_LOCATION = "DatacenterAddressLocation"
-    """Data center address location."""
-    DATACENTER_ADDRESS_INSTRUCTION = "DatacenterAddressInstruction"
-    """Data center address instruction."""
-
 
 class DataCenterCode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """DataCenter code."""
@@ -191,6 +177,13 @@ class DataCenterCode(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     SN6 = "SN6"
     BJS20 = "BJS20"
 
+class DatacenterAddressType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Data center address type."""
+
+    DATACENTER_ADDRESS_LOCATION = "DatacenterAddressLocation"
+    """Data center address location."""
+    DATACENTER_ADDRESS_INSTRUCTION = "DatacenterAddressInstruction"
+    """Data center address instruction."""
 
 class DoubleEncryption(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Defines secondary layer of software-based encryption enablement."""
@@ -200,7 +193,6 @@ class DoubleEncryption(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     DISABLED = "Disabled"
     """Software-based encryption is disabled."""
 
-
 class FilterFileType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of the filter file."""
 
@@ -208,16 +200,6 @@ class FilterFileType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Filter file is of the type AzureBlob."""
     AZURE_FILE = "AzureFile"
     """Filter file is of the type AzureFiles."""
-
-
-class HardwareEncryption(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Defines Hardware level encryption (Only for disk)."""
-
-    ENABLED = "Enabled"
-    """Hardware-based encryption is enabled."""
-    DISABLED = "Disabled"
-    """Hardware-based encryption is enabled."""
-
 
 class JobDeliveryType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Delivery type of Job."""
@@ -227,7 +209,6 @@ class JobDeliveryType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     SCHEDULED = "Scheduled"
     """Scheduled job."""
 
-
 class KekType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of encryption key used for key encryption."""
 
@@ -236,7 +217,6 @@ class KekType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     CUSTOMER_MANAGED = "CustomerManaged"
     """Key encryption key is managed by the Customer."""
 
-
 class LogCollectionLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Level of the logs to be collected."""
 
@@ -244,7 +224,6 @@ class LogCollectionLevel(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Only Errors will be collected in the logs."""
     VERBOSE = "Verbose"
     """Verbose logging (includes Errors, CRC, size information and others)."""
-
 
 class NotificationStageName(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Name of the stage."""
@@ -266,7 +245,6 @@ class NotificationStageName(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     SHIPPED_TO_CUSTOMER = "ShippedToCustomer"
     """Notification at shipped devices to customer stage."""
 
-
 class OverallValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Overall validation status."""
 
@@ -276,7 +254,6 @@ class OverallValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Some input requests are not valid."""
     CERTAIN_INPUT_VALIDATIONS_SKIPPED = "CertainInputValidationsSkipped"
     """Certain input validations skipped."""
-
 
 class ReverseShippingDetailsEditStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """The Editable status for Reverse Shipping Address and Contact Info."""
@@ -289,7 +266,6 @@ class ReverseShippingDetailsEditStatus(str, Enum, metaclass=CaseInsensitiveEnumM
     """Edit is not supported for Reverse shipping details. Either subscription feature is not
     #: available or SKU doesn't support this feature."""
 
-
 class ReverseTransportPreferenceEditStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """The Editable status for Reverse Transport preferences."""
 
@@ -300,7 +276,6 @@ class ReverseTransportPreferenceEditStatus(str, Enum, metaclass=CaseInsensitiveE
     NOT_SUPPORTED = "NotSupported"
     """Edit is not supported for Reverse Transport Preferences. Either subscription feature is not
     #: available or SKU doesn't support this feature."""
-
 
 class ShareDestinationFormatType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of the share."""
@@ -317,7 +292,6 @@ class ShareDestinationFormatType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Azure storage file format."""
     MANAGED_DISK = "ManagedDisk"
     """Azure Compute Disk."""
-
 
 class SkuDisabledReason(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Reason why the Sku is disabled."""
@@ -336,7 +310,6 @@ class SkuDisabledReason(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Subscription has not registered to Microsoft.DataBox and Service does not have the subscription
     #: notification."""
 
-
 class SkuName(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """SkuName."""
 
@@ -348,7 +321,6 @@ class SkuName(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Data Box Heavy."""
     DATA_BOX_CUSTOMER_DISK = "DataBoxCustomerDisk"
     """Data Box Customer Disk"""
-
 
 class StageName(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Name of the stage which is in progress."""
@@ -396,7 +368,6 @@ class StageName(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     SHIPPED_TO_CUSTOMER = "ShippedToCustomer"
     """Shipped the device to customer."""
 
-
 class StageStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Holds the device erasure completion status."""
 
@@ -427,7 +398,6 @@ class StageStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     CUSTOMER_ACTION_PERFORMED = "CustomerActionPerformed"
     """Stage has performed customer action for clean up."""
 
-
 class TransferConfigurationType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of the configuration for transfer."""
 
@@ -435,7 +405,6 @@ class TransferConfigurationType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Transfer all the data."""
     TRANSFER_USING_FILTER = "TransferUsingFilter"
     """Transfer using filter."""
-
 
 class TransferType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Type of the transfer."""
@@ -445,7 +414,6 @@ class TransferType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     EXPORT_FROM_AZURE = "ExportFromAzure"
     """Export data from azure."""
 
-
 class TransportShipmentTypes(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Transport Shipment Type supported for given region."""
 
@@ -453,7 +421,6 @@ class TransportShipmentTypes(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Shipment Logistics is handled by the customer."""
     MICROSOFT_MANAGED = "MicrosoftManaged"
     """Shipment Logistics is handled by Microsoft."""
-
 
 class ValidationInputDiscriminator(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Identifies the type of validation request."""
@@ -471,7 +438,6 @@ class ValidationInputDiscriminator(str, Enum, metaclass=CaseInsensitiveEnumMeta)
     VALIDATE_DATA_TRANSFER_DETAILS = "ValidateDataTransferDetails"
     """Identify request and response of data transfer details validation."""
 
-
 class ValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Create order limit validation status."""
 
@@ -481,3 +447,12 @@ class ValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Validation is not successful"""
     SKIPPED = "Skipped"
     """Validation is skipped"""
+
+class HardwareEncryption(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Defines Hardware level encryption (Only for disk)."""
+
+    ENABLED = "Enabled"
+    """Hardware-based encryption is enabled."""
+    DISABLED = "Disabled"
+    """Hardware-based encryption is enabled."""
+

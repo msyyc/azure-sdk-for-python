@@ -17,12 +17,20 @@ from azure.profiles.multiapiclient import MultiApiClientMixin
 
 from .._serialization import Deserializer, Serializer
 from ._configuration import DataBoxManagementClientConfiguration
-from ._operations_mixin import DataBoxManagementClientOperationsMixin
 
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from azure.core.credentials_async import AsyncTokenCredential
 
+
+from .operations import (
+    JobsOperations,
+    Operations,
+    ServiceOperations,
+    DataBoxManagementClientOperationsMixin,
+)
+from .._validation import api_version_validation
+from .. import models
 class _SDKClient(object):
     def __init__(self, *args, **kwargs):
         """This is a fake class to support current implemetation of MultiApiClientMixin."
@@ -79,75 +87,48 @@ class DataBoxManagementClient(DataBoxManagementClientOperationsMixin, MultiApiCl
             profile=profile
         )
 
-    @classmethod
-    def _models_dict(cls, api_version):
-        return {k: v for k, v in cls.models(api_version).__dict__.items() if isinstance(v, type)}
+        self._serialize = Serializer(self._models_dict())
+        self._deserialize = Deserializer(self._models_dict())
+        self._serialize.client_side_validation = False
+
 
     @classmethod
-    def models(cls, api_version=DEFAULT_API_VERSION):
-        """Module depends on the API version:
+    def _models_dict(cls):
+        return {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
 
-           * 2022-10-01: :mod:`v2022_10_01.models<azure.mgmt.databox.v2022_10_01.models>`
-           * 2022-12-01: :mod:`v2022_12_01.models<azure.mgmt.databox.v2022_12_01.models>`
-        """
-        if api_version == '2022-10-01':
-            from ..v2022_10_01 import models
-            return models
-        elif api_version == '2022-12-01':
-            from ..v2022_12_01 import models
-            return models
-        raise ValueError("API version {} is not available".format(api_version))
 
     @property
     def jobs(self):
-        """Instance depends on the API version:
-
-           * 2022-10-01: :class:`JobsOperations<azure.mgmt.databox.v2022_10_01.aio.operations.JobsOperations>`
-           * 2022-12-01: :class:`JobsOperations<azure.mgmt.databox.v2022_12_01.aio.operations.JobsOperations>`
-        """
-        api_version = self._get_api_version('jobs')
-        if api_version == '2022-10-01':
-            from ..v2022_10_01.aio.operations import JobsOperations as OperationClass
-        elif api_version == '2022-12-01':
-            from ..v2022_12_01.aio.operations import JobsOperations as OperationClass
-        else:
-            raise ValueError("API version {} does not have operation group 'jobs'".format(api_version))
-        self._config.api_version = api_version
-        return OperationClass(self._client, self._config, Serializer(self._models_dict(api_version)), Deserializer(self._models_dict(api_version)))
+        api_version = self._get_api_version("jobs")
+        return JobsOperations(
+            self._client,
+            self._config,
+            Serializer(self._models_dict()),
+            Deserializer(self._models_dict()),
+            api_version=api_version,
+        )
 
     @property
     def operations(self):
-        """Instance depends on the API version:
-
-           * 2022-10-01: :class:`Operations<azure.mgmt.databox.v2022_10_01.aio.operations.Operations>`
-           * 2022-12-01: :class:`Operations<azure.mgmt.databox.v2022_12_01.aio.operations.Operations>`
-        """
-        api_version = self._get_api_version('operations')
-        if api_version == '2022-10-01':
-            from ..v2022_10_01.aio.operations import Operations as OperationClass
-        elif api_version == '2022-12-01':
-            from ..v2022_12_01.aio.operations import Operations as OperationClass
-        else:
-            raise ValueError("API version {} does not have operation group 'operations'".format(api_version))
-        self._config.api_version = api_version
-        return OperationClass(self._client, self._config, Serializer(self._models_dict(api_version)), Deserializer(self._models_dict(api_version)))
+        api_version = self._get_api_version("operations")
+        return Operations(
+            self._client,
+            self._config,
+            Serializer(self._models_dict()),
+            Deserializer(self._models_dict()),
+            api_version=api_version,
+        )
 
     @property
     def service(self):
-        """Instance depends on the API version:
-
-           * 2022-10-01: :class:`ServiceOperations<azure.mgmt.databox.v2022_10_01.aio.operations.ServiceOperations>`
-           * 2022-12-01: :class:`ServiceOperations<azure.mgmt.databox.v2022_12_01.aio.operations.ServiceOperations>`
-        """
-        api_version = self._get_api_version('service')
-        if api_version == '2022-10-01':
-            from ..v2022_10_01.aio.operations import ServiceOperations as OperationClass
-        elif api_version == '2022-12-01':
-            from ..v2022_12_01.aio.operations import ServiceOperations as OperationClass
-        else:
-            raise ValueError("API version {} does not have operation group 'service'".format(api_version))
-        self._config.api_version = api_version
-        return OperationClass(self._client, self._config, Serializer(self._models_dict(api_version)), Deserializer(self._models_dict(api_version)))
+        api_version = self._get_api_version("service")
+        return ServiceOperations(
+            self._client,
+            self._config,
+            Serializer(self._models_dict()),
+            Deserializer(self._models_dict()),
+            api_version=api_version,
+        )
 
     async def close(self):
         await self._client.close()
