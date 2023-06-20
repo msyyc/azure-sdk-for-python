@@ -8,6 +8,7 @@ package-name: azure-developer-loadtesting
 license-header: MICROSOFT_MIT_NO_VERSION
 title: LoadTestingClient
 package-version: 1.0.0
+models-mode: msrest
 package-mode: dataplane
 package-pprint-name: Azure Developer LoadTesting
 security: AADToken
