@@ -12,7 +12,6 @@ from typing import Any, Awaitable, TYPE_CHECKING
 from azure.core import AsyncPipelineClient
 from azure.core.rest import AsyncHttpResponse, HttpRequest
 
-from .. import models as _models
 from .._serialization import Deserializer, Serializer
 from ._configuration import LoadTestingClientConfiguration
 from .operations import AdministrationOperations, TestRunOperations
@@ -45,10 +44,8 @@ class LoadTestingClient:  # pylint: disable=client-accepts-api-version-keyword
         self._config = LoadTestingClientConfiguration(endpoint=endpoint, credential=credential, **kwargs)
         self._client: AsyncPipelineClient = AsyncPipelineClient(base_url=_endpoint, config=self._config, **kwargs)
 
-        client_models = {k: v for k, v in _models._models.__dict__.items() if isinstance(v, type)}
-        client_models.update({k: v for k, v in _models.__dict__.items() if isinstance(v, type)})
-        self._serialize = Serializer(client_models)
-        self._deserialize = Deserializer(client_models)
+        self._serialize = Serializer()
+        self._deserialize = Deserializer()
         self._serialize.client_side_validation = False
         self.administration = AdministrationOperations(self._client, self._config, self._serialize, self._deserialize)
         self.test_run = TestRunOperations(self._client, self._config, self._serialize, self._deserialize)
