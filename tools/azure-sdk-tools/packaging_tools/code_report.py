@@ -53,25 +53,29 @@ def create_report(module_name: str) -> Dict[str, Any]:
         report["client"] = []
 
     # Look for models first
-    model_names = [model_name for model_name in dir(module_to_generate.models) if model_name[0].isupper()]
-    for model_name in model_names:
-        model_cls = getattr(module_to_generate.models, model_name)
-        if hasattr(model_cls, "_attribute_map"):
-            report["models"]["models"][model_name] = create_model_report(model_cls)
-        elif issubclass(model_cls, Exception):  # If not, might be an exception
-            report["models"]["exceptions"][model_name] = create_model_report(model_cls)
-        else:
-            report["models"]["enums"][model_name] = create_model_report(model_cls)
-    # Look for operation groups
     try:
-        operations_classes = [op_name for op_name in dir(module_to_generate.operations) if op_name[0].isupper()]
+        model_names = [model_name for model_name in dir(module_to_generate.models) if model_name[0].isupper()]
+        for model_name in model_names:
+            model_cls = getattr(module_to_generate.models, model_name)
+            if hasattr(model_cls, "_attribute_map"):
+                report["models"]["models"][model_name] = create_model_report(model_cls)
+            elif issubclass(model_cls, Exception):  # If not, might be an exception
+                report["models"]["exceptions"][model_name] = create_model_report(model_cls)
+            else:
+                report["models"]["enums"][model_name] = create_model_report(model_cls)
+    except:
+        pass
+    # Look for operation groups
+    operation_module = getattr(module_to_generate, "operations", getattr(module_to_generate, "_operations"))
+    try:
+        operations_classes = [op_name for op_name in dir(operation_module) if op_name[0].isupper()]
     except AttributeError:
         # This guy has no "operations", this is possible (Cognitive Services). Just skip it then.
         operations_classes = []
 
     for op_name in operations_classes:
         op_content = {"name": op_name}
-        op_cls = getattr(module_to_generate.operations, op_name)
+        op_cls = getattr(operation_module, op_name)
         for op_attr_name in dir(op_cls):
             op_attr = getattr(op_cls, op_attr_name)
             if isinstance(op_attr, types.FunctionType) and not op_attr_name.startswith("_"):
