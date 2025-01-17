@@ -1,22 +1,22 @@
 # Release History
 
-(RemovedOrRenamedInstanceAttribute): Model `Resource` deleted or renamed its instance variable `location`
-(RemovedOrRenamedInstanceAttribute): Model `Resource` deleted or renamed its instance variable `tags`
-(RemovedParameterDefaultValue): Method `RestorePointCollectionListResult.__init__` removed default value `None` from its parameter `value`
-(RemovedOrRenamedInstanceAttribute): Model `RestorePointSourceVMStorageProfile` deleted or renamed its instance variable `data_disks`
-(ChangedParameterDefaultValue): Method `RunCommandParameterDefinition.__init__` parameter `required` changed default value from `bool` to `none`
-(RemovedParameterDefaultValue): Method `VirtualMachineExtension.__init__` removed default value `None` from its parameter `location`
-(ChangedParameterDefaultValue): Method `VirtualMachineRunCommand.__init__` parameter `async_execution` changed default value from `bool` to `none`
-(ChangedParameterDefaultValue): Method `VirtualMachineRunCommand.__init__` parameter `treat_failure_as_deployment_failure` changed default value from `bool` to `none`
-(ChangedParameterDefaultValue): Method `VirtualMachineRunCommandUpdate.__init__` parameter `async_execution` changed default value from `bool` to `none`
-(ChangedParameterDefaultValue): Method `VirtualMachineRunCommandUpdate.__init__` parameter `treat_failure_as_deployment_failure` changed default value from `bool` to `none`
-(RemovedOrRenamedClass): Deleted or renamed model `RestorePointSourceVMOSDisk`
-(AddedPositionalParam): Method `LogAnalyticsOperations.begin_export_throttled_requests` inserted a `positional_or_keyword` parameter `body`
-(RemovedOrRenamedPositionalParam): Method `LogAnalyticsOperations.begin_export_throttled_requests` deleted or renamed its parameter `parameters` of kind `positional_or_keyword`
-(ChangedParameterDefaultValue): Method `VirtualMachineScaleSetVMsOperations.begin_power_off` parameter `skip_shutdown` changed default value from `bool` to `none`
-(ChangedParameterDefaultValue): Method `VirtualMachineScaleSetsOperations.begin_power_off` parameter `skip_shutdown` changed default value from `bool` to `none`
-(ChangedParameterDefaultValue): Method `VirtualMachinesOperations.begin_power_off` parameter `skip_shutdown` changed default value from `bool` to `none`
-(ChangedParameterOrdering): Method `LogAnalyticsOperations.begin_export_throttled_requests` re-ordered its parameters from `['self', 'location', 'parameters', 'kwargs']` to `['self', 'location', 'body', 'kwargs']`
+- (RemovedOrRenamedInstanceAttribute): Model `Resource` deleted or renamed its instance variable `location`
+- (RemovedOrRenamedInstanceAttribute): Model `Resource` deleted or renamed its instance variable `tags`
+- (RemovedParameterDefaultValue): Method `RestorePointCollectionListResult.__init__` removed default value `None` from its parameter `value`
+- (RemovedOrRenamedInstanceAttribute): Model `RestorePointSourceVMStorageProfile` deleted or renamed its instance variable `data_disks`
+- (ChangedParameterDefaultValue): Method `RunCommandParameterDefinition.__init__` parameter `required` changed default value from `bool` to `none`
+- (RemovedParameterDefaultValue): Method `VirtualMachineExtension.__init__` removed default value `None` from its parameter `location`
+- (ChangedParameterDefaultValue): Method `VirtualMachineRunCommand.__init__` parameter `async_execution` changed default value from `bool` to `none`
+- (ChangedParameterDefaultValue): Method `VirtualMachineRunCommand.__init__` parameter `treat_failure_as_deployment_failure` changed default value from `bool` to `none`
+- (ChangedParameterDefaultValue): Method `VirtualMachineRunCommandUpdate.__init__` parameter `async_execution` changed default value from `bool` to `none`
+- (ChangedParameterDefaultValue): Method `VirtualMachineRunCommandUpdate.__init__` parameter `treat_failure_as_deployment_failure` changed default value from `bool` to `none`
+- (RemovedOrRenamedClass): Deleted or renamed model `RestorePointSourceVMOSDisk`
+- (AddedPositionalParam): Method `LogAnalyticsOperations.begin_export_throttled_requests` inserted a `positional_or_keyword` parameter `body`
+- (RemovedOrRenamedPositionalParam): Method `LogAnalyticsOperations.begin_export_throttled_requests` deleted or renamed its parameter `parameters` of kind `positional_or_keyword`
+- (ChangedParameterDefaultValue): Method `VirtualMachineScaleSetVMsOperations.begin_power_off` parameter `skip_shutdown` changed default value from `bool` to `none`
+- (ChangedParameterDefaultValue): Method `VirtualMachineScaleSetsOperations.begin_power_off` parameter `skip_shutdown` changed default value from `bool` to `none`
+- (ChangedParameterDefaultValue): Method `VirtualMachinesOperations.begin_power_off` parameter `skip_shutdown` changed default value from `bool` to `none`
+- (ChangedParameterOrdering): Method `LogAnalyticsOperations.begin_export_throttled_requests` re-ordered its parameters from `['self', 'location', 'parameters', 'kwargs']` to `['self', 'location', 'body', 'kwargs']`
 
 
 ## 33.1.0 (2024-12-16)
