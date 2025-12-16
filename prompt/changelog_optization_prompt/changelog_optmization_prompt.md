@@ -180,6 +180,41 @@ Sometimes only the parameter `if_match` is removed (and `if_none_match` is not),
    - Method `...` replaced positional_or_keyword ... `if_match` to keyword_only ... `etag`/`match_condition`
 ```
 
+### 8. Consolidate Unused List Models
+
+When multiple `...List` models are reported as "deleted or renamed" (including models that only contain `next_link` and `value` — typical paging result wrappers; verify by checking the SDK code), they typically represent internal list wrappers not used directly by SDK consumers. Replace the individual delete/rename lines with a single concise entry that lists the models, clarifies they were unused, and move the consolidated entry to the `### Other Changes` section:
+
+**Before:**
+```
+### Breaking Changes
+
+  - Deleted or renamed model `SkuInformationList`
+  - Deleted or renamed model `SnapshotList`
+  - Deleted or renamed model `VolumeGroupList`
+  - Deleted or renamed model `VolumeList`
+```
+**After:**
+```
+### Other Changes
+
+  - Deleted model `ElasticSanList`/`SkuInformationList`/`SnapshotList`/`VolumeGroupList`/`VolumeList` which actually were not used by SDK users
+```
+
+### 9. Group Parameter Kind Changes
+
+When multiple parameters of the same method change their kind from `positional_or_keyword` to `keyword_only`, merge the repeated lines into a single concise entry by listing the parameters together.
+
+**Before:**
+```
+  - Method `CertificateOrdersDiagnosticsOperations.get_app_service_certificate_order_detector_response` changed its parameter `start_time` from `positional_or_keyword` to `keyword_only`
+  - Method `CertificateOrdersDiagnosticsOperations.get_app_service_certificate_order_detector_response` changed its parameter `end_time` from `positional_or_keyword` to `keyword_only`
+  - Method `CertificateOrdersDiagnosticsOperations.get_app_service_certificate_order_detector_response` changed its parameter `time_grain` from `positional_or_keyword` to `keyword_only`
+```
+**After:**
+```
+  - Method `CertificateOrdersDiagnosticsOperations.get_app_service_certificate_order_detector_response` changed its parameter `start_time`/`end_time`/`time_grain` from `positional_or_keyword` to `keyword_only`
+```
+
 It's often along with an entry in the `### Breaking Changes` section like:
 ```
 - Method `...` re-ordered its parameters from `['self', '...', '...', '...', '...', 'if_match', 'if_none_match', 'kwargs']` to `['self', '...', '...', '...', '...', 'etag', 'match_condition', 'kwargs']`
