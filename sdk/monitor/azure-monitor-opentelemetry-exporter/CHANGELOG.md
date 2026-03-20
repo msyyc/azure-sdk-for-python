@@ -1,6 +1,151 @@
 # Release History
 
-## 1.0.0b42 (Unreleased)
+## 1.0.0b50 (Unreleased)
+
+### Features Added
+
+### Breaking Changes
+
+### Bugs Fixed
+
+### Other Changes
+
+## 1.0.0b49 (2026-03-19)
+
+### Features Added
+- Added a 256kb custom properties truncation limit on specific GenAI attributes
+  ([#45749](https://github.com/Azure/azure-sdk-for-python/pull/45749))
+- Add Browser SDK loader SDK Stats feature bit
+  ([#42904](https://github.com/Azure/azure-sdk-for-python/pull/42904))
+
+### Bugs Fixed
+- Exempt specific GenAI attributes values from custom properties truncation
+  ([#45596](https://github.com/Azure/azure-sdk-for-python/pull/45596))
+- Fix attributes override in Rate Limited Sampler
+  ([#45592](https://github.com/Azure/azure-sdk-for-python/pull/45592))
+- Add environment variable to disable/enable custom properties truncation
+  ([#45479](https://github.com/Azure/azure-sdk-for-python/pull/45479))
+- Fix io counters import issue in performance counters
+  ([#45286](https://github.com/Azure/azure-sdk-for-python/pull/45286))
+- Remove custom properties truncation
+  ([#45118](https://github.com/Azure/azure-sdk-for-python/pull/45118))
+- Fix fallback logic when connection string is provided only via environment variable
+  ([#45252](https://github.com/Azure/azure-sdk-for-python/pull/45252))
+
+### Other Changes
+- Change import path for `LoggingHandler` to accommodate upstream breaking changes -
+[core](https://github.com/open-telemetry/opentelemetry-python/pull/4919) and [contrib](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4210)
+  ([#45516](https://github.com/Azure/azure-sdk-for-python/pull/45516))
+- Generate exporter with TypeSpec
+  ([#44442](https://github.com/Azure/azure-sdk-for-python/pull/44442))
+- Generate LiveMetrics from TypeSpec
+  ([#44696](https://github.com/Azure/azure-sdk-for-python/pull/44696))
+
+## 1.0.0b48 (2026-02-05)
+
+### Bugs Fixed
+- Fix CPU usage calculation logic for live metrics
+  ([#45005](https://github.com/Azure/azure-sdk-for-python/pull/45005))
+
+### Other Changes
+- Fix Ingestion-Side Sampling Disk Persist Behavior
+  ([#44980](https://github.com/Azure/azure-sdk-for-python/pull/44980))
+
+## 1.0.0b47 (2026-02-03)
+
+### Features Added
+- Rename metric names for customer sdk stats and set it on by default
+  ([#44849](https://github.com/Azure/azure-sdk-for-python/pull/44849))
+- Add auto detection for application ID from connection string if not set 
+  ([#44644](https://github.com/Azure/azure-sdk-for-python/pull/44644))
+- Add support for user id and authId
+  ([#44662](https://github.com/Azure/azure-sdk-for-python/pull/44662))
+
+### Bugs Fixed
+- Add custom metric mapping for customer sdkstats metric names to preserve casing
+  ([#44855](https://github.com/Azure/azure-sdk-for-python/pull/44855))
+- Fix customer SDK stats metrics to display drop code and retry code enum values without the prefix
+  ([#44852](https://github.com/Azure/azure-sdk-for-python/pull/44852))
+
+### Other Changes
+- Feature tracking for when customer sdkstats is disabled by the user
+  ([#44888](https://github.com/Azure/azure-sdk-for-python/pull/44888))
+- Update maximum size of custom properties
+  ([#44684](https://github.com/Azure/azure-sdk-for-python/pull/44684))
+- Declare support for Python 3.13 and 3.14
+  ([#44550](https://github.com/Azure/azure-sdk-for-python/pull/44550))
+
+## 1.0.0b46 (2025-12-04)
+
+### Breaking Changes
+- Fix to accommodate breaking log changes from Otel
+  ([#43626](https://github.com/Azure/azure-sdk-for-python/pull/43626))
+- Pin OpenTelemetry versions to guard against upstream logging breaking changes
+  ([#44220](https://github.com/Azure/azure-sdk-for-python/pull/44220))
+
+### Bugs Fixed
+- Fixes LogDeprecated warnings - `LogDeprecatedInitWarning: LogRecord init with trace_id, span_id, and/or trace_flags is deprecated since 1.35.0. Use context instead`
+  ([#44090](https://github.com/Azure/azure-sdk-for-python/pull/44090))
+- Fixes issue #43442: SyntaxWarning: 'return' in a 'finally' block in azure-monitor-opentelemetry-exporter with Python 3.14
+  ([#44053](https://github.com/Azure/azure-sdk-for-python/pull/44053))
+
+### Other Changes
+- Commented OneSettings configuration manager temporarily to avoid user impact during feature testing.
+  ([#44179](https://github.com/Azure/azure-sdk-for-python/pull/44179))
+
+## 1.0.0b45 (2025-11-14)
+
+### Features Added
+- Added new log record processor to support Trace Based Sampling
+  ([#43811](https://github.com/Azure/azure-sdk-for-python/pull/43811))
+- Added Operation Name Propagation for Dependencies and Logs
+  ([#43588](https://github.com/Azure/azure-sdk-for-python/pull/43588))
+- Added local storage support for multiple users on the same Linux system
+  ([#43483](https://github.com/Azure/azure-sdk-for-python/pull/43483))
+
+### Bugs Fixed
+- Modified logic for message body on Microsoft.ApplicationInsights.MessageData to include default message for messages with empty body and export logs
+  ([#43091](https://github.com/Azure/azure-sdk-for-python/pull/43091))
+
+### Other Changes
+- Unpinned fixedint dependency
+  ([#43475](https://github.com/Azure/azure-sdk-for-python/pull/43475))
+- Remove fixedint dependency
+  ([#43659](https://github.com/Azure/azure-sdk-for-python/pull/43659))
+
+## 1.0.0b44 (2025-10-14)
+
+### Bugs Fixed
+- Fixed issue where AAD authentication for Live Metrics failed for users in sovereign cloud environments
+  ([#43392](https://github.com/Azure/azure-sdk-for-python/pull/43392))
+
+## 1.0.0b43 (2025-10-08)
+
+### Features Added
+- OneSettings control plane: Add live metrics feature control
+  ([#43032](https://github.com/Azure/azure-sdk-for-python/pull/43032))
+- Adding customer sdkstats to feature statsbeat
+  ([#43066](https://github.com/Azure/azure-sdk-for-python/pull/43066))
+- OneSettings control plane: Add killswitch + exponential  backoff + sdkstats feature control
+  ([#43147](https://github.com/Azure/azure-sdk-for-python/pull/43147))
+- Performance Counters
+  ([#43024](https://github.com/Azure/azure-sdk-for-python/pull/43024))
+- Performance Counters: Include Consumer spans
+  ([#43261](https://github.com/Azure/azure-sdk-for-python/pull/43261))
+
+### Bugs Fixed
+- Fixes issues #42897 - TypeError in _transmit_from_storage: LocalFileBlob.get() returns None
+  ([#42897](https://github.com/Azure/azure-sdk-for-python/pull/42951))
+- Fix logic for message field on Microsoft.ApplicationInsights.Message to sync with Breeze
+  ([#43060](https://github.com/Azure/azure-sdk-for-python/pull/43060))
+- Skip tests from test_storage.py causing transient build pipeline failures
+  ([#43122](https://github.com/Azure/azure-sdk-for-python/pull/43122))
+- Fix spelling for OTEL_PYTHON_EXCLUDED_URLS in samples
+  ([#43141](https://github.com/Azure/azure-sdk-for-python/pull/43141))
+- Revert #43060
+  ([#43087](https://github.com/Azure/azure-sdk-for-python/pull/43087))
+
+## 1.0.0b42 (2025-09-17)
 
 ### Features Added
 - Customer Facing Statsbeat: Added remaining drop codes to base
@@ -11,12 +156,18 @@
   ([#42542](https://github.com/Azure/azure-sdk-for-python/pull/42542))
 - Customer Facing SDKStats: Added the export interval env var for customer sdkstats
   ([#42551](https://github.com/Azure/azure-sdk-for-python/pull/42551))
-- Rename Customer Statsbeat to Customer SDKStats as per [Spec] - https://github.com/aep-health-and-standards/Telemetry-Collection-Spec/pull/581
+- Rename Customer Statsbeat to Customer SDKStats as per [Spec](https://github.com/aep-health-and-standards/Telemetry-Collection-Spec/pull/581#issuecomment-3165624749)
   ([#42573](https://github.com/Azure/azure-sdk-for-python/pull/42573))
-
-### Breaking Changes
+- Customer Facing SDKStats: Exception categorization as per [Spec] - https://github.com/aep-health-and-standards/Telemetry-Collection-Spec/blob/main/ApplicationInsights/sdkstats/customer_facing_sdk_stats.md
+  ([#42695](https://github.com/Azure/azure-sdk-for-python/pull/42695))
+- Customer Facing SDKStats: Added logic for race conditions and updated the implementation to use a global instance for customer SDKStats metrics
+  ([#42655](https://github.com/Azure/azure-sdk-for-python/pull/42655))
+- Customer Facing SDKStats: Added telemetry_success field to dropped items as per [Spec] - https://github.com/aep-health-and-standards/Telemetry-Collection-Spec/pull/606
+  ([#42846](https://github.com/Azure/azure-sdk-for-python/pull/42846))
 
 ### Bugs Fixed
+- Customer Facing SDKStats: Refactor to use `Manager` and `Singleton` pattern
+  ([#42969](https://github.com/Azure/azure-sdk-for-python/pull/42969))
 
 ### Other Changes
 
@@ -26,6 +177,8 @@
   ([#42508] https://github.com/Azure/azure-sdk-for-python/pull/42508)
 - Refactoring of statsbeat to use `StatsbeatManager`
   ([#42716] https://github.com/Azure/azure-sdk-for-python/pull/42716)
+- Support sdk stats dynamic change on OneSettings config change
+  ([#42877] https://github.com/Azure/azure-sdk-for-python/pull/42877)
 
 ## 1.0.0b41 (2025-07-31)
 

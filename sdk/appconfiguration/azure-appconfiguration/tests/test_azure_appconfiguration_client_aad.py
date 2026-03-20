@@ -3,6 +3,24 @@
 # Licensed under the MIT License. See License.txt in the project root for
 # license information.
 # --------------------------------------------------------------------------
+import copy
+import json
+import re
+from datetime import datetime, timezone
+import functools
+import pytest
+from consts import (
+    KEY,
+    LABEL,
+    TEST_VALUE,
+    TEST_CONTENT_TYPE,
+    LABEL_RESERVED_CHARS,
+    PAGE_SIZE,
+    KEY_UUID,
+    APPCONFIGURATION_ENDPOINT_STRING,
+)
+from devtools_testutils import EnvironmentVariableLoader, recorded_by_proxy, set_custom_default_matcher
+from testcase import AppConfigTestCase
 from azure.core import MatchConditions
 from azure.core.exceptions import (
     AzureError,
@@ -19,28 +37,17 @@ from azure.appconfiguration import (
     FILTER_TARGETING,
     FILTER_TIME_WINDOW,
 )
-from testcase import AppConfigTestCase
-from consts import (
-    KEY,
-    LABEL,
-    TEST_VALUE,
-    TEST_CONTENT_TYPE,
-    LABEL_RESERVED_CHARS,
-    PAGE_SIZE,
-    KEY_UUID,
+
+AppConfigPreparer = functools.partial(
+    EnvironmentVariableLoader,
+    "appconfiguration",
+    appconfiguration_endpoint_string=APPCONFIGURATION_ENDPOINT_STRING,
 )
-from preparers import app_config_aad_decorator
-from devtools_testutils import recorded_by_proxy, set_custom_default_matcher
-import pytest
-import copy
-import datetime
-import json
-import re
 
 
-class TestAppConfigurationClientAAD(AppConfigTestCase):
+class TestAppConfigurationClientAAD(AppConfigTestCase):  # pylint: disable=too-many-public-methods
     # method: add_configuration_setting
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_add_configuration_setting(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -74,7 +81,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         client.delete_configuration_setting(key=created_kv.key, label=created_kv.label)
 
     # method: set_configuration_setting
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_set_existing_configuration_setting_label_etag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -84,7 +91,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         set_kv = client.set_configuration_setting(to_set_kv)
         assert (
             to_set_kv.key == set_kv.key
-            and to_set_kv.label == to_set_kv.label
+            and to_set_kv.label == set_kv.label
             and to_set_kv.value == set_kv.value
             and to_set_kv.content_type == set_kv.content_type
             and to_set_kv.tags == set_kv.tags
@@ -92,7 +99,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         )
         client.delete_configuration_setting(key=to_set_kv.key, label=to_set_kv.label)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_set_configuration_setting_wrong_etag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -104,7 +111,24 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
             client.set_configuration_setting(to_set_kv, match_condition=MatchConditions.IfNotModified)
 
     # method: get_configuration_setting
-    @app_config_aad_decorator
+    @AppConfigPreparer()
+    @recorded_by_proxy
+    def test_get_configuration_setting_no_label(self, appconfiguration_endpoint_string):
+        client = self.create_aad_client(appconfiguration_endpoint_string)
+        compare_kv = self.create_config_setting_no_label()
+        self.add_for_test(client, compare_kv)
+        fetched_kv = client.get_configuration_setting(compare_kv.key)
+        assert (
+            fetched_kv.key == compare_kv.key
+            and fetched_kv.value == compare_kv.value
+            and fetched_kv.content_type == compare_kv.content_type
+            and fetched_kv.tags == compare_kv.tags
+        )
+        assert fetched_kv.label is None
+        client.delete_configuration_setting(key=compare_kv.key, label=compare_kv.label)
+
+    # method: get_configuration_setting
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_get_configuration_setting(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -121,7 +145,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert fetched_kv.label is not None
         client.delete_configuration_setting(key=compare_kv.key, label=compare_kv.label)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_get_non_existing_configuration_setting(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -129,7 +153,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         with pytest.raises(ResourceNotFoundError):
             client.get_configuration_setting(compare_kv.key, compare_kv.label + "a")
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_get_configuration_setting_with_etag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -150,7 +174,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         client.delete_configuration_setting(key=compare_kv.key, label=compare_kv.label)
 
     # method: delete_configuration_setting
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_delete_configuration_setting_with_key_no_label(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -161,7 +185,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         with pytest.raises(ResourceNotFoundError):
             client.get_configuration_setting(to_delete_kv.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_delete_configuration_setting_with_key_label(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -172,14 +196,14 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         with pytest.raises(ResourceNotFoundError):
             client.get_configuration_setting(to_delete_kv.key, label=to_delete_kv.label)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_delete_not_existing_configuration_setting(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
         deleted_kv = client.delete_configuration_setting("not_exist_" + KEY)
         assert deleted_kv is None
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_delete_configuration_setting_with_etag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -199,18 +223,42 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
             client.get_configuration_setting(to_delete_kv.key)
 
     # method: list_configuration_settings
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_key_label(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
         set_custom_default_matcher(compare_bodies=False, excluded_headers="x-ms-content-sha256,x-ms-date")
         self.set_up(appconfiguration_endpoint_string, is_aad=True)
-        items = list(self.client.list_configuration_settings(label_filter=LABEL, key_filter=KEY))
+        items = list(self.client.list_configuration_settings(key_filter=KEY, label_filter=LABEL))
         assert len(items) == 1
         assert all(x.key == KEY and x.label == LABEL for x in items)
+
+        with pytest.raises(TypeError) as ex:
+            self.client.list_configuration_settings("MyKey1", key_filter="MyKey2")
+        assert (
+            str(ex.value)
+            == "AzureAppConfigurationClient.list_configuration_settings() got multiple values for argument 'key_filter'"
+        )
+        with pytest.raises(TypeError) as ex:
+            self.client.list_configuration_settings("MyKey", "MyLabel1", label_filter="MyLabel2")
+        assert str(ex.value) == (
+            "AzureAppConfigurationClient.list_configuration_settings() got multiple values for argument 'label_filter'"
+        )
+        with pytest.raises(TypeError) as ex:
+            self.client.list_configuration_settings("None", key_filter="MyKey")
+        assert (
+            str(ex.value)
+            == "AzureAppConfigurationClient.list_configuration_settings() got multiple values for argument 'key_filter'"
+        )
+        with pytest.raises(TypeError) as ex:
+            self.client.list_configuration_settings("None", "None", label_filter="MyLabel")
+        assert str(ex.value) == (
+            "AzureAppConfigurationClient.list_configuration_settings() got multiple values for argument 'label_filter'"
+        )
+
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_only_label(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -221,7 +269,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.label == LABEL for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_only_key(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -232,7 +280,19 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.key == KEY for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
+    @recorded_by_proxy
+    def test_list_configuration_settings_with_tags_filter(self, appconfiguration_endpoint_string):
+        # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
+        set_custom_default_matcher(compare_bodies=False, excluded_headers="x-ms-content-sha256,x-ms-date")
+        self.set_up(appconfiguration_endpoint_string, is_aad=True)
+        items = list(self.client.list_configuration_settings(tags_filter=["tag1=value1"]))
+        assert len(items) == 1
+        assert items[0].key == KEY
+        assert items[0].label == LABEL
+        self.tear_down()
+
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_fields(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -245,7 +305,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.key and not x.label and x.content_type for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_reserved_chars(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -259,7 +319,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.label == LABEL_RESERVED_CHARS for x in items)
         client.delete_configuration_setting(reserved_char_kv.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_contains(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -270,7 +330,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.label == LABEL for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_correct_etag(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -289,7 +349,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.key == to_list_kv.key and x.label == to_list_kv.label for x in items)
         client.delete_configuration_setting(to_list_kv.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_multi_pages(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -321,7 +381,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         except AzureError:
             pass
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_no_label(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -331,25 +391,32 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert len(list(items)) > 0
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_configuration_settings_only_accepttime(self, appconfiguration_endpoint_string, **kwargs):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
         set_custom_default_matcher(compare_bodies=False, excluded_headers="x-ms-content-sha256,x-ms-date")
         recorded_variables = kwargs.pop("variables", {})
-        self.set_up(appconfiguration_endpoint_string, is_aad=True)
-        exclude_today = self.client.list_configuration_settings(
-            accept_datetime=recorded_variables.setdefault(
-                "datetime", str(datetime.datetime.today() + datetime.timedelta(days=-1))
-            )
-        )
-        all_inclusive = self.client.list_configuration_settings()
-        assert len(list(all_inclusive)) > len(list(exclude_today))
-        self.tear_down()
+        recorded_variables.setdefault("timestamp", str(datetime.now(timezone.utc)))
+
+        with self.create_aad_client(appconfiguration_endpoint_string) as client:
+            # Confirm all configuration settings are cleaned up
+            current_config_settings = client.list_configuration_settings()
+            if len(list(current_config_settings)) != 0:
+                for config_setting in current_config_settings:
+                    client.delete_configuration_setting(config_setting)
+
+            revision = client.list_configuration_settings(accept_datetime=recorded_variables.get("timestamp"))
+            assert len(list(revision)) >= 0
+
+            accept_time = datetime(year=2000, month=4, day=1, hour=9, minute=30, second=45, tzinfo=timezone.utc)
+            revision = client.list_configuration_settings(accept_datetime=accept_time)
+            assert len(list(revision)) == 0
+
         return recorded_variables
 
     # method: list_revisions
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_revisions_key_label(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -361,7 +428,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.key == to_list.key and x.label == to_list.label for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_revisions_only_label(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -372,7 +439,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.label == LABEL for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_revisions_key_no_label(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -383,7 +450,19 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.key == KEY for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
+    @recorded_by_proxy
+    def test_list_revisions_with_tags_filter(self, appconfiguration_endpoint_string):
+        # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
+        set_custom_default_matcher(compare_bodies=False, excluded_headers="x-ms-content-sha256,x-ms-date")
+        self.set_up(appconfiguration_endpoint_string, is_aad=True)
+        items = list(self.client.list_revisions(tags_filter=["tag1=value1"]))
+        assert len(items) >= 1
+        assert all(x.key == KEY for x in items)
+        assert all(x.label == LABEL for x in items)
+        self.tear_down()
+
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_revisions_fields(self, appconfiguration_endpoint_string):
         # response header <x-ms-content-sha256> and <x-ms-date> are missing in python38.
@@ -393,7 +472,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         assert all(x.key and not x.label and x.content_type and not x.tags and not x.etag for x in items)
         self.tear_down()
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_list_revisions_correct_etag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -406,10 +485,11 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         )
         assert len(items) >= 1
         assert all(x.key == to_list_kv.key and x.label == to_list_kv.label for x in items)
+
         client.delete_configuration_setting(to_list_kv.key)
 
     # method: set_read_only
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_set_read_only(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -429,7 +509,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         client.set_configuration_setting(writable_kv)
         client.delete_configuration_setting(writable_kv.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_set_read_only_with_wrong_etag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -443,7 +523,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         client.delete_configuration_setting(to_set_kv)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_sync_tokens_with_configuration_setting(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -482,7 +562,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         client.delete_configuration_setting("KEY1")
         client.delete_configuration_setting("KEY2")
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_sync_tokens_with_feature_flag_configuration_setting(self, appconfiguration_endpoint_string):
         self.set_up(appconfiguration_endpoint_string, is_aad=True)
@@ -544,7 +624,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         self.client.delete_configuration_setting(new.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_config_setting_feature_flag(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -589,7 +669,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         client.delete_configuration_setting(changed_flag.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_config_setting_secret_reference(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -599,6 +679,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
         set_flag = client.set_configuration_setting(secret_reference)
         self._assert_same_keys(secret_reference, set_flag)
 
+        set_flag.secret_id = "https://test-test.vault.azure.net/new_secrets/connectionString"
         updated_flag = client.set_configuration_setting(set_flag)
         self._assert_same_keys(set_flag, updated_flag)
 
@@ -617,7 +698,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         client.delete_configuration_setting(secret_reference.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_feature_filter_targeting(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -674,7 +755,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         client.delete_configuration_setting(updated_sent_config.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_feature_filter_time_window(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -698,7 +779,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         client.delete_configuration_setting(new_sent.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_feature_filter_custom(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)
@@ -715,7 +796,7 @@ class TestAppConfigurationClientAAD(AppConfigTestCase):
 
         client.delete_configuration_setting(new_sent.key)
 
-    @app_config_aad_decorator
+    @AppConfigPreparer()
     @recorded_by_proxy
     def test_feature_filter_multiple(self, appconfiguration_endpoint_string):
         client = self.create_aad_client(appconfiguration_endpoint_string)

@@ -15,6 +15,8 @@ from azure.core.rest import HttpRequest
 from azure.cosmos import DatabaseProxy, PartitionKey
 from azure.cosmos import _retry_utility
 from azure.cosmos.http_constants import StatusCodes, SubStatusCodes, HttpHeaders
+from azure.cosmos._change_feed.feed_range_internal import FeedRangeInternalEpk
+from azure.cosmos._routing.routing_range import Range
 from typing import Callable
 
 
@@ -45,6 +47,73 @@ class TestSession(unittest.TestCase):
         cls.client = cosmos_client.CosmosClient(cls.host, cls.masterKey)
         cls.created_db = cls.client.get_database_client(cls.TEST_DATABASE_ID)
         cls.created_collection = cls.created_db.get_container_client(cls.TEST_COLLECTION_ID)
+
+    def test_manual_session_token_takes_precedence(self):
+        # Establish an initial session state for the primary client. After this call, self.client has an internal session token.
+        self.created_collection.create_item(
+            body={'id': 'precedence_doc_1' + str(uuid.uuid4()), 'pk': 'mypk'}
+        )
+        # Capture the session token from the primary client (Token A)
+        token_A = self.client.client_connection.last_response_headers.get(HttpHeaders.SessionToken)
+        self.assertIsNotNone(token_A)
+
+        # Use a separate client to create a second item. This gives us a new, distinct session token from the response.
+        with cosmos_client.CosmosClient(self.host, self.masterKey) as other_client:
+            other_collection = other_client.get_database_client(self.TEST_DATABASE_ID) \
+                .get_container_client(self.TEST_COLLECTION_ID)
+            item2 = other_collection.create_item(
+                body={'id': 'precedence_doc_2' + str(uuid.uuid4()), 'pk': 'mypk'}
+            )
+            # Capture the session token from the second client (Token B)
+            manual_session_token = other_client.client_connection.last_response_headers.get(HttpHeaders.SessionToken)
+            self.assertIsNotNone(manual_session_token)
+
+        # Assert that the two tokens are different to ensure we are testing a real override scenario.
+        self.assertNotEqual(token_A, manual_session_token)
+
+        # At this point, self.client's session is at first token, but we are holding second token. We will now manually use second token in a request on self.client.
+        def manual_token_hook(request):
+            # Assert that the header contains the manually provided second token not the client's automatic first token.
+            self.assertIn(HttpHeaders.SessionToken, request.http_request.headers)
+            self.assertEqual(request.http_request.headers[HttpHeaders.SessionToken], manual_session_token)
+
+        #Read an item using the primary client, but manually providing second token. The hook will verify that second token overrides the client's internal first token.
+        self.created_collection.read_item(
+            item=item2['id'],  # Reading the item associated with second token
+            partition_key='mypk',
+            session_token=manual_session_token,  # Manually provide second token
+            raw_request_hook=manual_token_hook
+        )
+
+    def test_manual_session_token_override(self):
+        # Create an item to get a valid session token from the response
+        created_document = self.created_collection.create_item(
+            body={'id': 'doc_for_manual_session' + str(uuid.uuid4()), 'pk': 'mypk'}
+        )
+        session_token = self.client.client_connection.last_response_headers.get(HttpHeaders.SessionToken)
+        self.assertIsNotNone(session_token)
+
+        # temporarily disable client-side session management to test manual override
+        original_session = self.client.client_connection.session
+        self.client.client_connection.session = None
+
+        try:
+            # Define a hook to inspect the request headers
+            def manual_token_hook(request):
+                self.assertIn(HttpHeaders.SessionToken, request.http_request.headers)
+                self.assertEqual(request.http_request.headers[HttpHeaders.SessionToken], session_token)
+
+            # Read the item, passing the session token manually.
+            # The hook will verify it's correctly added to the request headers.
+            self.created_collection.read_item(
+                item=created_document['id'],
+                partition_key='mypk',
+                session_token=session_token,  # Manually provide the session token
+                raw_request_hook=manual_token_hook
+            )
+        finally:
+            # Restore the original session object to avoid affecting other tests
+            self.client.client_connection.session = original_session
 
     def test_session_token_sm_for_ops(self):
 
@@ -85,6 +154,104 @@ class TestSession(unittest.TestCase):
         self.created_collection.delete_item(replaced_item['id'], replaced_item['pk'], raw_response_hook=test_config.no_token_response_hook)
         assert self.created_db.client_connection.last_response_headers.get(HttpHeaders.SessionToken) is not None
         assert self.created_db.client_connection.last_response_headers.get(HttpHeaders.SessionToken) != batch_response_token
+
+    def test_session_token_compound_not_sent_for_single_partition_query(self):
+        """
+        Verify that when querying with a feed range (single physical partition),
+        only that partition's session token is sent, not the entire compound token.
+        """
+        test_container = self.created_db.create_container(
+            "Container query test" + str(uuid.uuid4()),
+            PartitionKey(path="/pk"),
+            offer_throughput=11000
+        )
+
+        try:
+            # Create items across multiple partition keys
+            for i in range(100):
+                test_container.create_item({
+                    'id': str(uuid.uuid4()),
+                    'pk': f"pk_{i:04d}"
+                })
+
+            # Get feed ranges and verify multiple exist
+            feed_ranges = list(test_container.read_feed_ranges())
+            self.assertGreater(len(feed_ranges), 1, "Expected multiple feed ranges")
+
+            # Capture session token sent with feed range query
+            captured_session_token = {}
+
+            def capture_session_token(request):
+                captured_session_token['token'] = request.http_request.headers.get(HttpHeaders.SessionToken)
+
+            # Query with single feed range
+            list(test_container.query_items(
+                query="SELECT * FROM c",
+                feed_range=feed_ranges[0],
+                raw_request_hook=capture_session_token
+            ))
+
+            # Verify only single partition token was sent
+            token = captured_session_token.get('token')
+            self.assertIsNotNone(token, "Session token should be present")
+            self.assertNotIn(',', token,
+                             f"Expected single partition token, got compound token: {token}")
+
+        finally:
+            self.created_db.delete_container(test_container)
+
+    def test_session_token_compound_not_sent_for_multi_partition_feed_range_query(self):
+        """
+        Verify that when querying with a feed range spanning multiple physical partitions,
+        each individual request sends only the relevant partition's session token,
+        not the entire compound token.
+        """
+        test_container = self.created_db.create_container(
+            "Container multi partition test" + str(uuid.uuid4()),
+            PartitionKey(path="/pk"),
+            offer_throughput=11000
+        )
+
+        try:
+            # Create items across multiple partition keys
+            for i in range(100):
+                test_container.create_item({
+                    'id': str(uuid.uuid4()),
+                    'pk': f"pk_{i:04d}"
+                })
+
+            # Get feed ranges and verify multiple exist
+            feed_ranges = list(test_container.read_feed_ranges())
+            self.assertGreater(len(feed_ranges), 1, "Expected multiple feed ranges")
+
+            # Create a full-range feed range that spans all physical partitions
+            full_range = FeedRangeInternalEpk(
+                Range("", "FF", True, False)
+            ).to_dict()
+
+            # Capture all session tokens sent across multiple requests
+            captured_tokens = []
+
+            def capture_session_token(request):
+                token = request.http_request.headers.get(HttpHeaders.SessionToken)
+                if token:
+                    captured_tokens.append(token)
+
+            # Query with full range feed range (spans all partitions)
+            list(test_container.query_items(
+                query="SELECT * FROM c",
+                feed_range=full_range,
+                raw_request_hook=capture_session_token
+            ))
+
+            # Verify each request sent only a single partition token (no commas)
+            self.assertGreater(len(captured_tokens), 0, "Expected at least one request with session token")
+            for token in captured_tokens:
+                self.assertNotIn(',', token,
+                                 f"Expected single partition token per request, got compound token: {token}")
+
+        finally:
+            self.created_db.delete_container(test_container)
 
     def test_session_token_with_space_in_container_name(self):
 

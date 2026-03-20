@@ -49,8 +49,6 @@ class TestQueryAsync(unittest.IsolatedAsyncioTestCase):
         self.client = CosmosClient(self.host, self.masterKey, multiple_write_locations=self.use_multiple_write_locations)
         await self.client.__aenter__()
         self.created_db = self.client.get_database_client(self.TEST_DATABASE_ID)
-        if self.host == "https://localhost:8081/":
-            os.environ["AZURE_COSMOS_DISABLE_NON_STREAMING_ORDER_BY"] = "True"
 
     async def asyncTearDown(self):
         await self.client.close()
@@ -132,6 +130,94 @@ class TestQueryAsync(unittest.IsolatedAsyncioTestCase):
                                   'PotentialSingleIndexes': [], 'UtilizedCompositeIndexes': [],
                                   'PotentialCompositeIndexes': []}
         assert expected_index_metrics == index_metrics
+
+        await self.created_db.delete_container(created_collection.id)
+
+    @pytest.mark.skip(reason="Emulator does not support query advisor yet")
+    async def test_populate_query_advice_async(self):
+        created_collection = await self.created_db.create_container(
+            "query_advice_test" + str(uuid.uuid4()),
+            PartitionKey(path="/pk"))
+        doc_id = 'MyId' + str(uuid.uuid4())
+        document_definition = {
+            'pk': 'pk', 'id': doc_id, 'name': 'test document',
+            'tags': [{'name': 'python'}, {'name': 'cosmos'}],
+            'timestamp': '2099-01-01T00:00:00Z', 'ticks': 0, 'ts': 0
+        }
+        await created_collection.create_item(body=document_definition)
+        await asyncio.sleep(1)
+
+        QUERY_ADVICE_HEADER = http_constants.HttpHeaders.QueryAdvice
+
+        # QA1000 - PartialArrayContains: ARRAY_CONTAINS with partial match
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, {"name": "python"}, true)',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1000" in query_advice
+
+        # QA1002 - Contains: CONTAINS usage
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE CONTAINS(c.name, "test")',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1002" in query_advice
+
+        # QA1003 - CaseInsensitiveStartsWithOrStringEquals: case-insensitive STARTSWITH
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE STARTSWITH(c.name, "test", true)',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1003" in query_advice
+
+        # QA1004 - CaseInsensitiveEndsWith: case-insensitive ENDSWITH
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE ENDSWITH(c.name, "document", true)',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1004" in query_advice
+
+        # QA1007 - GetCurrentDateTime: usage of GetCurrentDateTime
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE c.timestamp < GetCurrentDateTime()',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1007" in query_advice
+
+        # QA1008 - GetCurrentTicks: usage of GetCurrentTicks
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE c.ticks < GetCurrentTicks()',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1008" in query_advice
+
+        # QA1009 - GetCurrentTimestamp: usage of GetCurrentTimestamp
+        query_iterable = created_collection.query_items(
+            query='SELECT * FROM c WHERE c.ts < GetCurrentTimestamp()',
+            partition_key='pk', populate_query_advice=True
+        )
+        [item async for item in query_iterable]
+        query_advice = created_collection.client_connection.last_response_headers.get(QUERY_ADVICE_HEADER)
+        assert query_advice is not None
+        assert "QA1009" in query_advice
 
         await self.created_db.delete_container(created_collection.id)
 
@@ -465,6 +551,20 @@ class TestQueryAsync(unittest.IsolatedAsyncioTestCase):
 
         assert second_page['id'] == second_page_fetched_with_continuation_token['id']
 
+    async def test_cross_partition_query_with_none_partition_key_async(self):
+        created_collection = self.created_db.get_container_client(self.config.TEST_MULTI_PARTITION_CONTAINER_ID)
+        document_definition = {'pk': 'pk1', 'id': str(uuid.uuid4())}
+        await created_collection.create_item(body=document_definition)
+        document_definition = {'pk': 'pk2' , 'id': str(uuid.uuid4())}
+        await created_collection.create_item(body=document_definition)
+
+        query = 'SELECT * from c'
+        query_iterable = created_collection.query_items(
+            query=query,
+            partition_key=None)
+
+        assert len([item async for item in query_iterable]) >= 2
+
     async def test_value_max_query_results_async(self):
         container = self.created_db.get_container_client(self.config.TEST_MULTI_PARTITION_CONTAINER_ID)
         await container.create_item(
@@ -631,6 +731,91 @@ class TestQueryAsync(unittest.IsolatedAsyncioTestCase):
         assert response_hook.count == 1
         await self.created_db.delete_container(created_collection.id)
 
+    async def test_query_pagination_with_max_item_count_async(self):
+        """Test pagination showing per-page limits and total results counting."""
+        created_collection = await self.created_db.create_container(
+            "pagination_test_" + str(uuid.uuid4()),
+            PartitionKey(path="/pk"))
+        
+        # Create 20 items in a single partition
+        total_items = 20
+        partition_key_value = "test_pk"
+        for i in range(total_items):
+            document_definition = {
+                'pk': partition_key_value,
+                'id': f'item_{i}',
+                'value': i
+            }
+            await created_collection.create_item(body=document_definition)
+        
+        # Test pagination with max_item_count limiting items per page
+        max_items_per_page = 7
+        query = "SELECT * FROM c WHERE c.pk = @pk ORDER BY c['value']"
+        query_iterable = created_collection.query_items(
+            query=query,
+            parameters=[{"name": "@pk", "value": partition_key_value}],
+            partition_key=partition_key_value,
+            max_item_count=max_items_per_page
+        )
+        
+        # Iterate through pages and verify per-page counts
+        all_fetched_results = []
+        page_count = 0
+        item_pages = query_iterable.by_page()
+        
+        async for page in item_pages:
+            page_count += 1
+            items_in_page = [item async for item in page]
+            all_fetched_results.extend(items_in_page)
+            
+            # Each page should have at most max_item_count items
+            # (last page may have fewer)
+            assert len(items_in_page) <= max_items_per_page
+        
+        # Verify total results match expected count
+        assert len(all_fetched_results) == total_items
+        
+        # Verify we got the expected number of pages
+        # 20 items with max 7 per page = 3 pages (7, 7, 6)
+        assert page_count == 3
+        
+        # Verify ordering is maintained
+        for i, item in enumerate(all_fetched_results):
+            assert item['value'] == i
+        
+        await self.created_db.delete_container(created_collection.id)
+    
+    async def test_query_pagination_without_max_item_count_async(self):
+        """Test pagination behavior without specifying max_item_count."""
+        created_collection = await self.created_db.create_container(
+            "pagination_no_max_test_" + str(uuid.uuid4()),
+            PartitionKey(path="/pk"))
+        
+        # Create 15 items in a single partition
+        total_items = 15
+        partition_key_value = "test_pk_2"
+        for i in range(total_items):
+            document_definition = {
+                'pk': partition_key_value,
+                'id': f'item_{i}',
+                'value': i
+            }
+            await created_collection.create_item(body=document_definition)
+        
+        # Query without specifying max_item_count
+        query = "SELECT * FROM c WHERE c.pk = @pk"
+        query_iterable = created_collection.query_items(
+            query=query,
+            parameters=[{"name": "@pk", "value": partition_key_value}],
+            partition_key=partition_key_value
+        )
+        
+        # Count total results
+        all_results = [item async for item in query_iterable]
+        assert len(all_results) == total_items
+        
+        await self.created_db.delete_container(created_collection.id)
+
     async def _MockExecuteFunctionSessionRetry(self, function, *args, **kwargs):
         if args:
             if args[1].operation_type == 'SqlQuery':
@@ -656,6 +841,102 @@ class TestQueryAsync(unittest.IsolatedAsyncioTestCase):
                                                                  message="Timeout Failover")
                 raise ex_to_raise
         return await self.OriginalExecuteFunction(function, *args, **kwargs)
+
+    async def test_query_items_with_parameters_none_async(self):
+        """Test that query_items handles parameters=None correctly (issue #43662)."""
+        created_collection = await self.created_db.create_container(
+            "test_params_none_" + str(uuid.uuid4()), PartitionKey(path="/pk"))
+        
+        # Create test documents
+        doc1_id = 'doc1_' + str(uuid.uuid4())
+        doc2_id = 'doc2_' + str(uuid.uuid4())
+        await created_collection.create_item(body={'pk': 'pk1', 'id': doc1_id, 'value1': 1})
+        await created_collection.create_item(body={'pk': 'pk2', 'id': doc2_id, 'value1': 2})
+
+        # Test 1: Explicitly passing parameters=None should not cause TypeError
+        query = 'SELECT * FROM c'
+        query_iterable = created_collection.query_items(
+            query=query,
+            parameters=None
+        )
+        results = [item async for item in query_iterable]
+        assert len(results) == 2
+
+        # Test 2: parameters=None with partition_key should work
+        query_iterable = created_collection.query_items(
+            query=query,
+            parameters=None,
+            partition_key='pk1'
+        )
+        results = [item async for item in query_iterable]
+        assert len(results) == 1
+        assert results[0]['id'] == doc1_id
+
+        # Test 3: Verify parameterized query still works with actual parameters
+        query_with_params = 'SELECT * FROM c WHERE c.value1 = @value'
+        query_iterable = created_collection.query_items(
+            query=query_with_params,
+            parameters=[{'name': '@value', 'value': 2}]
+        )
+        results = [item async for item in query_iterable]
+        assert len(results) == 1
+        assert results[0]['id'] == doc2_id
+
+        # Test 4: Query without parameters argument should work (default behavior)
+        query_iterable = created_collection.query_items(
+            query=query
+        )
+        results = [item async for item in query_iterable]
+        assert len(results) == 2
+
+        await self.created_db.delete_container(created_collection.id)
+
+    async def test_query_items_parameters_none_with_options_async(self):
+        """Test parameters=None works with various query options."""
+        created_collection = await self.created_db.create_container(
+            "test_params_none_opts_" + str(uuid.uuid4()), PartitionKey(path="/pk"))
+        
+        # Create multiple test documents
+        for i in range(5):
+            doc_id = f'doc_{i}_' + str(uuid.uuid4())
+            await created_collection.create_item(body={'pk': 'test', 'id': doc_id, 'index': i})
+
+        # Test with parameters=None and max_item_count
+        query = 'SELECT * FROM c ORDER BY c.index'
+        query_iterable = created_collection.query_items(
+            query=query,
+            parameters=None,
+            partition_key='test',
+            max_item_count=2
+        )
+        
+        # Verify pagination works
+        page_count = 0
+        total_items = 0
+        async for page in query_iterable.by_page():
+            page_count += 1
+            items = [item async for item in page]
+            total_items += len(items)
+            assert len(items) <= 2
+        
+        assert total_items == 5
+        assert page_count >= 2  # Should have multiple pages
+
+        # Test with parameters=None and populate_query_metrics
+        query_iterable = created_collection.query_items(
+            query=query,
+            parameters=None,
+            partition_key='test',
+            populate_query_metrics=True
+        )
+        results = [item async for item in query_iterable]
+        assert len(results) == 5
+        
+        # Verify query metrics were populated
+        metrics_header_name = 'x-ms-documentdb-query-metrics'
+        assert metrics_header_name in created_collection.client_connection.last_response_headers
+
+        await self.created_db.delete_container(created_collection.id)
 
 
 if __name__ == '__main__':

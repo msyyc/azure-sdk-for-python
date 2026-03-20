@@ -28,6 +28,7 @@
 from __future__ import annotations
 from collections import namedtuple
 from enum import Enum
+from functools import cache
 import logging
 import os
 from typing import (
@@ -207,6 +208,7 @@ _tracing_implementation_dict: Dict[str, Callable[[], Optional[Type[AbstractSpan]
 }
 
 
+@cache
 def convert_tracing_impl(value: Optional[Union[str, Type[AbstractSpan]]]) -> Optional[Type[AbstractSpan]]:
     """Convert a string to AbstractSpan
 
@@ -525,7 +527,7 @@ class Settings:
 
     azure_cloud: PrioritizedSetting[Union[str, AzureClouds], AzureClouds] = PrioritizedSetting(
         "azure_cloud",
-        env_var="AZURE_CLOUD",
+        env_var="AZURE_SDK_CLOUD_CONF",
         convert=convert_azure_cloud,
         default=AzureClouds.AZURE_PUBLIC_CLOUD,
     )
