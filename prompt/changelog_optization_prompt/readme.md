@@ -1,1 +1,1 @@
-Repalce `CHANGELOG_CONTENT` with your changelog to be optimized
+move to https://github.com/msyyc/productivity-tool/blob/main/.github/skills/create-sdk-release-pr/references/changelog-optimization.md
