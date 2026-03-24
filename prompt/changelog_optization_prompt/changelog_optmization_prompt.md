@@ -212,6 +212,7 @@ When multiple parameters of the same method change their kind from `positional_o
 ```
 **After:**
 ```
+  - For the method breakings, please refer to https://aka.ms/azsdk/python/migrate/operations for migration.
   - Method `CertificateOrdersDiagnosticsOperations.get_app_service_certificate_order_detector_response` changed its parameter `start_time`/`end_time`/`time_grain` from `positional_or_keyword` to `keyword_only`
 ```
 
