@@ -109,7 +109,6 @@ When a model introduces a new container property (commonly named `properties`) a
 
 **After:**
 ```
-   - Model `A` added property `properties`
    - Model `A` moved instance variable `a`, `b` and `c` under property `properties`
 ```
 
@@ -221,3 +220,8 @@ It's often along with an entry in the `### Breaking Changes` section like:
 - Method `...` re-ordered its parameters from `['self', '...', '...', '...', '...', 'if_match', 'if_none_match', 'kwargs']` to `['self', '...', '...', '...', '...', 'etag', 'match_condition', 'kwargs']`
 ```
 Consider it as a fake `re-ordered` report and remove it. Don't change other `re-order` reports if it does not represent an operation migration.
+
+
+### NOTE
+- declarition about migration doc shall be at top line in `### Breaking Changes` part.
+- only check latest part of changelog
