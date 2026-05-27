@@ -622,6 +622,8 @@
 
 ### Breaking Changes
 
+  - This version introduces new hybrid models which have dual dictionary and model nature. Please follow https://aka.ms/azsdk/python/migrate/hybrid-models for migration.
+  - For the method breakings, please refer to https://aka.ms/azsdk/python/migrate/operations for migration.
   - Model `AmazonMWSLinkedService` deleted or renamed its instance variable `endpoint`
   - Model `AmazonMWSLinkedService` deleted or renamed its instance variable `marketplace_id`
   - Model `AmazonMWSLinkedService` deleted or renamed its instance variable `seller_id`
@@ -2382,17 +2384,13 @@
   - Method `ManagedVirtualNetworksOperations.get` deleted or renamed its parameter `if_none_match` of kind `positional_or_keyword`
   - Method `PipelineRunsOperations.cancel` changed its parameter `is_recursive` from `positional_or_keyword` to `keyword_only`
   - Method `PipelinesOperations.create_or_update` deleted or renamed its parameter `if_match` of kind `positional_or_keyword`
-  - Method `PipelinesOperations.create_run` changed its parameter `reference_pipeline_run_id` from `positional_or_keyword` to `keyword_only`
-  - Method `PipelinesOperations.create_run` changed its parameter `is_recovery` from `positional_or_keyword` to `keyword_only`
-  - Method `PipelinesOperations.create_run` changed its parameter `start_activity_name` from `positional_or_keyword` to `keyword_only`
-  - Method `PipelinesOperations.create_run` changed its parameter `start_from_failure` from `positional_or_keyword` to `keyword_only`
+  - Method `PipelinesOperations.create_run` changed its parameter `reference_pipeline_run_id/is_recovery/start_activity_name/start_from_failure` from `positional_or_keyword` to `keyword_only`
   - Method `PipelinesOperations.get` deleted or renamed its parameter `if_none_match` of kind `positional_or_keyword`
   - Method `PrivateEndpointConnectionOperations.create_or_update` deleted or renamed its parameter `if_match` of kind `positional_or_keyword`
   - Method `PrivateEndpointConnectionOperations.get` deleted or renamed its parameter `if_none_match` of kind `positional_or_keyword`
   - Method `TriggersOperations.create_or_update` deleted or renamed its parameter `if_match` of kind `positional_or_keyword`
   - Method `TriggersOperations.get` deleted or renamed its parameter `if_none_match` of kind `positional_or_keyword`
   - Deleted or renamed model `PrivateEndPointConnectionsOperations`
-  - Method `PipelinesOperations.create_run` re-ordered its parameters from `['self', 'resource_group_name', 'factory_name', 'pipeline_name', 'reference_pipeline_run_id', 'is_recovery', 'start_activity_name', 'start_from_failure', 'parameters', 'kwargs']` to `['self', 'resource_group_name', 'factory_name', 'pipeline_name', 'parameters', 'reference_pipeline_run_id', 'is_recovery', 'start_activity_name', 'start_from_failure', 'kwargs']`
 
 ## 9.3.0 (2026-03-10)
 
